@@ -24,6 +24,10 @@ public class OptionInformationController {
     @Autowired
     IQuestionnaireInformationService questionnaireInformationService;
 
+    /**
+     * demo
+     * @return
+     */
     @RequestMapping("insert")
     @ResponseBody
     public String insert() {
