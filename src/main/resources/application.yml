@@ -3,6 +3,8 @@ spring:
     active: dev
 
 mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
   global-config:
     db-config:
       logic-delete-field: del_tag  # 全局逻辑删除的实体字段名
