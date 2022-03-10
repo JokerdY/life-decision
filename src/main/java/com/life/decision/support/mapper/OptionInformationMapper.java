@@ -1,7 +1,7 @@
 package com.life.decision.support.mapper;
 
 import com.life.decision.support.pojo.OptionInformation;
-import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import org.apache.ibatis.annotations.Mapper;
 
 /**
  * <p>
@@ -11,6 +11,18 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  * @author Joker
  * @since 2022-03-06
  */
-public interface OptionInformationMapper extends BaseMapper<OptionInformation> {
+@Mapper
+public interface OptionInformationMapper {
 
+    int deleteByPrimaryKey(String id);
+
+    int insert(OptionInformation record);
+
+    int insertSelective(OptionInformation record);
+
+    OptionInformation selectByPrimaryKey(String id);
+
+    int updateByPrimaryKeySelective(OptionInformation record);
+
+    int updateByPrimaryKey(OptionInformation record);
 }

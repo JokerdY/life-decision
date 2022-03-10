@@ -1,7 +1,7 @@
 package com.life.decision.support.mapper;
 
 import com.life.decision.support.pojo.QuestionnaireInformation;
-import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import org.apache.ibatis.annotations.Mapper;
 
 /**
  * <p>
@@ -11,6 +11,18 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  * @author Joker
  * @since 2022-03-06
  */
-public interface QuestionnaireInformationMapper extends BaseMapper<QuestionnaireInformation> {
+@Mapper
+public interface QuestionnaireInformationMapper {
 
+    int deleteByPrimaryKey(String id);
+
+    int insert(QuestionnaireInformation record);
+
+    int insertSelective(QuestionnaireInformation record);
+
+    QuestionnaireInformation selectByPrimaryKey(String id);
+
+    int updateByPrimaryKeySelective(QuestionnaireInformation record);
+
+    int updateByPrimaryKey(QuestionnaireInformation record);
 }
