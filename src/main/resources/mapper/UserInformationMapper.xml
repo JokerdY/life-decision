@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.life.decision.support.mapper.UserInformationMapper">
+
+    <select id="getUser" resultMap="UserInformation">
+        select *
+        from user_information
+        <where>
+            <if test="id != null and id != ''">
+                AND id = #{id}
+            </if>
+            <if test="telphoneNum != null and telphoneNum != ''">
+                AND telphone_num = #{telphoneNum}
+            </if>
+            <if test="userName != null and userName != ''">
+                AND user_mame = #{userName}
+            </if>
+        </where>
+    </select>
+
+    <select id="findList" resultMap="UserInformation">
+        select *
+        from user_information
+        <where>
+            <if test="id != null and id != ''">
+                AND id = #{id}
+            </if>
+            <if test="telphoneNum != null and telphoneNum != ''">
+                AND telphone_num = #{telphoneNum}
+            </if>
+            <if test="userName != null and userName != ''">
+                AND user_mame = #{userName}
+            </if>
+            <if test="adminEnable != null and adminEnable != ''">
+                AND admin_enable = #{adminEnable}
+            </if>
+        </where>
+    </select>
+
+    <insert id="insert">
+        INSERT INTO user_information(id, user_name, telphone_num, password, admin_enable)
+            value (#{id}, #{userName}, #{telphoneNum}, #{password}, #{adminEnable})
+    </insert>
+
+
+    <update id="update">
+        UPDATE user_information
+        <trim prefix="SET " suffixOverrides=",">
+            <if test="userName != null">
+                user_name = #{userName},
+            </if>
+            <if test="password != null">
+                password = #{password},
+            </if>
+            <if test="adminEnable != null">
+                admin_enable = #{adminEnable},
+            </if>
+        </trim>
+        <where>
+            <if test="telphoneNum != null">
+                telphone_num = #{telphoneNum},
+            </if>
+            <if test="password != null">
+                id = #{id},
+            </if>
+        </where>
+    </update>
+
+
+    <update id="delete">
+        DELETE
+        FROM user_information
+        <where>
+            <if test="telphoneNum != null">
+                telphone_num = #{telphoneNum},
+            </if>
+            <if test="password != null">
+                id = #{id},
+            </if>
+        </where>
+    </update>
+</mapper>

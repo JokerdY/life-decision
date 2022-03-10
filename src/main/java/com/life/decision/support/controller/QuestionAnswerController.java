@@ -14,7 +14,7 @@ import org.springframework.stereotype.Controller;
  * @since 2022-03-06
  */
 @Controller
-@RequestMapping("/question-answer")
+@RequestMapping("/questionAnswer")
 public class QuestionAnswerController {
 
 }

@@ -1,16 +1,28 @@
 package com.life.decision.support.mapper;
 
+import com.github.pagehelper.Page;
 import com.life.decision.support.pojo.UserInformation;
-import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import org.apache.ibatis.annotations.Mapper;
+
 
 /**
  * <p>
- *  Mapper 接口
+ * Mapper 接口
  * </p>
  *
  * @author Joker
  * @since 2022-03-06
  */
-public interface UserInformationMapper extends BaseMapper<UserInformation> {
+@Mapper
+public interface UserInformationMapper {
 
+    UserInformation getUser(UserInformation userInformation);
+
+    void delete(UserInformation userInformation);
+
+    void updateById(UserInformation userInformation);
+
+    void insert(UserInformation userInformation);
+
+    Page<UserInformation> findList(UserInformation userInformation);
 }

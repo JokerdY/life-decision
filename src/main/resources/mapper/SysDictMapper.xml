@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.life.decision.support.mapper.SysDictMapper">
+    <resultMap id="BaseResultMap" type="com.life.decision.support.pojo.SysDict">
+        <id column="id" property="id" jdbcType="VARCHAR"/>
+        <result column="table_name" property="tableName" jdbcType="VARCHAR"/>
+        <result column="column_value" property="columnValue" jdbcType="INTEGER"/>
+        <result column="convert_name" property="convertName" jdbcType="VARCHAR"/>
+        <result column="sort_id" property="sortId" jdbcType="INTEGER"/>
+        <result column="column_name" property="columnName" jdbcType="VARCHAR"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        id, table_name, column_value, convert_name, sort_id, column_name
+    </sql>
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String">
+        select
+        <include refid="Base_Column_List"/>
+        from sys_dict
+        where id = #{id,jdbcType=VARCHAR}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+        delete
+        from sys_dict
+        where id = #{id,jdbcType=VARCHAR}
+    </delete>
+    <insert id="insert" parameterType="com.life.decision.support.pojo.SysDict">
+        insert into sys_dict (id, table_name, column_value,
+                              convert_name, sort_id, column_name)
+        values (#{id,jdbcType=VARCHAR}, #{tableName,jdbcType=VARCHAR}, #{columnValue,jdbcType=INTEGER},
+                #{convertName,jdbcType=VARCHAR}, #{sortId,jdbcType=INTEGER}, #{columnName,jdbcType=VARCHAR})
+    </insert>
+    <insert id="insertSelective" parameterType="com.life.decision.support.pojo.SysDict">
+        insert into sys_dict
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="tableName != null">
+                table_name,
+            </if>
+            <if test="columnValue != null">
+                column_value,
+            </if>
+            <if test="convertName != null">
+                convert_name,
+            </if>
+            <if test="sortId != null">
+                sort_id,
+            </if>
+            <if test="columnName != null">
+                column_name,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=VARCHAR},
+            </if>
+            <if test="tableName != null">
+                #{tableName,jdbcType=VARCHAR},
+            </if>
+            <if test="columnValue != null">
+                #{columnValue,jdbcType=INTEGER},
+            </if>
+            <if test="convertName != null">
+                #{convertName,jdbcType=VARCHAR},
+            </if>
+            <if test="sortId != null">
+                #{sortId,jdbcType=INTEGER},
+            </if>
+            <if test="columnName != null">
+                #{columnName,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.life.decision.support.pojo.SysDict">
+        update sys_dict
+        <set>
+            <if test="tableName != null">
+                table_name = #{tableName,jdbcType=VARCHAR},
+            </if>
+            <if test="columnValue != null">
+                column_value = #{columnValue,jdbcType=INTEGER},
+            </if>
+            <if test="convertName != null">
+                convert_name = #{convertName,jdbcType=VARCHAR},
+            </if>
+            <if test="sortId != null">
+                sort_id = #{sortId,jdbcType=INTEGER},
+            </if>
+            <if test="columnName != null">
+                column_name = #{columnName,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where id = #{id,jdbcType=VARCHAR}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.life.decision.support.pojo.SysDict">
+        update sys_dict
+        set table_name   = #{tableName,jdbcType=VARCHAR},
+            column_value = #{columnValue,jdbcType=INTEGER},
+            convert_name = #{convertName,jdbcType=VARCHAR},
+            sort_id      = #{sortId,jdbcType=INTEGER},
+            column_name  = #{columnName,jdbcType=VARCHAR}
+        where id = #{id,jdbcType=VARCHAR}
+    </update>
+</mapper>

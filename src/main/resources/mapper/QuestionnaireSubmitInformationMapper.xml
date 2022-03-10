@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.life.decision.support.mapper.QuestionnaireSubmitInformationMapper">
+    <resultMap id="BaseResultMap" type="com.life.decision.support.pojo.QuestionnaireSubmitInformation">
+        <id column="id" jdbcType="VARCHAR" property="id"/>
+        <result column="user_id" jdbcType="VARCHAR" property="userId"/>
+        <result column="questionnaire_id" jdbcType="VARCHAR" property="questionnaireId"/>
+        <result column="create_time" jdbcType="DATE" property="createTime"/>
+        <association property="questionnaireInformation" column="questionnaire_id" foreignColumn="id"
+                     autoMapping="true" javaType="com.life.decision.support.pojo.QuestionnaireInformation">
+            <id column="questionnaire_id" jdbcType="VARCHAR" property="id"/>
+            <result column="questionnaire_description" jdbcType="VARCHAR" property="questionnaireDescription"/>
+            <result column="convert_name" jdbcType="VARCHAR" property="questionnaireTypeLabel"/>
+        </association>
+        <association property="userInformation" column="user_id" foreignColumn="id"
+                     autoMapping="true" javaType="com.life.decision.support.pojo.UserInformation">
+            <id column="user_id" jdbcType="VARCHAR" property="id"/>
+            <result column="user_name" jdbcType="VARCHAR" property="userName"/>
+        </association>
+    </resultMap>
+
+    <select id="findSubmitPage" resultMap="BaseResultMap">
+        select a.*, b.questionnaire_description, c.user_name, d.convert_name
+        from questionnaire_submit_information a
+                 left join (select * from questionnaire_information where del_flag = 0) b on a.questionnaire_id = b.id
+                 left join user_information c on a.user_id = c.id
+                 left join (select * from sys_dict where column_name = 'questionnaire_type') d
+                           on b.questionnaire_type = d.column_value
+    </select>
+</mapper>
