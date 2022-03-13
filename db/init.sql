@@ -20,6 +20,10 @@ SET FOREIGN_KEY_CHECKS = 0;
 -- ----------------------------
 -- Table structure for option_information
 -- ----------------------------
+/*
+作用：记录问卷选项对应的文本
+时间: 2022年3月13日
+*/
 DROP TABLE IF EXISTS `option_information`;
 CREATE TABLE `option_information`  (
                                        `id` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
@@ -36,6 +40,10 @@ CREATE TABLE `option_information`  (
 -- ----------------------------
 -- Table structure for question_answer
 -- ----------------------------
+/*
+作用：记录用户问卷的回答
+时间: 2022年3月13日
+*/
 DROP TABLE IF EXISTS `question_answer`;
 CREATE TABLE `question_answer`  (
                                     `id` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
@@ -58,6 +66,10 @@ INSERT INTO `question_answer` VALUES ('3', '2', '1', '1', '2022-03-10 13:33:18',
 -- ----------------------------
 -- Table structure for question_information
 -- ----------------------------
+/*
+作用：记录问卷问题对应的文本
+时间: 2022年3月13日
+*/
 DROP TABLE IF EXISTS `question_information`;
 CREATE TABLE `question_information`  (
                                          `id` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
@@ -73,6 +85,10 @@ CREATE TABLE `question_information`  (
 -- ----------------------------
 -- Table structure for questionnaire_information
 -- ----------------------------
+/*
+作用：记录每份问卷的状态信息
+时间: 2022年3月13日
+*/
 DROP TABLE IF EXISTS `questionnaire_information`;
 CREATE TABLE `questionnaire_information`  (
                                               `id` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
@@ -80,7 +96,7 @@ CREATE TABLE `questionnaire_information`  (
                                               `create_date` datetime(0) DEFAULT CURRENT_TIMESTAMP,
                                               `update_date` datetime(0) DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP(0),
                                               `del_flag` int(1) NOT NULL DEFAULT 0 COMMENT '1-逻辑删除 0-未删除',
-                                              `questionnaire_type` int(255) DEFAULT NULL COMMENT '问卷类型：1-健康 2-饮食 3-生活',
+                                              `questionnaire_type` int(255) DEFAULT NULL COMMENT '问卷类型：1-基本情况 2-体力活动 3-食物频率 4-情绪体验',
                                               PRIMARY KEY (`id`) USING BTREE,
                                               INDEX `questionnaire_information_idx_type`(`questionnaire_type`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
@@ -93,6 +109,10 @@ INSERT INTO `questionnaire_information` VALUES ('1', '问卷1', '2022-03-10 13:3
 -- ----------------------------
 -- Table structure for questionnaire_submit_information
 -- ----------------------------
+/*
+作用：记录每份问卷的上传信息
+时间: 2022年3月13日
+*/
 DROP TABLE IF EXISTS `questionnaire_submit_information`;
 CREATE TABLE `questionnaire_submit_information`  (
                                                      `id` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
@@ -112,6 +132,10 @@ INSERT INTO `questionnaire_submit_information` VALUES ('2', '2', 1, '2022-03-10 
 -- ----------------------------
 -- Table structure for sys_dict
 -- ----------------------------
+/*
+作用：数据库字典
+时间: 2022年3月13日
+*/
 DROP TABLE IF EXISTS `sys_dict`;
 CREATE TABLE `sys_dict`  (
                              `id` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
