@@ -35,10 +35,9 @@ public class ResultUtils {
         return returnError("");
     }
 
-    public static Map<String, Object> returnPage(Object data, Long total) {
+    public static Map<String, Object> returnPage(Object data) {
         Map<String, Object> result = new HashMap<>(4);
-        result.put(ResultEnum.DATA.getMsg(), data);
-        result.put(ResultEnum.TOTAL.getMsg(), total);
+        result.put(ResultEnum.PAGE.getMsg(), data);
         result.put(ResultEnum.STATUS.getMsg(), ReturnCodeEnum.SUCCESS.getStatus());
         return result;
     }

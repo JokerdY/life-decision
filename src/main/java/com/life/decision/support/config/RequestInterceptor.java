@@ -1,4 +1,4 @@
-package com.life.decision.support.interceptor;
+package com.life.decision.support.config;
 
 import org.springframework.web.servlet.HandlerInterceptor;
 

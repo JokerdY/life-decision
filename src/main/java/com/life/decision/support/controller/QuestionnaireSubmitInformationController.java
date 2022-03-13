@@ -1,12 +1,8 @@
 package com.life.decision.support.controller;
 
-import com.github.pagehelper.Page;
-import com.github.pagehelper.PageHelper;
 import com.life.decision.support.mapper.QuestionnaireSubmitInformationMapper;
-import com.life.decision.support.pojo.QuestionnaireSubmitInformation;
-import com.life.decision.support.service.IQuestionnaireInformationService;
-import com.life.decision.support.service.IQuestionnaireSubmitInformationService;
-import com.life.decision.support.service.ISysDictService;
+import com.life.decision.support.utils.PageUtils;
+import com.life.decision.support.utils.ResultUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,8 +20,8 @@ public class QuestionnaireSubmitInformationController {
     @RequestMapping("questionnaireList")
     @ResponseBody
     public Object questionnaireList(@RequestParam Integer page, @RequestParam Integer size) {
-        PageHelper.startPage(page,size);
-        Page<QuestionnaireSubmitInformation> submitPage = questionnaireSubmitInformationMapper.findSubmitPage();
-        return submitPage;
+        return ResultUtils.returnPage(PageUtils.getPageResult(page, size,
+                questionnaireSubmitInformationMapper.findSubmitPage()));
     }
+
 }

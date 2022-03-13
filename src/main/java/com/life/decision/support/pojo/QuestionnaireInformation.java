@@ -38,4 +38,6 @@ public class QuestionnaireInformation {
 
     private String questionnaireTypeLabel;
 
+    private String comment;
+
 }

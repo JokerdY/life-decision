@@ -21,9 +21,9 @@ public class QuestionInformation{
     private String questionnaireId;
 
     /**
-     * 问题序号 如1 1.1
+     * sort
      */
-    private Double questionNum;
+    private Integer questionSort;
 
     /**
      * 问题名称{}表示填空的位置，由前端进行渲染

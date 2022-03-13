@@ -8,9 +8,10 @@
         <result column="update_date" property="updateDate" jdbcType="TIMESTAMP"/>
         <result column="del_flag" property="delFlag" jdbcType="INTEGER"/>
         <result column="questionnaire_type" property="questionnaireType" jdbcType="INTEGER"/>
+        <result column="comment" property="comment" jdbcType="INTEGER"/>
     </resultMap>
     <sql id="Base_Column_List">
-        id, questionnaire_description, create_date, update_date, del_flag, questionnaire_type
+        id, questionnaire_description, create_date, update_date, del_flag, questionnaire_type,comment
     </sql>
     <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String">
         select
@@ -25,9 +26,10 @@
     </delete>
     <insert id="insert" parameterType="com.life.decision.support.pojo.QuestionnaireInformation">
         insert into questionnaire_information (id, questionnaire_description, create_date,
-                                               update_date, del_flag, questionnaire_type)
+                                               update_date, del_flag, questionnaire_type, comment)
         values (#{id,jdbcType=VARCHAR}, #{questionnaireDescription,jdbcType=VARCHAR}, #{createDate,jdbcType=TIMESTAMP},
-                #{updateDate,jdbcType=TIMESTAMP}, #{delFlag,jdbcType=INTEGER}, #{questionnaireType,jdbcType=INTEGER})
+                #{updateDate,jdbcType=TIMESTAMP}, #{delFlag,jdbcType=INTEGER}, #{questionnaireType,jdbcType=INTEGER},
+                #{comment})
     </insert>
     <insert id="insertSelective" parameterType="com.life.decision.support.pojo.QuestionnaireInformation">
         insert into questionnaire_information
@@ -46,6 +48,9 @@
             </if>
             <if test="delFlag != null">
                 del_flag,
+            </if>
+            <if test="comment != null">
+                comment,
             </if>
             <if test="questionnaireType != null">
                 questionnaire_type,
@@ -70,6 +75,9 @@
             <if test="questionnaireType != null">
                 #{questionnaireType,jdbcType=INTEGER},
             </if>
+            <if test="comment != null">
+                #{comment},
+            </if>
         </trim>
     </insert>
     <update id="updateByPrimaryKeySelective" parameterType="com.life.decision.support.pojo.QuestionnaireInformation">
@@ -90,6 +98,9 @@
             <if test="questionnaireType != null">
                 questionnaire_type = #{questionnaireType,jdbcType=INTEGER},
             </if>
+            <if test="comment != null">
+                comment = #{comment},
+            </if>
         </set>
         where id = #{id,jdbcType=VARCHAR}
     </update>
@@ -99,7 +110,8 @@
             create_date               = #{createDate,jdbcType=TIMESTAMP},
             update_date               = #{updateDate,jdbcType=TIMESTAMP},
             del_flag                  = #{delFlag,jdbcType=INTEGER},
-            questionnaire_type        = #{questionnaireType,jdbcType=INTEGER}
+            questionnaire_type        = #{questionnaireType,jdbcType=INTEGER},
+            comment                   = #{comment}
         where id = #{id,jdbcType=VARCHAR}
     </update>
 </mapper>

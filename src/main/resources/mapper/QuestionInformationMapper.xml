@@ -8,7 +8,7 @@
     -->
     <id column="id" property="id" jdbcType="VARCHAR" />
     <result column="questionnaire_id" property="questionnaireId" jdbcType="VARCHAR" />
-    <result column="question_num" property="questionNum" jdbcType="DOUBLE" />
+    <result column="question_sort" property="questionSort" jdbcType="DOUBLE" />
     <result column="big_label_id" property="bigLabelId" jdbcType="VARCHAR" />
     <result column="question_type" property="questionType" jdbcType="INTEGER" />
   </resultMap>
@@ -16,7 +16,7 @@
     <result column="question_name" property="questionName" jdbcType="LONGVARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
-    id, questionnaire_id, question_num, big_label_id, question_type
+    id, questionnaire_id, question_sort, big_label_id, question_type
   </sql>
   <sql id="Blob_Column_List" >
     question_name
@@ -34,10 +34,10 @@
     where id = #{id,jdbcType=VARCHAR}
   </delete>
   <insert id="insert" parameterType="com.life.decision.support.pojo.QuestionInformation" >
-    insert into question_information (id, questionnaire_id, question_num,
+    insert into question_information (id, questionnaire_id, question_sort,
       big_label_id, question_type, question_name
       )
-    values (#{id,jdbcType=VARCHAR}, #{questionnaireId,jdbcType=VARCHAR}, #{questionNum,jdbcType=DOUBLE}, 
+    values (#{id,jdbcType=VARCHAR}, #{questionnaireId,jdbcType=VARCHAR}, #{questionSort},
       #{bigLabelId,jdbcType=VARCHAR}, #{questionType,jdbcType=INTEGER}, #{questionName,jdbcType=LONGVARCHAR}
       )
   </insert>
@@ -50,8 +50,8 @@
       <if test="questionnaireId != null" >
         questionnaire_id,
       </if>
-      <if test="questionNum != null" >
-        question_num,
+      <if test="questionSort != null" >
+        question_sort,
       </if>
       <if test="bigLabelId != null" >
         big_label_id,
@@ -70,8 +70,8 @@
       <if test="questionnaireId != null" >
         #{questionnaireId,jdbcType=VARCHAR},
       </if>
-      <if test="questionNum != null" >
-        #{questionNum,jdbcType=DOUBLE},
+      <if test="questionSort != null" >
+        #{questionSort},
       </if>
       <if test="bigLabelId != null" >
         #{bigLabelId,jdbcType=VARCHAR},
@@ -91,7 +91,7 @@
         questionnaire_id = #{questionnaireId,jdbcType=VARCHAR},
       </if>
       <if test="questionNum != null" >
-        question_num = #{questionNum,jdbcType=DOUBLE},
+        question_sort = #{questionSort},
       </if>
       <if test="bigLabelId != null" >
         big_label_id = #{bigLabelId,jdbcType=VARCHAR},
@@ -108,7 +108,7 @@
   <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.life.decision.support.pojo.QuestionInformation" >
     update question_information
     set questionnaire_id = #{questionnaireId,jdbcType=VARCHAR},
-      question_num = #{questionNum,jdbcType=DOUBLE},
+        question_sort = #{questionSort},
       big_label_id = #{bigLabelId,jdbcType=VARCHAR},
       question_type = #{questionType,jdbcType=INTEGER},
       question_name = #{questionName,jdbcType=LONGVARCHAR}
@@ -117,7 +117,7 @@
   <update id="updateByPrimaryKey" parameterType="com.life.decision.support.pojo.QuestionInformation" >
     update question_information
     set questionnaire_id = #{questionnaireId,jdbcType=VARCHAR},
-      question_num = #{questionNum,jdbcType=DOUBLE},
+        question_sort = #{questionSort},
       big_label_id = #{bigLabelId,jdbcType=VARCHAR},
       question_type = #{questionType,jdbcType=INTEGER}
     where id = #{id,jdbcType=VARCHAR}

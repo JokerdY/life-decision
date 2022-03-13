@@ -21,6 +21,7 @@ public enum ResultEnum {
     /**
      * 错误信息字段
      */
+    PAGE("page"),
     MESSAGE("message");
 
     private String msg;
