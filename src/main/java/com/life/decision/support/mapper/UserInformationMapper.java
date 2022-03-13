@@ -1,8 +1,11 @@
 package com.life.decision.support.mapper;
 
 import com.github.pagehelper.Page;
+import com.life.decision.support.dto.UserInformationDto;
 import com.life.decision.support.pojo.UserInformation;
 import org.apache.ibatis.annotations.Mapper;
+
+import java.util.List;
 
 
 /**
@@ -16,7 +19,7 @@ import org.apache.ibatis.annotations.Mapper;
 @Mapper
 public interface UserInformationMapper {
 
-    UserInformation getUser(UserInformation userInformation);
+    UserInformationDto getUser(UserInformation userInformation);
 
     void delete(UserInformation userInformation);
 
@@ -24,5 +27,5 @@ public interface UserInformationMapper {
 
     void insert(UserInformation userInformation);
 
-    Page<UserInformation> findList(UserInformation userInformation);
+    List<UserInformationDto> findList(UserInformation userInformation);
 }

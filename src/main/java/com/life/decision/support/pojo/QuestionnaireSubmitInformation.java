@@ -15,5 +15,5 @@ public class QuestionnaireSubmitInformation{
 
     private QuestionnaireInformation questionnaireInformation;
 
-    private UserInformation userInformation;
+    private UserInformation user;
 }

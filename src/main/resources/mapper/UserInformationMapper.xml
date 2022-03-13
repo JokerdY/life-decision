@@ -2,44 +2,87 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.life.decision.support.mapper.UserInformationMapper">
 
-    <select id="getUser" resultMap="UserInformation">
-        select *
-        from user_information
+    <resultMap id="UserInformation" type="com.life.decision.support.pojo.UserInformation">
+        <id column="id" property="id" jdbcType="VARCHAR"/>
+        <result column="user_name" property="userName" jdbcType="VARCHAR"/>
+        <result column="telphone_num" property="telphoneNum" jdbcType="INTEGER"/>
+        <result column="password" property="password" jdbcType="VARCHAR"/>
+        <result column="admin_enable" property="adminEnable" jdbcType="INTEGER"/>
+        <result column="sex" property="sex" jdbcType="INTEGER"/>
+        <result column="date_of_birth" property="dateOfBirth" jdbcType="DATE"/>
+        <result column="height" property="height" jdbcType="DOUBLE"/>
+        <result column="weight" property="weight" jdbcType="DOUBLE"/>
+        <result column="educational_level" property="educationalLevel" jdbcType="INTEGER"/>
+        <result column="occupation" property="occupation" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <resultMap id="UserInformationDto" type="com.life.decision.support.dto.UserInformationDto">
+        <id column="id" property="id" jdbcType="VARCHAR"/>
+        <result column="user_name" property="userName" jdbcType="VARCHAR"/>
+        <result column="telphone_num" property="telphoneNum" jdbcType="INTEGER"/>
+        <result column="password" property="password" jdbcType="VARCHAR"/>
+        <result column="admin_enable" property="adminEnable" jdbcType="INTEGER"/>
+        <result column="sex" property="sex" jdbcType="INTEGER"/>
+        <result column="date_of_birth" property="dateOfBirth" jdbcType="DATE"/>
+        <result column="height" property="height" jdbcType="DOUBLE"/>
+        <result column="weight" property="weight" jdbcType="DOUBLE"/>
+        <result column="educational_level" property="educationalLevel" jdbcType="INTEGER"/>
+        <result column="occupation" property="occupation" jdbcType="INTEGER"/>
+        <result column="identity" property="identity" jdbcType="VARCHAR"/>
+        <result column="educationalLevel_dto" property="educationalLevelDto" jdbcType="VARCHAR"/>
+        <result column="occupation_dto" property="occupationDto" jdbcType="VARCHAR"/>
+        <result column="sex_dto" property="sexDto" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <select id="getUser" resultMap="UserInformationDto">
+        select a.*,b.convert_name as "sex_dto",c.convert_name as "identity",d.convert_name as "educationalLevel_dto"
+        ,e.convert_name as "occupation_dto"
+        from user_information a
+        LEFT JOIN (select * from sys_dict where column_name = 'sex') b on a.sex = b.column_value
+        LEFT JOIN (select * from sys_dict where column_name = 'identity') c on a.admin_enable = c.column_value
+        LEFT JOIN (select * from sys_dict where column_name = 'educational_level') d on a.educational_level =
+        d.column_value
+        LEFT JOIN (select * from sys_dict where column_name = 'occupation') e on a.occupation = e.column_value
         <where>
             <if test="id != null and id != ''">
-                AND id = #{id}
+                AND a.id = #{id}
             </if>
             <if test="telphoneNum != null and telphoneNum != ''">
-                AND telphone_num = #{telphoneNum}
+                AND a.telphone_num = #{telphoneNum}
             </if>
             <if test="userName != null and userName != ''">
-                AND user_mame = #{userName}
+                AND a.user_mame = #{userName}
             </if>
         </where>
     </select>
 
-    <select id="findList" resultMap="UserInformation">
-        select *
-        from user_information
+    <select id="findList" resultMap="UserInformationDto">
+        select a.*,b.convert_name as "sex_dto",c.convert_name as "identity",d.convert_name as "educationalLevel_dto"
+        ,e.convert_name as "occupation_dto"
+        from user_information a
+        LEFT JOIN (select * from sys_dict where column_name = 'sex') b on a.sex = b.column_value
+        LEFT JOIN (select * from sys_dict where column_name = 'identity') c on a.admin_enable = c.column_value
+        LEFT JOIN (select * from sys_dict where column_name = 'educational_level') d on a.educational_level =
+        d.column_value
+        LEFT JOIN (select * from sys_dict where column_name = 'occupation') e on a.occupation = e.column_value
         <where>
             <if test="id != null and id != ''">
-                AND id = #{id}
+                AND a.id = #{id}
             </if>
             <if test="telphoneNum != null and telphoneNum != ''">
-                AND telphone_num = #{telphoneNum}
+                AND a.telphone_num = #{telphoneNum}
             </if>
             <if test="userName != null and userName != ''">
-                AND user_mame = #{userName}
-            </if>
-            <if test="adminEnable != null and adminEnable != ''">
-                AND admin_enable = #{adminEnable}
+                AND a.user_mame = #{userName}
             </if>
         </where>
     </select>
 
     <insert id="insert">
-        INSERT INTO user_information(id, user_name, telphone_num, password, admin_enable)
-            value (#{id}, #{userName}, #{telphoneNum}, #{password}, #{adminEnable})
+        INSERT INTO user_information(id, user_name, telphone_num, password, admin_enable, sex, date_of_birth, height,
+                                     weight, educational_level, occupation)
+            value (#{id}, #{userName}, #{telphoneNum}, #{password}, #{adminEnable}, #{sex}, #{dateOfBirth}, #{height},
+                   #{weight}, #{educationalLevel}, #{occupation})
     </insert>
 
 
@@ -54,6 +97,24 @@
             </if>
             <if test="adminEnable != null">
                 admin_enable = #{adminEnable},
+            </if>
+            <if test="sex != null">
+                sex = #{sex},
+            </if>
+            <if test="dateOfBirth != null">
+                date_of_birth = #{dateOfBirth},
+            </if>
+            <if test="weight != null">
+                weight = #{weight},
+            </if>
+            <if test="height != null">
+                height = #{height},
+            </if>
+            <if test="occupation != null">
+                occupation = #{occupation},
+            </if>
+            <if test="educationalLevel != null">
+                educational_level = #{educationalLevel},
             </if>
         </trim>
         <where>
