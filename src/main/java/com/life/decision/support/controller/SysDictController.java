@@ -1,9 +1,17 @@
 package com.life.decision.support.controller;
 
 
+import com.life.decision.support.dto.SysDictDto;
+import com.life.decision.support.pojo.SysDict;
+import com.life.decision.support.service.ISysDictService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import java.util.List;
 
 /**
  * <p>
@@ -16,5 +24,12 @@ import org.springframework.stereotype.Controller;
 @Controller
 @RequestMapping("/sysDict")
 public class SysDictController {
+    @Autowired
+    ISysDictService sysDictService;
 
+    @RequestMapping("universalDictionary")
+    @ResponseBody
+    public List<SysDictDto> universalDictionary(@RequestBody SysDictDto sysDictDto){
+        return sysDictService.dictList(sysDictDto.getLabel());
+    }
 }

@@ -9,9 +9,30 @@
         <result column="sort_id" property="sortId" jdbcType="INTEGER"/>
         <result column="column_name" property="columnName" jdbcType="VARCHAR"/>
     </resultMap>
+    <resultMap id="dtoMap" type="com.life.decision.support.dto.SysDictDto">
+        <id column="id" property="id" jdbcType="VARCHAR"/>
+        <result column="column_value" property="value" jdbcType="INTEGER"/>
+        <result column="convert_name" property="description" jdbcType="VARCHAR"/>
+        <result column="sort_id" property="sortId" jdbcType="INTEGER"/>
+        <result column="column_name" property="label" jdbcType="VARCHAR"/>
+    </resultMap>
     <sql id="Base_Column_List">
         id, table_name, column_value, convert_name, sort_id, column_name
     </sql>
+    <select id="selectByKey" resultMap="dtoMap" parameterType="com.life.decision.support.pojo.SysDict">
+        select
+        <include refid="Base_Column_List"/>
+        from sys_dict
+        <where>
+            <if test="tableName != null and tableName != ''">
+                AND table_name = #{tableName}
+            </if>
+            <if test="columnName != null and columnName != ''">
+                AND column_name = #{columnName}
+            </if>
+        </where>
+        ORDER BY sort_id
+    </select>
     <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String">
         select
         <include refid="Base_Column_List"/>

@@ -21,12 +21,12 @@ public class UserInformation {
 
     private String userName;
 
-    private Integer telphoneNum;
+    private String telphoneNum;
 
     private String password;
 
     /**
-     * 0:admin 1:user
+     * 0:user 1:admin
      */
     private Integer adminEnable;
 
