@@ -34,15 +34,28 @@
         <result column="sex_dto" property="sexDto" jdbcType="VARCHAR"/>
     </resultMap>
 
-    <select id="getUser" resultMap="UserInformationDto">
-        select a.*,b.convert_name as "sex_dto",c.convert_name as "identity",d.convert_name as "educationalLevel_dto"
-        ,e.convert_name as "occupation_dto"
-        from user_information a
+    <sql id="baseList">
+        a.*,
+        b.convert_name as "sex_dto",
+        c.convert_name as "identity",
+        d.convert_name as "educationalLevel_dto",
+        e.convert_name as "occupation_dto",
+        convert(a.weight/POWER(a.height/100,2), decimal(3,1)) as "bmi"
+    </sql>
+
+    <sql id="baseJoins">
         LEFT JOIN (select * from sys_dict where column_name = 'sex') b on a.sex = b.column_value
         LEFT JOIN (select * from sys_dict where column_name = 'identity') c on a.admin_enable = c.column_value
         LEFT JOIN (select * from sys_dict where column_name = 'educational_level') d on a.educational_level =
         d.column_value
         LEFT JOIN (select * from sys_dict where column_name = 'occupation') e on a.occupation = e.column_value
+    </sql>
+
+    <select id="getUser" resultMap="UserInformationDto">
+        select
+        <include refid="baseList"/>
+        from user_information a
+        <include refid="baseJoins"/>
         <where>
             <if test="id != null and id != ''">
                 AND a.id = #{id}
@@ -57,25 +70,39 @@
     </select>
 
     <select id="findList" resultMap="UserInformationDto">
-        select a.*,b.convert_name as "sex_dto",c.convert_name as "identity",d.convert_name as "educationalLevel_dto"
-        ,e.convert_name as "occupation_dto"
+        select
+        <include refid="baseList"/>
         from user_information a
-        LEFT JOIN (select * from sys_dict where column_name = 'sex') b on a.sex = b.column_value
-        LEFT JOIN (select * from sys_dict where column_name = 'identity') c on a.admin_enable = c.column_value
-        LEFT JOIN (select * from sys_dict where column_name = 'educational_level') d on a.educational_level =
-        d.column_value
-        LEFT JOIN (select * from sys_dict where column_name = 'occupation') e on a.occupation = e.column_value
+        <include refid="baseJoins"/>
         <where>
             <if test="id != null and id != ''">
                 AND a.id = #{id}
             </if>
             <if test="telphoneNum != null and telphoneNum != ''">
-                AND a.telphone_num = #{telphoneNum}
+                AND a.telphone_num like concat('%', #{telphoneNum},'%')
             </if>
             <if test="userName != null and userName != ''">
                 AND a.user_mame = #{userName}
             </if>
+            <if test="sex != null and sex != ''">
+                AND a.sex = #{sex}
+            </if>
+            <if test="adminEnable != null and adminEnable != ''">
+                AND a.admin_enable = #{adminEnable}
+            </if>
+            <if test="educationalLevel != null and educationalLevel != ''">
+                AND a.educational_level = #{educationalLevel}
+            </if>
+            <if test="occupation != null and occupation != ''">
+                AND a.occupation = #{occupation}
+            </if>
         </where>
+    </select>
+    <select id="verifyIdentified" resultType="java.lang.Integer">
+        SELECT count(*)
+        from user_information
+        where telphone_num = #{telphoneNum}
+          and password = #{password}
     </select>
 
     <insert id="insert">
@@ -84,7 +111,6 @@
             value (#{id}, #{userName}, #{telphoneNum}, #{password}, #{adminEnable}, #{sex}, #{dateOfBirth}, #{height},
                    #{weight}, #{educationalLevel}, #{occupation})
     </insert>
-
 
     <update id="update">
         UPDATE user_information
@@ -119,10 +145,10 @@
         </trim>
         <where>
             <if test="telphoneNum != null">
-                telphone_num = #{telphoneNum},
+                AND telphone_num = #{telphoneNum}
             </if>
-            <if test="password != null">
-                id = #{id},
+            <if test="id != null">
+                AND id = #{id}
             </if>
         </where>
     </update>

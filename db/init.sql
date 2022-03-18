@@ -11,7 +11,7 @@
  Target Server Version : 50729
  File Encoding         : 65001
 
- Date: 13/03/2022 15:52:01
+ Date: 18/03/2022 14:48:56
 */
 
 SET NAMES utf8mb4;
@@ -670,7 +670,7 @@ CREATE TABLE `questionnaire_information`  (
                                               `create_date` datetime(0) DEFAULT CURRENT_TIMESTAMP,
                                               `update_date` datetime(0) DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP(0),
                                               `del_flag` int(1) NOT NULL DEFAULT 0 COMMENT '1-逻辑删除 0-未删除',
-                                              `questionnaire_type` int(255) DEFAULT NULL COMMENT '问卷类型：1-健康 2-饮食 3-生活',
+                                              `questionnaire_type` int(255) DEFAULT NULL COMMENT '问卷类型：1-基本情况 2-体力活动 3-食物频率 4-情绪体验',
                                               `comment` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '备注',
                                               PRIMARY KEY (`id`) USING BTREE,
                                               INDEX `questionnaire_information_idx_type`(`questionnaire_type`) USING BTREE
@@ -760,7 +760,7 @@ DROP TABLE IF EXISTS `user_information`;
 CREATE TABLE `user_information`  (
                                      `id` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
                                      `user_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-                                     `telphone_num` int(11) NOT NULL,
+                                     `telphone_num` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
                                      `password` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
                                      `admin_enable` int(1) DEFAULT 1 COMMENT '0:admin 1:user',
                                      `sex` int(1) DEFAULT NULL COMMENT '0:female 1:male',
@@ -776,7 +776,8 @@ CREATE TABLE `user_information`  (
 -- ----------------------------
 -- Records of user_information
 -- ----------------------------
-INSERT INTO `user_information` VALUES ('1', 'admin', 1, '1', 1, 1, '2022-03-10', 80.00, 180.00, 1, 4);
-INSERT INTO `user_information` VALUES ('2', 'dd', 2, '2', 1, 0, '2020-06-12', 60.00, 168.00, 2, 3);
+INSERT INTO `user_information` VALUES ('1', 'admin', '15545234483', '123', 1, 1, '2022-03-10', 80.00, 180.00, 1, 4);
+INSERT INTO `user_information` VALUES ('2', 'dd', '14235268451', '1', 0, 0, '2020-06-12', 60.00, 168.00, 2, 3);
+INSERT INTO `user_information` VALUES ('4736232a-7bf7-408a-82d2-b3589df1b15b', NULL, '19948562783', '678', 0, 0, NULL, NULL, NULL, NULL, NULL);
 
 SET FOREIGN_KEY_CHECKS = 1;
