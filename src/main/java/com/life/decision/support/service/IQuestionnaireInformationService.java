@@ -1,5 +1,10 @@
 package com.life.decision.support.service;
 
+import com.life.decision.support.dto.QuestionnaireInformationUserDto;
+import com.life.decision.support.pojo.QuestionnaireInformation;
+
+import java.util.List;
+
 /**
  * <p>
  *  服务类
@@ -10,4 +15,7 @@ package com.life.decision.support.service;
  */
 public interface IQuestionnaireInformationService {
 
+    List<QuestionnaireInformation> findList(QuestionnaireInformation questionnaireInformation);
+
+    List<QuestionnaireInformationUserDto> findListInUser(QuestionnaireInformationUserDto dto);
 }

@@ -1,12 +1,14 @@
 package com.life.decision.support.pojo;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
 
 /**
  * <p>
- * 
+ *
  * </p>
  *
  * @author Joker
@@ -35,8 +37,16 @@ public class UserInformation {
      */
     private Integer sex;
 
+    /**
+     * 出生日期
+     */
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @JsonFormat(pattern = "yyyy-MM-dd")
     private Date dateOfBirth;
 
+    /**
+     * 身高
+     */
     private Double height;
 
     private Double weight;
@@ -51,4 +61,13 @@ public class UserInformation {
      */
     private Integer occupation;
 
+    /**
+     * 婚姻状况
+     */
+    private Integer maritalStatus;
+
+    /**
+     * 家庭收入
+     */
+    private Integer householdIncome;
 }

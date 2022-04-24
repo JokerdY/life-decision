@@ -1,8 +1,11 @@
 package com.life.decision.support.pojo;
+
 import lombok.Data;
 
+import java.time.LocalDateTime;
+
 @Data
-public class QuestionnaireSubmitInformation{
+public class QuestionnaireSubmitInformation {
     private static final long serialVersionUID = 1L;
 
     private String id;
@@ -11,7 +14,9 @@ public class QuestionnaireSubmitInformation{
 
     private String questionnaireId;
 
-    private String createTime;
+    private LocalDateTime createTime;
+
+    private LocalDateTime updateTime;
 
     private QuestionnaireInformation questionnaireInformation;
 

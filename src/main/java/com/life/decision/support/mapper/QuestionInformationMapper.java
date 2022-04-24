@@ -1,7 +1,11 @@
 package com.life.decision.support.mapper;
 
+import com.life.decision.support.dto.QuestionInformationDto;
 import com.life.decision.support.pojo.QuestionInformation;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 /**
  * <p>
@@ -14,17 +18,15 @@ import org.apache.ibatis.annotations.Mapper;
 @Mapper
 public interface QuestionInformationMapper {
 
-    int deleteByPrimaryKey(String id);
-
     int insert(QuestionInformation record);
 
     int insertSelective(QuestionInformation record);
-
-    QuestionInformation selectByPrimaryKey(String id);
 
     int updateByPrimaryKeySelective(QuestionInformation record);
 
     int updateByPrimaryKeyWithBLOBs(QuestionInformation record);
 
     int updateByPrimaryKey(QuestionInformation record);
+
+    List<QuestionInformationDto> listById(@Param("questionnaireId") String questionnaireId);
 }

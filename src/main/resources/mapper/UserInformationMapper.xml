@@ -14,6 +14,8 @@
         <result column="weight" property="weight" jdbcType="DOUBLE"/>
         <result column="educational_level" property="educationalLevel" jdbcType="INTEGER"/>
         <result column="occupation" property="occupation" jdbcType="INTEGER"/>
+        <result column="marital_status" property="maritalStatus" jdbcType="INTEGER"/>
+        <result column="household_income" property="householdIncome" jdbcType="INTEGER"/>
     </resultMap>
 
     <resultMap id="UserInformationDto" type="com.life.decision.support.dto.UserInformationDto">
@@ -32,6 +34,8 @@
         <result column="educationalLevel_dto" property="educationalLevelDto" jdbcType="VARCHAR"/>
         <result column="occupation_dto" property="occupationDto" jdbcType="VARCHAR"/>
         <result column="sex_dto" property="sexDto" jdbcType="VARCHAR"/>
+        <result column="marital_dto" property="maritalDto" jdbcType="VARCHAR"/>
+        <result column="household_income_dto" property="householdIncomeDto" jdbcType="VARCHAR"/>
     </resultMap>
 
     <sql id="baseList">
@@ -40,6 +44,8 @@
         c.convert_name as "identity",
         d.convert_name as "educationalLevel_dto",
         e.convert_name as "occupation_dto",
+        f.convert_name as "marital_dto",
+        g.convert_name as "household_income_dto",
         convert(a.weight/POWER(a.height/100,2), decimal(3,1)) as "bmi"
     </sql>
 
@@ -49,6 +55,8 @@
         LEFT JOIN (select * from sys_dict where column_name = 'educational_level') d on a.educational_level =
         d.column_value
         LEFT JOIN (select * from sys_dict where column_name = 'occupation') e on a.occupation = e.column_value
+        LEFT JOIN (select * from sys_dict where column_name = 'marital_status') f on a.marital_status = f.column_value
+        LEFT JOIN (select * from sys_dict where column_name = 'household_income') g on a.household_income = g.column_value
     </sql>
 
     <select id="getUser" resultMap="UserInformationDto">
@@ -96,6 +104,12 @@
             <if test="occupation != null and occupation != ''">
                 AND a.occupation = #{occupation}
             </if>
+            <if test="maritalStatus != null and maritalStatus != ''">
+                AND a.marital_status = #{maritalStatus}
+            </if>
+            <if test="householdIncome != null and householdIncome != ''">
+                AND a.household_income = #{householdIncome}
+            </if>
         </where>
     </select>
     <select id="verifyIdentified" resultType="java.lang.Integer">
@@ -141,6 +155,12 @@
             </if>
             <if test="educationalLevel != null">
                 educational_level = #{educationalLevel},
+            </if>
+            <if test="maritalStatus != null">
+                marital_status = #{maritalStatus},
+            </if>
+            <if test="householdIncome != null">
+                household_income = #{householdIncome},
             </if>
         </trim>
         <where>

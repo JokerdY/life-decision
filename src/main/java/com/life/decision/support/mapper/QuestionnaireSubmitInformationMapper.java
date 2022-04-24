@@ -8,4 +8,8 @@ import java.util.List;
 @Mapper
 public interface QuestionnaireSubmitInformationMapper  {
     List<QuestionnaireSubmitInformation> findSubmitPage();
+
+    void insert(QuestionnaireSubmitInformation submitInfo);
+
+    void update(QuestionnaireSubmitInformation submitInfo);
 }

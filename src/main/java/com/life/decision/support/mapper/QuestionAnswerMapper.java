@@ -3,6 +3,8 @@ package com.life.decision.support.mapper;
 import com.life.decision.support.pojo.QuestionAnswer;
 import org.apache.ibatis.annotations.Mapper;
 
+import java.util.List;
+
 /**
  * <p>
  *  Mapper 接口
@@ -25,4 +27,8 @@ public interface QuestionAnswerMapper  {
     int updateByPrimaryKeySelective(QuestionAnswer record);
 
     int updateByPrimaryKey(QuestionAnswer record);
+
+    Integer insertBatch(List<QuestionAnswer> list);
+
+    List<QuestionAnswer> list(QuestionAnswer questionAnswer);
 }

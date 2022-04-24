@@ -3,11 +3,11 @@ package com.life.decision.support.service.impl;
 import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.core.util.IdUtil;
 import cn.hutool.core.util.StrUtil;
+import com.github.pagehelper.PageHelper;
 import com.life.decision.support.dto.UserInformationDto;
 import com.life.decision.support.mapper.UserInformationMapper;
 import com.life.decision.support.pojo.UserInformation;
 import com.life.decision.support.service.IUserInformationService;
-import org.apache.poi.ss.formula.functions.T;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -30,6 +30,7 @@ public class UserInformationServiceImpl implements IUserInformationService {
     @Override
     public List<UserInformationDto> findList(UserInformationDto userInformationDto) {
         UserInformation temp = BeanUtil.copyProperties(userInformationDto, UserInformation.class);
+        PageHelper.startPage(userInformationDto);
         return userInformationMapper.findList(temp);
     }
 
@@ -64,7 +65,11 @@ public class UserInformationServiceImpl implements IUserInformationService {
 
     @Override
     public UserInformationDto getUserMsg(UserInformation userInformation) {
-        return userInformationMapper.getUser(userInformation);
+        UserInformationDto user = userInformationMapper.getUser(userInformation);
+        if (user != null) {
+            user.setPassword(null);
+        }
+        return user;
     }
 
     @Override

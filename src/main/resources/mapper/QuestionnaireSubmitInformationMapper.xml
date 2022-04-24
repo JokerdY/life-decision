@@ -6,6 +6,7 @@
         <result column="user_id" jdbcType="VARCHAR" property="userId"/>
         <result column="questionnaire_id" jdbcType="VARCHAR" property="questionnaireId"/>
         <result column="create_time" jdbcType="DATE" property="createTime"/>
+        <result column="update_time" jdbcType="DATE" property="updateTime"/>
         <association property="questionnaireInformation" column="questionnaire_id"
                      javaType="com.life.decision.support.pojo.QuestionnaireInformation">
             <id column="questionnaire_id" jdbcType="VARCHAR" property="id"/>
@@ -18,6 +19,17 @@
             <result column="user_name" jdbcType="VARCHAR" property="userName"/>
         </association>
     </resultMap>
+    <insert id="insert" parameterType="com.life.decision.support.pojo.QuestionnaireSubmitInformation">
+        insert into questionnaire_submit_information (id, user_id, questionnaire_id, create_time,update_time)
+        values (#{id,jdbcType=VARCHAR}, #{userId,jdbcType=VARCHAR}, #{questionnaireId,jdbcType=VARCHAR},
+                #{createTime,jdbcType=TIMESTAMP},
+                #{updateTime,jdbcType=TIMESTAMP})
+    </insert>
+    <update id="update" parameterType="com.life.decision.support.pojo.QuestionnaireSubmitInformation">
+        update questionnaire_submit_information
+        set update_time = now()
+        where id = #{id}
+    </update>
 
     <select id="findSubmitPage" resultMap="baseResultMap">
         select a.*, b.questionnaire_description, c.user_name, d.convert_name

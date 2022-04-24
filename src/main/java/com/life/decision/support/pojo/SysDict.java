@@ -1,6 +1,5 @@
 package com.life.decision.support.pojo;
 
-import lombok.Builder;
 import lombok.Data;
 
 /**
