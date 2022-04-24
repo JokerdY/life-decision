@@ -1,13 +1,12 @@
 package com.life.decision.support.pojo;
 
-import lombok.Builder;
 import lombok.Data;
 
 import java.time.LocalDateTime;
 
 /**
  * <p>
- * 
+ *
  * </p>
  *
  * @author Joker
@@ -23,6 +22,11 @@ public class QuestionAnswer {
     private String userId;
 
     private String questionnaireId;
+
+    /**
+     * UUid
+     */
+    private String submitId;
 
     private String questionId;
 

@@ -1,8 +1,6 @@
 package com.life.decision.support.controller;
 
-
 import com.life.decision.support.dto.SysDictDto;
-import com.life.decision.support.pojo.SysDict;
 import com.life.decision.support.service.ISysDictService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;

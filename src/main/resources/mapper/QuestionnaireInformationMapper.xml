@@ -8,11 +8,60 @@
         <result column="update_date" property="updateDate" jdbcType="TIMESTAMP"/>
         <result column="del_flag" property="delFlag" jdbcType="INTEGER"/>
         <result column="questionnaire_type" property="questionnaireType" jdbcType="INTEGER"/>
-        <result column="comment" property="comment" jdbcType="INTEGER"/>
+        <result column="comment" property="comment" jdbcType="VARCHAR"/>
+        <result column="convert_name" property="questionnaireTypeLabel" jdbcType="VARCHAR"/>
     </resultMap>
+    <resultMap id="userDtoMap" type="com.life.decision.support.dto.QuestionnaireInformationUserDto"
+               extends="BaseResultMap">
+        <result column="user_id" property="userId" jdbcType="VARCHAR"/>
+        <result column="submit_enabled" property="submitEnabled" jdbcType="VARCHAR"/>
+        <result column="create_time" property="createTime" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
     <sql id="Base_Column_List">
-        id, questionnaire_description, create_date, update_date, del_flag, questionnaire_type,comment
+        a.id, a.questionnaire_description, a.create_date,
+        a.update_date, a.del_flag, a.questionnaire_type,a.comment,
+        b.convert_name
     </sql>
+    <sql id="baseColumnJoin">
+        LEFT JOIN (select * from sys_dict where column_name = 'questionnaire_type') b on a.questionnaire_type = b.column_value
+    </sql>
+
+    <sql id="userDtoList">
+        a.id, a.questionnaire_description, a.create_date,
+        a.update_date, a.del_flag, a.questionnaire_type,a.comment,
+        b.convert_name,c.create_time
+    </sql>
+
+    <select id="findList" resultMap="BaseResultMap"
+            parameterType="com.life.decision.support.pojo.QuestionnaireInformation">
+        select
+        <include refid="Base_Column_List"/>
+        from questionnaire_information a
+        <include refid="baseColumnJoin"/>
+        <where>
+            <if test="questionnaireType != null">
+                AND questionnaire_type = #{questionnaireType}
+            </if>
+        </where>
+    </select>
+
+    <select id="findListInUser" resultMap="userDtoMap"
+            parameterType="com.life.decision.support.dto.QuestionnaireInformationUserDto">
+        select
+        <include refid="userDtoList"/>
+        from questionnaire_information a
+        <include refid="baseColumnJoin"/>
+        LEFT JOIN (select * from questionnaire_submit_information where user_id = #{userId}) c on a.id =
+        c.questionnaire_id
+        <where>
+            <if test="questionnaireType != null">
+                AND questionnaire_type = #{questionnaireType}
+            </if>
+        </where>
+        ORDER BY c.create_time
+    </select>
+
     <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String">
         select
         <include refid="Base_Column_List"/>

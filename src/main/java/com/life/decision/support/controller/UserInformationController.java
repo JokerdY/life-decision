@@ -1,18 +1,20 @@
 package com.life.decision.support.controller;
 
 import cn.hutool.core.util.StrUtil;
-import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.life.decision.support.dto.UserInformationDto;
 import com.life.decision.support.pojo.UserInformation;
 import com.life.decision.support.service.IUserInformationService;
 import com.life.decision.support.utils.ResultUtils;
+import io.swagger.annotations.Api;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.stereotype.Controller;
+
+import java.util.List;
 
 /**
  * <p>
@@ -22,6 +24,7 @@ import org.springframework.stereotype.Controller;
  * @author Joker
  * @since 2022-03-06
  */
+@Api(tags = "用户信息接口")
 @Slf4j
 @Controller
 @RequestMapping("/userInformation")
@@ -30,14 +33,14 @@ public class UserInformationController {
     @Autowired
     private IUserInformationService userInformationService;
 
-    @RequestMapping("userPage")
+    @RequestMapping("page")
     @ResponseBody
     public Object userPage(@RequestBody UserInformationDto userInformationDto) {
-        PageHelper.startPage(userInformationDto);
-        return ResultUtils.returnPage(PageInfo.of(userInformationService.findList(userInformationDto)));
+        List<UserInformationDto> list = userInformationService.findList(userInformationDto);
+        return ResultUtils.returnPage(new PageInfo<>(list));
     }
 
-    @RequestMapping("getUserMsg")
+    @RequestMapping("getMsg")
     @ResponseBody
     public Object getUserMsg(@RequestBody UserInformation userInformation) {
         if (StrUtil.isBlank(userInformation.getTelphoneNum())) {
@@ -99,6 +102,9 @@ public class UserInformationController {
     public Object register(@RequestBody UserInformation userInformation) {
         userInformation.setAdminEnable(0);
         try {
+            if (userInformationService.isExist(userInformation)) {
+                return ResultUtils.returnError("用户信息已存在");
+            }
             userInformationService.insertUser(userInformation);
         } catch (Exception e) {
             log.error("注册失败", e);

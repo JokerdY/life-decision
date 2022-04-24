@@ -1,7 +1,8 @@
 package com.life.decision.support.pojo;
 
-import lombok.Builder;
+import com.life.decision.support.common.PageDto;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import java.util.Date;
 
@@ -14,7 +15,8 @@ import java.util.Date;
  * @since 2022-03-06
  */
 @Data
-public class QuestionnaireInformation {
+@EqualsAndHashCode(callSuper = true)
+public class QuestionnaireInformation extends PageDto {
 
     private static final long serialVersionUID = 1L;
 

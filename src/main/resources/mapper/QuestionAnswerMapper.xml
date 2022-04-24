@@ -1,117 +1,147 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.life.decision.support.mapper.QuestionAnswerMapper" >
-  <resultMap id="BaseResultMap" type="com.life.decision.support.pojo.QuestionAnswer" >
-    <id column="id" property="id" jdbcType="VARCHAR" />
-    <result column="user_id" property="userId" jdbcType="VARCHAR" />
-    <result column="questionnaire_id" property="questionnaireId" jdbcType="VARCHAR" />
-    <result column="question_id" property="questionId" jdbcType="VARCHAR" />
-    <result column="create_date" property="createDate" jdbcType="TIMESTAMP" />
-    <result column="option_id" property="optionId" jdbcType="VARCHAR" />
-    <result column="comment" property="comment" jdbcType="VARCHAR" />
-  </resultMap>
-  <sql id="Base_Column_List" >
-    id, user_id, questionnaire_id, question_id, create_date, option_id, comment
-  </sql>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
-    select
-    <include refid="Base_Column_List" />
-    from question_answer
-    where id = #{id,jdbcType=VARCHAR}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
-    delete from question_answer
-    where id = #{id,jdbcType=VARCHAR}
-  </delete>
-  <insert id="insert" parameterType="com.life.decision.support.pojo.QuestionAnswer" >
-    insert into question_answer (id, user_id, questionnaire_id,
-      question_id, create_date, option_id, 
-      comment)
-    values (#{id,jdbcType=VARCHAR}, #{userId,jdbcType=VARCHAR}, #{questionnaireId,jdbcType=VARCHAR}, 
-      #{questionId,jdbcType=VARCHAR}, #{createDate,jdbcType=TIMESTAMP}, #{optionId,jdbcType=VARCHAR}, 
-      #{comment,jdbcType=VARCHAR})
-  </insert>
-  <insert id="insertSelective" parameterType="com.life.decision.support.pojo.QuestionAnswer" >
-    insert into question_answer
-    <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
-        id,
-      </if>
-      <if test="userId != null" >
-        user_id,
-      </if>
-      <if test="questionnaireId != null" >
-        questionnaire_id,
-      </if>
-      <if test="questionId != null" >
-        question_id,
-      </if>
-      <if test="createDate != null" >
-        create_date,
-      </if>
-      <if test="optionId != null" >
-        option_id,
-      </if>
-      <if test="comment != null" >
-        comment,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
-        #{id,jdbcType=VARCHAR},
-      </if>
-      <if test="userId != null" >
-        #{userId,jdbcType=VARCHAR},
-      </if>
-      <if test="questionnaireId != null" >
-        #{questionnaireId,jdbcType=VARCHAR},
-      </if>
-      <if test="questionId != null" >
-        #{questionId,jdbcType=VARCHAR},
-      </if>
-      <if test="createDate != null" >
-        #{createDate,jdbcType=TIMESTAMP},
-      </if>
-      <if test="optionId != null" >
-        #{optionId,jdbcType=VARCHAR},
-      </if>
-      <if test="comment != null" >
-        #{comment,jdbcType=VARCHAR},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.life.decision.support.pojo.QuestionAnswer" >
-    update question_answer
-    <set >
-      <if test="userId != null" >
-        user_id = #{userId,jdbcType=VARCHAR},
-      </if>
-      <if test="questionnaireId != null" >
-        questionnaire_id = #{questionnaireId,jdbcType=VARCHAR},
-      </if>
-      <if test="questionId != null" >
-        question_id = #{questionId,jdbcType=VARCHAR},
-      </if>
-      <if test="createDate != null" >
-        create_date = #{createDate,jdbcType=TIMESTAMP},
-      </if>
-      <if test="optionId != null" >
-        option_id = #{optionId,jdbcType=VARCHAR},
-      </if>
-      <if test="comment != null" >
-        comment = #{comment,jdbcType=VARCHAR},
-      </if>
-    </set>
-    where id = #{id,jdbcType=VARCHAR}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.life.decision.support.pojo.QuestionAnswer" >
-    update question_answer
-    set user_id = #{userId,jdbcType=VARCHAR},
-      questionnaire_id = #{questionnaireId,jdbcType=VARCHAR},
-      question_id = #{questionId,jdbcType=VARCHAR},
-      create_date = #{createDate,jdbcType=TIMESTAMP},
-      option_id = #{optionId,jdbcType=VARCHAR},
-      comment = #{comment,jdbcType=VARCHAR}
-    where id = #{id,jdbcType=VARCHAR}
-  </update>
+<mapper namespace="com.life.decision.support.mapper.QuestionAnswerMapper">
+    <resultMap id="BaseResultMap" type="com.life.decision.support.pojo.QuestionAnswer">
+        <id column="id" property="id" jdbcType="VARCHAR"/>
+        <result column="user_id" property="userId" jdbcType="VARCHAR"/>
+        <result column="questionnaire_id" property="questionnaireId" jdbcType="VARCHAR"/>
+        <result column="question_id" property="questionId" jdbcType="VARCHAR"/>
+        <result column="create_date" property="createDate" jdbcType="TIMESTAMP"/>
+        <result column="option_id" property="optionId" jdbcType="VARCHAR"/>
+        <result column="comment" property="comment" jdbcType="VARCHAR"/>
+        <result column="submit_id" property="submitId" jdbcType="VARCHAR"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        id, user_id, questionnaire_id, question_id, create_date, option_id, comment,submit_id
+    </sql>
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String">
+        select
+        <include refid="Base_Column_List"/>
+        from question_answer
+        where id = #{id,jdbcType=VARCHAR}
+    </select>
+    <select id="list" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from question_answer
+        where user_id = #{userId} and questionnaire_id = #{questionnaireId} and submit_id = #{submitId}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+        delete
+        from question_answer
+        where id = #{id,jdbcType=VARCHAR}
+    </delete>
+    <insert id="insert" parameterType="com.life.decision.support.pojo.QuestionAnswer">
+        insert into question_answer (id, user_id, questionnaire_id,
+                                     question_id, create_date, option_id,
+                                     comment, submit_id)
+        values (#{id,jdbcType=VARCHAR}, #{userId,jdbcType=VARCHAR}, #{questionnaireId,jdbcType=VARCHAR},
+                #{questionId,jdbcType=VARCHAR}, #{createDate,jdbcType=TIMESTAMP}, #{optionId,jdbcType=VARCHAR},
+                #{comment,jdbcType=VARCHAR}, #{submitId})
+    </insert>
+    <insert id="insertSelective" parameterType="com.life.decision.support.pojo.QuestionAnswer">
+        insert into question_answer
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="userId != null">
+                user_id,
+            </if>
+            <if test="questionnaireId != null">
+                questionnaire_id,
+            </if>
+            <if test="questionId != null">
+                question_id,
+            </if>
+            <if test="createDate != null">
+                create_date,
+            </if>
+            <if test="optionId != null">
+                option_id,
+            </if>
+            <if test="comment != null">
+                comment,
+            </if>
+            <if test="submitId != null">
+                submit_id,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=VARCHAR},
+            </if>
+            <if test="userId != null">
+                #{userId,jdbcType=VARCHAR},
+            </if>
+            <if test="questionnaireId != null">
+                #{questionnaireId,jdbcType=VARCHAR},
+            </if>
+            <if test="questionId != null">
+                #{questionId,jdbcType=VARCHAR},
+            </if>
+            <if test="createDate != null">
+                #{createDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="optionId != null">
+                #{optionId,jdbcType=VARCHAR},
+            </if>
+            <if test="comment != null">
+                #{comment,jdbcType=VARCHAR},
+            </if>
+            <if test="submitId != null">
+                #{submitId},
+            </if>
+        </trim>
+    </insert>
+
+    <insert id="insertBatch">
+        insert into question_answer
+        (id, user_id, questionnaire_id, question_id, create_date, option_id, comment,submit_id)
+        values
+        <foreach collection="list" item="it" separator=",">
+            (
+            #{it.id,jdbcType=VARCHAR},
+            #{it.userId,jdbcType=VARCHAR},
+            #{it.questionnaireId,jdbcType=VARCHAR},
+            #{it.questionId,jdbcType=VARCHAR},
+            #{it.createDate,jdbcType=TIMESTAMP},
+            #{it.optionId,jdbcType=VARCHAR},
+            #{it.comment,jdbcType=VARCHAR},
+            #{it.submitId}
+            )
+        </foreach>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.life.decision.support.pojo.QuestionAnswer">
+        update question_answer
+        <set>
+            <if test="userId != null">
+                user_id = #{userId,jdbcType=VARCHAR},
+            </if>
+            <if test="questionnaireId != null">
+                questionnaire_id = #{questionnaireId,jdbcType=VARCHAR},
+            </if>
+            <if test="questionId != null">
+                question_id = #{questionId,jdbcType=VARCHAR},
+            </if>
+            <if test="createDate != null">
+                create_date = #{createDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="optionId != null">
+                option_id = #{optionId,jdbcType=VARCHAR},
+            </if>
+            <if test="comment != null">
+                comment = #{comment,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where id = #{id,jdbcType=VARCHAR}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.life.decision.support.pojo.QuestionAnswer">
+        update question_answer
+        set option_id = #{optionId,jdbcType=VARCHAR},
+            comment   = #{comment,jdbcType=VARCHAR}
+        where id = #{id,jdbcType=VARCHAR}
+          and question_id = #{questionId,jdbcType=VARCHAR}
+          and submit_id = #{submitId}
+    </update>
 </mapper>

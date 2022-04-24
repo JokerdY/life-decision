@@ -1,7 +1,10 @@
 package com.life.decision.support.mapper;
 
+import com.life.decision.support.dto.QuestionnaireInformationUserDto;
 import com.life.decision.support.pojo.QuestionnaireInformation;
 import org.apache.ibatis.annotations.Mapper;
+
+import java.util.List;
 
 /**
  * <p>
@@ -25,4 +28,8 @@ public interface QuestionnaireInformationMapper {
     int updateByPrimaryKeySelective(QuestionnaireInformation record);
 
     int updateByPrimaryKey(QuestionnaireInformation record);
+
+    List<QuestionnaireInformation> findList(QuestionnaireInformation questionnaireInformation);
+
+    List<QuestionnaireInformationUserDto> findListInUser(QuestionnaireInformationUserDto dto);
 }

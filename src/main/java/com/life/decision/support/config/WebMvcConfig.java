@@ -9,6 +9,14 @@ public class WebMvcConfig implements WebMvcConfigurer {
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         RequestInterceptor interceptor = new RequestInterceptor();
-        registry.addInterceptor(interceptor).addPathPatterns("/**");
+        registry.addInterceptor(interceptor)
+                .addPathPatterns("/**")
+                .excludePathPatterns(    //添加不拦截路径
+                        "/userInformation/login",
+                        "/userInformation/register",
+                        "/**/*.html",
+                        "/**/*.js",
+                        "/**/*.css"
+                );
     }
 }
