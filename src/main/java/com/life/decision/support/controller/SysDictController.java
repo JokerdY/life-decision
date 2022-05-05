@@ -3,10 +3,10 @@ package com.life.decision.support.controller;
 import com.life.decision.support.dto.SysDictDto;
 import com.life.decision.support.service.ISysDictService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
@@ -25,7 +25,7 @@ public class SysDictController {
     @Autowired
     ISysDictService sysDictService;
 
-    @RequestMapping("universalDictionary")
+    @PostMapping("universalDictionary")
     @ResponseBody
     public List<SysDictDto> universalDictionary(@RequestBody SysDictDto sysDictDto){
         return sysDictService.dictList(sysDictDto.getLabel());

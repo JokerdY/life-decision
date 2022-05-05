@@ -1,6 +1,7 @@
 package com.life.decision.support.service;
 
 import com.life.decision.support.dto.UserInformationDto;
+import com.life.decision.support.pojo.PassWordChangeDto;
 import com.life.decision.support.pojo.UserInformation;
 
 import java.util.List;
@@ -26,7 +27,11 @@ public interface IUserInformationService {
 
     UserInformationDto getUserMsg(UserInformation userInformation);
 
-    boolean changePassword(UserInformation userInformation);
+    UserInformationDto getAdminUser(UserInformation userInformation);
+
+    boolean changePassword(PassWordChangeDto userInformation);
 
     boolean editPersonalInformation(UserInformation userInformation);
+
+
 }

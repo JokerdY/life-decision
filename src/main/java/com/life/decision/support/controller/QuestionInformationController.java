@@ -8,6 +8,7 @@ import com.life.decision.support.utils.ResultUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -28,7 +29,7 @@ public class QuestionInformationController {
     @Autowired
     IQuestionInformationService questionInformationService;
 
-    @RequestMapping("list")
+    @PostMapping("list")
     @ResponseBody
     public Object questionInformationList(@RequestBody QuestionInformation questionInformation) {
         try {
@@ -41,13 +42,14 @@ public class QuestionInformationController {
 
     /**
      * 修改问卷
+     *
      * @param questionAnswer
      * @return
      */
-    @RequestMapping("listWithEdit")
+    @PostMapping("listWithEdit")
     @ResponseBody
     public Object listWithEdit(@RequestBody QuestionAnswer questionAnswer) {
-        if (StrUtil.isBlank(questionAnswer.getQuestionnaireId()) || StrUtil.isBlank(questionAnswer.getUserId())) {
+        if (StrUtil.isBlank(questionAnswer.getSubmitId()) || StrUtil.isBlank(questionAnswer.getUserId())) {
             return ResultUtils.returnError("问卷id或用户id为空");
         }
         return ResultUtils.returnSuccess(questionInformationService.findEditList(questionAnswer));

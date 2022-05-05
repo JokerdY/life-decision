@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Objects;
 
 /**
  * <p>
@@ -34,7 +35,24 @@ public class QuestionnaireInformationServiceImpl implements IQuestionnaireInform
     public List<QuestionnaireInformationUserDto> findListInUser(QuestionnaireInformationUserDto dto) {
         PageHelper.startPage(dto);
         List<QuestionnaireInformationUserDto> listInUser = questionnaireInformationMapper.findListInUser(dto);
-        listInUser.forEach(s -> s.setSubmitEnabled(s.getCreateTime() != null));
+        // 取最大提交次数
+        listInUser
+                .stream()
+                .map(QuestionnaireInformationUserDto::getSubmitCount)
+                .filter(Objects::nonNull)
+                .max(Integer::compareTo)
+                .ifPresent(max -> {
+                    for (QuestionnaireInformationUserDto userDto : listInUser) {
+                        // 如果提交次数一样 则认为在当前问卷组已提交 设置submitEnabled
+                        // 否则submitEnabled置空
+                        if (userDto.getSubmitCount() != null && max.equals(userDto.getSubmitCount())) {
+                            userDto.setSubmitEnabled(userDto.getFillDate() != null);
+                        } else {
+                            userDto.setSubmitEnabled(false);
+                            userDto.setFillDate(null);
+                        }
+                    }
+                });
         return listInUser;
     }
 }

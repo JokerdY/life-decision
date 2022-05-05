@@ -1,6 +1,9 @@
 spring:
   profiles:
-    active: dev
+    active: pro
+  mvc:
+    async:
+      request-timeout: 20000
 
 mybatis:
   mapper-locations: classpath:/mapper/*Mapper.xml

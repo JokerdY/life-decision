@@ -21,4 +21,6 @@ public class QuestionnaireSubmitInformation {
     private QuestionnaireInformation questionnaireInformation;
 
     private UserInformation user;
+
+    private Integer isAdmitSubmit;
 }

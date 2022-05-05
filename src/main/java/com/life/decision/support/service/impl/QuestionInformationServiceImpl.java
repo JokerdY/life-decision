@@ -4,8 +4,10 @@ import cn.hutool.core.collection.CollUtil;
 import com.life.decision.support.dto.QuestionInformationDto;
 import com.life.decision.support.mapper.QuestionInformationMapper;
 import com.life.decision.support.pojo.QuestionAnswer;
+import com.life.decision.support.pojo.QuestionnaireSubmitInformation;
 import com.life.decision.support.service.IQuestionAnswerService;
 import com.life.decision.support.service.IQuestionInformationService;
+import com.life.decision.support.service.IQuestionnaireSubmitInformationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -26,6 +28,8 @@ public class QuestionInformationServiceImpl implements IQuestionInformationServi
     private QuestionInformationMapper informationMapper;
     @Autowired
     private IQuestionAnswerService questionAnswerService;
+    @Autowired
+    private IQuestionnaireSubmitInformationService questionnaireSubmitInformationService;
 
     @Override
     public List<QuestionInformationDto> listById(String questionnaireId) {
@@ -34,6 +38,8 @@ public class QuestionInformationServiceImpl implements IQuestionInformationServi
 
     @Override
     public List<QuestionInformationDto> findEditList(QuestionAnswer questionAnswer) {
+        QuestionnaireSubmitInformation submitInfo = questionnaireSubmitInformationService.getById(questionAnswer.getSubmitId());
+        questionAnswer.setQuestionnaireId(submitInfo.getQuestionnaireId());
         List<QuestionInformationDto> list = informationMapper.listById(questionAnswer.getQuestionnaireId());
         List<QuestionAnswer> answerList = questionAnswerService.findList(questionAnswer);
         for (QuestionInformationDto questionInformationDto : list) {

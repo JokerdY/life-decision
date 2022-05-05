@@ -17,10 +17,11 @@
                      javaType="com.life.decision.support.pojo.UserInformation">
             <id column="user_id" jdbcType="VARCHAR" property="id"/>
             <result column="user_name" jdbcType="VARCHAR" property="userName"/>
+            <result column="telphone_num" jdbcType="VARCHAR" property="telphoneNum"/>
         </association>
     </resultMap>
     <insert id="insert" parameterType="com.life.decision.support.pojo.QuestionnaireSubmitInformation">
-        insert into questionnaire_submit_information (id, user_id, questionnaire_id, create_time,update_time)
+        insert into questionnaire_submit_information (id, user_id, questionnaire_id, create_time, update_time)
         values (#{id,jdbcType=VARCHAR}, #{userId,jdbcType=VARCHAR}, #{questionnaireId,jdbcType=VARCHAR},
                 #{createTime,jdbcType=TIMESTAMP},
                 #{updateTime,jdbcType=TIMESTAMP})
@@ -32,11 +33,26 @@
     </update>
 
     <select id="findSubmitPage" resultMap="baseResultMap">
-        select a.*, b.questionnaire_description, c.user_name, d.convert_name
+        select a.*, b.questionnaire_description, c.user_name, d.convert_name, c.telphone_num as telphoneNum
         from questionnaire_submit_information a
                  left join (select * from questionnaire_information where del_flag = 0) b on a.questionnaire_id = b.id
                  left join user_information c on a.user_id = c.id
                  left join (select * from sys_dict where column_name = 'questionnaire_type') d
                            on b.questionnaire_type = d.column_value
+    </select>
+    <select id="getById" resultMap="baseResultMap">
+        select *
+        from questionnaire_submit_information
+        where id = #{id}
+    </select>
+    <select id="listSubmitMsg" resultType="com.life.decision.support.dto.SubmitOfTheQuestionnaireGroup">
+        select t.id as questionnaireId, dict.convert_name as questionnaireName, IFNULL(sub.count, 0) as submitCount
+        from questionnaire_information t
+                 LEFT JOIN (select * from sys_dict where column_name = 'questionnaire_type') dict
+                           on t.questionnaire_type = dict.column_value
+                 left join (select count(*) as count, questionnaire_id
+                            from questionnaire_submit_information
+                            where user_id = #{userId}
+                            group by questionnaire_id) sub on t.id = sub.questionnaire_id
     </select>
 </mapper>

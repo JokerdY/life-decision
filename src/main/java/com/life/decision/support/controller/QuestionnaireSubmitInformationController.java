@@ -7,6 +7,7 @@ import com.life.decision.support.pojo.QuestionnaireSubmitInformation;
 import com.life.decision.support.utils.ResultUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -21,9 +22,9 @@ public class QuestionnaireSubmitInformationController {
     @Autowired
     QuestionnaireSubmitInformationMapper questionnaireSubmitInformationMapper;
 
-    @RequestMapping("questionnaireList")
+    @PostMapping("adminQuestionnaireList")
     @ResponseBody
-    public Object questionnaireList(@RequestParam Integer page, @RequestParam Integer size) {
+    public Object adminQuestionnaireList(@RequestParam Integer page, @RequestParam Integer size) {
         PageHelper.startPage(page, size);
         List<QuestionnaireSubmitInformation> list = questionnaireSubmitInformationMapper.findSubmitPage();
         return ResultUtils.returnPage(new PageInfo<>(list));

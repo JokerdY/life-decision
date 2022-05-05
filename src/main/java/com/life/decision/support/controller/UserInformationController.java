@@ -3,6 +3,7 @@ package com.life.decision.support.controller;
 import cn.hutool.core.util.StrUtil;
 import com.github.pagehelper.PageInfo;
 import com.life.decision.support.dto.UserInformationDto;
+import com.life.decision.support.pojo.PassWordChangeDto;
 import com.life.decision.support.pojo.UserInformation;
 import com.life.decision.support.service.IUserInformationService;
 import com.life.decision.support.utils.ResultUtils;
@@ -10,11 +11,14 @@ import io.swagger.annotations.Api;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * <p>
@@ -33,28 +37,35 @@ public class UserInformationController {
     @Autowired
     private IUserInformationService userInformationService;
 
-    @RequestMapping("page")
+    @PostMapping("page")
     @ResponseBody
     public Object userPage(@RequestBody UserInformationDto userInformationDto) {
         List<UserInformationDto> list = userInformationService.findList(userInformationDto);
         return ResultUtils.returnPage(new PageInfo<>(list));
     }
 
-    @RequestMapping("getMsg")
+    @PostMapping("getMsg")
     @ResponseBody
     public Object getUserMsg(@RequestBody UserInformation userInformation) {
-        if (StrUtil.isBlank(userInformation.getTelphoneNum())) {
+        if (StrUtil.isBlank(userInformation.getId())) {
             return ResultUtils.returnError("查询失败，用户账号信息为空");
         }
         return ResultUtils.returnSuccess(userInformationService.getUserMsg(userInformation));
     }
 
-    @RequestMapping("changePassword")
+    @PostMapping("changePassword")
     @ResponseBody
-    public Object changePassword(@RequestBody UserInformation userInformation) {
-        if (StrUtil.isNotBlank(userInformation.getPassword()) && StrUtil.isNotBlank(userInformation.getTelphoneNum())) {
+    public Object changePassword(@RequestBody PassWordChangeDto dto) {
+        if (StrUtil.isNotBlank(dto.getNewPwd()) && StrUtil.isNotBlank(dto.getOldPwd()) && StrUtil.isNotBlank(dto.getUserId())) {
             try {
-                if (userInformationService.changePassword(userInformation)) {
+                UserInformation temp = new UserInformation();
+                temp.setPassword(dto.getOldPwd());
+                temp.setId(dto.getUserId());
+                UserInformationDto adminUser = userInformationService.getAdminUser(temp);
+                if (adminUser == null || !adminUser.getPassword().equals(temp.getPassword())) {
+                    return ResultUtils.returnError("旧密码错误，请确认密码");
+                }
+                if (userInformationService.changePassword(dto)) {
                     return ResultUtils.returnSuccess("密码重置成功，请重新登录");
                 }
             } catch (Exception e) {
@@ -65,7 +76,7 @@ public class UserInformationController {
         return ResultUtils.returnError("账号或密码为空");
     }
 
-    @RequestMapping("editPersonalInformation")
+    @PostMapping("editPersonalInformation")
     @ResponseBody
     public Object editPersonalInformation(@RequestBody UserInformation userInformation) {
         if (StrUtil.isBlank(userInformation.getTelphoneNum())) {
@@ -82,22 +93,26 @@ public class UserInformationController {
         return ResultUtils.returnError();
     }
 
-    @RequestMapping("login")
+    @PostMapping("login")
     @ResponseBody
     public Object login(@RequestBody UserInformation userInformation) {
         if (StrUtil.isBlank(userInformation.getTelphoneNum()) || StrUtil.isBlank(userInformation.getPassword())) {
             return ResultUtils.returnError("账号密码为空");
         }
         if (userInformationService.verifyIdentified(userInformation)) {
+            UserInformationDto userMsg = userInformationService.getUserMsg(userInformation);
+            Map<String, Object> result = new HashMap<>(2);
+            result.put("token", userMsg.getId());
             if (userInformation.getTelphoneNum().endsWith(userInformation.getPassword()) && userInformation.getPassword().length() == 6) {
-                return ResultUtils.returnSuccess("当前密码安全度较低，请修改密码！");
+                result.put("msg", "当前密码安全度较低，请修改密码！");
+                return ResultUtils.returnSuccess(result);
             }
-            return ResultUtils.returnSuccess();
+            return ResultUtils.returnSuccess(result);
         }
         return ResultUtils.returnError("账号或密码错误");
     }
 
-    @RequestMapping("register")
+    @PostMapping("register")
     @ResponseBody
     public Object register(@RequestBody UserInformation userInformation) {
         userInformation.setAdminEnable(0);
@@ -113,7 +128,7 @@ public class UserInformationController {
         return ResultUtils.returnSuccess(userInformationService.getUserMsg(userInformation));
     }
 
-    @RequestMapping("isExist")
+    @PostMapping("isExist")
     @ResponseBody
     public Object isExist(@RequestBody UserInformation userInformation) {
         if (userInformationService.isExist(userInformation)) {
@@ -122,7 +137,8 @@ public class UserInformationController {
         return ResultUtils.returnSuccess();
     }
 
-    @RequestMapping("resetPassword")
+
+    @PostMapping("resetPassword")
     @ResponseBody
     public Object resetPassword(@RequestBody UserInformation userInformation) {
         if (userInformationService.isExist(userInformation)) {

@@ -4,6 +4,8 @@ package com.life.decision.support.controller;
 import cn.hutool.core.collection.CollUtil;
 import cn.hutool.core.util.IdUtil;
 import cn.hutool.json.JSONObject;
+import com.life.decision.support.dto.QuestionnaireInformationUserDto;
+import com.life.decision.support.dto.SubmitOfTheQuestionnaireGroup;
 import com.life.decision.support.pojo.QuestionAnswer;
 import com.life.decision.support.pojo.QuestionnaireSubmitInformation;
 import com.life.decision.support.service.IQuestionAnswerService;
@@ -12,6 +14,7 @@ import com.life.decision.support.utils.ResultUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -36,7 +39,7 @@ public class QuestionAnswerController {
     @Autowired
     private IQuestionnaireSubmitInformationService questionnaireSubmitInformationService;
 
-    @RequestMapping("save")
+    @PostMapping("save")
     @ResponseBody
     @Transactional
     public Object saveBatch(@RequestBody JSONObject obj) {
@@ -46,19 +49,39 @@ public class QuestionAnswerController {
         String questionnaireId = obj.getStr("questionnaireId");
         // 插入内容
         LocalDateTime now = LocalDateTime.now();
-        String id = IdUtil.fastUUID();
-        questionAnswerService.saveBatch(list, userId, questionnaireId, now, id);
+        String submitId = IdUtil.fastUUID();
+        questionAnswerService.saveBatch(list, userId, questionnaireId, now, submitId);
         QuestionnaireSubmitInformation submitInfo = new QuestionnaireSubmitInformation();
         submitInfo.setQuestionnaireId(questionnaireId);
         submitInfo.setUserId(userId);
         submitInfo.setCreateTime(now);
         submitInfo.setUpdateTime(now);
-        submitInfo.setId(id);
+        submitInfo.setId(submitId);
         questionnaireSubmitInformationService.save(submitInfo);
-        return ResultUtils.returnSuccess();
+        // 提交修改结束后 都要返回 当前问卷组内 未完成的问卷
+        return ResultUtils.returnSuccess(getQuestionnaireGroup(userId));
     }
 
-    @RequestMapping("update")
+    private List<SubmitOfTheQuestionnaireGroup> getQuestionnaireGroup(String userId) {
+        QuestionnaireInformationUserDto dto = new QuestionnaireInformationUserDto();
+        dto.setUserId(userId);
+        List<SubmitOfTheQuestionnaireGroup> result = questionnaireSubmitInformationService.listSubmitMsg(userId);
+        result.stream()
+                .map(SubmitOfTheQuestionnaireGroup::getSubmitCount)
+                .max(Integer::compareTo)
+                .ifPresent(max -> {
+                    for (SubmitOfTheQuestionnaireGroup info : result) {
+                        if (max.equals(info.getSubmitCount())) {
+                            info.setIsSubmit(true);
+                        } else {
+                            info.setIsSubmit(false);
+                        }
+                    }
+                });
+        return result;
+    }
+
+    @PostMapping("update")
     @ResponseBody
     @Transactional
     public Object update(@RequestBody JSONObject obj) {
@@ -68,6 +91,7 @@ public class QuestionAnswerController {
             QuestionnaireSubmitInformation submitInfo = new QuestionnaireSubmitInformation();
             submitInfo.setId(list.get(0).getSubmitId());
             questionnaireSubmitInformationService.update(submitInfo);
+            return ResultUtils.returnSuccess(getQuestionnaireGroup(list.get(0).getUserId()));
         }
         return ResultUtils.returnSuccess();
     }

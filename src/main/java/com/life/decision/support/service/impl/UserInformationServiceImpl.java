@@ -6,6 +6,7 @@ import cn.hutool.core.util.StrUtil;
 import com.github.pagehelper.PageHelper;
 import com.life.decision.support.dto.UserInformationDto;
 import com.life.decision.support.mapper.UserInformationMapper;
+import com.life.decision.support.pojo.PassWordChangeDto;
 import com.life.decision.support.pojo.UserInformation;
 import com.life.decision.support.service.IUserInformationService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -73,11 +74,13 @@ public class UserInformationServiceImpl implements IUserInformationService {
     }
 
     @Override
-    public boolean changePassword(UserInformation userInformation) {
-        UserInformation temp = new UserInformation();
-        temp.setTelphoneNum(userInformation.getTelphoneNum());
-        temp.setPassword(userInformation.getPassword());
-        return userInformationMapper.update(temp) == 1;
+    public UserInformationDto getAdminUser(UserInformation userInformation) {
+        return userInformationMapper.getUser(userInformation);
+    }
+
+    @Override
+    public boolean changePassword(PassWordChangeDto userInformation) {
+        return userInformationMapper.changePassword(userInformation) == 1;
     }
 
     @Override
