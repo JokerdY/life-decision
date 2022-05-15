@@ -18,4 +18,5 @@ public class QuestionnaireInformationUserDto extends QuestionnaireInformation {
     @JsonFormat(pattern = "yyyy-MM-dd")
     private Date fillDate;
     private Integer submitCount;
+    private String searchContent;
 }

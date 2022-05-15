@@ -6,7 +6,7 @@ import com.life.decision.support.pojo.QuestionnaireSubmitInformation;
 
 import java.util.List;
 
-public interface IQuestionnaireSubmitInformationService{
+public interface IQuestionnaireSubmitInformationService {
 
     void save(QuestionnaireSubmitInformation submitInfo);
 
@@ -15,4 +15,6 @@ public interface IQuestionnaireSubmitInformationService{
     QuestionnaireSubmitInformation getById(String submitId);
 
     List<SubmitOfTheQuestionnaireGroup> listSubmitMsg(String userId);
+
+    List<QuestionnaireSubmitInformation> findSubmitPage(QuestionnaireSubmitInformation dto);
 }

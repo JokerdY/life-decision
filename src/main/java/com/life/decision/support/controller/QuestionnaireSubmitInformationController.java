@@ -2,14 +2,14 @@ package com.life.decision.support.controller;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
-import com.life.decision.support.mapper.QuestionnaireSubmitInformationMapper;
 import com.life.decision.support.pojo.QuestionnaireSubmitInformation;
+import com.life.decision.support.service.IQuestionnaireSubmitInformationService;
 import com.life.decision.support.utils.ResultUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
@@ -20,13 +20,23 @@ import java.util.List;
 public class QuestionnaireSubmitInformationController {
 
     @Autowired
-    QuestionnaireSubmitInformationMapper questionnaireSubmitInformationMapper;
+    IQuestionnaireSubmitInformationService  questionnaireSubmitInformationService;
 
+    /**
+     * orderby排序传数据库字段
+     * @param dto
+     * @return
+     *
+     * 参数   用户账号 user.telphoneNum
+     *       用户名   user.userName
+     *       测评类型 questionnaireId
+     *       填写时间 createTime
+     */
     @PostMapping("adminQuestionnaireList")
     @ResponseBody
-    public Object adminQuestionnaireList(@RequestParam Integer page, @RequestParam Integer size) {
-        PageHelper.startPage(page, size);
-        List<QuestionnaireSubmitInformation> list = questionnaireSubmitInformationMapper.findSubmitPage();
+    public Object adminQuestionnaireList(@RequestBody QuestionnaireSubmitInformation dto) {
+        PageHelper.startPage(dto);
+        List<QuestionnaireSubmitInformation> list = questionnaireSubmitInformationService.findSubmitPage(dto);
         return ResultUtils.returnPage(new PageInfo<>(list));
     }
 

@@ -32,10 +32,20 @@ public class QuestionnaireInformationServiceImpl implements IQuestionnaireInform
     }
 
     @Override
+    public QuestionnaireInformation selectByPrimaryKey(String questionnaireId) {
+        return questionnaireInformationMapper.selectByPrimaryKey(questionnaireId);
+    }
+
+    /**
+     * 问卷组信息
+     * @param dto
+     * @return
+     */
+    @Override
     public List<QuestionnaireInformationUserDto> findListInUser(QuestionnaireInformationUserDto dto) {
         PageHelper.startPage(dto);
         List<QuestionnaireInformationUserDto> listInUser = questionnaireInformationMapper.findListInUser(dto);
-        // 取最大提交次数
+        // 获取
         listInUser
                 .stream()
                 .map(QuestionnaireInformationUserDto::getSubmitCount)

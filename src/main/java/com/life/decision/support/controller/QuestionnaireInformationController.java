@@ -52,13 +52,4 @@ public class QuestionnaireInformationController {
         }
     }
 
-    /**
-     * 已完成的问卷组
-     * @return
-     */
-    @PostMapping("summaryOfTheQuestionnaireGroup")
-    @ResponseBody
-    public Object summaryOfTheQuestionnaireGroup(){
-        return "";
-    }
 }

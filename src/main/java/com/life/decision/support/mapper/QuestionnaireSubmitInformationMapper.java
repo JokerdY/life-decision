@@ -9,7 +9,7 @@ import java.util.List;
 
 @Mapper
 public interface QuestionnaireSubmitInformationMapper {
-    List<QuestionnaireSubmitInformation> findSubmitPage();
+    List<QuestionnaireSubmitInformation> findSubmitPage(QuestionnaireSubmitInformation dto);
 
     void insert(QuestionnaireSubmitInformation submitInfo);
 

@@ -47,7 +47,19 @@ public class UserInformationController {
     @PostMapping("getMsg")
     @ResponseBody
     public Object getUserMsg(@RequestBody UserInformation userInformation) {
+        if (StrUtil.isNotBlank(userInformation.getUserId()) && StrUtil.isBlank(userInformation.getId())) {
+            userInformation.setId(userInformation.getUserId());
+        }
         if (StrUtil.isBlank(userInformation.getId())) {
+            return ResultUtils.returnError("查询失败，用户账号信息为空");
+        }
+        return ResultUtils.returnSuccess(userInformationService.getUserMsg(userInformation));
+    }
+
+    @PostMapping("getMsgByTel")
+    @ResponseBody
+    public Object getMsgByTel(@RequestBody UserInformation userInformation){
+        if(StrUtil.isBlank(userInformation.getTelphoneNum())){
             return ResultUtils.returnError("查询失败，用户账号信息为空");
         }
         return ResultUtils.returnSuccess(userInformationService.getUserMsg(userInformation));

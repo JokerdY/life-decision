@@ -34,4 +34,9 @@ public class QuestionnaireSubmitInformationServiceImpl implements IQuestionnaire
     public List<SubmitOfTheQuestionnaireGroup> listSubmitMsg(String userId) {
         return mapper.listSubmitMsg(userId);
     }
+
+    @Override
+    public List<QuestionnaireSubmitInformation> findSubmitPage(QuestionnaireSubmitInformation dto) {
+        return mapper.findSubmitPage(dto);
+    }
 }

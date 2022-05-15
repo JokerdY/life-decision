@@ -63,8 +63,12 @@
         from questionnaire_submit_information where user_id = #{userId}
         group by questionnaire_id ) c on a.id = c.questionnaire_id
         <where>
-            <if test="questionnaireType != null">
-                AND questionnaire_type = #{questionnaireType}
+            <if test="questionnaireType != null and questionnaireType != ''">
+                AND a.questionnaire_type = #{questionnaireType}
+            </if>
+            <if test="searchContent != null and searchContent != ''">
+                AND a.questionnaire_description like concat('%',#{searchContent},'%')
+                AND b.convert_name like concat('%',#{searchContent},'%')
             </if>
         </where>
         ORDER BY a.id
@@ -73,8 +77,9 @@
     <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String">
         select
         <include refid="Base_Column_List"/>
-        from questionnaire_information
-        where id = #{id,jdbcType=VARCHAR}
+        from questionnaire_information a
+        <include refid="baseColumnJoin"/>
+        where a.id = #{id,jdbcType=VARCHAR}
     </select>
     <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
         delete
