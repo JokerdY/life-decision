@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.life.decision.support.mapper.QuestionnaireGroupInformationMapper">
+    <resultMap id="BaseResultMap" type="com.life.decision.support.pojo.QuestionnaireGroupInformation">
+        <id column="group_id" property="groupId" jdbcType="VARCHAR"/>
+        <result column="create_date" property="createDate" jdbcType="TIMESTAMP"/>
+        <result column="update_date" property="updateDate" jdbcType="TIMESTAMP"/>
+        <result column="questionnaire_id" property="questionnaireId" jdbcType="VARCHAR"/>
+        <result column="submit_id" property="submitId" jdbcType="VARCHAR"/>
+        <result column="user_id" property="userId" jdbcType="VARCHAR"/>
+        <result column="convert_name" property="questionnaireName" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        a
+        .
+        group_id
+        , a.questionnaire_id, a.create_date,
+        a.update_date, a.submit_id, a.user_id,c.convert_name
+    </sql>
+    <sql id="baseColumnJoin">
+        LEFT JOIN questionnaire_information b on a.questionnaire_id = b.id
+        LEFT JOIN (select * from sys_dict where column_name = 'questionnaire_type') c on b.questionnaire_type = c.column_value
+    </sql>
+
+    <select id="findList" resultMap="BaseResultMap"
+            parameterType="com.life.decision.support.pojo.QuestionnaireGroupInformation">
+        select
+        <include refid="Base_Column_List"/>
+        from questionnaire_group_information a
+        <include refid="baseColumnJoin"/>
+        <where>
+            <if test="userId != null">
+                AND user_id = #{userId}
+            </if>
+            <if test="groupId != null">
+                AND group_id = #{groupId}
+            </if>
+            <if test="submitId != null">
+                AND submit_id = #{submitId}
+            </if>
+        </where>
+    </select>
+
+    <select id="findGroupSubmitList" resultType="cn.hutool.json.JSONObject">
+        select group_id as groupId,
+               count(questionnaire_id) as sum,
+               min(create_date)               as createDate
+        from questionnaire_group_information
+        where user_id = #{userId}
+        group by group_id
+        order by createDate
+    </select>
+
+    <select id="findGroupList" resultType="cn.hutool.json.JSONObject">
+        select group_id                       as groupId,
+               group_concat(questionnaire_id) as groupQuestionnaireId,
+               min(create_date)               as createDate
+        from questionnaire_group_information
+        where user_id = #{userId}
+        group by group_id
+        order by createDate
+    </select>
+
+    <select id="getBySubmitId" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from questionnaire_group_information a
+        <include refid="baseColumnJoin"/>
+        where submitId = #{submitId}
+    </select>
+
+    <insert id="insert">
+        INSERT INTO questionnaire_group_information
+        (group_id, questionnaire_id, create_date, update_date, submit_id, user_id)
+        VALUES (#{groupId},
+                #{questionnaireId},
+                #{createDate},
+                #{updateDate},
+                #{submitId},
+                #{userId})
+    </insert>
+
+    <update id="updateDateBySubmitId">
+        update questionnaire_group_information
+        set update_date = NOW()
+        where submitId = #{submitId}
+    </update>
+</mapper>

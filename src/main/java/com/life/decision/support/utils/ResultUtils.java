@@ -8,7 +8,7 @@ import java.util.Map;
 
 /**
  * @author yxh
- * @description 返回结果的封装工具类
+ * @description 封装返回结果的工具类
  * @since 2020-12-20
  */
 public class ResultUtils {

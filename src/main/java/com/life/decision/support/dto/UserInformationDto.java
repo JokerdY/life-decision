@@ -58,6 +58,11 @@ public class UserInformationDto extends PageDto {
     @ApiModelProperty(value = "职业字典")
     private Integer occupation;
 
+    @ApiModelProperty("结婚状态字典")
+    private Integer marital;
+
+    @ApiModelProperty("家庭收入字典")
+    private Integer householdIncome;
     /**
      * 身份
      */

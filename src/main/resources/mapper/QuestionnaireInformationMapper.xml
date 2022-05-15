@@ -15,11 +15,15 @@
                extends="BaseResultMap">
         <result column="user_id" property="userId" jdbcType="VARCHAR"/>
         <result column="submit_enabled" property="submitEnabled" jdbcType="VARCHAR"/>
-        <result column="create_time" property="createTime" jdbcType="TIMESTAMP"/>
+        <result column="fill_date" property="fillDate" jdbcType="TIMESTAMP"/>
+        <result column="submit_count" property="submitCount" jdbcType="INTEGER"/>
     </resultMap>
 
     <sql id="Base_Column_List">
-        a.id, a.questionnaire_description, a.create_date,
+        a
+        .
+        id
+        , a.questionnaire_description, a.create_date,
         a.update_date, a.del_flag, a.questionnaire_type,a.comment,
         b.convert_name
     </sql>
@@ -28,9 +32,12 @@
     </sql>
 
     <sql id="userDtoList">
-        a.id, a.questionnaire_description, a.create_date,
+        a
+        .
+        id
+        , a.questionnaire_description, a.create_date,
         a.update_date, a.del_flag, a.questionnaire_type,a.comment,
-        b.convert_name,c.create_time
+        b.convert_name,c.fill_date,c.count as submit_count
     </sql>
 
     <select id="findList" resultMap="BaseResultMap"
@@ -52,21 +59,27 @@
         <include refid="userDtoList"/>
         from questionnaire_information a
         <include refid="baseColumnJoin"/>
-        LEFT JOIN (select * from questionnaire_submit_information where user_id = #{userId}) c on a.id =
-        c.questionnaire_id
+        LEFT JOIN (select questionnaire_id, count(*) as count, max(create_time) as fill_date
+        from questionnaire_submit_information where user_id = #{userId}
+        group by questionnaire_id ) c on a.id = c.questionnaire_id
         <where>
-            <if test="questionnaireType != null">
-                AND questionnaire_type = #{questionnaireType}
+            <if test="questionnaireType != null and questionnaireType != ''">
+                AND a.questionnaire_type = #{questionnaireType}
+            </if>
+            <if test="searchContent != null and searchContent != ''">
+                AND a.questionnaire_description like concat('%',#{searchContent},'%')
+                AND b.convert_name like concat('%',#{searchContent},'%')
             </if>
         </where>
-        ORDER BY c.create_time
+        ORDER BY a.id
     </select>
 
     <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String">
         select
         <include refid="Base_Column_List"/>
-        from questionnaire_information
-        where id = #{id,jdbcType=VARCHAR}
+        from questionnaire_information a
+        <include refid="baseColumnJoin"/>
+        where a.id = #{id,jdbcType=VARCHAR}
     </select>
     <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
         delete

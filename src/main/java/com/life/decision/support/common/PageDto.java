@@ -10,7 +10,7 @@ public abstract class PageDto implements Serializable {
 
     private Integer pageNum = 1;
 
-    private Integer pageSize = 50;
+    private Integer pageSize = 100;
 
     private String orderBy;
 

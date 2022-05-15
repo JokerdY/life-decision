@@ -1,6 +1,7 @@
 package com.life.decision.support.mapper;
 
 import com.life.decision.support.dto.UserInformationDto;
+import com.life.decision.support.pojo.PassWordChangeDto;
 import com.life.decision.support.pojo.UserInformation;
 import org.apache.ibatis.annotations.Mapper;
 
@@ -29,4 +30,7 @@ public interface UserInformationMapper {
     List<UserInformationDto> findList(UserInformation userInformation);
 
     int verifyIdentified(UserInformation userInformation);
+
+    int changePassword(PassWordChangeDto dto);
+
 }

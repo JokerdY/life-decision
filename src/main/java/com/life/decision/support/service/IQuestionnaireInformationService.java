@@ -18,4 +18,6 @@ public interface IQuestionnaireInformationService {
     List<QuestionnaireInformation> findList(QuestionnaireInformation questionnaireInformation);
 
     List<QuestionnaireInformationUserDto> findListInUser(QuestionnaireInformationUserDto dto);
+
+    QuestionnaireInformation selectByPrimaryKey(String questionnaireId);
 }

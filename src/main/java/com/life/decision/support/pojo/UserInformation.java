@@ -23,6 +23,8 @@ public class UserInformation {
 
     private String userName;
 
+    private String userId;
+
     private String telphoneNum;
 
     private String password;

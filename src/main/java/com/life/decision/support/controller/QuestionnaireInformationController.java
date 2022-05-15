@@ -8,6 +8,7 @@ import com.life.decision.support.utils.ResultUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -29,7 +30,7 @@ public class QuestionnaireInformationController {
     @Autowired
     IQuestionnaireInformationService questionnaireInformationService;
 
-    @RequestMapping("adminPage")
+    @PostMapping("adminPage")
     @ResponseBody
     public Object questionnaireInfoPage(@RequestBody QuestionnaireInformation questionnaireInformation) {
         try {
@@ -40,7 +41,7 @@ public class QuestionnaireInformationController {
         }
     }
 
-    @RequestMapping("page")
+    @PostMapping("page")
     @ResponseBody
     public Object page(@RequestBody QuestionnaireInformationUserDto dto) {
         try {
@@ -50,4 +51,5 @@ public class QuestionnaireInformationController {
             return ResultUtils.returnError("问卷概要信息获取失败，请联系管理员：" + e.getMessage());
         }
     }
+
 }

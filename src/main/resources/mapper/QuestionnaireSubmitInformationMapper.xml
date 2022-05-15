@@ -7,6 +7,9 @@
         <result column="questionnaire_id" jdbcType="VARCHAR" property="questionnaireId"/>
         <result column="create_time" jdbcType="DATE" property="createTime"/>
         <result column="update_time" jdbcType="DATE" property="updateTime"/>
+        <result column="is_admit_submit" jdbcType="VARCHAR" property="isAdmitSubmit"/>
+        <result column="questionnaire_status" jdbcType="VARCHAR" property="questionnaireStatus"/>
+        <result column="questionnaire_status_name" jdbcType="VARCHAR" property="questionnaireStatusName"/>
         <association property="questionnaireInformation" column="questionnaire_id"
                      javaType="com.life.decision.support.pojo.QuestionnaireInformation">
             <id column="questionnaire_id" jdbcType="VARCHAR" property="id"/>
@@ -17,26 +20,87 @@
                      javaType="com.life.decision.support.pojo.UserInformation">
             <id column="user_id" jdbcType="VARCHAR" property="id"/>
             <result column="user_name" jdbcType="VARCHAR" property="userName"/>
+            <result column="telphone_num" jdbcType="VARCHAR" property="telphoneNum"/>
         </association>
     </resultMap>
     <insert id="insert" parameterType="com.life.decision.support.pojo.QuestionnaireSubmitInformation">
-        insert into questionnaire_submit_information (id, user_id, questionnaire_id, create_time,update_time)
-        values (#{id,jdbcType=VARCHAR}, #{userId,jdbcType=VARCHAR}, #{questionnaireId,jdbcType=VARCHAR},
-                #{createTime,jdbcType=TIMESTAMP},
-                #{updateTime,jdbcType=TIMESTAMP})
+        insert into questionnaire_submit_information (id, user_id,
+        <if test="questionnaireStatus != null">
+            questionnaire_status,
+        </if>
+        <if test="isAdmitSubmit != null">
+            is_admit_submit,
+        </if>
+        questionnaire_id, create_time, update_time)
+        values (#{id,jdbcType=VARCHAR}, #{userId,jdbcType=VARCHAR},
+        <if test="questionnaireStatus != null">
+            #{questionnaireStatus},
+        </if>
+        <if test="isAdmitSubmit != null">
+            #{isAdmitSubmit},
+        </if>
+        #{questionnaireId,jdbcType=VARCHAR},
+        #{createTime,jdbcType=TIMESTAMP},
+        #{updateTime,jdbcType=TIMESTAMP})
     </insert>
     <update id="update" parameterType="com.life.decision.support.pojo.QuestionnaireSubmitInformation">
         update questionnaire_submit_information
-        set update_time = now()
+        set
+        <if test="questionnaireStatus != null">
+            questionnaire_status = #{questionnaireStatus},
+        </if>
+        <if test="isAdmitSubmit != null">
+            is_admit_submit = #{isAdmitSubmit},
+        </if>
+        update_time = now()
         where id = #{id}
     </update>
 
     <select id="findSubmitPage" resultMap="baseResultMap">
-        select a.*, b.questionnaire_description, c.user_name, d.convert_name
+        select a.*,
+        b.questionnaire_description,
+        c.user_name,
+        d.convert_name,
+        c.telphone_num as telphoneNum,
+        e.convert_name as questionnaire_status_name
         from questionnaire_submit_information a
-                 left join (select * from questionnaire_information where del_flag = 0) b on a.questionnaire_id = b.id
-                 left join user_information c on a.user_id = c.id
-                 left join (select * from sys_dict where column_name = 'questionnaire_type') d
-                           on b.questionnaire_type = d.column_value
+        left join (select * from questionnaire_information where del_flag = 0) b on a.questionnaire_id = b.id
+        left join user_information c on a.user_id = c.id
+        left join (select * from sys_dict where column_name = 'questionnaire_type') d
+        on b.questionnaire_type = d.column_value
+        left join (select * from sys_dict where column_name = 'questionnaire_status') e
+        on a.questionnaire_status = e.column_value
+        <where>
+            <if test="user != null and user.telphoneNum != null and user.telphoneNum != ''">
+                AND c.telphone_num like concat('%',#{user.telphoneNum},'%')
+            </if>
+            <if test="user != null and user.userName != null and user.userName != ''">
+                AND c.user_name like concat('%',#{user.userName},'%')
+            </if>
+            <if test="questionnaireId != null and questionnaireId != ''">
+                AND a.questionnaireId = #{questionnaireId}
+            </if>
+            <if test="queryEndDate != null and queryEndDate != ''">
+                AND date_format(a.create_time ,'%Y-%m-%d') &lt; #{queryEndDate}
+            </if>
+            <if test="queryStartDate != null and queryStartDate != ''">
+                AND date_format(a.create_time ,'%Y-%m-%d') &gt; #{queryStartDate}
+            </if>
+        </where>
+    </select>
+    <select id="getById" resultMap="baseResultMap">
+        select *
+        from questionnaire_submit_information
+        where id = #{id}
+    </select>
+    <select id="listSubmitMsg" resultType="com.life.decision.support.dto.SubmitOfTheQuestionnaireGroup">
+        select t.id as questionnaireId, dict.convert_name as questionnaireName, IFNULL(sub.count, 0) as submitCount
+        from questionnaire_information t
+                 LEFT JOIN (select * from sys_dict where column_name = 'questionnaire_type') dict
+                           on t.questionnaire_type = dict.column_value
+                 left join (select count(*) as count, questionnaire_id
+                            from questionnaire_submit_information
+                            where user_id = #{userId}
+                            group by questionnaire_id) sub on t.id = sub.questionnaire_id
     </select>
 </mapper>
