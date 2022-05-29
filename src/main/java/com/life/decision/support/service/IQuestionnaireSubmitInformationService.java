@@ -17,4 +17,8 @@ public interface IQuestionnaireSubmitInformationService {
     List<SubmitOfTheQuestionnaireGroup> listSubmitMsg(String userId);
 
     List<QuestionnaireSubmitInformation> findSubmitPage(QuestionnaireSubmitInformation dto);
+
+    List<QuestionnaireSubmitInformation> listIdByGroupIds(List<String> groupIds);
+
+    List<String> getGroupIdsByDate(String startDate,String endDate);
 }

@@ -15,7 +15,6 @@
                extends="BaseResultMap">
         <result column="user_id" property="userId" jdbcType="VARCHAR"/>
         <result column="submit_enabled" property="submitEnabled" jdbcType="VARCHAR"/>
-        <result column="fill_date" property="fillDate" jdbcType="TIMESTAMP"/>
         <result column="submit_count" property="submitCount" jdbcType="INTEGER"/>
     </resultMap>
 
@@ -37,7 +36,7 @@
         id
         , a.questionnaire_description, a.create_date,
         a.update_date, a.del_flag, a.questionnaire_type,a.comment,
-        b.convert_name,c.fill_date,c.count as submit_count
+        b.convert_name,c.count as submit_count
     </sql>
 
     <select id="findList" resultMap="BaseResultMap"

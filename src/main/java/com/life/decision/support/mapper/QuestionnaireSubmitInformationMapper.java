@@ -18,4 +18,9 @@ public interface QuestionnaireSubmitInformationMapper {
     QuestionnaireSubmitInformation getById(@Param("id") String id);
 
     List<SubmitOfTheQuestionnaireGroup> listSubmitMsg(@Param("userId") String userId);
+
+    List<QuestionnaireSubmitInformation> listIdByGroupIds(@Param("list") List<String> groupIds);
+
+    List<String> getGroupIdByDate(@Param("startDate") String startDate,
+                                  @Param("endDate") String endDate);
 }

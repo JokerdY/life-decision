@@ -20,21 +20,29 @@ import java.util.List;
 public class QuestionnaireSubmitInformationController {
 
     @Autowired
-    IQuestionnaireSubmitInformationService  questionnaireSubmitInformationService;
+    IQuestionnaireSubmitInformationService questionnaireSubmitInformationService;
 
     /**
      * orderby排序传数据库字段
-     * @param dto
-     * @return
      *
-     * 参数   用户账号 user.telphoneNum
-     *       用户名   user.userName
-     *       测评类型 questionnaireId
-     *       填写时间 createTime
+     * @param dto
+     * @return 参数   用户账号 user.telphoneNum
+     * 用户名   user.userName
+     * 测评类型 questionnaireId
+     * 填写时间 createTime
      */
     @PostMapping("adminQuestionnaireList")
     @ResponseBody
     public Object adminQuestionnaireList(@RequestBody QuestionnaireSubmitInformation dto) {
+        PageHelper.startPage(dto);
+        List<QuestionnaireSubmitInformation> list = questionnaireSubmitInformationService.findSubmitPage(dto);
+        return ResultUtils.returnPage(new PageInfo<>(list));
+    }
+
+    @PostMapping("adminQuestionnaireListHasSubmit")
+    @ResponseBody
+    public Object adminQuestionnaireListHasSubmit(@RequestBody QuestionnaireSubmitInformation dto) {
+        dto.setQuestionnaireStatus(1);
         PageHelper.startPage(dto);
         List<QuestionnaireSubmitInformation> list = questionnaireSubmitInformationService.findSubmitPage(dto);
         return ResultUtils.returnPage(new PageInfo<>(list));

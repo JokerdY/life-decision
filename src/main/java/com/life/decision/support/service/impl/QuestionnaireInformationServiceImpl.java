@@ -2,14 +2,19 @@ package com.life.decision.support.service.impl;
 
 import com.github.pagehelper.PageHelper;
 import com.life.decision.support.dto.QuestionnaireInformationUserDto;
+import com.life.decision.support.mapper.QuestionnaireGroupInformationMapper;
 import com.life.decision.support.mapper.QuestionnaireInformationMapper;
+import com.life.decision.support.pojo.QuestionnaireGroupInformation;
 import com.life.decision.support.pojo.QuestionnaireInformation;
 import com.life.decision.support.service.IQuestionnaireInformationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.sql.Date;
+import java.time.ZoneId;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
+import java.util.Optional;
 
 /**
  * <p>
@@ -24,6 +29,8 @@ public class QuestionnaireInformationServiceImpl implements IQuestionnaireInform
 
     @Autowired
     QuestionnaireInformationMapper questionnaireInformationMapper;
+    @Autowired
+    QuestionnaireGroupInformationMapper questionnaireGroupInformationMapper;
 
     @Override
     public List<QuestionnaireInformation> findList(QuestionnaireInformation questionnaireInformation) {
@@ -38,31 +45,32 @@ public class QuestionnaireInformationServiceImpl implements IQuestionnaireInform
 
     /**
      * 问卷组信息
+     *
      * @param dto
      * @return
      */
     @Override
     public List<QuestionnaireInformationUserDto> findListInUser(QuestionnaireInformationUserDto dto) {
         PageHelper.startPage(dto);
+        // 找到问卷信息
         List<QuestionnaireInformationUserDto> listInUser = questionnaireInformationMapper.findListInUser(dto);
-        // 获取
-        listInUser
-                .stream()
-                .map(QuestionnaireInformationUserDto::getSubmitCount)
-                .filter(Objects::nonNull)
-                .max(Integer::compareTo)
-                .ifPresent(max -> {
-                    for (QuestionnaireInformationUserDto userDto : listInUser) {
-                        // 如果提交次数一样 则认为在当前问卷组已提交 设置submitEnabled
-                        // 否则submitEnabled置空
-                        if (userDto.getSubmitCount() != null && max.equals(userDto.getSubmitCount())) {
-                            userDto.setSubmitEnabled(userDto.getFillDate() != null);
-                        } else {
-                            userDto.setSubmitEnabled(false);
-                            userDto.setFillDate(null);
-                        }
-                    }
-                });
+        QuestionnaireGroupInformation groupInfo = questionnaireGroupInformationMapper.getByUserId(dto.getUserId());
+        List<QuestionnaireGroupInformation> groupList = new ArrayList<>();
+        if (groupInfo != null && groupInfo.getGroupId() != null) {
+            groupList = questionnaireGroupInformationMapper.findList(groupInfo);
+        }
+        // 查询是否存在最大的groupId 且问卷数量
+        for (QuestionnaireInformationUserDto questionnaire : listInUser) {
+            Optional<QuestionnaireGroupInformation> groupInformation = groupList.stream().filter(group -> questionnaire.getId().equals(group.getQuestionnaireId())).findAny();
+            if (groupInformation.isPresent()) {
+                QuestionnaireGroupInformation g = groupInformation.get();
+                questionnaire.setFillDate(Date.from(g.getUpdateDate().atZone(ZoneId.systemDefault()).toInstant()));
+                questionnaire.setSubmitId(g.getSubmitId());
+                questionnaire.setSubmitEnabled(true);
+            } else {
+                questionnaire.setSubmitEnabled(false);
+            }
+        }
         return listInUser;
     }
 }

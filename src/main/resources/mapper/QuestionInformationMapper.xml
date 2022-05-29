@@ -40,7 +40,10 @@
         </collection>
     </resultMap>
     <sql id="baseColumnList">
-        a.id, a.questionnaire_id, a.question_sort, a.big_label_id, a.question_type, a.question_name,
+        a
+        .
+        id
+        , a.questionnaire_id, a.question_sort, a.big_label_id, a.question_type, a.question_name,
         b.id AS 'oid', b.question_id, b.fill_enabled, b.option_sort, b.associated_jump_id, b.option_value,
         w_id, w_questionnaire_id, w_question_sort, w_big_label_id, w_question_type,  w_question_name,
         q_id, q_question_id, q_fill_enabled, q_option_sort, q_associated_jump_id, q_option_value,
@@ -75,8 +78,10 @@ sd.convert_name as 'big_label'
         <include refid="baseColumnList"/>
         FROM (SELECT * FROM question_information WHERE parent_id IS NULL) a
         <include refid="leftJoin"/>
-        where a.questionnaire_id = #{questionnaireId}
-        order by a.question_sort, b.option_sort
+        <if test="questionnaireId != null and questionnaireId != '' ">
+            where a.questionnaire_id = #{questionnaireId}
+        </if>
+        order by a.questionnaire_id, a.big_label_id, a.question_sort, b.option_sort
     </select>
 
     <delete id="deleteByPrimaryKey" parameterType="java.lang.String">

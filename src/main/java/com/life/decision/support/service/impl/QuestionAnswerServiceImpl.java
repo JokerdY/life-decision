@@ -47,4 +47,9 @@ public class QuestionAnswerServiceImpl implements IQuestionAnswerService {
     public List<QuestionAnswer> findList(QuestionAnswer questionAnswer) {
         return answerMapper.list(questionAnswer);
     }
+
+    @Override
+    public List<QuestionAnswer> listBySubmitId(List<String> list) {
+        return answerMapper.listBySubmitId(list);
+    }
 }

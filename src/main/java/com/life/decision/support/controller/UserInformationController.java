@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.function.Predicate;
 
 /**
  * <p>
@@ -58,8 +59,8 @@ public class UserInformationController {
 
     @PostMapping("getMsgByTel")
     @ResponseBody
-    public Object getMsgByTel(@RequestBody UserInformation userInformation){
-        if(StrUtil.isBlank(userInformation.getTelphoneNum())){
+    public Object getMsgByTel(@RequestBody UserInformation userInformation) {
+        if (StrUtil.isBlank(userInformation.getTelphoneNum())) {
             return ResultUtils.returnError("查询失败，用户账号信息为空");
         }
         return ResultUtils.returnSuccess(userInformationService.getUserMsg(userInformation));
@@ -108,18 +109,36 @@ public class UserInformationController {
     @PostMapping("login")
     @ResponseBody
     public Object login(@RequestBody UserInformation userInformation) {
+        return loginTemplate(userInformation);
+    }
+
+    @PostMapping("loginPc")
+    @ResponseBody
+    public Object loginPc(@RequestBody UserInformation userInformation) {
+        return loginTemplate(userInformation, userMsg -> !userMsg.getAdminEnable().equals(1), "非管理员账号");
+    }
+
+    private Object loginTemplate(UserInformation userInformation) {
+        return loginTemplate(userInformation, s -> true, "");
+    }
+
+    private Object loginTemplate(UserInformation userInformation, Predicate<UserInformationDto> predicate, String errorMsg) {
         if (StrUtil.isBlank(userInformation.getTelphoneNum()) || StrUtil.isBlank(userInformation.getPassword())) {
             return ResultUtils.returnError("账号密码为空");
         }
         if (userInformationService.verifyIdentified(userInformation)) {
             UserInformationDto userMsg = userInformationService.getUserMsg(userInformation);
-            Map<String, Object> result = new HashMap<>(2);
-            result.put("token", userMsg.getId());
-            if (userInformation.getTelphoneNum().endsWith(userInformation.getPassword()) && userInformation.getPassword().length() == 6) {
-                result.put("msg", "当前密码安全度较低，请修改密码！");
+            if (predicate.test(userMsg)) {
+                return ResultUtils.returnError(errorMsg);
+            } else {
+                Map<String, Object> result = new HashMap<>(2);
+                result.put("token", userMsg.getId());
+                if (userInformation.getTelphoneNum().endsWith(userInformation.getPassword()) && userInformation.getPassword().length() == 6) {
+                    result.put("msg", "当前密码安全度较低，请修改密码！");
+                    return ResultUtils.returnSuccess(result);
+                }
                 return ResultUtils.returnSuccess(result);
             }
-            return ResultUtils.returnSuccess(result);
         }
         return ResultUtils.returnError("账号或密码错误");
     }
@@ -128,6 +147,16 @@ public class UserInformationController {
     @ResponseBody
     public Object register(@RequestBody UserInformation userInformation) {
         userInformation.setAdminEnable(0);
+        return registerTemplate(userInformation);
+    }
+
+    @PostMapping("adminRegister")
+    @ResponseBody
+    public Object adminRegister(@RequestBody UserInformation userInformation) {
+        return registerTemplate(userInformation);
+    }
+
+    private Map<String, Object> registerTemplate(UserInformation userInformation) {
         try {
             if (userInformationService.isExist(userInformation)) {
                 return ResultUtils.returnError("用户信息已存在");

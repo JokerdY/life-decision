@@ -39,4 +39,13 @@ public class QuestionnaireSubmitInformationServiceImpl implements IQuestionnaire
     public List<QuestionnaireSubmitInformation> findSubmitPage(QuestionnaireSubmitInformation dto) {
         return mapper.findSubmitPage(dto);
     }
+
+    public List<QuestionnaireSubmitInformation> listIdByGroupIds(List<String> groupIds) {
+        return mapper.listIdByGroupIds(groupIds);
+    }
+
+    @Override
+    public List<String> getGroupIdsByDate(String startDate, String endDate) {
+        return mapper.getGroupIdByDate(startDate, endDate);
+    }
 }
