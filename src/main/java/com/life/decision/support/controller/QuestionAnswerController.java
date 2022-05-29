@@ -182,9 +182,9 @@ public class QuestionAnswerController {
 
     private void uploadAdminSubmitInfo(JSONObject obj, QuestionnaireSubmitInformation submitInfo) {
         if (obj.getBool("isAdmin", false)) {
-            submitInfo.setIsAdmitSubmit(1);
+            submitInfo.setIsAdminSubmit(1);
         } else {
-            submitInfo.setIsAdmitSubmit(0);
+            submitInfo.setIsAdminSubmit(0);
         }
         // 如果isSubmit为false则设为保存状态，如果没有isSubmit或者为true则认为是提交状态
         if (!obj.getBool("isSubmit", true)) {

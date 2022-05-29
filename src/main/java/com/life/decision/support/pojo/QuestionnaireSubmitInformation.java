@@ -26,7 +26,7 @@ public class QuestionnaireSubmitInformation extends PageDto {
 
     private UserInformation user;
 
-    private Integer isAdmitSubmit;
+    private Integer isAdminSubmit;
 
     private Integer questionnaireStatus;
 

@@ -20,4 +20,6 @@ public interface IQuestionAnswerService {
     void updateBatch(List<QuestionAnswer> list);
 
     List<QuestionAnswer> findList(QuestionAnswer questionAnswer);
+
+    List<QuestionAnswer> listBySubmitId(List<String> list);
 }

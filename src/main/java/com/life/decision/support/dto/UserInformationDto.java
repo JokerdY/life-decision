@@ -6,6 +6,8 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.Date;
 
 @Data
@@ -86,4 +88,12 @@ public class UserInformationDto extends PageDto {
 
     @ApiModelProperty("家庭收入展示值")
     private String householdIncomeDto;
+
+    private String age;
+
+    public String getAge() {
+        LocalDate localDate = dateOfBirth.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        LocalDate now = LocalDate.now();
+        return localDate.until(now).getYears() + "";
+    }
 }

@@ -2,6 +2,7 @@ package com.life.decision.support.controller;
 
 import cn.hutool.json.JSONObject;
 import com.life.decision.support.dto.QuestionInformationDto;
+import com.life.decision.support.dto.UserInformationDto;
 import com.life.decision.support.pojo.QuestionAnswer;
 import com.life.decision.support.pojo.QuestionnaireSubmitInformation;
 import com.life.decision.support.pojo.UserInformation;
@@ -30,20 +31,24 @@ public class QuestionnaireSupplementController {
 
     @RequestMapping("supplementaryRecordByUserId")
     public Object supplementaryRecordByUserId(@RequestBody Map<String, String> map) {
-        if (!map.containsKey("questionnaireType") || !map.containsKey("userTel")) {
+        if (!map.containsKey("questionnaireId") || !map.containsKey("userTel")) {
             return ResultUtils.returnError("参数不完整！");
         }
-        String questionnaireType = map.get("questionnaireType");
+        String questionnaireId = map.get("questionnaireId");
         String userTel = map.get("userTel");
         // 返回用户信息和问卷信息
         UserInformation userInformation = new UserInformation();
         userInformation.setTelphoneNum(userTel);
-        return getSupplementaryResult(questionInformationService.listById(questionnaireType), userInformation);
+        return getSupplementaryResult(questionInformationService.listById(questionnaireId), userInformation);
     }
 
     private Map<String, Object> getSupplementaryResult(List<QuestionInformationDto> questionInformationDtoList, UserInformation userInformation) {
         JSONObject result = new JSONObject();
-        result.putOpt("userMsg", userInformationService.getUserMsg(userInformation));
+        UserInformationDto userMsg = userInformationService.getUserMsg(userInformation);
+        if(userMsg==null){
+            return ResultUtils.returnError("用户账号不存在!");
+        }
+        result.putOpt("userMsg", userMsg);
         result.putOpt("questionInformation", questionInformationDtoList);
         return ResultUtils.returnSuccess(result);
     }
@@ -64,7 +69,7 @@ public class QuestionnaireSupplementController {
         QuestionnaireSubmitInformation submitInfo = questionnaireSubmitInformationService.getById(submitId);
         // 返回用户信息和问卷信息
         UserInformation userInformation = new UserInformation();
-        userInformation.setUserId(submitInfo.getUserId());
+        userInformation.setId(submitInfo.getUserId());
         QuestionAnswer questionAnswer = new QuestionAnswer();
         questionAnswer.setSubmitId(submitId);
         return getSupplementaryResult(questionInformationService.findEditList(questionAnswer), userInformation);

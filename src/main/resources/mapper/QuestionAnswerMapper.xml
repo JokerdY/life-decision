@@ -12,7 +12,8 @@
         <result column="submit_id" property="submitId" jdbcType="VARCHAR"/>
     </resultMap>
     <sql id="Base_Column_List">
-        id, user_id, questionnaire_id, question_id, create_date, option_id, comment,submit_id
+        id
+        , user_id, questionnaire_id, question_id, create_date, option_id, comment,submit_id
     </sql>
     <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String">
         select
@@ -25,6 +26,16 @@
         <include refid="Base_Column_List"/>
         from question_answer
         where user_id = #{userId} and questionnaire_id = #{questionnaireId} and submit_id = #{submitId}
+    </select>
+    <select id="listBySubmitId" resultType="com.life.decision.support.pojo.QuestionAnswer">
+        select
+        <include refid="Base_Column_List"/>
+        from question_answer
+        where submit_id in (
+        <foreach collection="list" item="item" separator=",">
+            #{item}
+        </foreach>
+        )
     </select>
     <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
         delete

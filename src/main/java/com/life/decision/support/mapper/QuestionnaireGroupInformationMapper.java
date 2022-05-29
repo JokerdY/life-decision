@@ -21,4 +21,6 @@ public interface QuestionnaireGroupInformationMapper {
     void updateDateBySubmitId(@Param("submitId") String submitId);
 
     QuestionnaireGroupInformation getBySubmitId(@Param("submitId") String submitId);
+
+    QuestionnaireGroupInformation getByUserId(@Param("userId") String userId);
 }

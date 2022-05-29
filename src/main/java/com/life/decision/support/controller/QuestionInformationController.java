@@ -41,6 +41,9 @@ public class QuestionInformationController {
     @ResponseBody
     public Object questionInformationList(@RequestBody QuestionInformation questionInformation) {
         try {
+            if(questionInformation.getQuestionnaireId() == null){
+                return ResultUtils.returnError("请输入完整参数");
+            }
             List<QuestionInformationDto> data = questionInformationService.listById(questionInformation.getQuestionnaireId());
             return ResultUtils.returnSuccess(getContent(questionInformation.getQuestionnaireId(), data));
         } catch (Exception e) {

@@ -7,7 +7,7 @@
         <result column="questionnaire_id" jdbcType="VARCHAR" property="questionnaireId"/>
         <result column="create_time" jdbcType="DATE" property="createTime"/>
         <result column="update_time" jdbcType="DATE" property="updateTime"/>
-        <result column="is_admit_submit" jdbcType="VARCHAR" property="isAdmitSubmit"/>
+        <result column="is_admit_submit" jdbcType="VARCHAR" property="isAdminSubmit"/>
         <result column="questionnaire_status" jdbcType="VARCHAR" property="questionnaireStatus"/>
         <result column="questionnaire_status_name" jdbcType="VARCHAR" property="questionnaireStatusName"/>
         <association property="questionnaireInformation" column="questionnaire_id"
@@ -20,7 +20,7 @@
                      javaType="com.life.decision.support.pojo.UserInformation">
             <id column="user_id" jdbcType="VARCHAR" property="id"/>
             <result column="user_name" jdbcType="VARCHAR" property="userName"/>
-            <result column="telphone_num" jdbcType="VARCHAR" property="telphoneNum"/>
+            <result column="telphoneNum" jdbcType="VARCHAR" property="telphoneNum"/>
         </association>
     </resultMap>
     <insert id="insert" parameterType="com.life.decision.support.pojo.QuestionnaireSubmitInformation">
@@ -28,7 +28,7 @@
         <if test="questionnaireStatus != null">
             questionnaire_status,
         </if>
-        <if test="isAdmitSubmit != null">
+        <if test="isAdminSubmit != null">
             is_admit_submit,
         </if>
         questionnaire_id, create_time, update_time)
@@ -36,8 +36,8 @@
         <if test="questionnaireStatus != null">
             #{questionnaireStatus},
         </if>
-        <if test="isAdmitSubmit != null">
-            #{isAdmitSubmit},
+        <if test="isAdminSubmit != null">
+            #{isAdminSubmit},
         </if>
         #{questionnaireId,jdbcType=VARCHAR},
         #{createTime,jdbcType=TIMESTAMP},
@@ -49,8 +49,8 @@
         <if test="questionnaireStatus != null">
             questionnaire_status = #{questionnaireStatus},
         </if>
-        <if test="isAdmitSubmit != null">
-            is_admit_submit = #{isAdmitSubmit},
+        <if test="isAdminSubmit != null">
+            is_admit_submit = #{isAdminSubmit},
         </if>
         update_time = now()
         where id = #{id}
@@ -78,13 +78,16 @@
                 AND c.user_name like concat('%',#{user.userName},'%')
             </if>
             <if test="questionnaireId != null and questionnaireId != ''">
-                AND a.questionnaireId = #{questionnaireId}
+                AND a.questionnaire_id = #{questionnaireId}
+            </if>
+            <if test="questionnaireStatus != null and questionnaireStatus != ''">
+                AND a.questionnaire_status = #{questionnaireStatus}
             </if>
             <if test="queryEndDate != null and queryEndDate != ''">
-                AND date_format(a.create_time ,'%Y-%m-%d') &lt; #{queryEndDate}
+                AND date_format(a.create_time ,'%Y-%m-%d') &lt;= #{queryEndDate}
             </if>
             <if test="queryStartDate != null and queryStartDate != ''">
-                AND date_format(a.create_time ,'%Y-%m-%d') &gt; #{queryStartDate}
+                AND date_format(a.create_time ,'%Y-%m-%d') &gt;= #{queryStartDate}
             </if>
         </where>
     </select>
@@ -102,5 +105,30 @@
                             from questionnaire_submit_information
                             where user_id = #{userId}
                             group by questionnaire_id) sub on t.id = sub.questionnaire_id
+    </select>
+    <select id="listIdByGroupIds" resultType="com.life.decision.support.pojo.QuestionnaireSubmitInformation">
+        select a.*
+        from questionnaire_submit_information a
+        where a.id in (select submit_id
+        from questionnaire_group_information
+        where group_id in (
+        <foreach collection="list" item="it" separator=",">
+            #{it,jdbcType=VARCHAR}
+        </foreach>
+            )
+        )
+        and a.questionnaire_status = 1
+    </select>
+    <select id="getGroupIdByDate" resultType="java.lang.String">
+        select distinct group_id
+        from questionnaire_group_information
+        <where>
+            <if test="startDate != null">
+                and create_date &gt; #{startDate}
+            </if>
+            <if test="endDate != null">
+                and create_date &lt; #{endDate}
+            </if>
+        </where>
     </select>
 </mapper>
