@@ -67,7 +67,7 @@
         <include refid="Base_Column_List"/>
         from questionnaire_group_information a
         <include refid="baseColumnJoin"/>
-        where submitId = #{submitId}
+        where submit_id = #{submitId}
     </select>
 
     <select id="getByUserId" resultMap="BaseResultMap">
@@ -93,6 +93,6 @@
     <update id="updateDateBySubmitId">
         update questionnaire_group_information
         set update_date = NOW()
-        where submitId = #{submitId}
+        where submit_id = #{submitId}
     </update>
 </mapper>

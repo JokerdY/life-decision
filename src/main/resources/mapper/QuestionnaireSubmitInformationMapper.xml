@@ -7,7 +7,7 @@
         <result column="questionnaire_id" jdbcType="VARCHAR" property="questionnaireId"/>
         <result column="create_time" jdbcType="DATE" property="createTime"/>
         <result column="update_time" jdbcType="DATE" property="updateTime"/>
-        <result column="is_admit_submit" jdbcType="VARCHAR" property="isAdminSubmit"/>
+        <result column="is_admin_submit" jdbcType="VARCHAR" property="isAdminSubmit"/>
         <result column="questionnaire_status" jdbcType="VARCHAR" property="questionnaireStatus"/>
         <result column="questionnaire_status_name" jdbcType="VARCHAR" property="questionnaireStatusName"/>
         <association property="questionnaireInformation" column="questionnaire_id"
@@ -29,7 +29,7 @@
             questionnaire_status,
         </if>
         <if test="isAdminSubmit != null">
-            is_admit_submit,
+            is_admin_submit,
         </if>
         questionnaire_id, create_time, update_time)
         values (#{id,jdbcType=VARCHAR}, #{userId,jdbcType=VARCHAR},
@@ -50,7 +50,7 @@
             questionnaire_status = #{questionnaireStatus},
         </if>
         <if test="isAdminSubmit != null">
-            is_admit_submit = #{isAdminSubmit},
+            is_admin_submit = #{isAdminSubmit},
         </if>
         update_time = now()
         where id = #{id}
