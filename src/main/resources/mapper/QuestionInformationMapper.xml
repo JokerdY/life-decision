@@ -9,6 +9,7 @@
         <result column="question_type" property="questionType" jdbcType="INTEGER"/>
         <result column="question_name" property="questionName" jdbcType="LONGVARCHAR"/>
         <result column="big_label" property="bigLabel" jdbcType="VARCHAR"/>
+        <result column="required_enabled" property="requiredEnabled" jdbcType="INTEGER"/>
         <collection property="optionInformationList" javaType="java.util.ArrayList"
                     ofType="com.life.decision.support.pojo.OptionInformation">
             <id column="oid" property="id" jdbcType="VARCHAR"/>
@@ -43,7 +44,7 @@
         a
         .
         id
-        , a.questionnaire_id, a.question_sort, a.big_label_id, a.question_type, a.question_name,
+        , a.questionnaire_id, a.question_sort, a.big_label_id, a.required_enabled, a.question_type, a.question_name,
         b.id AS 'oid', b.question_id, b.fill_enabled, b.option_sort, b.associated_jump_id, b.option_value,
         w_id, w_questionnaire_id, w_question_sort, w_big_label_id, w_question_type,  w_question_name,
         q_id, q_question_id, q_fill_enabled, q_option_sort, q_associated_jump_id, q_option_value,

@@ -119,7 +119,7 @@ public class UserInformationController {
     }
 
     private Object loginTemplate(UserInformation userInformation) {
-        return loginTemplate(userInformation, s -> true, "");
+        return loginTemplate(userInformation, s -> false, "");
     }
 
     private Object loginTemplate(UserInformation userInformation, Predicate<UserInformationDto> predicate, String errorMsg) {

@@ -39,4 +39,6 @@ public class QuestionInformation{
      */
     private Integer questionType;
 
+    private Integer requiredEnabled;
+
 }
