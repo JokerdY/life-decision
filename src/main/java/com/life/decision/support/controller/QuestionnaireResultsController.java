@@ -56,7 +56,7 @@ public class QuestionnaireResultsController {
             for (QuestionInformationDto questionInformationDto : list) {
                 uploadAnswer(answerList, questionInformationDto);
                 question.add(BeanUtil.copyProperties(questionInformationDto, QuestionInformationResultDto.class));
-                if (CollUtil.isEmpty(questionInformationDto.getChild())) {
+                if (CollUtil.isNotEmpty(questionInformationDto.getChild())) {
                     for (QuestionInformationDto informationDto : questionInformationDto.getChild()) {
                         uploadAnswer(answerList, informationDto);
                         question.add(BeanUtil.copyProperties(informationDto, QuestionInformationResultDto.class));
