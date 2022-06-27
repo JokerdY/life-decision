@@ -1,0 +1,6157 @@
+{
+  "userId": "eafd4d8d-da9a-4b58-bfc1-202b53aa5ef6",
+  "questionnaire": {
+    "1": [
+      {
+        "optionInformationList": [
+          {
+            "associatedJumpId": "1",
+            "questionId": "1",
+            "optionValue": "有",
+            "questionnaireId": "1",
+            "optionSort": 1,
+            "fillEnabled": 0,
+            "id": "1"
+          },
+          {
+            "questionId": "1",
+            "optionValue": "无",
+            "questionnaireId": "1",
+            "optionSort": 2,
+            "fillEnabled": 0,
+            "id": "2"
+          }
+        ],
+        "questionnaireId": "1",
+        "questionName": "是否有过敏史或饮食禁忌",
+        "questionAnswer": {
+          "questionId": "1",
+          "questionnaireId": "1",
+          "userId": "eafd4d8d-da9a-4b58-bfc1-202b53aa5ef6",
+          "optionId": "1",
+          "comment": "",
+          "id": "cb024c3c-0cc2-45c3-ab58-490861cd9913",
+          "submitId": "71ca7cdd-e3df-43a7-bfde-77ee453d1026",
+          "createDate": "2022-06-27T11:36:42"
+        },
+        "requiredEnabled": 1,
+        "id": "1"
+      },
+      {
+        "optionInformationList": [
+          {
+            "associatedJumpId": "1",
+            "questionId": "7",
+            "optionValue": "有",
+            "questionnaireId": "1",
+            "optionSort": 1,
+            "fillEnabled": 0,
+            "id": "10"
+          },
+          {
+            "questionId": "7",
+            "optionValue": "无",
+            "questionnaireId": "1",
+            "optionSort": 2,
+            "fillEnabled": 0,
+            "id": "11"
+          }
+        ],
+        "questionnaireId": "1",
+        "questionName": "是否有疾病既往史",
+        "questionAnswer": {
+          "questionId": "7",
+          "questionnaireId": "1",
+          "userId": "eafd4d8d-da9a-4b58-bfc1-202b53aa5ef6",
+          "optionId": "11",
+          "comment": "",
+          "id": "d7cbbe5a-3f18-4088-b04c-43b0e99b6ffc",
+          "submitId": "71ca7cdd-e3df-43a7-bfde-77ee453d1026",
+          "createDate": "2022-06-27T11:36:42"
+        },
+        "requiredEnabled": 1,
+        "id": "7"
+      },
+      {
+        "optionInformationList": [
+          {
+            "associatedJumpId": "1",
+            "questionId": "9",
+            "optionValue": "有",
+            "questionnaireId": "1",
+            "optionSort": 1,
+            "fillEnabled": 0,
+            "id": "13"
+          },
+          {
+            "questionId": "9",
+            "optionValue": "无",
+            "questionnaireId": "1",
+            "optionSort": 2,
+            "fillEnabled": 0,
+            "id": "14"
+          }
+        ],
+        "questionnaireId": "1",
+        "questionName": "是否有手术既往史",
+        "questionAnswer": {
+          "questionId": "9",
+          "questionnaireId": "1",
+          "userId": "eafd4d8d-da9a-4b58-bfc1-202b53aa5ef6",
+          "optionId": "13",
+          "comment": "",
+          "id": "ec17e461-f3f6-4d7b-850a-2b19ae55408a",
+          "submitId": "71ca7cdd-e3df-43a7-bfde-77ee453d1026",
+          "createDate": "2022-06-27T11:36:42"
+        },
+        "requiredEnabled": 1,
+        "id": "9"
+      },
+      {
+        "optionInformationList": [
+          {
+            "associatedJumpId": "1",
+            "questionId": "11",
+            "optionValue": "有",
+            "questionnaireId": "1",
+            "optionSort": 1,
+            "fillEnabled": 0,
+            "id": "16"
+          },
+          {
+            "questionId": "11",
+            "optionValue": "无",
+            "questionnaireId": "1",
+            "optionSort": 2,
+            "fillEnabled": 0,
+            "id": "17"
+          }
+        ],
+        "questionnaireId": "1",
+        "questionName": "是否有运动禁忌",
+        "questionAnswer": {
+          "questionId": "11",
+          "questionnaireId": "1",
+          "userId": "eafd4d8d-da9a-4b58-bfc1-202b53aa5ef6",
+          "optionId": "17",
+          "comment": "",
+          "id": "4eb70472-1fc8-4e77-b62e-ccefa5486c51",
+          "submitId": "71ca7cdd-e3df-43a7-bfde-77ee453d1026",
+          "createDate": "2022-06-27T11:36:42"
+        },
+        "requiredEnabled": 1,
+        "id": "11"
+      },
+      {
+        "optionInformationList": [
+          {
+            "associatedJumpId": "1",
+            "questionId": "13",
+            "optionValue": "有",
+            "questionnaireId": "1",
+            "optionSort": 1,
+            "fillEnabled": 0,
+            "id": "29"
+          },
+          {
+            "questionId": "13",
+            "optionValue": "无",
+            "questionnaireId": "1",
+            "optionSort": 2,
+            "fillEnabled": 0,
+            "id": "30"
+          }
+        ],
+        "questionnaireId": "1",
+        "questionName": "是否有以下症状（如头痛、头晕、心悸、胸闷、胸痛、眼花、耳鸣）",
+        "questionAnswer": {
+          "questionId": "13",
+          "questionnaireId": "1",
+          "userId": "eafd4d8d-da9a-4b58-bfc1-202b53aa5ef6",
+          "optionId": "29",
+          "comment": "",
+          "id": "61567677-9b75-40b6-a8b5-0d3943f00303",
+          "submitId": "71ca7cdd-e3df-43a7-bfde-77ee453d1026",
+          "createDate": "2022-06-27T11:36:42"
+        },
+        "requiredEnabled": 1,
+        "id": "13"
+      },
+      {
+        "optionInformationList": [
+          {
+            "questionId": "15",
+            "optionValue": "荤素均衡",
+            "questionnaireId": "1",
+            "optionSort": 1,
+            "fillEnabled": 0,
+            "id": "39"
+          },
+          {
+            "questionId": "15",
+            "optionValue": "荤食为主",
+            "questionnaireId": "1",
+            "optionSort": 2,
+            "fillEnabled": 0,
+            "id": "40"
+          },
+          {
+            "questionId": "15",
+            "optionValue": "素食为主",
+            "questionnaireId": "1",
+            "optionSort": 3,
+            "fillEnabled": 0,
+            "id": "41"
+          },
+          {
+            "questionId": "15",
+            "optionValue": "嗜盐",
+            "questionnaireId": "1",
+            "optionSort": 4,
+            "fillEnabled": 0,
+            "id": "42"
+          },
+          {
+            "questionId": "15",
+            "optionValue": "嗜油",
+            "questionnaireId": "1",
+            "optionSort": 5,
+            "fillEnabled": 0,
+            "id": "43"
+          },
+          {
+            "questionId": "15",
+            "optionValue": "嗜糖",
+            "questionnaireId": "1",
+            "optionSort": 6,
+            "fillEnabled": 0,
+            "id": "44"
+          }
+        ],
+        "questionnaireId": "1",
+        "questionName": "饮食习惯（可单选可多选）",
+        "questionAnswer": {
+          "questionId": "15",
+          "questionnaireId": "1",
+          "userId": "eafd4d8d-da9a-4b58-bfc1-202b53aa5ef6",
+          "optionId": "39",
+          "comment": "",
+          "id": "5a2e8e24-5329-4e25-8a09-189ace544492",
+          "submitId": "71ca7cdd-e3df-43a7-bfde-77ee453d1026",
+          "createDate": "2022-06-27T11:36:42"
+        },
+        "requiredEnabled": 1,
+        "id": "15"
+      },
+      {
+        "optionInformationList": [
+          {
+            "associatedJumpId": "1",
+            "questionId": "16",
+            "optionValue": "参加",
+            "questionnaireId": "1",
+            "optionSort": 1,
+            "fillEnabled": 0,
+            "id": "45"
+          },
+          {
+            "questionId": "16",
+            "optionValue": "从不或几乎不参加",
+            "questionnaireId": "1",
+            "optionSort": 2,
+            "fillEnabled": 0,
+            "id": "46"
+          }
+        ],
+        "questionnaireId": "1",
+        "questionName": "【体育锻炼】在过去1年里，您是否参加过体育锻炼",
+        "questionAnswer": {
+          "questionId": "16",
+          "questionnaireId": "1",
+          "userId": "eafd4d8d-da9a-4b58-bfc1-202b53aa5ef6",
+          "optionId": "45",
+          "comment": "",
+          "id": "ad4df1db-2613-4924-9e66-181f0e5a6e6d",
+          "submitId": "71ca7cdd-e3df-43a7-bfde-77ee453d1026",
+          "createDate": "2022-06-27T11:36:42"
+        },
+        "requiredEnabled": 1,
+        "id": "16"
+      },
+      {
+        "optionInformationList": [
+          {
+            "associatedJumpId": "1",
+            "questionId": "19",
+            "optionValue": "吸烟",
+            "questionnaireId": "1",
+            "optionSort": 1,
+            "fillEnabled": 0,
+            "id": "62"
+          },
+          {
+            "questionId": "19",
+            "optionValue": "从不吸烟",
+            "questionnaireId": "1",
+            "optionSort": 3,
+            "fillEnabled": 0,
+            "id": "63"
+          }
+        ],
+        "questionnaireId": "1",
+        "questionName": "【吸烟情况】是否吸过烟",
+        "questionAnswer": {
+          "questionId": "19",
+          "questionnaireId": "1",
+          "userId": "eafd4d8d-da9a-4b58-bfc1-202b53aa5ef6",
+          "optionId": "63",
+          "comment": "",
+          "id": "33f00e65-11ec-4a9c-bdf3-6d4a8cb1c276",
+          "submitId": "71ca7cdd-e3df-43a7-bfde-77ee453d1026",
+          "createDate": "2022-06-27T11:36:42"
+        },
+        "requiredEnabled": 1,
+        "id": "19"
+      },
+      {
+        "optionInformationList": [
+          {
+            "associatedJumpId": "1",
+            "questionId": "22",
+            "optionValue": "已戒烟",
+            "questionnaireId": "1",
+            "optionSort": 1,
+            "fillEnabled": 0,
+            "id": "66"
+          },
+          {
+            "questionId": "22",
+            "optionValue": "未戒烟或从不吸烟",
+            "questionnaireId": "1",
+            "optionSort": 2,
+            "fillEnabled": 0,
+            "id": "67"
+          }
+        ],
+        "questionnaireId": "1",
+        "questionName": "【吸烟情况】是否戒烟",
+        "questionAnswer": {
+          "questionId": "22",
+          "questionnaireId": "1",
+          "userId": "eafd4d8d-da9a-4b58-bfc1-202b53aa5ef6",
+          "optionId": "67",
+          "comment": "",
+          "id": "56085fee-4428-490d-a644-6572743b62c5",
+          "submitId": "71ca7cdd-e3df-43a7-bfde-77ee453d1026",
+          "createDate": "2022-06-27T11:36:42"
+        },
+        "requiredEnabled": 1,
+        "id": "22"
+      },
+      {
+        "optionInformationList": [
+          {
+            "associatedJumpId": "1",
+            "questionId": "24",
+            "optionValue": "饮酒",
+            "questionnaireId": "1",
+            "optionSort": 1,
+            "fillEnabled": 0,
+            "id": "69"
+          },
+          {
+            "questionId": "24",
+            "optionValue": "从不饮酒",
+            "questionnaireId": "1",
+            "optionSort": 2,
+            "fillEnabled": 0,
+            "id": "70"
+          }
+        ],
+        "questionnaireId": "1",
+        "questionName": "【饮酒情况】是否饮酒",
+        "questionAnswer": {
+          "questionId": "24",
+          "questionnaireId": "1",
+          "userId": "eafd4d8d-da9a-4b58-bfc1-202b53aa5ef6",
+          "optionId": "69",
+          "comment": "",
+          "id": "ea4b93d4-60db-4645-adf6-3ff1eb70c315",
+          "submitId": "71ca7cdd-e3df-43a7-bfde-77ee453d1026",
+          "createDate": "2022-06-27T11:36:42"
+        },
+        "requiredEnabled": 1,
+        "id": "24"
+      },
+      {
+        "optionInformationList": [
+          {
+            "associatedJumpId": "1",
+            "questionId": "26",
+            "optionValue": "已戒酒",
+            "questionnaireId": "1",
+            "optionSort": 1,
+            "fillEnabled": 0,
+            "id": "72"
+          },
+          {
+            "questionId": "26",
+            "optionValue": "未戒酒或从不饮酒",
+            "questionnaireId": "1",
+            "optionSort": 2,
+            "fillEnabled": 0,
+            "id": "73"
+          }
+        ],
+        "questionnaireId": "1",
+        "questionName": "【饮酒情况】是否戒酒",
+        "questionAnswer": {
+          "questionId": "26",
+          "questionnaireId": "1",
+          "userId": "eafd4d8d-da9a-4b58-bfc1-202b53aa5ef6",
+          "optionId": "72",
+          "comment": "",
+          "id": "29c0005f-ef6d-4632-b182-d26f4a9a2625",
+          "submitId": "71ca7cdd-e3df-43a7-bfde-77ee453d1026",
+          "createDate": "2022-06-27T11:36:42"
+        },
+        "requiredEnabled": 1,
+        "id": "26"
+      }
+    ],
+    "2": [
+      {
+        "optionInformationList": [
+          {
+            "questionId": "28",
+            "optionValue": "是",
+            "questionnaireId": "2",
+            "optionSort": 1,
+            "fillEnabled": 0,
+            "id": "75"
+          },
+          {
+            "associatedJumpId": "-1",
+            "questionId": "28",
+            "optionValue": "否",
+            "questionnaireId": "2",
+            "optionSort": 2,
+            "fillEnabled": 0,
+            "id": "76"
+          }
+        ],
+        "questionnaireId": "2",
+        "questionName": "您目前是否外出工作? ",
+        "questionAnswer": {
+          "questionId": "28",
+          "questionnaireId": "2",
+          "userId": "eafd4d8d-da9a-4b58-bfc1-202b53aa5ef6",
+          "optionId": "76",
+          "comment": "",
+          "id": "5eaaf04f-804a-4df5-80c0-8fbc7cdbe14f",
+          "submitId": "81898b93-30d6-41a5-acc7-e1d1e72a1846",
+          "createDate": "2022-06-27T11:41:53"
+        },
+        "requiredEnabled": 1,
+        "id": "28"
+      },
+      {
+        "optionInformationList": [
+          {
+            "associatedJumpId": "1",
+            "questionId": "29",
+            "optionValue": "是",
+            "questionnaireId": "2",
+            "optionSort": 1,
+            "fillEnabled": 0,
+            "id": "77"
+          },
+          {
+            "questionId": "29",
+            "optionValue": "否",
+            "questionnaireId": "2",
+            "optionSort": 2,
+            "fillEnabled": 0,
+            "id": "78"
+          }
+        ],
+        "questionnaireId": "2",
+        "questionName": "在过去7天内，您在工作中是否参加了重体力活动(如搬运重物、挖掘、爬楼梯等)且持续时间超过10分钟?(注意不包括工作以外的活动)",
+        "questionAnswer": {
+          "questionId": "29",
+          "questionnaireId": "2",
+          "userId": "eafd4d8d-da9a-4b58-bfc1-202b53aa5ef6",
+          "optionId": "77",
+          "comment": "",
+          "id": "d6798831-7d35-4a6e-887b-497fb8aaa79e",
+          "submitId": "81898b93-30d6-41a5-acc7-e1d1e72a1846",
+          "createDate": "2022-06-27T11:41:53"
+        },
+        "requiredEnabled": 1,
+        "id": "29"
+      },
+      {
+        "optionInformationList": [
+          {
+            "associatedJumpId": "1",
+            "questionId": "32",
+            "optionValue": "是",
+            "questionnaireId": "2",
+            "optionSort": 1,
+            "fillEnabled": 0,
+            "id": "81"
+          },
+          {
+            "questionId": "32",
+            "optionValue": "否",
+            "questionnaireId": "2",
+            "optionSort": 2,
+            "fillEnabled": 0,
+            "id": "82"
+          }
+        ],
+        "questionnaireId": "2",
+        "questionName": "在过去7天内，您在工作中是否参加了中度体力活动(如提拎小型物品等)且持续时间超过10分钟?(注意不包括工作以外的活动) ",
+        "questionAnswer": {
+          "questionId": "32",
+          "questionnaireId": "2",
+          "userId": "eafd4d8d-da9a-4b58-bfc1-202b53aa5ef6",
+          "optionId": "81",
+          "comment": "",
+          "id": "06f9df3d-bfb0-4c41-808e-41b695fdda6e",
+          "submitId": "81898b93-30d6-41a5-acc7-e1d1e72a1846",
+          "createDate": "2022-06-27T11:41:53"
+        },
+        "requiredEnabled": 1,
+        "id": "32"
+      },
+      {
+        "optionInformationList": [
+          {
+            "associatedJumpId": "1",
+            "questionId": "35",
+            "optionValue": "是",
+            "questionnaireId": "2",
+            "optionSort": 1,
+            "fillEnabled": 0,
+            "id": "85"
+          },
+          {
+            "questionId": "35",
+            "optionValue": "否",
+            "questionnaireId": "2",
+            "optionSort": 2,
+            "fillEnabled": 0,
+            "id": "86"
+          }
+        ],
+        "questionnaireId": "2",
+        "questionName": "在过去7天内，您是否工作中步行时间持续超过10分钟? (注意不包括上下班路上的步行时间) ",
+        "questionAnswer": {
+          "questionId": "35",
+          "questionnaireId": "2",
+          "userId": "eafd4d8d-da9a-4b58-bfc1-202b53aa5ef6",
+          "optionId": "86",
+          "comment": "",
+          "id": "a30f42a0-9776-4b25-adff-b05eff6fead2",
+          "submitId": "81898b93-30d6-41a5-acc7-e1d1e72a1846",
+          "createDate": "2022-06-27T11:41:53"
+        },
+        "requiredEnabled": 1,
+        "id": "35"
+      },
+      {
+        "optionInformationList": [
+          {
+            "associatedJumpId": "1",
+            "questionId": "38",
+            "optionValue": "是",
+            "questionnaireId": "2",
+            "optionSort": 1,
+            "fillEnabled": 0,
+            "id": "89"
+          },
+          {
+            "questionId": "38",
+            "optionValue": "否",
+            "questionnaireId": "2",
+            "optionSort": 2,
+            "fillEnabled": 0,
+            "id": "90"
+          }
+        ],
+        "questionnaireId": "2",
+        "questionName": "在过去7天内，您是否乘车外出? ",
+        "questionAnswer": {
+          "questionId": "38",
+          "questionnaireId": "2",
+          "userId": "eafd4d8d-da9a-4b58-bfc1-202b53aa5ef6",
+          "optionId": "89",
+          "comment": "",
+          "id": "cd2a955f-ec99-48d4-808c-aa23f92fa52c",
+          "submitId": "81898b93-30d6-41a5-acc7-e1d1e72a1846",
+          "createDate": "2022-06-27T11:41:53"
+        },
+        "requiredEnabled": 1,
+        "id": "38"
+      },
+      {
+        "optionInformationList": [
+          {
+            "associatedJumpId": "1",
+            "questionId": "41",
+            "optionValue": "是",
+            "questionnaireId": "2",
+            "optionSort": 1,
+            "fillEnabled": 0,
+            "id": "93"
+          },
+          {
+            "questionId": "41",
+            "optionValue": "否",
+            "questionnaireId": "2",
+            "optionSort": 2,
+            "fillEnabled": 0,
+            "id": "94"
+          }
+        ],
+        "questionnaireId": "2",
+        "questionName": "在过去7天内，您是否骑自行车外出，且持续时间超过10 分钟?",
+        "questionAnswer": {
+          "questionId": "41",
+          "questionnaireId": "2",
+          "userId": "eafd4d8d-da9a-4b58-bfc1-202b53aa5ef6",
+          "optionId": "94",
+          "comment": "",
+          "id": "40fa0604-bf70-48e2-a7e9-2716f9637829",
+          "submitId": "81898b93-30d6-41a5-acc7-e1d1e72a1846",
+          "createDate": "2022-06-27T11:41:53"
+        },
+        "requiredEnabled": 1,
+        "id": "41"
+      },
+      {
+        "optionInformationList": [
+          {
+            "associatedJumpId": "1",
+            "questionId": "44",
+            "optionValue": "是",
+            "questionnaireId": "2",
+            "optionSort": 1,
+            "fillEnabled": 0,
+            "id": "97"
+          },
+          {
+            "questionId": "44",
+            "optionValue": "否",
+            "questionnaireId": "2",
+            "optionSort": 2,
+            "fillEnabled": 0,
+            "id": "98"
+          }
+        ],
+        "questionnaireId": "2",
+        "questionName": "在过去7天内，您是否步行外出，且持续时间超过10分钟?",
+        "questionAnswer": {
+          "questionId": "44",
+          "questionnaireId": "2",
+          "userId": "eafd4d8d-da9a-4b58-bfc1-202b53aa5ef6",
+          "optionId": "98",
+          "comment": "",
+          "id": "5e2818ff-fa70-42ca-bc89-938fab1c366d",
+          "submitId": "81898b93-30d6-41a5-acc7-e1d1e72a1846",
+          "createDate": "2022-06-27T11:41:53"
+        },
+        "requiredEnabled": 1,
+        "id": "44"
+      },
+      {
+        "optionInformationList": [
+          {
+            "associatedJumpId": "1",
+            "questionId": "47",
+            "optionValue": "是",
+            "questionnaireId": "2",
+            "optionSort": 1,
+            "fillEnabled": 0,
+            "id": "101"
+          },
+          {
+            "questionId": "47",
+            "optionValue": "否",
+            "questionnaireId": "2",
+            "optionSort": 2,
+            "fillEnabled": 0,
+            "id": "102"
+          }
+        ],
+        "questionnaireId": "2",
+        "questionName": "在过去7天内，您是否参与了重体力家务劳动(如搬运重物、砍柴、扫雪、拖地板等)且持续时间超过10分钟。",
+        "questionAnswer": {
+          "questionId": "47",
+          "questionnaireId": "2",
+          "userId": "eafd4d8d-da9a-4b58-bfc1-202b53aa5ef6",
+          "optionId": "102",
+          "comment": "",
+          "id": "248a38f6-39d4-4724-b6a3-e38c123fe9bc",
+          "submitId": "81898b93-30d6-41a5-acc7-e1d1e72a1846",
+          "createDate": "2022-06-27T11:41:53"
+        },
+        "requiredEnabled": 1,
+        "id": "47"
+      },
+      {
+        "optionInformationList": [
+          {
+            "associatedJumpId": "1",
+            "questionId": "50",
+            "optionValue": "是",
+            "questionnaireId": "2",
+            "optionSort": 1,
+            "fillEnabled": 0,
+            "id": "105"
+          },
+          {
+            "questionId": "50",
+            "optionValue": "否",
+            "questionnaireId": "2",
+            "optionSort": 2,
+            "fillEnabled": 0,
+            "id": "106"
+          }
+        ],
+        "questionnaireId": "2",
+        "questionName": "在过去7天内，您是否参与了中度体力家务劳动(如提拎小型物品、扫地、擦窗户、整理房间、做饭、洗衣服等)且持续时间超过10分钟",
+        "questionAnswer": {
+          "questionId": "50",
+          "questionnaireId": "2",
+          "userId": "eafd4d8d-da9a-4b58-bfc1-202b53aa5ef6",
+          "optionId": "105",
+          "comment": "",
+          "id": "24f38471-6982-490e-abe6-74252ee515e9",
+          "submitId": "81898b93-30d6-41a5-acc7-e1d1e72a1846",
+          "createDate": "2022-06-27T11:41:53"
+        },
+        "requiredEnabled": 1,
+        "id": "50"
+      },
+      {
+        "optionInformationList": [
+          {
+            "associatedJumpId": "1",
+            "questionId": "53",
+            "optionValue": "是",
+            "questionnaireId": "2",
+            "optionSort": 1,
+            "fillEnabled": 0,
+            "id": "109"
+          },
+          {
+            "questionId": "53",
+            "optionValue": "否",
+            "questionnaireId": "2",
+            "optionSort": 2,
+            "fillEnabled": 0,
+            "id": "110"
+          }
+        ],
+        "questionnaireId": "2",
+        "questionName": "在过去7天内，您是否外出散步，且持续时间超过10分钟? (不包括您己描述过的步行时间)",
+        "questionAnswer": {
+          "questionId": "53",
+          "questionnaireId": "2",
+          "userId": "eafd4d8d-da9a-4b58-bfc1-202b53aa5ef6",
+          "optionId": "110",
+          "comment": "",
+          "id": "e14cff83-3d91-4ec2-8529-c1143691019d",
+          "submitId": "81898b93-30d6-41a5-acc7-e1d1e72a1846",
+          "createDate": "2022-06-27T11:41:53"
+        },
+        "requiredEnabled": 1,
+        "id": "53"
+      },
+      {
+        "optionInformationList": [
+          {
+            "associatedJumpId": "1",
+            "questionId": "56",
+            "optionValue": "是",
+            "questionnaireId": "2",
+            "optionSort": 1,
+            "fillEnabled": 0,
+            "id": "113"
+          },
+          {
+            "questionId": "56",
+            "optionValue": "否",
+            "questionnaireId": "2",
+            "optionSort": 2,
+            "fillEnabled": 0,
+            "id": "114"
+          }
+        ],
+        "questionnaireId": "2",
+        "questionName": "在过去7天内，您是否参加了重体力活动的体育锻炼(如有氧健身、跑步、快速骑车、游泳及足球、篮球类活动等)且持续时间超过10分钟?",
+        "questionAnswer": {
+          "questionId": "56",
+          "questionnaireId": "2",
+          "userId": "eafd4d8d-da9a-4b58-bfc1-202b53aa5ef6",
+          "optionId": "114",
+          "comment": "",
+          "id": "9e50f43c-e5b0-4059-b3ec-ef267436dfc1",
+          "submitId": "81898b93-30d6-41a5-acc7-e1d1e72a1846",
+          "createDate": "2022-06-27T11:41:53"
+        },
+        "requiredEnabled": 1,
+        "id": "56"
+      },
+      {
+        "optionInformationList": [
+          {
+            "associatedJumpId": "1",
+            "questionId": "59",
+            "optionValue": "是",
+            "questionnaireId": "2",
+            "optionSort": 1,
+            "fillEnabled": 0,
+            "id": "117"
+          },
+          {
+            "questionId": "59",
+            "optionValue": "否",
+            "questionnaireId": "2",
+            "optionSort": 2,
+            "fillEnabled": 0,
+            "id": "118"
+          }
+        ],
+        "questionnaireId": "2",
+        "questionName": "在过去7天内，您是否参加了中度体力活动的体育锻炼(如快速行走、跳交谊舞、打保龄球、 乒乓球，羽毛球等)且持续时间超过10分钟?",
+        "questionAnswer": {
+          "questionId": "59",
+          "questionnaireId": "2",
+          "userId": "eafd4d8d-da9a-4b58-bfc1-202b53aa5ef6",
+          "optionId": "117",
+          "comment": "",
+          "id": "87bcf74d-d600-401b-be22-3fa1ffc84f62",
+          "submitId": "81898b93-30d6-41a5-acc7-e1d1e72a1846",
+          "createDate": "2022-06-27T11:41:53"
+        },
+        "requiredEnabled": 1,
+        "id": "59"
+      },
+      {
+        "optionInformationList": [
+          {
+            "questionId": "62",
+            "optionValue": "每天{}分钟",
+            "questionnaireId": "2",
+            "optionSort": 1,
+            "fillEnabled": 0,
+            "id": "121"
+          }
+        ],
+        "questionnaireId": "2",
+        "questionName": "在过去7天内，您工作日每天花在坐姿状态中的时间是多少?",
+        "questionAnswer": {
+          "questionId": "62",
+          "questionnaireId": "2",
+          "userId": "eafd4d8d-da9a-4b58-bfc1-202b53aa5ef6",
+          "optionId": "121",
+          "comment": "450",
+          "id": "59a75e12-ccb3-4c48-ac70-cc8c32af29a5",
+          "submitId": "81898b93-30d6-41a5-acc7-e1d1e72a1846",
+          "createDate": "2022-06-27T11:41:53"
+        },
+        "requiredEnabled": 1,
+        "id": "62"
+      },
+      {
+        "optionInformationList": [
+          {
+            "questionId": "63",
+            "optionValue": "每天{}分钟",
+            "questionnaireId": "2",
+            "optionSort": 1,
+            "fillEnabled": 0,
+            "id": "122"
+          }
+        ],
+        "questionnaireId": "2",
+        "questionName": "在过去7天内，您周末或休息日每天花在坐姿状态中的时间是多少?",
+        "questionAnswer": {
+          "questionId": "63",
+          "questionnaireId": "2",
+          "userId": "eafd4d8d-da9a-4b58-bfc1-202b53aa5ef6",
+          "optionId": "122",
+          "comment": "100",
+          "id": "f6319a69-49ce-4397-84b6-a807a44f14ea",
+          "submitId": "81898b93-30d6-41a5-acc7-e1d1e72a1846",
+          "createDate": "2022-06-27T11:41:53"
+        },
+        "requiredEnabled": 1,
+        "id": "63"
+      },
+      {
+        "optionInformationList": [
+          {
+            "questionId": "64",
+            "optionValue": "每天{}分钟",
+            "questionnaireId": "2",
+            "optionSort": 1,
+            "fillEnabled": 0,
+            "id": "123"
+          }
+        ],
+        "questionnaireId": "2",
+        "questionName": "在过去7天内，您在工作日每天花在睡眠(包括午睡)中的时间是多少?",
+        "questionAnswer": {
+          "questionId": "64",
+          "questionnaireId": "2",
+          "userId": "eafd4d8d-da9a-4b58-bfc1-202b53aa5ef6",
+          "optionId": "123",
+          "comment": "500",
+          "id": "4214a017-bf01-44ab-95ec-6d73a744f07f",
+          "submitId": "81898b93-30d6-41a5-acc7-e1d1e72a1846",
+          "createDate": "2022-06-27T11:41:53"
+        },
+        "requiredEnabled": 1,
+        "id": "64"
+      },
+      {
+        "optionInformationList": [
+          {
+            "questionId": "65",
+            "optionValue": "每天{}分钟",
+            "questionnaireId": "2",
+            "optionSort": 1,
+            "fillEnabled": 0,
+            "id": "124"
+          }
+        ],
+        "questionnaireId": "2",
+        "questionName": "在过去7天内，您在周末或休息日每天花在睡眠中的时间是多少? ",
+        "questionAnswer": {
+          "questionId": "65",
+          "questionnaireId": "2",
+          "userId": "eafd4d8d-da9a-4b58-bfc1-202b53aa5ef6",
+          "optionId": "124",
+          "comment": "480",
+          "id": "bf3c0d1a-929c-4c31-83be-2ce960cbb26d",
+          "submitId": "81898b93-30d6-41a5-acc7-e1d1e72a1846",
+          "createDate": "2022-06-27T11:41:53"
+        },
+        "requiredEnabled": 1,
+        "id": "65"
+      }
+    ],
+    "3": [
+      {
+        "optionInformationList": [
+          {
+            "questionId": "187",
+            "optionValue": "不食用",
+            "questionnaireId": "3",
+            "optionSort": 1,
+            "fillEnabled": 0,
+            "id": "457"
+          },
+          {
+            "questionId": "187",
+            "optionValue": "每月小于一次",
+            "questionnaireId": "3",
+            "optionSort": 2,
+            "fillEnabled": 0,
+            "id": "458"
+          },
+          {
+            "questionId": "187",
+            "optionValue": "每月1-3次",
+            "questionnaireId": "3",
+            "optionSort": 3,
+            "fillEnabled": 0,
+            "id": "459"
+          },
+          {
+            "questionId": "187",
+            "optionValue": "每周1-2次",
+            "questionnaireId": "3",
+            "optionSort": 4,
+            "fillEnabled": 0,
+            "id": "460"
+          },
+          {
+            "questionId": "187",
+            "optionValue": "每周3-4次",
+            "questionnaireId": "3",
+            "optionSort": 5,
+            "fillEnabled": 0,
+            "id": "461"
+          },
+          {
+            "questionId": "187",
+            "optionValue": "每周5-6次",
+            "questionnaireId": "3",
+            "optionSort": 6,
+            "fillEnabled": 0,
+            "id": "462"
+          },
+          {
+            "questionId": "187",
+            "optionValue": "每天1次",
+            "questionnaireId": "3",
+            "optionSort": 7,
+            "fillEnabled": 0,
+            "id": "463"
+          },
+          {
+            "questionId": "187",
+            "optionValue": "每天2次",
+            "questionnaireId": "3",
+            "optionSort": 8,
+            "fillEnabled": 0,
+            "id": "464"
+          },
+          {
+            "questionId": "187",
+            "optionValue": "每天3次以上",
+            "questionnaireId": "3",
+            "optionSort": 9,
+            "fillEnabled": 0,
+            "id": "465"
+          }
+        ],
+        "questionnaireId": "3",
+        "questionName": "是否食用米饭",
+        "questionAnswer": {
+          "questionId": "187",
+          "questionnaireId": "3",
+          "userId": "eafd4d8d-da9a-4b58-bfc1-202b53aa5ef6",
+          "optionId": "464",
+          "comment": "",
+          "id": "e0056ec2-03c3-40d3-904e-34d671585c40",
+          "submitId": "439e65ef-7f7c-491a-8a00-a6c2ba5520ee",
+          "createDate": "2022-06-27T11:47:18"
+        },
+        "requiredEnabled": 1,
+        "id": "187"
+      },
+      {
+        "optionInformationList": [
+          {
+            "questionId": "188",
+            "optionValue": "不食用",
+            "questionnaireId": "3",
+            "optionSort": 1,
+            "fillEnabled": 0,
+            "id": "466"
+          },
+          {
+            "questionId": "188",
+            "optionValue": "每月小于一次",
+            "questionnaireId": "3",
+            "optionSort": 2,
+            "fillEnabled": 0,
+            "id": "467"
+          },
+          {
+            "questionId": "188",
+            "optionValue": "每月1-3次",
+            "questionnaireId": "3",
+            "optionSort": 3,
+            "fillEnabled": 0,
+            "id": "468"
+          },
+          {
+            "questionId": "188",
+            "optionValue": "每周1-2次",
+            "questionnaireId": "3",
+            "optionSort": 4,
+            "fillEnabled": 0,
+            "id": "469"
+          },
+          {
+            "questionId": "188",
+            "optionValue": "每周3-4次",
+            "questionnaireId": "3",
+            "optionSort": 5,
+            "fillEnabled": 0,
+            "id": "470"
+          },
+          {
+            "questionId": "188",
+            "optionValue": "每周5-6次",
+            "questionnaireId": "3",
+            "optionSort": 6,
+            "fillEnabled": 0,
+            "id": "471"
+          },
+          {
+            "questionId": "188",
+            "optionValue": "每天1次",
+            "questionnaireId": "3",
+            "optionSort": 7,
+            "fillEnabled": 0,
+            "id": "472"
+          },
+          {
+            "questionId": "188",
+            "optionValue": "每天2次",
+            "questionnaireId": "3",
+            "optionSort": 8,
+            "fillEnabled": 0,
+            "id": "473"
+          },
+          {
+            "questionId": "188",
+            "optionValue": "每天3次以上",
+            "questionnaireId": "3",
+            "optionSort": 9,
+            "fillEnabled": 0,
+            "id": "474"
+          }
+        ],
+        "questionnaireId": "3",
+        "questionName": "是否食用粥、稀饭或泡饭",
+        "questionAnswer": {
+          "questionId": "188",
+          "questionnaireId": "3",
+          "userId": "eafd4d8d-da9a-4b58-bfc1-202b53aa5ef6",
+          "optionId": "468",
+          "comment": "",
+          "id": "19868f7b-6f4e-4fb9-a744-c4cbc2271058",
+          "submitId": "439e65ef-7f7c-491a-8a00-a6c2ba5520ee",
+          "createDate": "2022-06-27T11:47:18"
+        },
+        "requiredEnabled": 1,
+        "id": "188"
+      },
+      {
+        "optionInformationList": [
+          {
+            "questionId": "189",
+            "optionValue": "不食用",
+            "questionnaireId": "3",
+            "optionSort": 1,
+            "fillEnabled": 0,
+            "id": "475"
+          },
+          {
+            "questionId": "189",
+            "optionValue": "每月小于一次",
+            "questionnaireId": "3",
+            "optionSort": 2,
+            "fillEnabled": 0,
+            "id": "476"
+          },
+          {
+            "questionId": "189",
+            "optionValue": "每月1-3次",
+            "questionnaireId": "3",
+            "optionSort": 3,
+            "fillEnabled": 0,
+            "id": "477"
+          },
+          {
+            "questionId": "189",
+            "optionValue": "每周1-2次",
+            "questionnaireId": "3",
+            "optionSort": 4,
+            "fillEnabled": 0,
+            "id": "478"
+          },
+          {
+            "questionId": "189",
+            "optionValue": "每周3-4次",
+            "questionnaireId": "3",
+            "optionSort": 5,
+            "fillEnabled": 0,
+            "id": "479"
+          },
+          {
+            "questionId": "189",
+            "optionValue": "每周5-6次",
+            "questionnaireId": "3",
+            "optionSort": 6,
+            "fillEnabled": 0,
+            "id": "480"
+          },
+          {
+            "questionId": "189",
+            "optionValue": "每天1次",
+            "questionnaireId": "3",
+            "optionSort": 7,
+            "fillEnabled": 0,
+            "id": "481"
+          },
+          {
+            "questionId": "189",
+            "optionValue": "每天2次",
+            "questionnaireId": "3",
+            "optionSort": 8,
+            "fillEnabled": 0,
+            "id": "482"
+          },
+          {
+            "questionId": "189",
+            "optionValue": "每天3次以上",
+            "questionnaireId": "3",
+            "optionSort": 9,
+            "fillEnabled": 0,
+            "id": "483"
+          }
+        ],
+        "questionnaireId": "3",
+        "questionName": "是否食用面粉类食物（馒头、面包、面条、饼等）",
+        "questionAnswer": {
+          "questionId": "189",
+          "questionnaireId": "3",
+          "userId": "eafd4d8d-da9a-4b58-bfc1-202b53aa5ef6",
+          "optionId": "479",
+          "comment": "",
+          "id": "7e2acee8-ccf7-4851-9fd4-d8132447f2cc",
+          "submitId": "439e65ef-7f7c-491a-8a00-a6c2ba5520ee",
+          "createDate": "2022-06-27T11:47:18"
+        },
+        "requiredEnabled": 1,
+        "id": "189"
+      },
+      {
+        "optionInformationList": [
+          {
+            "questionId": "190",
+            "optionValue": "不食用",
+            "questionnaireId": "3",
+            "optionSort": 1,
+            "fillEnabled": 0,
+            "id": "484"
+          },
+          {
+            "questionId": "190",
+            "optionValue": "每月小于一次",
+            "questionnaireId": "3",
+            "optionSort": 2,
+            "fillEnabled": 0,
+            "id": "485"
+          },
+          {
+            "questionId": "190",
+            "optionValue": "每月1-3次",
+            "questionnaireId": "3",
+            "optionSort": 3,
+            "fillEnabled": 0,
+            "id": "486"
+          },
+          {
+            "questionId": "190",
+            "optionValue": "每周1-2次",
+            "questionnaireId": "3",
+            "optionSort": 4,
+            "fillEnabled": 0,
+            "id": "487"
+          },
+          {
+            "questionId": "190",
+            "optionValue": "每周3-4次",
+            "questionnaireId": "3",
+            "optionSort": 5,
+            "fillEnabled": 0,
+            "id": "488"
+          },
+          {
+            "questionId": "190",
+            "optionValue": "每周5-6次",
+            "questionnaireId": "3",
+            "optionSort": 6,
+            "fillEnabled": 0,
+            "id": "489"
+          },
+          {
+            "questionId": "190",
+            "optionValue": "每天1次",
+            "questionnaireId": "3",
+            "optionSort": 7,
+            "fillEnabled": 0,
+            "id": "490"
+          },
+          {
+            "questionId": "190",
+            "optionValue": "每天2次",
+            "questionnaireId": "3",
+            "optionSort": 8,
+            "fillEnabled": 0,
+            "id": "491"
+          },
+          {
+            "questionId": "190",
+            "optionValue": "每天3次以上",
+            "questionnaireId": "3",
+            "optionSort": 9,
+            "fillEnabled": 0,
+            "id": "492"
+          }
+        ],
+        "questionnaireId": "3",
+        "questionName": "是否食用甜食、点心、蛋糕",
+        "questionAnswer": {
+          "questionId": "190",
+          "questionnaireId": "3",
+          "userId": "eafd4d8d-da9a-4b58-bfc1-202b53aa5ef6",
+          "optionId": "486",
+          "comment": "",
+          "id": "04ae9f44-fa68-4437-8800-57eb5ecdc5a7",
+          "submitId": "439e65ef-7f7c-491a-8a00-a6c2ba5520ee",
+          "createDate": "2022-06-27T11:47:18"
+        },
+        "requiredEnabled": 1,
+        "id": "190"
+      },
+      {
+        "optionInformationList": [
+          {
+            "questionId": "191",
+            "optionValue": "不食用",
+            "questionnaireId": "3",
+            "optionSort": 1,
+            "fillEnabled": 0,
+            "id": "493"
+          },
+          {
+            "questionId": "191",
+            "optionValue": "每月小于一次",
+            "questionnaireId": "3",
+            "optionSort": 2,
+            "fillEnabled": 0,
+            "id": "494"
+          },
+          {
+            "questionId": "191",
+            "optionValue": "每月1-3次",
+            "questionnaireId": "3",
+            "optionSort": 3,
+            "fillEnabled": 0,
+            "id": "495"
+          },
+          {
+            "questionId": "191",
+            "optionValue": "每周1-2次",
+            "questionnaireId": "3",
+            "optionSort": 4,
+            "fillEnabled": 0,
+            "id": "496"
+          },
+          {
+            "questionId": "191",
+            "optionValue": "每周3-4次",
+            "questionnaireId": "3",
+            "optionSort": 5,
+            "fillEnabled": 0,
+            "id": "497"
+          },
+          {
+            "questionId": "191",
+            "optionValue": "每周5-6次",
+            "questionnaireId": "3",
+            "optionSort": 6,
+            "fillEnabled": 0,
+            "id": "498"
+          },
+          {
+            "questionId": "191",
+            "optionValue": "每天1次",
+            "questionnaireId": "3",
+            "optionSort": 7,
+            "fillEnabled": 0,
+            "id": "499"
+          },
+          {
+            "questionId": "191",
+            "optionValue": "每天2次",
+            "questionnaireId": "3",
+            "optionSort": 8,
+            "fillEnabled": 0,
+            "id": "500"
+          },
+          {
+            "questionId": "191",
+            "optionValue": "每天3次以上",
+            "questionnaireId": "3",
+            "optionSort": 9,
+            "fillEnabled": 0,
+            "id": "501"
+          }
+        ],
+        "questionnaireId": "3",
+        "questionName": "是否食用油炸食物（油条、油饼等）",
+        "questionAnswer": {
+          "questionId": "191",
+          "questionnaireId": "3",
+          "userId": "eafd4d8d-da9a-4b58-bfc1-202b53aa5ef6",
+          "optionId": "495",
+          "comment": "",
+          "id": "c7c17eeb-f24e-4e16-bb39-af2db001d532",
+          "submitId": "439e65ef-7f7c-491a-8a00-a6c2ba5520ee",
+          "createDate": "2022-06-27T11:47:18"
+        },
+        "requiredEnabled": 1,
+        "id": "191"
+      },
+      {
+        "optionInformationList": [
+          {
+            "questionId": "192",
+            "optionValue": "不食用",
+            "questionnaireId": "3",
+            "optionSort": 1,
+            "fillEnabled": 0,
+            "id": "502"
+          },
+          {
+            "questionId": "192",
+            "optionValue": "每月小于一次",
+            "questionnaireId": "3",
+            "optionSort": 2,
+            "fillEnabled": 0,
+            "id": "503"
+          },
+          {
+            "questionId": "192",
+            "optionValue": "每月1-3次",
+            "questionnaireId": "3",
+            "optionSort": 3,
+            "fillEnabled": 0,
+            "id": "504"
+          },
+          {
+            "questionId": "192",
+            "optionValue": "每周1-2次",
+            "questionnaireId": "3",
+            "optionSort": 4,
+            "fillEnabled": 0,
+            "id": "505"
+          },
+          {
+            "questionId": "192",
+            "optionValue": "每周3-4次",
+            "questionnaireId": "3",
+            "optionSort": 5,
+            "fillEnabled": 0,
+            "id": "506"
+          },
+          {
+            "questionId": "192",
+            "optionValue": "每周5-6次",
+            "questionnaireId": "3",
+            "optionSort": 6,
+            "fillEnabled": 0,
+            "id": "507"
+          },
+          {
+            "questionId": "192",
+            "optionValue": "每天1次",
+            "questionnaireId": "3",
+            "optionSort": 7,
+            "fillEnabled": 0,
+            "id": "508"
+          },
+          {
+            "questionId": "192",
+            "optionValue": "每天2次",
+            "questionnaireId": "3",
+            "optionSort": 8,
+            "fillEnabled": 0,
+            "id": "509"
+          },
+          {
+            "questionId": "192",
+            "optionValue": "每天3次以上",
+            "questionnaireId": "3",
+            "optionSort": 9,
+            "fillEnabled": 0,
+            "id": "510"
+          }
+        ],
+        "questionnaireId": "3",
+        "questionName": "是否食用有馅类食物（包子、馄饨、饺子等）",
+        "questionAnswer": {
+          "questionId": "192",
+          "questionnaireId": "3",
+          "userId": "eafd4d8d-da9a-4b58-bfc1-202b53aa5ef6",
+          "optionId": "506",
+          "comment": "",
+          "id": "d7aedfbb-d463-471e-980e-7651fdfb50e1",
+          "submitId": "439e65ef-7f7c-491a-8a00-a6c2ba5520ee",
+          "createDate": "2022-06-27T11:47:18"
+        },
+        "requiredEnabled": 1,
+        "id": "192"
+      },
+      {
+        "optionInformationList": [
+          {
+            "questionId": "193",
+            "optionValue": "不食用",
+            "questionnaireId": "3",
+            "optionSort": 1,
+            "fillEnabled": 0,
+            "id": "511"
+          },
+          {
+            "questionId": "193",
+            "optionValue": "每月小于一次",
+            "questionnaireId": "3",
+            "optionSort": 2,
+            "fillEnabled": 0,
+            "id": "512"
+          },
+          {
+            "questionId": "193",
+            "optionValue": "每月1-3次",
+            "questionnaireId": "3",
+            "optionSort": 3,
+            "fillEnabled": 0,
+            "id": "513"
+          },
+          {
+            "questionId": "193",
+            "optionValue": "每周1-2次",
+            "questionnaireId": "3",
+            "optionSort": 4,
+            "fillEnabled": 0,
+            "id": "514"
+          },
+          {
+            "questionId": "193",
+            "optionValue": "每周3-4次",
+            "questionnaireId": "3",
+            "optionSort": 5,
+            "fillEnabled": 0,
+            "id": "515"
+          },
+          {
+            "questionId": "193",
+            "optionValue": "每周5-6次",
+            "questionnaireId": "3",
+            "optionSort": 6,
+            "fillEnabled": 0,
+            "id": "516"
+          },
+          {
+            "questionId": "193",
+            "optionValue": "每天1次",
+            "questionnaireId": "3",
+            "optionSort": 7,
+            "fillEnabled": 0,
+            "id": "517"
+          },
+          {
+            "questionId": "193",
+            "optionValue": "每天2次",
+            "questionnaireId": "3",
+            "optionSort": 8,
+            "fillEnabled": 0,
+            "id": "518"
+          },
+          {
+            "questionId": "193",
+            "optionValue": "每天3次以上",
+            "questionnaireId": "3",
+            "optionSort": 9,
+            "fillEnabled": 0,
+            "id": "519"
+          }
+        ],
+        "questionnaireId": "3",
+        "questionName": "是否食用食用粗杂粮（包括糙米、小米、玉米、薏米、燕麦、红小豆、绿豆等）",
+        "questionAnswer": {
+          "questionId": "193",
+          "questionnaireId": "3",
+          "userId": "eafd4d8d-da9a-4b58-bfc1-202b53aa5ef6",
+          "optionId": "514",
+          "comment": "",
+          "id": "deb2b85a-b015-4aa0-a54d-c06824254ef6",
+          "submitId": "439e65ef-7f7c-491a-8a00-a6c2ba5520ee",
+          "createDate": "2022-06-27T11:47:18"
+        },
+        "requiredEnabled": 1,
+        "id": "193"
+      },
+      {
+        "optionInformationList": [
+          {
+            "questionId": "194",
+            "optionValue": "不食用",
+            "questionnaireId": "3",
+            "optionSort": 1,
+            "fillEnabled": 0,
+            "id": "520"
+          },
+          {
+            "questionId": "194",
+            "optionValue": "每月小于一次",
+            "questionnaireId": "3",
+            "optionSort": 2,
+            "fillEnabled": 0,
+            "id": "521"
+          },
+          {
+            "questionId": "194",
+            "optionValue": "每月1-3次",
+            "questionnaireId": "3",
+            "optionSort": 3,
+            "fillEnabled": 0,
+            "id": "522"
+          },
+          {
+            "questionId": "194",
+            "optionValue": "每周1-2次",
+            "questionnaireId": "3",
+            "optionSort": 4,
+            "fillEnabled": 0,
+            "id": "523"
+          },
+          {
+            "questionId": "194",
+            "optionValue": "每周3-4次",
+            "questionnaireId": "3",
+            "optionSort": 5,
+            "fillEnabled": 0,
+            "id": "524"
+          },
+          {
+            "questionId": "194",
+            "optionValue": "每周5-6次",
+            "questionnaireId": "3",
+            "optionSort": 6,
+            "fillEnabled": 0,
+            "id": "525"
+          },
+          {
+            "questionId": "194",
+            "optionValue": "每天1次",
+            "questionnaireId": "3",
+            "optionSort": 7,
+            "fillEnabled": 0,
+            "id": "526"
+          },
+          {
+            "questionId": "194",
+            "optionValue": "每天2次",
+            "questionnaireId": "3",
+            "optionSort": 8,
+            "fillEnabled": 0,
+            "id": "527"
+          },
+          {
+            "questionId": "194",
+            "optionValue": "每天3次以上",
+            "questionnaireId": "3",
+            "optionSort": 9,
+            "fillEnabled": 0,
+            "id": "528"
+          }
+        ],
+        "questionnaireId": "3",
+        "questionName": "是否食用薯类（包括红薯、土豆、芋头、山药、魔芋等）",
+        "questionAnswer": {
+          "questionId": "194",
+          "questionnaireId": "3",
+          "userId": "eafd4d8d-da9a-4b58-bfc1-202b53aa5ef6",
+          "optionId": "521",
+          "comment": "",
+          "id": "484a34b5-5fe8-41c8-9a12-1cae9a726468",
+          "submitId": "439e65ef-7f7c-491a-8a00-a6c2ba5520ee",
+          "createDate": "2022-06-27T11:47:18"
+        },
+        "requiredEnabled": 1,
+        "id": "194"
+      },
+      {
+        "optionInformationList": [
+          {
+            "questionId": "195",
+            "optionValue": "不食用",
+            "questionnaireId": "3",
+            "optionSort": 1,
+            "fillEnabled": 0,
+            "id": "529"
+          },
+          {
+            "questionId": "195",
+            "optionValue": "每月小于一次",
+            "questionnaireId": "3",
+            "optionSort": 2,
+            "fillEnabled": 0,
+            "id": "530"
+          },
+          {
+            "questionId": "195",
+            "optionValue": "每月1-3次",
+            "questionnaireId": "3",
+            "optionSort": 3,
+            "fillEnabled": 0,
+            "id": "531"
+          },
+          {
+            "questionId": "195",
+            "optionValue": "每周1-2次",
+            "questionnaireId": "3",
+            "optionSort": 4,
+            "fillEnabled": 0,
+            "id": "532"
+          },
+          {
+            "questionId": "195",
+            "optionValue": "每周3-4次",
+            "questionnaireId": "3",
+            "optionSort": 5,
+            "fillEnabled": 0,
+            "id": "533"
+          },
+          {
+            "questionId": "195",
+            "optionValue": "每周5-6次",
+            "questionnaireId": "3",
+            "optionSort": 6,
+            "fillEnabled": 0,
+            "id": "534"
+          },
+          {
+            "questionId": "195",
+            "optionValue": "每天1次",
+            "questionnaireId": "3",
+            "optionSort": 7,
+            "fillEnabled": 0,
+            "id": "535"
+          },
+          {
+            "questionId": "195",
+            "optionValue": "每天2次",
+            "questionnaireId": "3",
+            "optionSort": 8,
+            "fillEnabled": 0,
+            "id": "536"
+          },
+          {
+            "questionId": "195",
+            "optionValue": "每天3次以上",
+            "questionnaireId": "3",
+            "optionSort": 9,
+            "fillEnabled": 0,
+            "id": "537"
+          }
+        ],
+        "questionnaireId": "3",
+        "questionName": "是否食用牛奶、酸奶或奶粉",
+        "questionAnswer": {
+          "questionId": "195",
+          "questionnaireId": "3",
+          "userId": "eafd4d8d-da9a-4b58-bfc1-202b53aa5ef6",
+          "optionId": "534",
+          "comment": "",
+          "id": "182ad00b-53d8-4a5e-9834-7705cc617873",
+          "submitId": "439e65ef-7f7c-491a-8a00-a6c2ba5520ee",
+          "createDate": "2022-06-27T11:47:18"
+        },
+        "requiredEnabled": 1,
+        "id": "195"
+      },
+      {
+        "optionInformationList": [
+          {
+            "questionId": "196",
+            "optionValue": "不食用",
+            "questionnaireId": "3",
+            "optionSort": 1,
+            "fillEnabled": 0,
+            "id": "538"
+          },
+          {
+            "questionId": "196",
+            "optionValue": "每月小于一次",
+            "questionnaireId": "3",
+            "optionSort": 2,
+            "fillEnabled": 0,
+            "id": "539"
+          },
+          {
+            "questionId": "196",
+            "optionValue": "每月1-3次",
+            "questionnaireId": "3",
+            "optionSort": 3,
+            "fillEnabled": 0,
+            "id": "540"
+          },
+          {
+            "questionId": "196",
+            "optionValue": "每周1-2次",
+            "questionnaireId": "3",
+            "optionSort": 4,
+            "fillEnabled": 0,
+            "id": "541"
+          },
+          {
+            "questionId": "196",
+            "optionValue": "每周3-4次",
+            "questionnaireId": "3",
+            "optionSort": 5,
+            "fillEnabled": 0,
+            "id": "542"
+          },
+          {
+            "questionId": "196",
+            "optionValue": "每周5-6次",
+            "questionnaireId": "3",
+            "optionSort": 6,
+            "fillEnabled": 0,
+            "id": "543"
+          },
+          {
+            "questionId": "196",
+            "optionValue": "每天1次",
+            "questionnaireId": "3",
+            "optionSort": 7,
+            "fillEnabled": 0,
+            "id": "544"
+          },
+          {
+            "questionId": "196",
+            "optionValue": "每天2次",
+            "questionnaireId": "3",
+            "optionSort": 8,
+            "fillEnabled": 0,
+            "id": "545"
+          },
+          {
+            "questionId": "196",
+            "optionValue": "每天3次以上",
+            "questionnaireId": "3",
+            "optionSort": 9,
+            "fillEnabled": 0,
+            "id": "546"
+          }
+        ],
+        "questionnaireId": "3",
+        "questionName": "是否食用鸡蛋或鸭蛋",
+        "questionAnswer": {
+          "questionId": "196",
+          "questionnaireId": "3",
+          "userId": "eafd4d8d-da9a-4b58-bfc1-202b53aa5ef6",
+          "optionId": "542",
+          "comment": "",
+          "id": "fb9f5314-372f-4c2a-8a95-20ec513724f6",
+          "submitId": "439e65ef-7f7c-491a-8a00-a6c2ba5520ee",
+          "createDate": "2022-06-27T11:47:18"
+        },
+        "requiredEnabled": 1,
+        "id": "196"
+      },
+      {
+        "optionInformationList": [
+          {
+            "questionId": "197",
+            "optionValue": "不食用",
+            "questionnaireId": "3",
+            "optionSort": 1,
+            "fillEnabled": 0,
+            "id": "547"
+          },
+          {
+            "questionId": "197",
+            "optionValue": "每月小于一次",
+            "questionnaireId": "3",
+            "optionSort": 2,
+            "fillEnabled": 0,
+            "id": "548"
+          },
+          {
+            "questionId": "197",
+            "optionValue": "每月1-3次",
+            "questionnaireId": "3",
+            "optionSort": 3,
+            "fillEnabled": 0,
+            "id": "549"
+          },
+          {
+            "questionId": "197",
+            "optionValue": "每周1-2次",
+            "questionnaireId": "3",
+            "optionSort": 4,
+            "fillEnabled": 0,
+            "id": "550"
+          },
+          {
+            "questionId": "197",
+            "optionValue": "每周3-4次",
+            "questionnaireId": "3",
+            "optionSort": 5,
+            "fillEnabled": 0,
+            "id": "551"
+          },
+          {
+            "questionId": "197",
+            "optionValue": "每周5-6次",
+            "questionnaireId": "3",
+            "optionSort": 6,
+            "fillEnabled": 0,
+            "id": "552"
+          },
+          {
+            "questionId": "197",
+            "optionValue": "每天1次",
+            "questionnaireId": "3",
+            "optionSort": 7,
+            "fillEnabled": 0,
+            "id": "553"
+          },
+          {
+            "questionId": "197",
+            "optionValue": "每天2次",
+            "questionnaireId": "3",
+            "optionSort": 8,
+            "fillEnabled": 0,
+            "id": "554"
+          },
+          {
+            "questionId": "197",
+            "optionValue": "每天3次以上",
+            "questionnaireId": "3",
+            "optionSort": 9,
+            "fillEnabled": 0,
+            "id": "555"
+          }
+        ],
+        "questionnaireId": "3",
+        "questionName": "是否食用红肉类菜肴（猪、牛、羊肉等）",
+        "questionAnswer": {
+          "questionId": "197",
+          "questionnaireId": "3",
+          "userId": "eafd4d8d-da9a-4b58-bfc1-202b53aa5ef6",
+          "optionId": "550",
+          "comment": "",
+          "id": "d0452727-90ee-49dd-9ebc-87cc1f3ea47f",
+          "submitId": "439e65ef-7f7c-491a-8a00-a6c2ba5520ee",
+          "createDate": "2022-06-27T11:47:18"
+        },
+        "requiredEnabled": 1,
+        "id": "197"
+      },
+      {
+        "optionInformationList": [
+          {
+            "questionId": "198",
+            "optionValue": "不食用",
+            "questionnaireId": "3",
+            "optionSort": 1,
+            "fillEnabled": 0,
+            "id": "556"
+          },
+          {
+            "questionId": "198",
+            "optionValue": "每月小于一次",
+            "questionnaireId": "3",
+            "optionSort": 2,
+            "fillEnabled": 0,
+            "id": "557"
+          },
+          {
+            "questionId": "198",
+            "optionValue": "每月1-3次",
+            "questionnaireId": "3",
+            "optionSort": 3,
+            "fillEnabled": 0,
+            "id": "558"
+          },
+          {
+            "questionId": "198",
+            "optionValue": "每周1-2次",
+            "questionnaireId": "3",
+            "optionSort": 4,
+            "fillEnabled": 0,
+            "id": "559"
+          },
+          {
+            "questionId": "198",
+            "optionValue": "每周3-4次",
+            "questionnaireId": "3",
+            "optionSort": 5,
+            "fillEnabled": 0,
+            "id": "560"
+          },
+          {
+            "questionId": "198",
+            "optionValue": "每周5-6次",
+            "questionnaireId": "3",
+            "optionSort": 6,
+            "fillEnabled": 0,
+            "id": "561"
+          },
+          {
+            "questionId": "198",
+            "optionValue": "每天1次",
+            "questionnaireId": "3",
+            "optionSort": 7,
+            "fillEnabled": 0,
+            "id": "562"
+          },
+          {
+            "questionId": "198",
+            "optionValue": "每天2次",
+            "questionnaireId": "3",
+            "optionSort": 8,
+            "fillEnabled": 0,
+            "id": "563"
+          },
+          {
+            "questionId": "198",
+            "optionValue": "每天3次以上",
+            "questionnaireId": "3",
+            "optionSort": 9,
+            "fillEnabled": 0,
+            "id": "564"
+          }
+        ],
+        "questionnaireId": "3",
+        "questionName": "是否食用家禽类菜肴（鸡、鸭、鹅肉等）",
+        "questionAnswer": {
+          "questionId": "198",
+          "questionnaireId": "3",
+          "userId": "eafd4d8d-da9a-4b58-bfc1-202b53aa5ef6",
+          "optionId": "561",
+          "comment": "",
+          "id": "f5bfd903-25cb-4a1c-bbf8-a80fa6943191",
+          "submitId": "439e65ef-7f7c-491a-8a00-a6c2ba5520ee",
+          "createDate": "2022-06-27T11:47:18"
+        },
+        "requiredEnabled": 1,
+        "id": "198"
+      },
+      {
+        "optionInformationList": [
+          {
+            "questionId": "199",
+            "optionValue": "不食用",
+            "questionnaireId": "3",
+            "optionSort": 1,
+            "fillEnabled": 0,
+            "id": "565"
+          },
+          {
+            "questionId": "199",
+            "optionValue": "每月小于一次",
+            "questionnaireId": "3",
+            "optionSort": 2,
+            "fillEnabled": 0,
+            "id": "566"
+          },
+          {
+            "questionId": "199",
+            "optionValue": "每月1-3次",
+            "questionnaireId": "3",
+            "optionSort": 3,
+            "fillEnabled": 0,
+            "id": "567"
+          },
+          {
+            "questionId": "199",
+            "optionValue": "每周1-2次",
+            "questionnaireId": "3",
+            "optionSort": 4,
+            "fillEnabled": 0,
+            "id": "568"
+          },
+          {
+            "questionId": "199",
+            "optionValue": "每周3-4次",
+            "questionnaireId": "3",
+            "optionSort": 5,
+            "fillEnabled": 0,
+            "id": "569"
+          },
+          {
+            "questionId": "199",
+            "optionValue": "每周5-6次",
+            "questionnaireId": "3",
+            "optionSort": 6,
+            "fillEnabled": 0,
+            "id": "570"
+          },
+          {
+            "questionId": "199",
+            "optionValue": "每天1次",
+            "questionnaireId": "3",
+            "optionSort": 7,
+            "fillEnabled": 0,
+            "id": "571"
+          },
+          {
+            "questionId": "199",
+            "optionValue": "每天2次",
+            "questionnaireId": "3",
+            "optionSort": 8,
+            "fillEnabled": 0,
+            "id": "572"
+          },
+          {
+            "questionId": "199",
+            "optionValue": "每天3次以上",
+            "questionnaireId": "3",
+            "optionSort": 9,
+            "fillEnabled": 0,
+            "id": "573"
+          }
+        ],
+        "questionnaireId": "3",
+        "questionName": "是否食用加工肉制品（香肠、熏肉、午餐肉、火腿等）",
+        "questionAnswer": {
+          "questionId": "199",
+          "questionnaireId": "3",
+          "userId": "eafd4d8d-da9a-4b58-bfc1-202b53aa5ef6",
+          "optionId": "568",
+          "comment": "",
+          "id": "eaf9ce21-8652-4beb-b024-c7b8b5b83dc1",
+          "submitId": "439e65ef-7f7c-491a-8a00-a6c2ba5520ee",
+          "createDate": "2022-06-27T11:47:18"
+        },
+        "requiredEnabled": 1,
+        "id": "199"
+      },
+      {
+        "optionInformationList": [
+          {
+            "questionId": "200",
+            "optionValue": "不食用",
+            "questionnaireId": "3",
+            "optionSort": 1,
+            "fillEnabled": 0,
+            "id": "574"
+          },
+          {
+            "questionId": "200",
+            "optionValue": "每月小于一次",
+            "questionnaireId": "3",
+            "optionSort": 2,
+            "fillEnabled": 0,
+            "id": "575"
+          },
+          {
+            "questionId": "200",
+            "optionValue": "每月1-3次",
+            "questionnaireId": "3",
+            "optionSort": 3,
+            "fillEnabled": 0,
+            "id": "576"
+          },
+          {
+            "questionId": "200",
+            "optionValue": "每周1-2次",
+            "questionnaireId": "3",
+            "optionSort": 4,
+            "fillEnabled": 0,
+            "id": "577"
+          },
+          {
+            "questionId": "200",
+            "optionValue": "每周3-4次",
+            "questionnaireId": "3",
+            "optionSort": 5,
+            "fillEnabled": 0,
+            "id": "578"
+          },
+          {
+            "questionId": "200",
+            "optionValue": "每周5-6次",
+            "questionnaireId": "3",
+            "optionSort": 6,
+            "fillEnabled": 0,
+            "id": "579"
+          },
+          {
+            "questionId": "200",
+            "optionValue": "每天1次",
+            "questionnaireId": "3",
+            "optionSort": 7,
+            "fillEnabled": 0,
+            "id": "580"
+          },
+          {
+            "questionId": "200",
+            "optionValue": "每天2次",
+            "questionnaireId": "3",
+            "optionSort": 8,
+            "fillEnabled": 0,
+            "id": "581"
+          },
+          {
+            "questionId": "200",
+            "optionValue": "每天3次以上",
+            "questionnaireId": "3",
+            "optionSort": 9,
+            "fillEnabled": 0,
+            "id": "582"
+          }
+        ],
+        "questionnaireId": "3",
+        "questionName": "是否食用河鲜类菜肴（青鱼、鲈鱼、鲢鱼、河虾等）",
+        "questionAnswer": {
+          "questionId": "200",
+          "questionnaireId": "3",
+          "userId": "eafd4d8d-da9a-4b58-bfc1-202b53aa5ef6",
+          "optionId": "579",
+          "comment": "",
+          "id": "a9015715-ca2a-4c30-8442-ac6df15db809",
+          "submitId": "439e65ef-7f7c-491a-8a00-a6c2ba5520ee",
+          "createDate": "2022-06-27T11:47:18"
+        },
+        "requiredEnabled": 1,
+        "id": "200"
+      },
+      {
+        "optionInformationList": [
+          {
+            "questionId": "201",
+            "optionValue": "不食用",
+            "questionnaireId": "3",
+            "optionSort": 1,
+            "fillEnabled": 0,
+            "id": "583"
+          },
+          {
+            "questionId": "201",
+            "optionValue": "每月小于一次",
+            "questionnaireId": "3",
+            "optionSort": 2,
+            "fillEnabled": 0,
+            "id": "584"
+          },
+          {
+            "questionId": "201",
+            "optionValue": "每月1-3次",
+            "questionnaireId": "3",
+            "optionSort": 3,
+            "fillEnabled": 0,
+            "id": "585"
+          },
+          {
+            "questionId": "201",
+            "optionValue": "每周1-2次",
+            "questionnaireId": "3",
+            "optionSort": 4,
+            "fillEnabled": 0,
+            "id": "586"
+          },
+          {
+            "questionId": "201",
+            "optionValue": "每周3-4次",
+            "questionnaireId": "3",
+            "optionSort": 5,
+            "fillEnabled": 0,
+            "id": "587"
+          },
+          {
+            "questionId": "201",
+            "optionValue": "每周5-6次",
+            "questionnaireId": "3",
+            "optionSort": 6,
+            "fillEnabled": 0,
+            "id": "588"
+          },
+          {
+            "questionId": "201",
+            "optionValue": "每天1次",
+            "questionnaireId": "3",
+            "optionSort": 7,
+            "fillEnabled": 0,
+            "id": "589"
+          },
+          {
+            "questionId": "201",
+            "optionValue": "每天2次",
+            "questionnaireId": "3",
+            "optionSort": 8,
+            "fillEnabled": 0,
+            "id": "590"
+          },
+          {
+            "questionId": "201",
+            "optionValue": "每天3次以上",
+            "questionnaireId": "3",
+            "optionSort": 9,
+            "fillEnabled": 0,
+            "id": "591"
+          }
+        ],
+        "questionnaireId": "3",
+        "questionName": "是否食用海鲜类菜肴（带鱼、鲳鱼、黄鱼、海虾等）",
+        "questionAnswer": {
+          "questionId": "201",
+          "questionnaireId": "3",
+          "userId": "eafd4d8d-da9a-4b58-bfc1-202b53aa5ef6",
+          "optionId": "586",
+          "comment": "",
+          "id": "39b5c875-8555-4283-8e50-c26ee561df9d",
+          "submitId": "439e65ef-7f7c-491a-8a00-a6c2ba5520ee",
+          "createDate": "2022-06-27T11:47:18"
+        },
+        "requiredEnabled": 1,
+        "id": "201"
+      },
+      {
+        "optionInformationList": [
+          {
+            "questionId": "202",
+            "optionValue": "不食用",
+            "questionnaireId": "3",
+            "optionSort": 1,
+            "fillEnabled": 0,
+            "id": "592"
+          },
+          {
+            "questionId": "202",
+            "optionValue": "每月小于一次",
+            "questionnaireId": "3",
+            "optionSort": 2,
+            "fillEnabled": 0,
+            "id": "593"
+          },
+          {
+            "questionId": "202",
+            "optionValue": "每月1-3次",
+            "questionnaireId": "3",
+            "optionSort": 3,
+            "fillEnabled": 0,
+            "id": "594"
+          },
+          {
+            "questionId": "202",
+            "optionValue": "每周1-2次",
+            "questionnaireId": "3",
+            "optionSort": 4,
+            "fillEnabled": 0,
+            "id": "595"
+          },
+          {
+            "questionId": "202",
+            "optionValue": "每周3-4次",
+            "questionnaireId": "3",
+            "optionSort": 5,
+            "fillEnabled": 0,
+            "id": "596"
+          },
+          {
+            "questionId": "202",
+            "optionValue": "每周5-6次",
+            "questionnaireId": "3",
+            "optionSort": 6,
+            "fillEnabled": 0,
+            "id": "597"
+          },
+          {
+            "questionId": "202",
+            "optionValue": "每天1次",
+            "questionnaireId": "3",
+            "optionSort": 7,
+            "fillEnabled": 0,
+            "id": "598"
+          },
+          {
+            "questionId": "202",
+            "optionValue": "每天2次",
+            "questionnaireId": "3",
+            "optionSort": 8,
+            "fillEnabled": 0,
+            "id": "599"
+          },
+          {
+            "questionId": "202",
+            "optionValue": "每天3次以上",
+            "questionnaireId": "3",
+            "optionSort": 9,
+            "fillEnabled": 0,
+            "id": "600"
+          }
+        ],
+        "questionnaireId": "3",
+        "questionName": "是否食用豆制品菜肴（豆腐、香干、素鸡等）",
+        "questionAnswer": {
+          "questionId": "202",
+          "questionnaireId": "3",
+          "userId": "eafd4d8d-da9a-4b58-bfc1-202b53aa5ef6",
+          "optionId": "597",
+          "comment": "",
+          "id": "e65dd3ac-7136-4f05-8d8f-eeb797e7b322",
+          "submitId": "439e65ef-7f7c-491a-8a00-a6c2ba5520ee",
+          "createDate": "2022-06-27T11:47:18"
+        },
+        "requiredEnabled": 1,
+        "id": "202"
+      },
+      {
+        "optionInformationList": [
+          {
+            "questionId": "203",
+            "optionValue": "不食用",
+            "questionnaireId": "3",
+            "optionSort": 1,
+            "fillEnabled": 0,
+            "id": "601"
+          },
+          {
+            "questionId": "203",
+            "optionValue": "每月小于一次",
+            "questionnaireId": "3",
+            "optionSort": 2,
+            "fillEnabled": 0,
+            "id": "602"
+          },
+          {
+            "questionId": "203",
+            "optionValue": "每月1-3次",
+            "questionnaireId": "3",
+            "optionSort": 3,
+            "fillEnabled": 0,
+            "id": "603"
+          },
+          {
+            "questionId": "203",
+            "optionValue": "每周1-2次",
+            "questionnaireId": "3",
+            "optionSort": 4,
+            "fillEnabled": 0,
+            "id": "604"
+          },
+          {
+            "questionId": "203",
+            "optionValue": "每周3-4次",
+            "questionnaireId": "3",
+            "optionSort": 5,
+            "fillEnabled": 0,
+            "id": "605"
+          },
+          {
+            "questionId": "203",
+            "optionValue": "每周5-6次",
+            "questionnaireId": "3",
+            "optionSort": 6,
+            "fillEnabled": 0,
+            "id": "606"
+          },
+          {
+            "questionId": "203",
+            "optionValue": "每天1次",
+            "questionnaireId": "3",
+            "optionSort": 7,
+            "fillEnabled": 0,
+            "id": "607"
+          },
+          {
+            "questionId": "203",
+            "optionValue": "每天2次",
+            "questionnaireId": "3",
+            "optionSort": 8,
+            "fillEnabled": 0,
+            "id": "608"
+          },
+          {
+            "questionId": "203",
+            "optionValue": "每天3次以上",
+            "questionnaireId": "3",
+            "optionSort": 9,
+            "fillEnabled": 0,
+            "id": "609"
+          }
+        ],
+        "questionnaireId": "3",
+        "questionName": "是否食用坚果类（西瓜子、葵花子、核桃、花生、开心果等）",
+        "questionAnswer": {
+          "questionId": "203",
+          "questionnaireId": "3",
+          "userId": "eafd4d8d-da9a-4b58-bfc1-202b53aa5ef6",
+          "optionId": "605",
+          "comment": "",
+          "id": "e78e6c1c-18a6-4cbf-aa71-6801f63e711c",
+          "submitId": "439e65ef-7f7c-491a-8a00-a6c2ba5520ee",
+          "createDate": "2022-06-27T11:47:18"
+        },
+        "requiredEnabled": 1,
+        "id": "203"
+      },
+      {
+        "optionInformationList": [
+          {
+            "questionId": "204",
+            "optionValue": "不食用",
+            "questionnaireId": "3",
+            "optionSort": 1,
+            "fillEnabled": 0,
+            "id": "610"
+          },
+          {
+            "questionId": "204",
+            "optionValue": "每月小于一次",
+            "questionnaireId": "3",
+            "optionSort": 2,
+            "fillEnabled": 0,
+            "id": "611"
+          },
+          {
+            "questionId": "204",
+            "optionValue": "每月1-3次",
+            "questionnaireId": "3",
+            "optionSort": 3,
+            "fillEnabled": 0,
+            "id": "612"
+          },
+          {
+            "questionId": "204",
+            "optionValue": "每周1-2次",
+            "questionnaireId": "3",
+            "optionSort": 4,
+            "fillEnabled": 0,
+            "id": "613"
+          },
+          {
+            "questionId": "204",
+            "optionValue": "每周3-4次",
+            "questionnaireId": "3",
+            "optionSort": 5,
+            "fillEnabled": 0,
+            "id": "614"
+          },
+          {
+            "questionId": "204",
+            "optionValue": "每周5-6次",
+            "questionnaireId": "3",
+            "optionSort": 6,
+            "fillEnabled": 0,
+            "id": "615"
+          },
+          {
+            "questionId": "204",
+            "optionValue": "每天1次",
+            "questionnaireId": "3",
+            "optionSort": 7,
+            "fillEnabled": 0,
+            "id": "616"
+          },
+          {
+            "questionId": "204",
+            "optionValue": "每天2次",
+            "questionnaireId": "3",
+            "optionSort": 8,
+            "fillEnabled": 0,
+            "id": "617"
+          },
+          {
+            "questionId": "204",
+            "optionValue": "每天3次以上",
+            "questionnaireId": "3",
+            "optionSort": 9,
+            "fillEnabled": 0,
+            "id": "618"
+          }
+        ],
+        "questionnaireId": "3",
+        "questionName": "是否食用深色蔬菜类（青菜、菠菜、空心菜、番茄、青椒、胡萝卜等）",
+        "questionAnswer": {
+          "questionId": "204",
+          "questionnaireId": "3",
+          "userId": "eafd4d8d-da9a-4b58-bfc1-202b53aa5ef6",
+          "optionId": "614",
+          "comment": "",
+          "id": "3ef20255-cec3-4177-85a4-e305d731a3a0",
+          "submitId": "439e65ef-7f7c-491a-8a00-a6c2ba5520ee",
+          "createDate": "2022-06-27T11:47:18"
+        },
+        "requiredEnabled": 1,
+        "id": "204"
+      },
+      {
+        "optionInformationList": [
+          {
+            "questionId": "205",
+            "optionValue": "不食用",
+            "questionnaireId": "3",
+            "optionSort": 1,
+            "fillEnabled": 0,
+            "id": "619"
+          },
+          {
+            "questionId": "205",
+            "optionValue": "每月小于一次",
+            "questionnaireId": "3",
+            "optionSort": 2,
+            "fillEnabled": 0,
+            "id": "620"
+          },
+          {
+            "questionId": "205",
+            "optionValue": "每月1-3次",
+            "questionnaireId": "3",
+            "optionSort": 3,
+            "fillEnabled": 0,
+            "id": "621"
+          },
+          {
+            "questionId": "205",
+            "optionValue": "每周1-2次",
+            "questionnaireId": "3",
+            "optionSort": 4,
+            "fillEnabled": 0,
+            "id": "622"
+          },
+          {
+            "questionId": "205",
+            "optionValue": "每周3-4次",
+            "questionnaireId": "3",
+            "optionSort": 5,
+            "fillEnabled": 0,
+            "id": "623"
+          },
+          {
+            "questionId": "205",
+            "optionValue": "每周5-6次",
+            "questionnaireId": "3",
+            "optionSort": 6,
+            "fillEnabled": 0,
+            "id": "624"
+          },
+          {
+            "questionId": "205",
+            "optionValue": "每天1次",
+            "questionnaireId": "3",
+            "optionSort": 7,
+            "fillEnabled": 0,
+            "id": "625"
+          },
+          {
+            "questionId": "205",
+            "optionValue": "每天2次",
+            "questionnaireId": "3",
+            "optionSort": 8,
+            "fillEnabled": 0,
+            "id": "626"
+          },
+          {
+            "questionId": "205",
+            "optionValue": "每天3次以上",
+            "questionnaireId": "3",
+            "optionSort": 9,
+            "fillEnabled": 0,
+            "id": "627"
+          }
+        ],
+        "questionnaireId": "3",
+        "questionName": "是否食用浅色蔬菜类（白菜、萝卜、黄瓜等）",
+        "questionAnswer": {
+          "questionId": "205",
+          "questionnaireId": "3",
+          "userId": "eafd4d8d-da9a-4b58-bfc1-202b53aa5ef6",
+          "optionId": "624",
+          "comment": "",
+          "id": "4b3d4530-5510-4563-91de-197e250248ba",
+          "submitId": "439e65ef-7f7c-491a-8a00-a6c2ba5520ee",
+          "createDate": "2022-06-27T11:47:18"
+        },
+        "requiredEnabled": 1,
+        "id": "205"
+      },
+      {
+        "optionInformationList": [
+          {
+            "questionId": "206",
+            "optionValue": "不食用",
+            "questionnaireId": "3",
+            "optionSort": 1,
+            "fillEnabled": 0,
+            "id": "628"
+          },
+          {
+            "questionId": "206",
+            "optionValue": "每月小于一次",
+            "questionnaireId": "3",
+            "optionSort": 2,
+            "fillEnabled": 0,
+            "id": "629"
+          },
+          {
+            "questionId": "206",
+            "optionValue": "每月1-3次",
+            "questionnaireId": "3",
+            "optionSort": 3,
+            "fillEnabled": 0,
+            "id": "630"
+          },
+          {
+            "questionId": "206",
+            "optionValue": "每周1-2次",
+            "questionnaireId": "3",
+            "optionSort": 4,
+            "fillEnabled": 0,
+            "id": "631"
+          },
+          {
+            "questionId": "206",
+            "optionValue": "每周3-4次",
+            "questionnaireId": "3",
+            "optionSort": 5,
+            "fillEnabled": 0,
+            "id": "632"
+          },
+          {
+            "questionId": "206",
+            "optionValue": "每周5-6次",
+            "questionnaireId": "3",
+            "optionSort": 6,
+            "fillEnabled": 0,
+            "id": "633"
+          },
+          {
+            "questionId": "206",
+            "optionValue": "每天1次",
+            "questionnaireId": "3",
+            "optionSort": 7,
+            "fillEnabled": 0,
+            "id": "634"
+          },
+          {
+            "questionId": "206",
+            "optionValue": "每天2次",
+            "questionnaireId": "3",
+            "optionSort": 8,
+            "fillEnabled": 0,
+            "id": "635"
+          },
+          {
+            "questionId": "206",
+            "optionValue": "每天3次以上",
+            "questionnaireId": "3",
+            "optionSort": 9,
+            "fillEnabled": 0,
+            "id": "636"
+          }
+        ],
+        "questionnaireId": "3",
+        "questionName": "是否食用菌菇类（香菇、草菇、平菇等）",
+        "questionAnswer": {
+          "questionId": "206",
+          "questionnaireId": "3",
+          "userId": "eafd4d8d-da9a-4b58-bfc1-202b53aa5ef6",
+          "optionId": "632",
+          "comment": "",
+          "id": "0b4696af-23e1-4479-98b8-4c83a8972881",
+          "submitId": "439e65ef-7f7c-491a-8a00-a6c2ba5520ee",
+          "createDate": "2022-06-27T11:47:18"
+        },
+        "requiredEnabled": 1,
+        "id": "206"
+      },
+      {
+        "optionInformationList": [
+          {
+            "questionId": "207",
+            "optionValue": "不食用",
+            "questionnaireId": "3",
+            "optionSort": 1,
+            "fillEnabled": 0,
+            "id": "637"
+          },
+          {
+            "questionId": "207",
+            "optionValue": "每月小于一次",
+            "questionnaireId": "3",
+            "optionSort": 2,
+            "fillEnabled": 0,
+            "id": "638"
+          },
+          {
+            "questionId": "207",
+            "optionValue": "每月1-3次",
+            "questionnaireId": "3",
+            "optionSort": 3,
+            "fillEnabled": 0,
+            "id": "639"
+          },
+          {
+            "questionId": "207",
+            "optionValue": "每周1-2次",
+            "questionnaireId": "3",
+            "optionSort": 4,
+            "fillEnabled": 0,
+            "id": "640"
+          },
+          {
+            "questionId": "207",
+            "optionValue": "每周3-4次",
+            "questionnaireId": "3",
+            "optionSort": 5,
+            "fillEnabled": 0,
+            "id": "641"
+          },
+          {
+            "questionId": "207",
+            "optionValue": "每周5-6次",
+            "questionnaireId": "3",
+            "optionSort": 6,
+            "fillEnabled": 0,
+            "id": "642"
+          },
+          {
+            "questionId": "207",
+            "optionValue": "每天1次",
+            "questionnaireId": "3",
+            "optionSort": 7,
+            "fillEnabled": 0,
+            "id": "643"
+          },
+          {
+            "questionId": "207",
+            "optionValue": "每天2次",
+            "questionnaireId": "3",
+            "optionSort": 8,
+            "fillEnabled": 0,
+            "id": "644"
+          },
+          {
+            "questionId": "207",
+            "optionValue": "每天3次以上",
+            "questionnaireId": "3",
+            "optionSort": 9,
+            "fillEnabled": 0,
+            "id": "645"
+          }
+        ],
+        "questionnaireId": "3",
+        "questionName": "是否食用水果（苹果、梨、香蕉等）",
+        "questionAnswer": {
+          "questionId": "207",
+          "questionnaireId": "3",
+          "userId": "eafd4d8d-da9a-4b58-bfc1-202b53aa5ef6",
+          "optionId": "640",
+          "comment": "",
+          "id": "9156c8f8-43bf-4e22-ad18-bc68fb20a3d5",
+          "submitId": "439e65ef-7f7c-491a-8a00-a6c2ba5520ee",
+          "createDate": "2022-06-27T11:47:18"
+        },
+        "requiredEnabled": 1,
+        "id": "207"
+      },
+      {
+        "optionInformationList": [
+          {
+            "questionId": "208",
+            "optionValue": "不食用",
+            "questionnaireId": "3",
+            "optionSort": 1,
+            "fillEnabled": 0,
+            "id": "646"
+          },
+          {
+            "questionId": "208",
+            "optionValue": "每月小于一次",
+            "questionnaireId": "3",
+            "optionSort": 2,
+            "fillEnabled": 0,
+            "id": "647"
+          },
+          {
+            "questionId": "208",
+            "optionValue": "每月1-3次",
+            "questionnaireId": "3",
+            "optionSort": 3,
+            "fillEnabled": 0,
+            "id": "648"
+          },
+          {
+            "questionId": "208",
+            "optionValue": "每周1-2次",
+            "questionnaireId": "3",
+            "optionSort": 4,
+            "fillEnabled": 0,
+            "id": "649"
+          },
+          {
+            "questionId": "208",
+            "optionValue": "每周3-4次",
+            "questionnaireId": "3",
+            "optionSort": 5,
+            "fillEnabled": 0,
+            "id": "650"
+          },
+          {
+            "questionId": "208",
+            "optionValue": "每周5-6次",
+            "questionnaireId": "3",
+            "optionSort": 6,
+            "fillEnabled": 0,
+            "id": "651"
+          },
+          {
+            "questionId": "208",
+            "optionValue": "每天1次",
+            "questionnaireId": "3",
+            "optionSort": 7,
+            "fillEnabled": 0,
+            "id": "652"
+          },
+          {
+            "questionId": "208",
+            "optionValue": "每天2次",
+            "questionnaireId": "3",
+            "optionSort": 8,
+            "fillEnabled": 0,
+            "id": "653"
+          },
+          {
+            "questionId": "208",
+            "optionValue": "每天3次以上",
+            "questionnaireId": "3",
+            "optionSort": 9,
+            "fillEnabled": 0,
+            "id": "654"
+          }
+        ],
+        "questionnaireId": "3",
+        "questionName": "是否饮用甜饮料（可乐、雪碧、冰红茶、运动饮料等）",
+        "questionAnswer": {
+          "questionId": "208",
+          "questionnaireId": "3",
+          "userId": "eafd4d8d-da9a-4b58-bfc1-202b53aa5ef6",
+          "optionId": "651",
+          "comment": "",
+          "id": "77c6f7e0-d709-47ea-8723-e8ed85ca306b",
+          "submitId": "439e65ef-7f7c-491a-8a00-a6c2ba5520ee",
+          "createDate": "2022-06-27T11:47:18"
+        },
+        "requiredEnabled": 1,
+        "id": "208"
+      },
+      {
+        "optionInformationList": [
+          {
+            "questionId": "209",
+            "optionValue": "不食用",
+            "questionnaireId": "3",
+            "optionSort": 1,
+            "fillEnabled": 0,
+            "id": "655"
+          },
+          {
+            "associatedJumpId": "1",
+            "questionId": "209",
+            "optionValue": "每月小于一次",
+            "questionnaireId": "3",
+            "optionSort": 2,
+            "fillEnabled": 0,
+            "id": "656"
+          },
+          {
+            "associatedJumpId": "1",
+            "questionId": "209",
+            "optionValue": "每月1-3次",
+            "questionnaireId": "3",
+            "optionSort": 3,
+            "fillEnabled": 0,
+            "id": "657"
+          },
+          {
+            "associatedJumpId": "1",
+            "questionId": "209",
+            "optionValue": "每周1-2次",
+            "questionnaireId": "3",
+            "optionSort": 4,
+            "fillEnabled": 0,
+            "id": "658"
+          },
+          {
+            "associatedJumpId": "1",
+            "questionId": "209",
+            "optionValue": "每周3-4次",
+            "questionnaireId": "3",
+            "optionSort": 5,
+            "fillEnabled": 0,
+            "id": "659"
+          },
+          {
+            "associatedJumpId": "1",
+            "questionId": "209",
+            "optionValue": "每周5-6次",
+            "questionnaireId": "3",
+            "optionSort": 6,
+            "fillEnabled": 0,
+            "id": "660"
+          },
+          {
+            "associatedJumpId": "1",
+            "questionId": "209",
+            "optionValue": "每天1次",
+            "questionnaireId": "3",
+            "optionSort": 7,
+            "fillEnabled": 0,
+            "id": "661"
+          },
+          {
+            "associatedJumpId": "1",
+            "questionId": "209",
+            "optionValue": "每天2次",
+            "questionnaireId": "3",
+            "optionSort": 8,
+            "fillEnabled": 0,
+            "id": "662"
+          },
+          {
+            "associatedJumpId": "1",
+            "questionId": "209",
+            "optionValue": "每天3次以上",
+            "questionnaireId": "3",
+            "optionSort": 9,
+            "fillEnabled": 0,
+            "id": "663"
+          }
+        ],
+        "questionnaireId": "3",
+        "questionName": "是否饮用啤酒",
+        "questionAnswer": {
+          "questionId": "209",
+          "questionnaireId": "3",
+          "userId": "eafd4d8d-da9a-4b58-bfc1-202b53aa5ef6",
+          "optionId": "660",
+          "comment": "",
+          "id": "3dab128a-85f5-4ed3-a31c-fe7a6f77127b",
+          "submitId": "439e65ef-7f7c-491a-8a00-a6c2ba5520ee",
+          "createDate": "2022-06-27T11:47:18"
+        },
+        "requiredEnabled": 1,
+        "id": "209"
+      },
+      {
+        "optionInformationList": [
+          {
+            "questionId": "211",
+            "optionValue": "不食用",
+            "questionnaireId": "3",
+            "optionSort": 1,
+            "fillEnabled": 0,
+            "id": "665"
+          },
+          {
+            "associatedJumpId": "1",
+            "questionId": "211",
+            "optionValue": "每月小于一次",
+            "questionnaireId": "3",
+            "optionSort": 2,
+            "fillEnabled": 0,
+            "id": "666"
+          },
+          {
+            "associatedJumpId": "1",
+            "questionId": "211",
+            "optionValue": "每月1-3次",
+            "questionnaireId": "3",
+            "optionSort": 3,
+            "fillEnabled": 0,
+            "id": "667"
+          },
+          {
+            "associatedJumpId": "1",
+            "questionId": "211",
+            "optionValue": "每周1-2次",
+            "questionnaireId": "3",
+            "optionSort": 4,
+            "fillEnabled": 0,
+            "id": "668"
+          },
+          {
+            "associatedJumpId": "1",
+            "questionId": "211",
+            "optionValue": "每周3-4次",
+            "questionnaireId": "3",
+            "optionSort": 5,
+            "fillEnabled": 0,
+            "id": "669"
+          },
+          {
+            "associatedJumpId": "1",
+            "questionId": "211",
+            "optionValue": "每周5-6次",
+            "questionnaireId": "3",
+            "optionSort": 6,
+            "fillEnabled": 0,
+            "id": "670"
+          },
+          {
+            "associatedJumpId": "1",
+            "questionId": "211",
+            "optionValue": "每天1次",
+            "questionnaireId": "3",
+            "optionSort": 7,
+            "fillEnabled": 0,
+            "id": "671"
+          },
+          {
+            "associatedJumpId": "1",
+            "questionId": "211",
+            "optionValue": "每天2次",
+            "questionnaireId": "3",
+            "optionSort": 8,
+            "fillEnabled": 0,
+            "id": "672"
+          },
+          {
+            "associatedJumpId": "1",
+            "questionId": "211",
+            "optionValue": "每天3次以上",
+            "questionnaireId": "3",
+            "optionSort": 9,
+            "fillEnabled": 0,
+            "id": "673"
+          }
+        ],
+        "questionnaireId": "3",
+        "questionName": "是否饮用黄酒",
+        "questionAnswer": {
+          "questionId": "211",
+          "questionnaireId": "3",
+          "userId": "eafd4d8d-da9a-4b58-bfc1-202b53aa5ef6",
+          "optionId": "665",
+          "comment": "",
+          "id": "0bc5fa32-fcf1-4738-a654-bbcc14c0f5f3",
+          "submitId": "439e65ef-7f7c-491a-8a00-a6c2ba5520ee",
+          "createDate": "2022-06-27T11:47:18"
+        },
+        "requiredEnabled": 1,
+        "id": "211"
+      },
+      {
+        "optionInformationList": [
+          {
+            "questionId": "213",
+            "optionValue": "不食用",
+            "questionnaireId": "3",
+            "optionSort": 1,
+            "fillEnabled": 0,
+            "id": "675"
+          },
+          {
+            "associatedJumpId": "1",
+            "questionId": "213",
+            "optionValue": "每月小于一次",
+            "questionnaireId": "3",
+            "optionSort": 2,
+            "fillEnabled": 0,
+            "id": "676"
+          },
+          {
+            "associatedJumpId": "1",
+            "questionId": "213",
+            "optionValue": "每月1-3次",
+            "questionnaireId": "3",
+            "optionSort": 3,
+            "fillEnabled": 0,
+            "id": "677"
+          },
+          {
+            "associatedJumpId": "1",
+            "questionId": "213",
+            "optionValue": "每周1-2次",
+            "questionnaireId": "3",
+            "optionSort": 4,
+            "fillEnabled": 0,
+            "id": "678"
+          },
+          {
+            "associatedJumpId": "1",
+            "questionId": "213",
+            "optionValue": "每周3-4次",
+            "questionnaireId": "3",
+            "optionSort": 5,
+            "fillEnabled": 0,
+            "id": "679"
+          },
+          {
+            "associatedJumpId": "1",
+            "questionId": "213",
+            "optionValue": "每周5-6次",
+            "questionnaireId": "3",
+            "optionSort": 6,
+            "fillEnabled": 0,
+            "id": "680"
+          },
+          {
+            "associatedJumpId": "1",
+            "questionId": "213",
+            "optionValue": "每天1次",
+            "questionnaireId": "3",
+            "optionSort": 7,
+            "fillEnabled": 0,
+            "id": "681"
+          },
+          {
+            "associatedJumpId": "1",
+            "questionId": "213",
+            "optionValue": "每天2次",
+            "questionnaireId": "3",
+            "optionSort": 8,
+            "fillEnabled": 0,
+            "id": "682"
+          },
+          {
+            "associatedJumpId": "1",
+            "questionId": "213",
+            "optionValue": "每天3次以上",
+            "questionnaireId": "3",
+            "optionSort": 9,
+            "fillEnabled": 0,
+            "id": "683"
+          }
+        ],
+        "questionnaireId": "3",
+        "questionName": "是否饮用白酒",
+        "questionAnswer": {
+          "questionId": "213",
+          "questionnaireId": "3",
+          "userId": "eafd4d8d-da9a-4b58-bfc1-202b53aa5ef6",
+          "optionId": "675",
+          "comment": "",
+          "id": "7deff7eb-2321-4b36-9977-1474135d3d80",
+          "submitId": "439e65ef-7f7c-491a-8a00-a6c2ba5520ee",
+          "createDate": "2022-06-27T11:47:18"
+        },
+        "requiredEnabled": 1,
+        "id": "213"
+      }
+    ],
+    "4": [
+      {
+        "optionInformationList": [
+          {
+            "questionId": "155",
+            "optionValue": "很少或者根本没有",
+            "questionnaireId": "4",
+            "optionSort": 1,
+            "fillEnabled": 0,
+            "id": "370"
+          },
+          {
+            "questionId": "155",
+            "optionValue": "不太多",
+            "questionnaireId": "4",
+            "optionSort": 2,
+            "fillEnabled": 0,
+            "id": "371"
+          },
+          {
+            "questionId": "155",
+            "optionValue": "有时或者说有一半的时间",
+            "questionnaireId": "4",
+            "optionSort": 3,
+            "fillEnabled": 0,
+            "id": "372"
+          },
+          {
+            "questionId": "155",
+            "optionValue": "大多数的时间",
+            "questionnaireId": "4",
+            "optionSort": 4,
+            "fillEnabled": 0,
+            "id": "373"
+          }
+        ],
+        "questionnaireId": "4",
+        "questionName": "我因一些小事而烦恼",
+        "questionAnswer": {
+          "questionId": "155",
+          "questionnaireId": "4",
+          "userId": "eafd4d8d-da9a-4b58-bfc1-202b53aa5ef6",
+          "optionId": "370",
+          "comment": "",
+          "id": "79c190f4-99b4-4540-a890-3d5ea260fd33",
+          "submitId": "0ac9e556-3896-49d1-961d-7734f79dbd73",
+          "createDate": "2022-06-27T11:48:40"
+        },
+        "requiredEnabled": 1,
+        "id": "155"
+      },
+      {
+        "optionInformationList": [
+          {
+            "questionId": "156",
+            "optionValue": "很少或者根本没有",
+            "questionnaireId": "4",
+            "optionSort": 1,
+            "fillEnabled": 0,
+            "id": "374"
+          },
+          {
+            "questionId": "156",
+            "optionValue": "不太多",
+            "questionnaireId": "4",
+            "optionSort": 2,
+            "fillEnabled": 0,
+            "id": "375"
+          },
+          {
+            "questionId": "156",
+            "optionValue": "有时或者说有一半的时间",
+            "questionnaireId": "4",
+            "optionSort": 3,
+            "fillEnabled": 0,
+            "id": "376"
+          },
+          {
+            "questionId": "156",
+            "optionValue": "大多数的时间",
+            "questionnaireId": "4",
+            "optionSort": 4,
+            "fillEnabled": 0,
+            "id": "377"
+          }
+        ],
+        "questionnaireId": "4",
+        "questionName": "我在做事时很难集中精力",
+        "questionAnswer": {
+          "questionId": "156",
+          "questionnaireId": "4",
+          "userId": "eafd4d8d-da9a-4b58-bfc1-202b53aa5ef6",
+          "optionId": "376",
+          "comment": "",
+          "id": "33b9033c-99ee-40b8-84d2-74838049d9fc",
+          "submitId": "0ac9e556-3896-49d1-961d-7734f79dbd73",
+          "createDate": "2022-06-27T11:48:40"
+        },
+        "requiredEnabled": 1,
+        "id": "156"
+      },
+      {
+        "optionInformationList": [
+          {
+            "questionId": "157",
+            "optionValue": "很少或者根本没有",
+            "questionnaireId": "4",
+            "optionSort": 1,
+            "fillEnabled": 0,
+            "id": "378"
+          },
+          {
+            "questionId": "157",
+            "optionValue": "不太多",
+            "questionnaireId": "4",
+            "optionSort": 2,
+            "fillEnabled": 0,
+            "id": "379"
+          },
+          {
+            "questionId": "157",
+            "optionValue": "有时或者说有一半的时间",
+            "questionnaireId": "4",
+            "optionSort": 3,
+            "fillEnabled": 0,
+            "id": "380"
+          },
+          {
+            "questionId": "157",
+            "optionValue": "大多数的时间",
+            "questionnaireId": "4",
+            "optionSort": 4,
+            "fillEnabled": 0,
+            "id": "381"
+          }
+        ],
+        "questionnaireId": "4",
+        "questionName": "我感到情绪低落",
+        "questionAnswer": {
+          "questionId": "157",
+          "questionnaireId": "4",
+          "userId": "eafd4d8d-da9a-4b58-bfc1-202b53aa5ef6",
+          "optionId": "380",
+          "comment": "",
+          "id": "7b15a514-1665-4470-8828-6cc03f6457b6",
+          "submitId": "0ac9e556-3896-49d1-961d-7734f79dbd73",
+          "createDate": "2022-06-27T11:48:40"
+        },
+        "requiredEnabled": 1,
+        "id": "157"
+      },
+      {
+        "optionInformationList": [
+          {
+            "questionId": "158",
+            "optionValue": "很少或者根本没有",
+            "questionnaireId": "4",
+            "optionSort": 1,
+            "fillEnabled": 0,
+            "id": "382"
+          },
+          {
+            "questionId": "158",
+            "optionValue": "不太多",
+            "questionnaireId": "4",
+            "optionSort": 2,
+            "fillEnabled": 0,
+            "id": "383"
+          },
+          {
+            "questionId": "158",
+            "optionValue": "有时或者说有一半的时间",
+            "questionnaireId": "4",
+            "optionSort": 3,
+            "fillEnabled": 0,
+            "id": "384"
+          },
+          {
+            "questionId": "158",
+            "optionValue": "大多数的时间",
+            "questionnaireId": "4",
+            "optionSort": 4,
+            "fillEnabled": 0,
+            "id": "385"
+          }
+        ],
+        "questionnaireId": "4",
+        "questionName": "我觉得做任何事都很费劲",
+        "questionAnswer": {
+          "questionId": "158",
+          "questionnaireId": "4",
+          "userId": "eafd4d8d-da9a-4b58-bfc1-202b53aa5ef6",
+          "optionId": "384",
+          "comment": "",
+          "id": "4895fbc4-80aa-4ffe-ad19-d3318bf2c50d",
+          "submitId": "0ac9e556-3896-49d1-961d-7734f79dbd73",
+          "createDate": "2022-06-27T11:48:40"
+        },
+        "requiredEnabled": 1,
+        "id": "158"
+      },
+      {
+        "optionInformationList": [
+          {
+            "questionId": "159",
+            "optionValue": "很少或者根本没有",
+            "questionnaireId": "4",
+            "optionSort": 1,
+            "fillEnabled": 0,
+            "id": "386"
+          },
+          {
+            "questionId": "159",
+            "optionValue": "不太多",
+            "questionnaireId": "4",
+            "optionSort": 2,
+            "fillEnabled": 0,
+            "id": "387"
+          },
+          {
+            "questionId": "159",
+            "optionValue": "有时或者说有一半的时间",
+            "questionnaireId": "4",
+            "optionSort": 3,
+            "fillEnabled": 0,
+            "id": "388"
+          },
+          {
+            "questionId": "159",
+            "optionValue": "大多数的时间",
+            "questionnaireId": "4",
+            "optionSort": 4,
+            "fillEnabled": 0,
+            "id": "389"
+          }
+        ],
+        "questionnaireId": "4",
+        "questionName": "我对未来充满希望",
+        "questionAnswer": {
+          "questionId": "159",
+          "questionnaireId": "4",
+          "userId": "eafd4d8d-da9a-4b58-bfc1-202b53aa5ef6",
+          "optionId": "387",
+          "comment": "",
+          "id": "5bc992f9-f9dc-4aaa-88ca-1ccb8622bec1",
+          "submitId": "0ac9e556-3896-49d1-961d-7734f79dbd73",
+          "createDate": "2022-06-27T11:48:40"
+        },
+        "requiredEnabled": 1,
+        "id": "159"
+      },
+      {
+        "optionInformationList": [
+          {
+            "questionId": "160",
+            "optionValue": "很少或者根本没有",
+            "questionnaireId": "4",
+            "optionSort": 1,
+            "fillEnabled": 0,
+            "id": "390"
+          },
+          {
+            "questionId": "160",
+            "optionValue": "不太多",
+            "questionnaireId": "4",
+            "optionSort": 2,
+            "fillEnabled": 0,
+            "id": "391"
+          },
+          {
+            "questionId": "160",
+            "optionValue": "有时或者说有一半的时间",
+            "questionnaireId": "4",
+            "optionSort": 3,
+            "fillEnabled": 0,
+            "id": "392"
+          },
+          {
+            "questionId": "160",
+            "optionValue": "大多数的时间",
+            "questionnaireId": "4",
+            "optionSort": 4,
+            "fillEnabled": 0,
+            "id": "393"
+          }
+        ],
+        "questionnaireId": "4",
+        "questionName": "我感到害怕",
+        "questionAnswer": {
+          "questionId": "160",
+          "questionnaireId": "4",
+          "userId": "eafd4d8d-da9a-4b58-bfc1-202b53aa5ef6",
+          "optionId": "391",
+          "comment": "",
+          "id": "7a46a139-d058-4e7c-a220-f0ffc1e0eb1b",
+          "submitId": "0ac9e556-3896-49d1-961d-7734f79dbd73",
+          "createDate": "2022-06-27T11:48:40"
+        },
+        "requiredEnabled": 1,
+        "id": "160"
+      },
+      {
+        "optionInformationList": [
+          {
+            "questionId": "161",
+            "optionValue": "很少或者根本没有",
+            "questionnaireId": "4",
+            "optionSort": 1,
+            "fillEnabled": 0,
+            "id": "394"
+          },
+          {
+            "questionId": "161",
+            "optionValue": "不太多",
+            "questionnaireId": "4",
+            "optionSort": 2,
+            "fillEnabled": 0,
+            "id": "395"
+          },
+          {
+            "questionId": "161",
+            "optionValue": "有时或者说有一半的时间",
+            "questionnaireId": "4",
+            "optionSort": 3,
+            "fillEnabled": 0,
+            "id": "396"
+          },
+          {
+            "questionId": "161",
+            "optionValue": "大多数的时间",
+            "questionnaireId": "4",
+            "optionSort": 4,
+            "fillEnabled": 0,
+            "id": "397"
+          }
+        ],
+        "questionnaireId": "4",
+        "questionName": "我的睡眠不好",
+        "questionAnswer": {
+          "questionId": "161",
+          "questionnaireId": "4",
+          "userId": "eafd4d8d-da9a-4b58-bfc1-202b53aa5ef6",
+          "optionId": "394",
+          "comment": "",
+          "id": "08341b39-285b-44b2-b59f-43d56197c0ef",
+          "submitId": "0ac9e556-3896-49d1-961d-7734f79dbd73",
+          "createDate": "2022-06-27T11:48:40"
+        },
+        "requiredEnabled": 1,
+        "id": "161"
+      },
+      {
+        "optionInformationList": [
+          {
+            "questionId": "162",
+            "optionValue": "很少或者根本没有",
+            "questionnaireId": "4",
+            "optionSort": 1,
+            "fillEnabled": 0,
+            "id": "398"
+          },
+          {
+            "questionId": "162",
+            "optionValue": "不太多",
+            "questionnaireId": "4",
+            "optionSort": 2,
+            "fillEnabled": 0,
+            "id": "399"
+          },
+          {
+            "questionId": "162",
+            "optionValue": "有时或者说有一半的时间",
+            "questionnaireId": "4",
+            "optionSort": 3,
+            "fillEnabled": 0,
+            "id": "400"
+          },
+          {
+            "questionId": "162",
+            "optionValue": "大多数的时间",
+            "questionnaireId": "4",
+            "optionSort": 4,
+            "fillEnabled": 0,
+            "id": "401"
+          }
+        ],
+        "questionnaireId": "4",
+        "questionName": "我很愉快",
+        "questionAnswer": {
+          "questionId": "162",
+          "questionnaireId": "4",
+          "userId": "eafd4d8d-da9a-4b58-bfc1-202b53aa5ef6",
+          "optionId": "398",
+          "comment": "",
+          "id": "d72cfcb2-5521-412a-bd90-ccfadae8d8e5",
+          "submitId": "0ac9e556-3896-49d1-961d-7734f79dbd73",
+          "createDate": "2022-06-27T11:48:40"
+        },
+        "requiredEnabled": 1,
+        "id": "162"
+      },
+      {
+        "optionInformationList": [
+          {
+            "questionId": "163",
+            "optionValue": "很少或者根本没有",
+            "questionnaireId": "4",
+            "optionSort": 1,
+            "fillEnabled": 0,
+            "id": "402"
+          },
+          {
+            "questionId": "163",
+            "optionValue": "不太多",
+            "questionnaireId": "4",
+            "optionSort": 2,
+            "fillEnabled": 0,
+            "id": "403"
+          },
+          {
+            "questionId": "163",
+            "optionValue": "有时或者说有一半的时间",
+            "questionnaireId": "4",
+            "optionSort": 3,
+            "fillEnabled": 0,
+            "id": "404"
+          },
+          {
+            "questionId": "163",
+            "optionValue": "大多数的时间",
+            "questionnaireId": "4",
+            "optionSort": 4,
+            "fillEnabled": 0,
+            "id": "405"
+          }
+        ],
+        "questionnaireId": "4",
+        "questionName": "我感到孤独",
+        "questionAnswer": {
+          "questionId": "163",
+          "questionnaireId": "4",
+          "userId": "eafd4d8d-da9a-4b58-bfc1-202b53aa5ef6",
+          "optionId": "402",
+          "comment": "",
+          "id": "4019eca9-583f-45dd-b359-5841af0e1f53",
+          "submitId": "0ac9e556-3896-49d1-961d-7734f79dbd73",
+          "createDate": "2022-06-27T11:48:40"
+        },
+        "requiredEnabled": 1,
+        "id": "163"
+      },
+      {
+        "optionInformationList": [
+          {
+            "questionId": "164",
+            "optionValue": "很少或者根本没有",
+            "questionnaireId": "4",
+            "optionSort": 1,
+            "fillEnabled": 0,
+            "id": "406"
+          },
+          {
+            "questionId": "164",
+            "optionValue": "完全不会",
+            "questionnaireId": "4",
+            "optionSort": 1,
+            "fillEnabled": 0,
+            "id": "410"
+          },
+          {
+            "questionId": "164",
+            "optionValue": "不太多",
+            "questionnaireId": "4",
+            "optionSort": 2,
+            "fillEnabled": 0,
+            "id": "407"
+          },
+          {
+            "questionId": "164",
+            "optionValue": "有几天",
+            "questionnaireId": "4",
+            "optionSort": 2,
+            "fillEnabled": 0,
+            "id": "411"
+          },
+          {
+            "questionId": "164",
+            "optionValue": "有时或者说有一半的时间",
+            "questionnaireId": "4",
+            "optionSort": 3,
+            "fillEnabled": 0,
+            "id": "408"
+          },
+          {
+            "questionId": "164",
+            "optionValue": "一半以上的天数",
+            "questionnaireId": "4",
+            "optionSort": 3,
+            "fillEnabled": 0,
+            "id": "412"
+          },
+          {
+            "questionId": "164",
+            "optionValue": "大多数的时间",
+            "questionnaireId": "4",
+            "optionSort": 4,
+            "fillEnabled": 0,
+            "id": "409"
+          },
+          {
+            "questionId": "164",
+            "optionValue": "大多数的时间",
+            "questionnaireId": "4",
+            "optionSort": 4,
+            "fillEnabled": 0,
+            "id": "413"
+          }
+        ],
+        "questionnaireId": "4",
+        "questionName": "我觉得我无法继续我的生活",
+        "questionAnswer": {
+          "questionId": "164",
+          "questionnaireId": "4",
+          "userId": "eafd4d8d-da9a-4b58-bfc1-202b53aa5ef6",
+          "optionId": "410",
+          "comment": "",
+          "id": "422ec318-827b-4e20-b57e-6142b00b6170",
+          "submitId": "0ac9e556-3896-49d1-961d-7734f79dbd73",
+          "createDate": "2022-06-27T11:48:40"
+        },
+        "requiredEnabled": 1,
+        "id": "164"
+      },
+      {
+        "optionInformationList": [
+          {
+            "questionId": "165",
+            "optionValue": "完全不会",
+            "questionnaireId": "4",
+            "optionSort": 1,
+            "fillEnabled": 0,
+            "id": "414"
+          },
+          {
+            "questionId": "165",
+            "optionValue": "有几天",
+            "questionnaireId": "4",
+            "optionSort": 2,
+            "fillEnabled": 0,
+            "id": "415"
+          },
+          {
+            "questionId": "165",
+            "optionValue": "一半以上的天数",
+            "questionnaireId": "4",
+            "optionSort": 3,
+            "fillEnabled": 0,
+            "id": "416"
+          },
+          {
+            "questionId": "165",
+            "optionValue": "大多数的时间",
+            "questionnaireId": "4",
+            "optionSort": 4,
+            "fillEnabled": 0,
+            "id": "417"
+          }
+        ],
+        "questionnaireId": "4",
+        "questionName": "我经常感到不安、担心或急切",
+        "questionAnswer": {
+          "questionId": "165",
+          "questionnaireId": "4",
+          "userId": "eafd4d8d-da9a-4b58-bfc1-202b53aa5ef6",
+          "optionId": "416",
+          "comment": "",
+          "id": "cb6111f2-084b-430c-a6fe-f1662bf8b34e",
+          "submitId": "0ac9e556-3896-49d1-961d-7734f79dbd73",
+          "createDate": "2022-06-27T11:48:40"
+        },
+        "requiredEnabled": 1,
+        "id": "165"
+      },
+      {
+        "optionInformationList": [
+          {
+            "questionId": "166",
+            "optionValue": "完全不会",
+            "questionnaireId": "4",
+            "optionSort": 1,
+            "fillEnabled": 0,
+            "id": "418"
+          },
+          {
+            "questionId": "166",
+            "optionValue": "有几天",
+            "questionnaireId": "4",
+            "optionSort": 2,
+            "fillEnabled": 0,
+            "id": "419"
+          },
+          {
+            "questionId": "166",
+            "optionValue": "一半以上的天数",
+            "questionnaireId": "4",
+            "optionSort": 3,
+            "fillEnabled": 0,
+            "id": "420"
+          },
+          {
+            "questionId": "166",
+            "optionValue": "大多数的时间",
+            "questionnaireId": "4",
+            "optionSort": 4,
+            "fillEnabled": 0,
+            "id": "421"
+          }
+        ],
+        "questionnaireId": "4",
+        "questionName": "我总是不能停止或无法控制担心",
+        "questionAnswer": {
+          "questionId": "166",
+          "questionnaireId": "4",
+          "userId": "eafd4d8d-da9a-4b58-bfc1-202b53aa5ef6",
+          "optionId": "420",
+          "comment": "",
+          "id": "373bdef2-bc63-467a-955a-28029db5faed",
+          "submitId": "0ac9e556-3896-49d1-961d-7734f79dbd73",
+          "createDate": "2022-06-27T11:48:40"
+        },
+        "requiredEnabled": 1,
+        "id": "166"
+      },
+      {
+        "optionInformationList": [
+          {
+            "questionId": "167",
+            "optionValue": "完全不会",
+            "questionnaireId": "4",
+            "optionSort": 1,
+            "fillEnabled": 0,
+            "id": "422"
+          },
+          {
+            "questionId": "167",
+            "optionValue": "有几天",
+            "questionnaireId": "4",
+            "optionSort": 2,
+            "fillEnabled": 0,
+            "id": "423"
+          },
+          {
+            "questionId": "167",
+            "optionValue": "一半以上的天数",
+            "questionnaireId": "4",
+            "optionSort": 3,
+            "fillEnabled": 0,
+            "id": "424"
+          },
+          {
+            "questionId": "167",
+            "optionValue": "大多数的时间",
+            "questionnaireId": "4",
+            "optionSort": 4,
+            "fillEnabled": 0,
+            "id": "425"
+          }
+        ],
+        "questionnaireId": "4",
+        "questionName": "我对各种各样的事情担忧过多",
+        "questionAnswer": {
+          "questionId": "167",
+          "questionnaireId": "4",
+          "userId": "eafd4d8d-da9a-4b58-bfc1-202b53aa5ef6",
+          "optionId": "424",
+          "comment": "",
+          "id": "a1ab5b84-df13-4aae-928d-3877d5fbbcc6",
+          "submitId": "0ac9e556-3896-49d1-961d-7734f79dbd73",
+          "createDate": "2022-06-27T11:48:40"
+        },
+        "requiredEnabled": 1,
+        "id": "167"
+      },
+      {
+        "optionInformationList": [
+          {
+            "questionId": "168",
+            "optionValue": "完全不会",
+            "questionnaireId": "4",
+            "optionSort": 1,
+            "fillEnabled": 0,
+            "id": "426"
+          },
+          {
+            "questionId": "168",
+            "optionValue": "有几天",
+            "questionnaireId": "4",
+            "optionSort": 2,
+            "fillEnabled": 0,
+            "id": "427"
+          },
+          {
+            "questionId": "168",
+            "optionValue": "一半以上的天数",
+            "questionnaireId": "4",
+            "optionSort": 3,
+            "fillEnabled": 0,
+            "id": "428"
+          },
+          {
+            "questionId": "168",
+            "optionValue": "大多数的时间",
+            "questionnaireId": "4",
+            "optionSort": 4,
+            "fillEnabled": 0,
+            "id": "429"
+          }
+        ],
+        "questionnaireId": "4",
+        "questionName": "我很紧张，无法放松",
+        "questionAnswer": {
+          "questionId": "168",
+          "questionnaireId": "4",
+          "userId": "eafd4d8d-da9a-4b58-bfc1-202b53aa5ef6",
+          "optionId": "428",
+          "comment": "",
+          "id": "2102f529-fbac-40c7-a3dc-c23ce26586af",
+          "submitId": "0ac9e556-3896-49d1-961d-7734f79dbd73",
+          "createDate": "2022-06-27T11:48:40"
+        },
+        "requiredEnabled": 1,
+        "id": "168"
+      },
+      {
+        "optionInformationList": [
+          {
+            "questionId": "169",
+            "optionValue": "完全不会",
+            "questionnaireId": "4",
+            "optionSort": 1,
+            "fillEnabled": 0,
+            "id": "430"
+          },
+          {
+            "questionId": "169",
+            "optionValue": "有几天",
+            "questionnaireId": "4",
+            "optionSort": 2,
+            "fillEnabled": 0,
+            "id": "431"
+          },
+          {
+            "questionId": "169",
+            "optionValue": "一半以上的天数",
+            "questionnaireId": "4",
+            "optionSort": 3,
+            "fillEnabled": 0,
+            "id": "432"
+          },
+          {
+            "questionId": "169",
+            "optionValue": "大多数的时间",
+            "questionnaireId": "4",
+            "optionSort": 4,
+            "fillEnabled": 0,
+            "id": "433"
+          }
+        ],
+        "questionnaireId": "4",
+        "questionName": "我非常焦躁，以至无法静坐",
+        "questionAnswer": {
+          "questionId": "169",
+          "questionnaireId": "4",
+          "userId": "eafd4d8d-da9a-4b58-bfc1-202b53aa5ef6",
+          "optionId": "433",
+          "comment": "",
+          "id": "8f4214cd-bd5d-4415-8a52-22f52d987bd2",
+          "submitId": "0ac9e556-3896-49d1-961d-7734f79dbd73",
+          "createDate": "2022-06-27T11:48:40"
+        },
+        "requiredEnabled": 1,
+        "id": "169"
+      },
+      {
+        "optionInformationList": [
+          {
+            "questionId": "170",
+            "optionValue": "完全不会",
+            "questionnaireId": "4",
+            "optionSort": 1,
+            "fillEnabled": 0,
+            "id": "434"
+          },
+          {
+            "questionId": "170",
+            "optionValue": "有几天",
+            "questionnaireId": "4",
+            "optionSort": 2,
+            "fillEnabled": 0,
+            "id": "435"
+          },
+          {
+            "questionId": "170",
+            "optionValue": "一半以上的天数",
+            "questionnaireId": "4",
+            "optionSort": 3,
+            "fillEnabled": 0,
+            "id": "436"
+          },
+          {
+            "questionId": "170",
+            "optionValue": "大多数的时间",
+            "questionnaireId": "4",
+            "optionSort": 4,
+            "fillEnabled": 0,
+            "id": "437"
+          }
+        ],
+        "questionnaireId": "4",
+        "questionName": "我最近变得很易怒或躁动",
+        "questionAnswer": {
+          "questionId": "170",
+          "questionnaireId": "4",
+          "userId": "eafd4d8d-da9a-4b58-bfc1-202b53aa5ef6",
+          "optionId": "434",
+          "comment": "",
+          "id": "01ef2493-7a95-473e-a946-f4723edc6fbf",
+          "submitId": "0ac9e556-3896-49d1-961d-7734f79dbd73",
+          "createDate": "2022-06-27T11:48:40"
+        },
+        "requiredEnabled": 1,
+        "id": "170"
+      },
+      {
+        "optionInformationList": [
+          {
+            "questionId": "171",
+            "optionValue": "完全不会",
+            "questionnaireId": "4",
+            "optionSort": 1,
+            "fillEnabled": 0,
+            "id": "438"
+          },
+          {
+            "questionId": "171",
+            "optionValue": "有几天",
+            "questionnaireId": "4",
+            "optionSort": 2,
+            "fillEnabled": 0,
+            "id": "439"
+          },
+          {
+            "questionId": "171",
+            "optionValue": "一半以上的天数",
+            "questionnaireId": "4",
+            "optionSort": 3,
+            "fillEnabled": 0,
+            "id": "440"
+          },
+          {
+            "questionId": "171",
+            "optionValue": "大多数的时间",
+            "questionnaireId": "4",
+            "optionSort": 4,
+            "fillEnabled": 0,
+            "id": "441"
+          }
+        ],
+        "questionnaireId": "4",
+        "questionName": "我总是担忧会有不祥的事情发生",
+        "questionAnswer": {
+          "questionId": "171",
+          "questionnaireId": "4",
+          "userId": "eafd4d8d-da9a-4b58-bfc1-202b53aa5ef6",
+          "optionId": "439",
+          "comment": "",
+          "id": "143337f3-25bb-4ac3-af25-2070a947e6d9",
+          "submitId": "0ac9e556-3896-49d1-961d-7734f79dbd73",
+          "createDate": "2022-06-27T11:48:40"
+        },
+        "requiredEnabled": 1,
+        "id": "171"
+      },
+      {
+        "optionInformationList": [
+          {
+            "questionId": "215",
+            "optionValue": "绝对不同意",
+            "questionnaireId": "4",
+            "optionSort": 1,
+            "fillEnabled": 0,
+            "id": "685"
+          },
+          {
+            "questionId": "215",
+            "optionValue": "非常不同意",
+            "questionnaireId": "4",
+            "optionSort": 2,
+            "fillEnabled": 0,
+            "id": "686"
+          },
+          {
+            "questionId": "215",
+            "optionValue": "基本不同意",
+            "questionnaireId": "4",
+            "optionSort": 3,
+            "fillEnabled": 0,
+            "id": "687"
+          },
+          {
+            "questionId": "215",
+            "optionValue": "不确定",
+            "questionnaireId": "4",
+            "optionSort": 4,
+            "fillEnabled": 0,
+            "id": "688"
+          },
+          {
+            "questionId": "215",
+            "optionValue": "基本同意",
+            "questionnaireId": "4",
+            "optionSort": 5,
+            "fillEnabled": 0,
+            "id": "689"
+          },
+          {
+            "questionId": "215",
+            "optionValue": "非常同意",
+            "questionnaireId": "4",
+            "optionSort": 6,
+            "fillEnabled": 0,
+            "id": "690"
+          },
+          {
+            "questionId": "215",
+            "optionValue": "绝对同意",
+            "questionnaireId": "4",
+            "optionSort": 7,
+            "fillEnabled": 0,
+            "id": "691"
+          }
+        ],
+        "questionnaireId": "4",
+        "questionName": "外向的，精力充沛的",
+        "questionAnswer": {
+          "questionId": "215",
+          "questionnaireId": "4",
+          "userId": "eafd4d8d-da9a-4b58-bfc1-202b53aa5ef6",
+          "optionId": "687",
+          "comment": "",
+          "id": "ae17bf0f-9aaf-4e0f-8f6b-504661e38e8e",
+          "submitId": "0ac9e556-3896-49d1-961d-7734f79dbd73",
+          "createDate": "2022-06-27T11:48:40"
+        },
+        "requiredEnabled": 1,
+        "id": "215"
+      },
+      {
+        "optionInformationList": [
+          {
+            "questionId": "216",
+            "optionValue": "绝对不同意",
+            "questionnaireId": "4",
+            "optionSort": 1,
+            "fillEnabled": 0,
+            "id": "692"
+          },
+          {
+            "questionId": "216",
+            "optionValue": "非常不同意",
+            "questionnaireId": "4",
+            "optionSort": 2,
+            "fillEnabled": 0,
+            "id": "693"
+          },
+          {
+            "questionId": "216",
+            "optionValue": "基本不同意",
+            "questionnaireId": "4",
+            "optionSort": 3,
+            "fillEnabled": 0,
+            "id": "694"
+          },
+          {
+            "questionId": "216",
+            "optionValue": "不确定",
+            "questionnaireId": "4",
+            "optionSort": 4,
+            "fillEnabled": 0,
+            "id": "695"
+          },
+          {
+            "questionId": "216",
+            "optionValue": "基本同意",
+            "questionnaireId": "4",
+            "optionSort": 5,
+            "fillEnabled": 0,
+            "id": "696"
+          },
+          {
+            "questionId": "216",
+            "optionValue": "非常同意",
+            "questionnaireId": "4",
+            "optionSort": 6,
+            "fillEnabled": 0,
+            "id": "697"
+          },
+          {
+            "questionId": "216",
+            "optionValue": "绝对同意",
+            "questionnaireId": "4",
+            "optionSort": 7,
+            "fillEnabled": 0,
+            "id": "698"
+          }
+        ],
+        "questionnaireId": "4",
+        "questionName": "爱批评人的，爱争吵的",
+        "questionAnswer": {
+          "questionId": "216",
+          "questionnaireId": "4",
+          "userId": "eafd4d8d-da9a-4b58-bfc1-202b53aa5ef6",
+          "optionId": "693",
+          "comment": "",
+          "id": "15289542-31c2-4605-a124-0cedd46938aa",
+          "submitId": "0ac9e556-3896-49d1-961d-7734f79dbd73",
+          "createDate": "2022-06-27T11:48:40"
+        },
+        "requiredEnabled": 1,
+        "id": "216"
+      },
+      {
+        "optionInformationList": [
+          {
+            "questionId": "217",
+            "optionValue": "绝对不同意",
+            "questionnaireId": "4",
+            "optionSort": 1,
+            "fillEnabled": 0,
+            "id": "699"
+          },
+          {
+            "questionId": "217",
+            "optionValue": "非常不同意",
+            "questionnaireId": "4",
+            "optionSort": 2,
+            "fillEnabled": 0,
+            "id": "700"
+          },
+          {
+            "questionId": "217",
+            "optionValue": "基本不同意",
+            "questionnaireId": "4",
+            "optionSort": 3,
+            "fillEnabled": 0,
+            "id": "701"
+          },
+          {
+            "questionId": "217",
+            "optionValue": "不确定",
+            "questionnaireId": "4",
+            "optionSort": 4,
+            "fillEnabled": 0,
+            "id": "702"
+          },
+          {
+            "questionId": "217",
+            "optionValue": "基本同意",
+            "questionnaireId": "4",
+            "optionSort": 5,
+            "fillEnabled": 0,
+            "id": "703"
+          },
+          {
+            "questionId": "217",
+            "optionValue": "非常同意",
+            "questionnaireId": "4",
+            "optionSort": 6,
+            "fillEnabled": 0,
+            "id": "704"
+          },
+          {
+            "questionId": "217",
+            "optionValue": "绝对同意",
+            "questionnaireId": "4",
+            "optionSort": 7,
+            "fillEnabled": 0,
+            "id": "705"
+          }
+        ],
+        "questionnaireId": "4",
+        "questionName": "可信赖的，自律的",
+        "questionAnswer": {
+          "questionId": "217",
+          "questionnaireId": "4",
+          "userId": "eafd4d8d-da9a-4b58-bfc1-202b53aa5ef6",
+          "optionId": "703",
+          "comment": "",
+          "id": "170c2601-e8fe-42f6-80d5-abcd08f6310c",
+          "submitId": "0ac9e556-3896-49d1-961d-7734f79dbd73",
+          "createDate": "2022-06-27T11:48:40"
+        },
+        "requiredEnabled": 1,
+        "id": "217"
+      },
+      {
+        "optionInformationList": [
+          {
+            "questionId": "218",
+            "optionValue": "绝对不同意",
+            "questionnaireId": "4",
+            "optionSort": 1,
+            "fillEnabled": 0,
+            "id": "706"
+          },
+          {
+            "questionId": "218",
+            "optionValue": "非常不同意",
+            "questionnaireId": "4",
+            "optionSort": 2,
+            "fillEnabled": 0,
+            "id": "707"
+          },
+          {
+            "questionId": "218",
+            "optionValue": "基本不同意",
+            "questionnaireId": "4",
+            "optionSort": 3,
+            "fillEnabled": 0,
+            "id": "708"
+          },
+          {
+            "questionId": "218",
+            "optionValue": "不确定",
+            "questionnaireId": "4",
+            "optionSort": 4,
+            "fillEnabled": 0,
+            "id": "709"
+          },
+          {
+            "questionId": "218",
+            "optionValue": "基本同意",
+            "questionnaireId": "4",
+            "optionSort": 5,
+            "fillEnabled": 0,
+            "id": "710"
+          },
+          {
+            "questionId": "218",
+            "optionValue": "非常同意",
+            "questionnaireId": "4",
+            "optionSort": 6,
+            "fillEnabled": 0,
+            "id": "711"
+          },
+          {
+            "questionId": "218",
+            "optionValue": "绝对同意",
+            "questionnaireId": "4",
+            "optionSort": 7,
+            "fillEnabled": 0,
+            "id": "712"
+          }
+        ],
+        "questionnaireId": "4",
+        "questionName": "忧虑的，易烦心的",
+        "questionAnswer": {
+          "questionId": "218",
+          "questionnaireId": "4",
+          "userId": "eafd4d8d-da9a-4b58-bfc1-202b53aa5ef6",
+          "optionId": "711",
+          "comment": "",
+          "id": "cd265dae-19d5-45db-9438-1a3557635290",
+          "submitId": "0ac9e556-3896-49d1-961d-7734f79dbd73",
+          "createDate": "2022-06-27T11:48:40"
+        },
+        "requiredEnabled": 1,
+        "id": "218"
+      },
+      {
+        "optionInformationList": [
+          {
+            "questionId": "219",
+            "optionValue": "绝对不同意",
+            "questionnaireId": "4",
+            "optionSort": 1,
+            "fillEnabled": 0,
+            "id": "713"
+          },
+          {
+            "questionId": "219",
+            "optionValue": "非常不同意",
+            "questionnaireId": "4",
+            "optionSort": 2,
+            "fillEnabled": 0,
+            "id": "714"
+          },
+          {
+            "questionId": "219",
+            "optionValue": "基本不同意",
+            "questionnaireId": "4",
+            "optionSort": 3,
+            "fillEnabled": 0,
+            "id": "715"
+          },
+          {
+            "questionId": "219",
+            "optionValue": "不确定",
+            "questionnaireId": "4",
+            "optionSort": 4,
+            "fillEnabled": 0,
+            "id": "716"
+          },
+          {
+            "questionId": "219",
+            "optionValue": "基本同意",
+            "questionnaireId": "4",
+            "optionSort": 5,
+            "fillEnabled": 0,
+            "id": "717"
+          },
+          {
+            "questionId": "219",
+            "optionValue": "非常同意",
+            "questionnaireId": "4",
+            "optionSort": 6,
+            "fillEnabled": 0,
+            "id": "718"
+          },
+          {
+            "questionId": "219",
+            "optionValue": "绝对同意",
+            "questionnaireId": "4",
+            "optionSort": 7,
+            "fillEnabled": 0,
+            "id": "719"
+          }
+        ],
+        "questionnaireId": "4",
+        "questionName": "易接受新事物的，常有新想法的",
+        "questionAnswer": {
+          "questionId": "219",
+          "questionnaireId": "4",
+          "userId": "eafd4d8d-da9a-4b58-bfc1-202b53aa5ef6",
+          "optionId": "719",
+          "comment": "",
+          "id": "213df352-dd7a-43a8-ab2a-1ce5cebfa540",
+          "submitId": "0ac9e556-3896-49d1-961d-7734f79dbd73",
+          "createDate": "2022-06-27T11:48:40"
+        },
+        "requiredEnabled": 1,
+        "id": "219"
+      },
+      {
+        "optionInformationList": [
+          {
+            "questionId": "220",
+            "optionValue": "绝对不同意",
+            "questionnaireId": "4",
+            "optionSort": 1,
+            "fillEnabled": 0,
+            "id": "720"
+          },
+          {
+            "questionId": "220",
+            "optionValue": "非常不同意",
+            "questionnaireId": "4",
+            "optionSort": 2,
+            "fillEnabled": 0,
+            "id": "721"
+          },
+          {
+            "questionId": "220",
+            "optionValue": "基本不同意",
+            "questionnaireId": "4",
+            "optionSort": 3,
+            "fillEnabled": 0,
+            "id": "722"
+          },
+          {
+            "questionId": "220",
+            "optionValue": "不确定",
+            "questionnaireId": "4",
+            "optionSort": 4,
+            "fillEnabled": 0,
+            "id": "723"
+          },
+          {
+            "questionId": "220",
+            "optionValue": "基本同意",
+            "questionnaireId": "4",
+            "optionSort": 5,
+            "fillEnabled": 0,
+            "id": "724"
+          },
+          {
+            "questionId": "220",
+            "optionValue": "非常同意",
+            "questionnaireId": "4",
+            "optionSort": 6,
+            "fillEnabled": 0,
+            "id": "725"
+          },
+          {
+            "questionId": "220",
+            "optionValue": "绝对同意",
+            "questionnaireId": "4",
+            "optionSort": 7,
+            "fillEnabled": 0,
+            "id": "726"
+          }
+        ],
+        "questionnaireId": "4",
+        "questionName": "内向的，安静的",
+        "questionAnswer": {
+          "questionId": "220",
+          "questionnaireId": "4",
+          "userId": "eafd4d8d-da9a-4b58-bfc1-202b53aa5ef6",
+          "optionId": "724",
+          "comment": "",
+          "id": "e106759f-e608-4601-98a5-dd5ff91cd521",
+          "submitId": "0ac9e556-3896-49d1-961d-7734f79dbd73",
+          "createDate": "2022-06-27T11:48:40"
+        },
+        "requiredEnabled": 1,
+        "id": "220"
+      },
+      {
+        "optionInformationList": [
+          {
+            "questionId": "221",
+            "optionValue": "绝对不同意",
+            "questionnaireId": "4",
+            "optionSort": 1,
+            "fillEnabled": 0,
+            "id": "727"
+          },
+          {
+            "questionId": "221",
+            "optionValue": "非常不同意",
+            "questionnaireId": "4",
+            "optionSort": 2,
+            "fillEnabled": 0,
+            "id": "728"
+          },
+          {
+            "questionId": "221",
+            "optionValue": "基本不同意",
+            "questionnaireId": "4",
+            "optionSort": 3,
+            "fillEnabled": 0,
+            "id": "729"
+          },
+          {
+            "questionId": "221",
+            "optionValue": "不确定",
+            "questionnaireId": "4",
+            "optionSort": 4,
+            "fillEnabled": 0,
+            "id": "730"
+          },
+          {
+            "questionId": "221",
+            "optionValue": "基本同意",
+            "questionnaireId": "4",
+            "optionSort": 5,
+            "fillEnabled": 0,
+            "id": "731"
+          },
+          {
+            "questionId": "221",
+            "optionValue": "非常同意",
+            "questionnaireId": "4",
+            "optionSort": 6,
+            "fillEnabled": 0,
+            "id": "732"
+          },
+          {
+            "questionId": "221",
+            "optionValue": "绝对同意",
+            "questionnaireId": "4",
+            "optionSort": 7,
+            "fillEnabled": 0,
+            "id": "733"
+          }
+        ],
+        "questionnaireId": "4",
+        "questionName": "招人喜爱的，友善的",
+        "questionAnswer": {
+          "questionId": "221",
+          "questionnaireId": "4",
+          "userId": "eafd4d8d-da9a-4b58-bfc1-202b53aa5ef6",
+          "optionId": "731",
+          "comment": "",
+          "id": "bd7d0824-dedf-458d-823c-a6fcda4baead",
+          "submitId": "0ac9e556-3896-49d1-961d-7734f79dbd73",
+          "createDate": "2022-06-27T11:48:40"
+        },
+        "requiredEnabled": 1,
+        "id": "221"
+      },
+      {
+        "optionInformationList": [
+          {
+            "questionId": "222",
+            "optionValue": "绝对不同意",
+            "questionnaireId": "4",
+            "optionSort": 1,
+            "fillEnabled": 0,
+            "id": "734"
+          },
+          {
+            "questionId": "222",
+            "optionValue": "非常不同意",
+            "questionnaireId": "4",
+            "optionSort": 2,
+            "fillEnabled": 0,
+            "id": "735"
+          },
+          {
+            "questionId": "222",
+            "optionValue": "基本不同意",
+            "questionnaireId": "4",
+            "optionSort": 3,
+            "fillEnabled": 0,
+            "id": "736"
+          },
+          {
+            "questionId": "222",
+            "optionValue": "不确定",
+            "questionnaireId": "4",
+            "optionSort": 4,
+            "fillEnabled": 0,
+            "id": "737"
+          },
+          {
+            "questionId": "222",
+            "optionValue": "基本同意",
+            "questionnaireId": "4",
+            "optionSort": 5,
+            "fillEnabled": 0,
+            "id": "738"
+          },
+          {
+            "questionId": "222",
+            "optionValue": "非常同意",
+            "questionnaireId": "4",
+            "optionSort": 6,
+            "fillEnabled": 0,
+            "id": "739"
+          },
+          {
+            "questionId": "222",
+            "optionValue": "绝对同意",
+            "questionnaireId": "4",
+            "optionSort": 7,
+            "fillEnabled": 0,
+            "id": "740"
+          }
+        ],
+        "questionnaireId": "4",
+        "questionName": "条理性差的，粗心的",
+        "questionAnswer": {
+          "questionId": "222",
+          "questionnaireId": "4",
+          "userId": "eafd4d8d-da9a-4b58-bfc1-202b53aa5ef6",
+          "optionId": "735",
+          "comment": "",
+          "id": "e2a8af12-f550-4dc9-a1dc-358af367d672",
+          "submitId": "0ac9e556-3896-49d1-961d-7734f79dbd73",
+          "createDate": "2022-06-27T11:48:40"
+        },
+        "requiredEnabled": 1,
+        "id": "222"
+      },
+      {
+        "optionInformationList": [
+          {
+            "questionId": "223",
+            "optionValue": "绝对不同意",
+            "questionnaireId": "4",
+            "optionSort": 1,
+            "fillEnabled": 0,
+            "id": "741"
+          },
+          {
+            "questionId": "223",
+            "optionValue": "非常不同意",
+            "questionnaireId": "4",
+            "optionSort": 2,
+            "fillEnabled": 0,
+            "id": "742"
+          },
+          {
+            "questionId": "223",
+            "optionValue": "基本不同意",
+            "questionnaireId": "4",
+            "optionSort": 3,
+            "fillEnabled": 0,
+            "id": "743"
+          },
+          {
+            "questionId": "223",
+            "optionValue": "不确定",
+            "questionnaireId": "4",
+            "optionSort": 4,
+            "fillEnabled": 0,
+            "id": "744"
+          },
+          {
+            "questionId": "223",
+            "optionValue": "基本同意",
+            "questionnaireId": "4",
+            "optionSort": 5,
+            "fillEnabled": 0,
+            "id": "745"
+          },
+          {
+            "questionId": "223",
+            "optionValue": "非常同意",
+            "questionnaireId": "4",
+            "optionSort": 6,
+            "fillEnabled": 0,
+            "id": "746"
+          },
+          {
+            "questionId": "223",
+            "optionValue": "绝对同意",
+            "questionnaireId": "4",
+            "optionSort": 7,
+            "fillEnabled": 0,
+            "id": "747"
+          }
+        ],
+        "questionnaireId": "4",
+        "questionName": "冷静的，情绪稳定的",
+        "questionAnswer": {
+          "questionId": "223",
+          "questionnaireId": "4",
+          "userId": "eafd4d8d-da9a-4b58-bfc1-202b53aa5ef6",
+          "optionId": "741",
+          "comment": "",
+          "id": "8b0351c7-accc-4caf-8fdd-de14f056c241",
+          "submitId": "0ac9e556-3896-49d1-961d-7734f79dbd73",
+          "createDate": "2022-06-27T11:48:40"
+        },
+        "requiredEnabled": 1,
+        "id": "223"
+      },
+      {
+        "optionInformationList": [
+          {
+            "questionId": "224",
+            "optionValue": "绝对不同意",
+            "questionnaireId": "4",
+            "optionSort": 1,
+            "fillEnabled": 0,
+            "id": "748"
+          },
+          {
+            "questionId": "224",
+            "optionValue": "非常不同意",
+            "questionnaireId": "4",
+            "optionSort": 2,
+            "fillEnabled": 0,
+            "id": "749"
+          },
+          {
+            "questionId": "224",
+            "optionValue": "基本不同意",
+            "questionnaireId": "4",
+            "optionSort": 3,
+            "fillEnabled": 0,
+            "id": "750"
+          },
+          {
+            "questionId": "224",
+            "optionValue": "不确定",
+            "questionnaireId": "4",
+            "optionSort": 4,
+            "fillEnabled": 0,
+            "id": "751"
+          },
+          {
+            "questionId": "224",
+            "optionValue": "基本同意",
+            "questionnaireId": "4",
+            "optionSort": 5,
+            "fillEnabled": 0,
+            "id": "752"
+          },
+          {
+            "questionId": "224",
+            "optionValue": "非常同意",
+            "questionnaireId": "4",
+            "optionSort": 6,
+            "fillEnabled": 0,
+            "id": "753"
+          },
+          {
+            "questionId": "224",
+            "optionValue": "绝对同意",
+            "questionnaireId": "4",
+            "optionSort": 7,
+            "fillEnabled": 0,
+            "id": "754"
+          }
+        ],
+        "questionnaireId": "4",
+        "questionName": "遵循常规的，不爱创新的",
+        "questionAnswer": {
+          "questionId": "224",
+          "questionnaireId": "4",
+          "userId": "eafd4d8d-da9a-4b58-bfc1-202b53aa5ef6",
+          "optionId": "750",
+          "comment": "",
+          "id": "3a1277fc-ba0d-4ecc-83aa-71cc936f8f2e",
+          "submitId": "0ac9e556-3896-49d1-961d-7734f79dbd73",
+          "createDate": "2022-06-27T11:48:40"
+        },
+        "requiredEnabled": 1,
+        "id": "224"
+      },
+      {
+        "optionInformationList": [
+          {
+            "questionId": "141",
+            "optionValue": "从来没有",
+            "questionnaireId": "4",
+            "optionSort": 1,
+            "fillEnabled": 0,
+            "id": "300"
+          },
+          {
+            "questionId": "141",
+            "optionValue": "几乎没有",
+            "questionnaireId": "4",
+            "optionSort": 2,
+            "fillEnabled": 0,
+            "id": "301"
+          },
+          {
+            "questionId": "141",
+            "optionValue": "有时",
+            "questionnaireId": "4",
+            "optionSort": 3,
+            "fillEnabled": 0,
+            "id": "302"
+          },
+          {
+            "questionId": "141",
+            "optionValue": "经常",
+            "questionnaireId": "4",
+            "optionSort": 4,
+            "fillEnabled": 0,
+            "id": "303"
+          },
+          {
+            "questionId": "141",
+            "optionValue": "通常",
+            "questionnaireId": "4",
+            "optionSort": 5,
+            "fillEnabled": 0,
+            "id": "304"
+          }
+        ],
+        "questionnaireId": "4",
+        "questionName": "当意想不到的事情发生时，感到烦躁",
+        "questionAnswer": {
+          "questionId": "141",
+          "questionnaireId": "4",
+          "userId": "eafd4d8d-da9a-4b58-bfc1-202b53aa5ef6",
+          "optionId": "303",
+          "comment": "",
+          "id": "581d868b-1081-4d56-8eea-0f84ab44fd20",
+          "submitId": "0ac9e556-3896-49d1-961d-7734f79dbd73",
+          "createDate": "2022-06-27T11:48:40"
+        },
+        "requiredEnabled": 1,
+        "id": "141"
+      },
+      {
+        "optionInformationList": [
+          {
+            "questionId": "142",
+            "optionValue": "从来没有",
+            "questionnaireId": "4",
+            "optionSort": 1,
+            "fillEnabled": 0,
+            "id": "305"
+          },
+          {
+            "questionId": "142",
+            "optionValue": "几乎没有",
+            "questionnaireId": "4",
+            "optionSort": 2,
+            "fillEnabled": 0,
+            "id": "306"
+          },
+          {
+            "questionId": "142",
+            "optionValue": "有时",
+            "questionnaireId": "4",
+            "optionSort": 3,
+            "fillEnabled": 0,
+            "id": "307"
+          },
+          {
+            "questionId": "142",
+            "optionValue": "经常",
+            "questionnaireId": "4",
+            "optionSort": 4,
+            "fillEnabled": 0,
+            "id": "308"
+          },
+          {
+            "questionId": "142",
+            "optionValue": "通常",
+            "questionnaireId": "4",
+            "optionSort": 5,
+            "fillEnabled": 0,
+            "id": "309"
+          }
+        ],
+        "questionnaireId": "4",
+        "questionName": "感到自己无法控制生活中重要的事情",
+        "questionAnswer": {
+          "questionId": "142",
+          "questionnaireId": "4",
+          "userId": "eafd4d8d-da9a-4b58-bfc1-202b53aa5ef6",
+          "optionId": "307",
+          "comment": "",
+          "id": "536926e4-a467-4cdd-9b58-afba79b01c7b",
+          "submitId": "0ac9e556-3896-49d1-961d-7734f79dbd73",
+          "createDate": "2022-06-27T11:48:40"
+        },
+        "requiredEnabled": 1,
+        "id": "142"
+      },
+      {
+        "optionInformationList": [
+          {
+            "questionId": "143",
+            "optionValue": "从来没有",
+            "questionnaireId": "4",
+            "optionSort": 1,
+            "fillEnabled": 0,
+            "id": "310"
+          },
+          {
+            "questionId": "143",
+            "optionValue": "几乎没有",
+            "questionnaireId": "4",
+            "optionSort": 2,
+            "fillEnabled": 0,
+            "id": "311"
+          },
+          {
+            "questionId": "143",
+            "optionValue": "有时",
+            "questionnaireId": "4",
+            "optionSort": 3,
+            "fillEnabled": 0,
+            "id": "312"
+          },
+          {
+            "questionId": "143",
+            "optionValue": "经常",
+            "questionnaireId": "4",
+            "optionSort": 4,
+            "fillEnabled": 0,
+            "id": "313"
+          },
+          {
+            "questionId": "143",
+            "optionValue": "通常",
+            "questionnaireId": "4",
+            "optionSort": 5,
+            "fillEnabled": 0,
+            "id": "314"
+          }
+        ],
+        "questionnaireId": "4",
+        "questionName": "感到紧张和压力",
+        "questionAnswer": {
+          "questionId": "143",
+          "questionnaireId": "4",
+          "userId": "eafd4d8d-da9a-4b58-bfc1-202b53aa5ef6",
+          "optionId": "314",
+          "comment": "",
+          "id": "3e16a3c8-9193-4bf8-9ac1-307613acbd28",
+          "submitId": "0ac9e556-3896-49d1-961d-7734f79dbd73",
+          "createDate": "2022-06-27T11:48:40"
+        },
+        "requiredEnabled": 1,
+        "id": "143"
+      },
+      {
+        "optionInformationList": [
+          {
+            "questionId": "144",
+            "optionValue": "从来没有",
+            "questionnaireId": "4",
+            "optionSort": 1,
+            "fillEnabled": 0,
+            "id": "315"
+          },
+          {
+            "questionId": "144",
+            "optionValue": "几乎没有",
+            "questionnaireId": "4",
+            "optionSort": 2,
+            "fillEnabled": 0,
+            "id": "316"
+          },
+          {
+            "questionId": "144",
+            "optionValue": "有时",
+            "questionnaireId": "4",
+            "optionSort": 3,
+            "fillEnabled": 0,
+            "id": "317"
+          },
+          {
+            "questionId": "144",
+            "optionValue": "经常",
+            "questionnaireId": "4",
+            "optionSort": 4,
+            "fillEnabled": 0,
+            "id": "318"
+          },
+          {
+            "questionId": "144",
+            "optionValue": "通常",
+            "questionnaireId": "4",
+            "optionSort": 5,
+            "fillEnabled": 0,
+            "id": "319"
+          }
+        ],
+        "questionnaireId": "4",
+        "questionName": "成功地解决了令人烦恼的生活琐事",
+        "questionAnswer": {
+          "questionId": "144",
+          "questionnaireId": "4",
+          "userId": "eafd4d8d-da9a-4b58-bfc1-202b53aa5ef6",
+          "optionId": "318",
+          "comment": "",
+          "id": "eccb73a2-3a7c-44a5-a8e1-e28ac1eeac89",
+          "submitId": "0ac9e556-3896-49d1-961d-7734f79dbd73",
+          "createDate": "2022-06-27T11:48:40"
+        },
+        "requiredEnabled": 1,
+        "id": "144"
+      },
+      {
+        "optionInformationList": [
+          {
+            "questionId": "145",
+            "optionValue": "从来没有",
+            "questionnaireId": "4",
+            "optionSort": 1,
+            "fillEnabled": 0,
+            "id": "320"
+          },
+          {
+            "questionId": "145",
+            "optionValue": "几乎没有",
+            "questionnaireId": "4",
+            "optionSort": 2,
+            "fillEnabled": 0,
+            "id": "321"
+          },
+          {
+            "questionId": "145",
+            "optionValue": "有时",
+            "questionnaireId": "4",
+            "optionSort": 3,
+            "fillEnabled": 0,
+            "id": "322"
+          },
+          {
+            "questionId": "145",
+            "optionValue": "经常",
+            "questionnaireId": "4",
+            "optionSort": 4,
+            "fillEnabled": 0,
+            "id": "323"
+          },
+          {
+            "questionId": "145",
+            "optionValue": "通常",
+            "questionnaireId": "4",
+            "optionSort": 5,
+            "fillEnabled": 0,
+            "id": "324"
+          }
+        ],
+        "questionnaireId": "4",
+        "questionName": "觉得自己正在有效地处理生活中发生的重大变化",
+        "questionAnswer": {
+          "questionId": "145",
+          "questionnaireId": "4",
+          "userId": "eafd4d8d-da9a-4b58-bfc1-202b53aa5ef6",
+          "optionId": "323",
+          "comment": "",
+          "id": "ac26e22d-768e-408d-801a-3eaa0a2a4ca6",
+          "submitId": "0ac9e556-3896-49d1-961d-7734f79dbd73",
+          "createDate": "2022-06-27T11:48:40"
+        },
+        "requiredEnabled": 1,
+        "id": "145"
+      },
+      {
+        "optionInformationList": [
+          {
+            "questionId": "146",
+            "optionValue": "从来没有",
+            "questionnaireId": "4",
+            "optionSort": 1,
+            "fillEnabled": 0,
+            "id": "325"
+          },
+          {
+            "questionId": "146",
+            "optionValue": "几乎没有",
+            "questionnaireId": "4",
+            "optionSort": 2,
+            "fillEnabled": 0,
+            "id": "326"
+          },
+          {
+            "questionId": "146",
+            "optionValue": "有时",
+            "questionnaireId": "4",
+            "optionSort": 3,
+            "fillEnabled": 0,
+            "id": "327"
+          },
+          {
+            "questionId": "146",
+            "optionValue": "经常",
+            "questionnaireId": "4",
+            "optionSort": 4,
+            "fillEnabled": 0,
+            "id": "328"
+          },
+          {
+            "questionId": "146",
+            "optionValue": "通常",
+            "questionnaireId": "4",
+            "optionSort": 5,
+            "fillEnabled": 0,
+            "id": "329"
+          }
+        ],
+        "questionnaireId": "4",
+        "questionName": "觉得自己有信心能够处理个人问题",
+        "questionAnswer": {
+          "questionId": "146",
+          "questionnaireId": "4",
+          "userId": "eafd4d8d-da9a-4b58-bfc1-202b53aa5ef6",
+          "optionId": "329",
+          "comment": "",
+          "id": "800f50f4-7ac9-4ab3-9371-273b2e27a119",
+          "submitId": "0ac9e556-3896-49d1-961d-7734f79dbd73",
+          "createDate": "2022-06-27T11:48:40"
+        },
+        "requiredEnabled": 1,
+        "id": "146"
+      },
+      {
+        "optionInformationList": [
+          {
+            "questionId": "147",
+            "optionValue": "从来没有",
+            "questionnaireId": "4",
+            "optionSort": 1,
+            "fillEnabled": 0,
+            "id": "330"
+          },
+          {
+            "questionId": "147",
+            "optionValue": "几乎没有",
+            "questionnaireId": "4",
+            "optionSort": 2,
+            "fillEnabled": 0,
+            "id": "331"
+          },
+          {
+            "questionId": "147",
+            "optionValue": "有时",
+            "questionnaireId": "4",
+            "optionSort": 3,
+            "fillEnabled": 0,
+            "id": "332"
+          },
+          {
+            "questionId": "147",
+            "optionValue": "经常",
+            "questionnaireId": "4",
+            "optionSort": 4,
+            "fillEnabled": 0,
+            "id": "333"
+          },
+          {
+            "questionId": "147",
+            "optionValue": "通常",
+            "questionnaireId": "4",
+            "optionSort": 5,
+            "fillEnabled": 0,
+            "id": "334"
+          }
+        ],
+        "questionnaireId": "4",
+        "questionName": "觉得事情正在和你希望的一样发展",
+        "questionAnswer": {
+          "questionId": "147",
+          "questionnaireId": "4",
+          "userId": "eafd4d8d-da9a-4b58-bfc1-202b53aa5ef6",
+          "optionId": "333",
+          "comment": "",
+          "id": "87e80599-9799-447a-91e3-bea586cd1c03",
+          "submitId": "0ac9e556-3896-49d1-961d-7734f79dbd73",
+          "createDate": "2022-06-27T11:48:40"
+        },
+        "requiredEnabled": 1,
+        "id": "147"
+      },
+      {
+        "optionInformationList": [
+          {
+            "questionId": "148",
+            "optionValue": "从来没有",
+            "questionnaireId": "4",
+            "optionSort": 1,
+            "fillEnabled": 0,
+            "id": "335"
+          },
+          {
+            "questionId": "148",
+            "optionValue": "几乎没有",
+            "questionnaireId": "4",
+            "optionSort": 2,
+            "fillEnabled": 0,
+            "id": "336"
+          },
+          {
+            "questionId": "148",
+            "optionValue": "有时",
+            "questionnaireId": "4",
+            "optionSort": 3,
+            "fillEnabled": 0,
+            "id": "337"
+          },
+          {
+            "questionId": "148",
+            "optionValue": "经常",
+            "questionnaireId": "4",
+            "optionSort": 4,
+            "fillEnabled": 0,
+            "id": "338"
+          },
+          {
+            "questionId": "148",
+            "optionValue": "通常",
+            "questionnaireId": "4",
+            "optionSort": 5,
+            "fillEnabled": 0,
+            "id": "339"
+          }
+        ],
+        "questionnaireId": "4",
+        "questionName": "觉得自己不能处理所有必须做的事情",
+        "questionAnswer": {
+          "questionId": "148",
+          "questionnaireId": "4",
+          "userId": "eafd4d8d-da9a-4b58-bfc1-202b53aa5ef6",
+          "optionId": "337",
+          "comment": "",
+          "id": "43a86ef3-9aaa-4a97-a6b2-32b298a0f277",
+          "submitId": "0ac9e556-3896-49d1-961d-7734f79dbd73",
+          "createDate": "2022-06-27T11:48:40"
+        },
+        "requiredEnabled": 1,
+        "id": "148"
+      },
+      {
+        "optionInformationList": [
+          {
+            "questionId": "149",
+            "optionValue": "从来没有",
+            "questionnaireId": "4",
+            "optionSort": 1,
+            "fillEnabled": 0,
+            "id": "340"
+          },
+          {
+            "questionId": "149",
+            "optionValue": "几乎没有",
+            "questionnaireId": "4",
+            "optionSort": 2,
+            "fillEnabled": 0,
+            "id": "341"
+          },
+          {
+            "questionId": "149",
+            "optionValue": "有时",
+            "questionnaireId": "4",
+            "optionSort": 3,
+            "fillEnabled": 0,
+            "id": "342"
+          },
+          {
+            "questionId": "149",
+            "optionValue": "经常",
+            "questionnaireId": "4",
+            "optionSort": 4,
+            "fillEnabled": 0,
+            "id": "343"
+          },
+          {
+            "questionId": "149",
+            "optionValue": "通常",
+            "questionnaireId": "4",
+            "optionSort": 5,
+            "fillEnabled": 0,
+            "id": "344"
+          }
+        ],
+        "questionnaireId": "4",
+        "questionName": "觉得自己能控制生活中的一些恼怒情绪",
+        "questionAnswer": {
+          "questionId": "149",
+          "questionnaireId": "4",
+          "userId": "eafd4d8d-da9a-4b58-bfc1-202b53aa5ef6",
+          "optionId": "341",
+          "comment": "",
+          "id": "16e0c6ba-c411-4fde-bd75-e89ab796bebd",
+          "submitId": "0ac9e556-3896-49d1-961d-7734f79dbd73",
+          "createDate": "2022-06-27T11:48:40"
+        },
+        "requiredEnabled": 1,
+        "id": "149"
+      },
+      {
+        "optionInformationList": [
+          {
+            "questionId": "150",
+            "optionValue": "从来没有",
+            "questionnaireId": "4",
+            "optionSort": 1,
+            "fillEnabled": 0,
+            "id": "345"
+          },
+          {
+            "questionId": "150",
+            "optionValue": "几乎没有",
+            "questionnaireId": "4",
+            "optionSort": 2,
+            "fillEnabled": 0,
+            "id": "346"
+          },
+          {
+            "questionId": "150",
+            "optionValue": "有时",
+            "questionnaireId": "4",
+            "optionSort": 3,
+            "fillEnabled": 0,
+            "id": "347"
+          },
+          {
+            "questionId": "150",
+            "optionValue": "经常",
+            "questionnaireId": "4",
+            "optionSort": 4,
+            "fillEnabled": 0,
+            "id": "348"
+          },
+          {
+            "questionId": "150",
+            "optionValue": "通常",
+            "questionnaireId": "4",
+            "optionSort": 5,
+            "fillEnabled": 0,
+            "id": "349"
+          }
+        ],
+        "questionnaireId": "4",
+        "questionName": "觉得自己能安排一切",
+        "questionAnswer": {
+          "questionId": "150",
+          "questionnaireId": "4",
+          "userId": "eafd4d8d-da9a-4b58-bfc1-202b53aa5ef6",
+          "optionId": "345",
+          "comment": "",
+          "id": "6e7940d4-7aa3-4790-9172-2679c1251e14",
+          "submitId": "0ac9e556-3896-49d1-961d-7734f79dbd73",
+          "createDate": "2022-06-27T11:48:40"
+        },
+        "requiredEnabled": 1,
+        "id": "150"
+      },
+      {
+        "optionInformationList": [
+          {
+            "questionId": "151",
+            "optionValue": "从来没有",
+            "questionnaireId": "4",
+            "optionSort": 1,
+            "fillEnabled": 0,
+            "id": "350"
+          },
+          {
+            "questionId": "151",
+            "optionValue": "几乎没有",
+            "questionnaireId": "4",
+            "optionSort": 2,
+            "fillEnabled": 0,
+            "id": "351"
+          },
+          {
+            "questionId": "151",
+            "optionValue": "有时",
+            "questionnaireId": "4",
+            "optionSort": 3,
+            "fillEnabled": 0,
+            "id": "352"
+          },
+          {
+            "questionId": "151",
+            "optionValue": "经常",
+            "questionnaireId": "4",
+            "optionSort": 4,
+            "fillEnabled": 0,
+            "id": "353"
+          },
+          {
+            "questionId": "151",
+            "optionValue": "通常",
+            "questionnaireId": "4",
+            "optionSort": 5,
+            "fillEnabled": 0,
+            "id": "354"
+          }
+        ],
+        "questionnaireId": "4",
+        "questionName": "由于无法掌控发生的事情，感到生气了",
+        "questionAnswer": {
+          "questionId": "151",
+          "questionnaireId": "4",
+          "userId": "eafd4d8d-da9a-4b58-bfc1-202b53aa5ef6",
+          "optionId": "354",
+          "comment": "",
+          "id": "9c30c51e-e686-4811-876a-54ba5f6b56b5",
+          "submitId": "0ac9e556-3896-49d1-961d-7734f79dbd73",
+          "createDate": "2022-06-27T11:48:40"
+        },
+        "requiredEnabled": 1,
+        "id": "151"
+      },
+      {
+        "optionInformationList": [
+          {
+            "questionId": "152",
+            "optionValue": "从来没有",
+            "questionnaireId": "4",
+            "optionSort": 1,
+            "fillEnabled": 0,
+            "id": "355"
+          },
+          {
+            "questionId": "152",
+            "optionValue": "几乎没有",
+            "questionnaireId": "4",
+            "optionSort": 2,
+            "fillEnabled": 0,
+            "id": "356"
+          },
+          {
+            "questionId": "152",
+            "optionValue": "有时",
+            "questionnaireId": "4",
+            "optionSort": 3,
+            "fillEnabled": 0,
+            "id": "357"
+          },
+          {
+            "questionId": "152",
+            "optionValue": "经常",
+            "questionnaireId": "4",
+            "optionSort": 4,
+            "fillEnabled": 0,
+            "id": "358"
+          },
+          {
+            "questionId": "152",
+            "optionValue": "通常",
+            "questionnaireId": "4",
+            "optionSort": 5,
+            "fillEnabled": 0,
+            "id": "359"
+          }
+        ],
+        "questionnaireId": "4",
+        "questionName": "认为自己必须完成某件事情了",
+        "questionAnswer": {
+          "questionId": "152",
+          "questionnaireId": "4",
+          "userId": "eafd4d8d-da9a-4b58-bfc1-202b53aa5ef6",
+          "optionId": "357",
+          "comment": "",
+          "id": "1654eeee-a193-4511-9a62-b4a2a80c8a49",
+          "submitId": "0ac9e556-3896-49d1-961d-7734f79dbd73",
+          "createDate": "2022-06-27T11:48:40"
+        },
+        "requiredEnabled": 1,
+        "id": "152"
+      },
+      {
+        "optionInformationList": [
+          {
+            "questionId": "153",
+            "optionValue": "从来没有",
+            "questionnaireId": "4",
+            "optionSort": 1,
+            "fillEnabled": 0,
+            "id": "360"
+          },
+          {
+            "questionId": "153",
+            "optionValue": "几乎没有",
+            "questionnaireId": "4",
+            "optionSort": 2,
+            "fillEnabled": 0,
+            "id": "361"
+          },
+          {
+            "questionId": "153",
+            "optionValue": "有时",
+            "questionnaireId": "4",
+            "optionSort": 3,
+            "fillEnabled": 0,
+            "id": "362"
+          },
+          {
+            "questionId": "153",
+            "optionValue": "经常",
+            "questionnaireId": "4",
+            "optionSort": 4,
+            "fillEnabled": 0,
+            "id": "363"
+          },
+          {
+            "questionId": "153",
+            "optionValue": "通常",
+            "questionnaireId": "4",
+            "optionSort": 5,
+            "fillEnabled": 0,
+            "id": "364"
+          }
+        ],
+        "questionnaireId": "4",
+        "questionName": "觉得自己能控制时间安排的方式",
+        "questionAnswer": {
+          "questionId": "153",
+          "questionnaireId": "4",
+          "userId": "eafd4d8d-da9a-4b58-bfc1-202b53aa5ef6",
+          "optionId": "363",
+          "comment": "",
+          "id": "3fb73a9c-18fa-429d-a33b-33c6e834fb5b",
+          "submitId": "0ac9e556-3896-49d1-961d-7734f79dbd73",
+          "createDate": "2022-06-27T11:48:40"
+        },
+        "requiredEnabled": 1,
+        "id": "153"
+      },
+      {
+        "optionInformationList": [
+          {
+            "questionId": "154",
+            "optionValue": "从来没有",
+            "questionnaireId": "4",
+            "optionSort": 1,
+            "fillEnabled": 0,
+            "id": "365"
+          },
+          {
+            "questionId": "154",
+            "optionValue": "几乎没有",
+            "questionnaireId": "4",
+            "optionSort": 2,
+            "fillEnabled": 0,
+            "id": "366"
+          },
+          {
+            "questionId": "154",
+            "optionValue": "有时",
+            "questionnaireId": "4",
+            "optionSort": 3,
+            "fillEnabled": 0,
+            "id": "367"
+          },
+          {
+            "questionId": "154",
+            "optionValue": "经常",
+            "questionnaireId": "4",
+            "optionSort": 4,
+            "fillEnabled": 0,
+            "id": "368"
+          },
+          {
+            "questionId": "154",
+            "optionValue": "通常",
+            "questionnaireId": "4",
+            "optionSort": 5,
+            "fillEnabled": 0,
+            "id": "369"
+          }
+        ],
+        "questionnaireId": "4",
+        "questionName": "觉得困难积累得太大而无法克服",
+        "questionAnswer": {
+          "questionId": "154",
+          "questionnaireId": "4",
+          "userId": "eafd4d8d-da9a-4b58-bfc1-202b53aa5ef6",
+          "optionId": "366",
+          "comment": "",
+          "id": "5435c292-0c34-4665-9e12-14bae490f8f0",
+          "submitId": "0ac9e556-3896-49d1-961d-7734f79dbd73",
+          "createDate": "2022-06-27T11:48:40"
+        },
+        "requiredEnabled": 1,
+        "id": "154"
+      }
+    ],
+    "5": [
+      {
+        "optionInformationList": [
+          {
+            "questionId": "172",
+            "optionValue": "{}cm",
+            "questionnaireId": "5",
+            "optionSort": 1,
+            "fillEnabled": 1,
+            "id": "442"
+          }
+        ],
+        "questionnaireId": "5",
+        "questionName": "您的身高",
+        "questionAnswer": {
+          "questionId": "172",
+          "questionnaireId": "5",
+          "userId": "eafd4d8d-da9a-4b58-bfc1-202b53aa5ef6",
+          "optionId": "442",
+          "comment": "180",
+          "id": "0f555c35-01eb-4aa3-8bf8-63e08ec5934b",
+          "submitId": "37e1c9a8-1bc2-40ab-8136-d4b17f7c6e8b",
+          "createDate": "2022-06-27T11:51:12"
+        },
+        "requiredEnabled": 1,
+        "id": "172"
+      },
+      {
+        "optionInformationList": [
+          {
+            "questionId": "173",
+            "optionValue": "{}Kg",
+            "questionnaireId": "5",
+            "optionSort": 2,
+            "fillEnabled": 1,
+            "id": "443"
+          }
+        ],
+        "questionnaireId": "5",
+        "questionName": "您的体重",
+        "questionAnswer": {
+          "questionId": "173",
+          "questionnaireId": "5",
+          "userId": "eafd4d8d-da9a-4b58-bfc1-202b53aa5ef6",
+          "optionId": "443",
+          "comment": "80",
+          "id": "99daad27-0206-4a1a-967d-352d0c2179a0",
+          "submitId": "37e1c9a8-1bc2-40ab-8136-d4b17f7c6e8b",
+          "createDate": "2022-06-27T11:51:12"
+        },
+        "requiredEnabled": 1,
+        "id": "173"
+      },
+      {
+        "optionInformationList": [
+          {
+            "questionId": "174",
+            "optionValue": "{}cm",
+            "questionnaireId": "5",
+            "optionSort": 3,
+            "fillEnabled": 1,
+            "id": "444"
+          }
+        ],
+        "questionnaireId": "5",
+        "questionName": "您的腰围",
+        "questionAnswer": {
+          "questionId": "174",
+          "questionnaireId": "5",
+          "userId": "eafd4d8d-da9a-4b58-bfc1-202b53aa5ef6",
+          "optionId": "444",
+          "comment": "80",
+          "id": "9f987108-d800-4d8f-8a07-e4c8ba97ffc5",
+          "submitId": "37e1c9a8-1bc2-40ab-8136-d4b17f7c6e8b",
+          "createDate": "2022-06-27T11:51:12"
+        },
+        "requiredEnabled": 1,
+        "id": "174"
+      },
+      {
+        "optionInformationList": [
+          {
+            "questionId": "175",
+            "optionValue": "{}mmHg",
+            "questionnaireId": "5",
+            "optionSort": 4,
+            "fillEnabled": 1,
+            "id": "445"
+          }
+        ],
+        "questionnaireId": "5",
+        "questionName": "您的血压",
+        "questionAnswer": {
+          "questionId": "175",
+          "questionnaireId": "5",
+          "userId": "eafd4d8d-da9a-4b58-bfc1-202b53aa5ef6",
+          "optionId": "445",
+          "comment": "120",
+          "id": "d4e4117b-c51b-464f-ac93-db0f877e810a",
+          "submitId": "37e1c9a8-1bc2-40ab-8136-d4b17f7c6e8b",
+          "createDate": "2022-06-27T11:51:12"
+        },
+        "requiredEnabled": 1,
+        "id": "175"
+      },
+      {
+        "optionInformationList": [
+          {
+            "questionId": "176",
+            "optionValue": "{}次/分钟",
+            "questionnaireId": "5",
+            "optionSort": 5,
+            "fillEnabled": 1,
+            "id": "446"
+          }
+        ],
+        "questionnaireId": "5",
+        "questionName": "您的心率",
+        "questionAnswer": {
+          "questionId": "176",
+          "questionnaireId": "5",
+          "userId": "eafd4d8d-da9a-4b58-bfc1-202b53aa5ef6",
+          "optionId": "446",
+          "comment": "80",
+          "id": "ae9d2659-215e-43b3-83ea-bf5b56f6f855",
+          "submitId": "37e1c9a8-1bc2-40ab-8136-d4b17f7c6e8b",
+          "createDate": "2022-06-27T11:51:12"
+        },
+        "requiredEnabled": 1,
+        "id": "176"
+      },
+      {
+        "optionInformationList": [
+          {
+            "questionId": "177",
+            "optionValue": "{}mmol/L",
+            "questionnaireId": "5",
+            "optionSort": 6,
+            "fillEnabled": 1,
+            "id": "447"
+          }
+        ],
+        "questionnaireId": "5",
+        "questionName": "您的空腹血糖（FBG）",
+        "questionAnswer": {
+          "questionId": "177",
+          "questionnaireId": "5",
+          "userId": "eafd4d8d-da9a-4b58-bfc1-202b53aa5ef6",
+          "optionId": "447",
+          "comment": "17",
+          "id": "e68a829f-749e-476c-ba1a-926e2c358e53",
+          "submitId": "37e1c9a8-1bc2-40ab-8136-d4b17f7c6e8b",
+          "createDate": "2022-06-27T11:51:12"
+        },
+        "requiredEnabled": 0,
+        "id": "177"
+      },
+      {
+        "optionInformationList": [
+          {
+            "questionId": "178",
+            "optionValue": "{}%",
+            "questionnaireId": "5",
+            "optionSort": 7,
+            "fillEnabled": 1,
+            "id": "448"
+          }
+        ],
+        "questionnaireId": "5",
+        "questionName": "您的糖化血红蛋白（HbA1c）",
+        "questionAnswer": {
+          "questionId": "178",
+          "questionnaireId": "5",
+          "userId": "eafd4d8d-da9a-4b58-bfc1-202b53aa5ef6",
+          "optionId": "448",
+          "comment": "15",
+          "id": "1393da78-dee8-4c64-a5a7-7ae1a0c2beb6",
+          "submitId": "37e1c9a8-1bc2-40ab-8136-d4b17f7c6e8b",
+          "createDate": "2022-06-27T11:51:12"
+        },
+        "requiredEnabled": 0,
+        "id": "178"
+      },
+      {
+        "optionInformationList": [
+          {
+            "questionId": "179",
+            "optionValue": "{}mmol/L",
+            "questionnaireId": "5",
+            "optionSort": 8,
+            "fillEnabled": 1,
+            "id": "449"
+          }
+        ],
+        "questionnaireId": "5",
+        "questionName": "您的总胆固醇（TCHO）",
+        "questionAnswer": {
+          "questionId": "179",
+          "questionnaireId": "5",
+          "userId": "eafd4d8d-da9a-4b58-bfc1-202b53aa5ef6",
+          "optionId": "449",
+          "comment": "2",
+          "id": "1f5f07c0-3347-4592-80b7-a5c9e0b3e6ac",
+          "submitId": "37e1c9a8-1bc2-40ab-8136-d4b17f7c6e8b",
+          "createDate": "2022-06-27T11:51:12"
+        },
+        "requiredEnabled": 0,
+        "id": "179"
+      },
+      {
+        "optionInformationList": [
+          {
+            "questionId": "180",
+            "optionValue": "{}mmol/L",
+            "questionnaireId": "5",
+            "optionSort": 9,
+            "fillEnabled": 1,
+            "id": "450"
+          }
+        ],
+        "questionnaireId": "5",
+        "questionName": "您的甘油三脂（TG）",
+        "questionAnswer": {
+          "questionId": "180",
+          "questionnaireId": "5",
+          "userId": "eafd4d8d-da9a-4b58-bfc1-202b53aa5ef6",
+          "optionId": "450",
+          "comment": "4",
+          "id": "569228a6-4a2b-4f26-a25d-57242750e466",
+          "submitId": "37e1c9a8-1bc2-40ab-8136-d4b17f7c6e8b",
+          "createDate": "2022-06-27T11:51:12"
+        },
+        "requiredEnabled": 0,
+        "id": "180"
+      },
+      {
+        "optionInformationList": [
+          {
+            "questionId": "181",
+            "optionValue": "{}mmol/L",
+            "questionnaireId": "5",
+            "optionSort": 10,
+            "fillEnabled": 1,
+            "id": "451"
+          }
+        ],
+        "questionnaireId": "5",
+        "questionName": "您的血清低密度脂蛋白胆固醇（LDL-C）",
+        "questionAnswer": {
+          "questionId": "181",
+          "questionnaireId": "5",
+          "userId": "eafd4d8d-da9a-4b58-bfc1-202b53aa5ef6",
+          "optionId": "451",
+          "comment": "4",
+          "id": "91b9f364-f1b3-4a20-be2e-48d0233a2ba0",
+          "submitId": "37e1c9a8-1bc2-40ab-8136-d4b17f7c6e8b",
+          "createDate": "2022-06-27T11:51:12"
+        },
+        "requiredEnabled": 0,
+        "id": "181"
+      },
+      {
+        "optionInformationList": [
+          {
+            "questionId": "182",
+            "optionValue": "{}mmol/L",
+            "questionnaireId": "5",
+            "optionSort": 11,
+            "fillEnabled": 1,
+            "id": "452"
+          }
+        ],
+        "questionnaireId": "5",
+        "questionName": "您的血清高密度脂蛋白胆固醇（HDL-C）",
+        "questionAnswer": {
+          "questionId": "182",
+          "questionnaireId": "5",
+          "userId": "eafd4d8d-da9a-4b58-bfc1-202b53aa5ef6",
+          "optionId": "452",
+          "comment": "2",
+          "id": "456c8154-b7c9-41f3-a5f4-f8fa52e1fe12",
+          "submitId": "37e1c9a8-1bc2-40ab-8136-d4b17f7c6e8b",
+          "createDate": "2022-06-27T11:51:12"
+        },
+        "requiredEnabled": 0,
+        "id": "182"
+      },
+      {
+        "optionInformationList": [
+          {
+            "questionId": "183",
+            "optionValue": "{}μmol/L",
+            "questionnaireId": "5",
+            "optionSort": 12,
+            "fillEnabled": 1,
+            "id": "453"
+          }
+        ],
+        "questionnaireId": "5",
+        "questionName": "您的尿酸（UA）",
+        "questionAnswer": {
+          "questionId": "183",
+          "questionnaireId": "5",
+          "userId": "eafd4d8d-da9a-4b58-bfc1-202b53aa5ef6",
+          "optionId": "453",
+          "comment": "2",
+          "id": "990e9a79-2ae7-4db3-bec9-a91f4c4df9b7",
+          "submitId": "37e1c9a8-1bc2-40ab-8136-d4b17f7c6e8b",
+          "createDate": "2022-06-27T11:51:12"
+        },
+        "requiredEnabled": 0,
+        "id": "183"
+      },
+      {
+        "optionInformationList": [
+          {
+            "questionId": "184",
+            "optionValue": "{}ml",
+            "questionnaireId": "5",
+            "optionSort": 13,
+            "fillEnabled": 1,
+            "id": "454"
+          }
+        ],
+        "questionnaireId": "5",
+        "questionName": "您的肺活量",
+        "questionAnswer": {
+          "questionId": "184",
+          "questionnaireId": "5",
+          "userId": "eafd4d8d-da9a-4b58-bfc1-202b53aa5ef6",
+          "optionId": "454",
+          "comment": "6901",
+          "id": "9e379d5f-8a62-4344-a8bf-582de5b3ac37",
+          "submitId": "37e1c9a8-1bc2-40ab-8136-d4b17f7c6e8b",
+          "createDate": "2022-06-27T11:51:12"
+        },
+        "requiredEnabled": 0,
+        "id": "184"
+      },
+      {
+        "optionInformationList": [
+          {
+            "questionId": "185",
+            "optionValue": "{}kg",
+            "questionnaireId": "5",
+            "optionSort": 14,
+            "fillEnabled": 1,
+            "id": "455"
+          }
+        ],
+        "questionnaireId": "5",
+        "questionName": "您的左手握力",
+        "questionAnswer": {
+          "questionId": "185",
+          "questionnaireId": "5",
+          "userId": "eafd4d8d-da9a-4b58-bfc1-202b53aa5ef6",
+          "optionId": "455",
+          "comment": "15",
+          "id": "421b0a33-9dac-468b-8c2d-411ea49e71d7",
+          "submitId": "37e1c9a8-1bc2-40ab-8136-d4b17f7c6e8b",
+          "createDate": "2022-06-27T11:51:12"
+        },
+        "requiredEnabled": 0,
+        "id": "185"
+      },
+      {
+        "optionInformationList": [
+          {
+            "questionId": "186",
+            "optionValue": "{}kg",
+            "questionnaireId": "5",
+            "optionSort": 15,
+            "fillEnabled": 1,
+            "id": "456"
+          }
+        ],
+        "questionnaireId": "5",
+        "questionName": "您的右手握力",
+        "questionAnswer": {
+          "questionId": "186",
+          "questionnaireId": "5",
+          "userId": "eafd4d8d-da9a-4b58-bfc1-202b53aa5ef6",
+          "optionId": "456",
+          "comment": "21",
+          "id": "51a0c94a-c8bd-418c-9023-026edbaec0fc",
+          "submitId": "37e1c9a8-1bc2-40ab-8136-d4b17f7c6e8b",
+          "createDate": "2022-06-27T11:51:12"
+        },
+        "requiredEnabled": 0,
+        "id": "186"
+      },
+      {
+        "optionInformationList": [
+          {
+            "questionId": "225",
+            "optionValue": "{}mmol/L",
+            "questionnaireId": "5",
+            "optionSort": 1,
+            "fillEnabled": 1,
+            "id": "755"
+          }
+        ],
+        "questionnaireId": "5",
+        "questionName": "血清总钙浓度",
+        "questionAnswer": {
+          "questionId": "225",
+          "questionnaireId": "5",
+          "userId": "eafd4d8d-da9a-4b58-bfc1-202b53aa5ef6",
+          "optionId": "755",
+          "comment": "2",
+          "id": "9bf56569-991b-4e7c-b6cf-bc53548191c0",
+          "submitId": "37e1c9a8-1bc2-40ab-8136-d4b17f7c6e8b",
+          "createDate": "2022-06-27T11:51:12"
+        },
+        "requiredEnabled": 0,
+        "id": "225"
+      },
+      {
+        "optionInformationList": [
+          {
+            "questionId": "226",
+            "optionValue": "{}mmol/L",
+            "questionnaireId": "5",
+            "optionSort": 1,
+            "fillEnabled": 1,
+            "id": "756"
+          }
+        ],
+        "questionnaireId": "5",
+        "questionName": "血清离子钙浓度",
+        "questionAnswer": {
+          "questionId": "226",
+          "questionnaireId": "5",
+          "userId": "eafd4d8d-da9a-4b58-bfc1-202b53aa5ef6",
+          "optionId": "756",
+          "comment": "5",
+          "id": "610b8b84-ce05-477a-bc84-4ee591b38573",
+          "submitId": "37e1c9a8-1bc2-40ab-8136-d4b17f7c6e8b",
+          "createDate": "2022-06-27T11:51:12"
+        },
+        "requiredEnabled": 0,
+        "id": "226"
+      },
+      {
+        "optionInformationList": [
+          {
+            "questionId": "227",
+            "optionValue": "{}mmol/L",
+            "questionnaireId": "5",
+            "optionSort": 1,
+            "fillEnabled": 1,
+            "id": "757"
+          }
+        ],
+        "questionnaireId": "5",
+        "questionName": "血清离子镁浓度",
+        "questionAnswer": {
+          "questionId": "227",
+          "questionnaireId": "5",
+          "userId": "eafd4d8d-da9a-4b58-bfc1-202b53aa5ef6",
+          "optionId": "757",
+          "comment": "4",
+          "id": "45685372-5de8-461b-b028-629a8953a6b9",
+          "submitId": "37e1c9a8-1bc2-40ab-8136-d4b17f7c6e8b",
+          "createDate": "2022-06-27T11:51:12"
+        },
+        "requiredEnabled": 0,
+        "id": "227"
+      },
+      {
+        "optionInformationList": [
+          {
+            "questionId": "228",
+            "optionValue": "{}μmol/L",
+            "questionnaireId": "5",
+            "optionSort": 1,
+            "fillEnabled": 1,
+            "id": "758"
+          }
+        ],
+        "questionnaireId": "5",
+        "questionName": "同型半胱氨酸",
+        "questionAnswer": {
+          "questionId": "228",
+          "questionnaireId": "5",
+          "userId": "eafd4d8d-da9a-4b58-bfc1-202b53aa5ef6",
+          "optionId": "758",
+          "comment": "3",
+          "id": "7844b325-3dc2-4f79-b6e9-2c0bf51d8b0f",
+          "submitId": "37e1c9a8-1bc2-40ab-8136-d4b17f7c6e8b",
+          "createDate": "2022-06-27T11:51:12"
+        },
+        "requiredEnabled": 0,
+        "id": "228"
+      }
+    ]
+  }
+}

@@ -17,6 +17,8 @@ import java.util.List;
 public interface IUserInformationService {
     List<UserInformationDto> findList(UserInformationDto userInformation);
 
+    List<UserInformationDto> findAllList(UserInformationDto userInformationDto);
+
     boolean isExist(UserInformation userInformation);
 
     boolean insertUser(UserInformation userInformation);

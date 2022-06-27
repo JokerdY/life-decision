@@ -42,19 +42,11 @@
         </where>
     </select>
 
-    <select id="findGroupSubmitList" resultType="cn.hutool.json.JSONObject">
-        select group_id as groupId,
-               count(questionnaire_id) as sum,
-               min(create_date)               as createDate
-        from questionnaire_group_information
-        where user_id = #{userId}
-        group by group_id
-        order by createDate
-    </select>
 
     <select id="findGroupList" resultType="cn.hutool.json.JSONObject">
         select group_id                       as groupId,
                group_concat(questionnaire_id) as groupQuestionnaireId,
+               group_concat(submit_id)        as groupSubmitId,
                min(create_date)               as createDate
         from questionnaire_group_information
         where user_id = #{userId}
@@ -76,7 +68,8 @@
         where user_id = #{userId}
         group by group_id
         having count(*) &lt; (select count(*) from questionnaire_information)
-        order by update_date desc limit 1
+        order by update_date desc
+        limit 1
     </select>
 
     <insert id="insert">

@@ -1,5 +1,6 @@
 package com.life.decision.support.service.impl;
 
+import cn.hutool.json.JSONObject;
 import com.life.decision.support.dto.SubmitOfTheQuestionnaireGroup;
 import com.life.decision.support.mapper.QuestionnaireSubmitInformationMapper;
 import com.life.decision.support.pojo.QuestionnaireSubmitInformation;
@@ -26,6 +27,11 @@ public class QuestionnaireSubmitInformationServiceImpl implements IQuestionnaire
     }
 
     @Override
+    public List<QuestionnaireSubmitInformation> listByGroupId(String groupId) {
+        return mapper.listByGroupId(groupId);
+    }
+
+    @Override
     public QuestionnaireSubmitInformation getById(String submitId) {
         return mapper.getById(submitId);
     }
@@ -47,5 +53,15 @@ public class QuestionnaireSubmitInformationServiceImpl implements IQuestionnaire
     @Override
     public List<String> getGroupIdsByDate(String startDate, String endDate) {
         return mapper.getGroupIdByDate(startDate, endDate);
+    }
+
+    @Override
+    public List<QuestionnaireSubmitInformation> listLatestSubmittedQuestionnaire(String userId) {
+        return mapper.listLatestSubmittedQuestionnaire(userId);
+    }
+
+    @Override
+    public List<JSONObject> listGroupByUserIdAndGroupId() {
+        return mapper.listGroupByUserIdAndGroupId();
     }
 }

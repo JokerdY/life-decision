@@ -3,12 +3,14 @@ package com.life.decision.support.service.impl;
 import cn.hutool.core.util.IdUtil;
 import cn.hutool.json.JSONObject;
 import com.life.decision.support.mapper.QuestionnaireGroupInformationMapper;
+import com.life.decision.support.mapper.QuestionnaireSubmitInformationMapper;
 import com.life.decision.support.pojo.QuestionnaireGroupInformation;
 import com.life.decision.support.service.IQuestionnaireGroupInformationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.Arrays;
 import java.util.List;
 
 @Service
@@ -16,6 +18,8 @@ public class QuestionnaireGroupInformationServiceImpl implements IQuestionnaireG
 
     @Autowired
     QuestionnaireGroupInformationMapper mapper;
+    @Autowired
+    QuestionnaireSubmitInformationMapper submitInformationMapper;
 
     @Override
     public List<QuestionnaireGroupInformation> findList(QuestionnaireGroupInformation entity) {
@@ -23,9 +27,11 @@ public class QuestionnaireGroupInformationServiceImpl implements IQuestionnaireG
     }
 
     public List<JSONObject> findGroupSubmitList(String userId) {
-        List<JSONObject> groupSubmitList = mapper.findGroupSubmitList(userId);
+        List<JSONObject> groupSubmitList = mapper.findGroupList(userId);
         groupSubmitList.forEach(json -> {
-            Integer sum = json.getInt("sum");
+            Integer sum = submitInformationMapper.getCountByHasFinish(
+                    Arrays.asList(json.getStr("groupSubmitId").split(",")));
+            json.putOpt("sum", sum);
             if (sum == 5) {
                 json.putOnce("finished", true);
             } else {
@@ -65,4 +71,5 @@ public class QuestionnaireGroupInformationServiceImpl implements IQuestionnaireG
     public QuestionnaireGroupInformation getBySubmitId(String submitId) {
         return mapper.getBySubmitId(submitId);
     }
+
 }

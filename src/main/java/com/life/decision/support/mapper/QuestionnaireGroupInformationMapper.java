@@ -12,8 +12,6 @@ public interface QuestionnaireGroupInformationMapper {
 
     List<QuestionnaireGroupInformation> findList(QuestionnaireGroupInformation entity);
 
-    List<JSONObject> findGroupSubmitList(@Param("userId") String userId);
-
     List<JSONObject> findGroupList(@Param("userId") String userId);
 
     void insert(QuestionnaireGroupInformation entity);
@@ -22,5 +20,12 @@ public interface QuestionnaireGroupInformationMapper {
 
     QuestionnaireGroupInformation getBySubmitId(@Param("submitId") String submitId);
 
+    /**
+     * 找到未完成的问卷组
+     *
+     * @param userId
+     * @return
+     */
     QuestionnaireGroupInformation getByUserId(@Param("userId") String userId);
+
 }

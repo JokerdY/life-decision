@@ -36,6 +36,11 @@ public class UserInformationServiceImpl implements IUserInformationService {
     }
 
     @Override
+    public List<UserInformationDto> findAllList(UserInformationDto userInformationDto) {
+        return userInformationMapper.findList(BeanUtil.copyProperties(userInformationDto, UserInformation.class));
+    }
+
+    @Override
     public boolean isExist(UserInformation userInformation) {
         UserInformation temp = new UserInformation();
         temp.setTelphoneNum(userInformation.getTelphoneNum());

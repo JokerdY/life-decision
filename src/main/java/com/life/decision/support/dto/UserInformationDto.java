@@ -18,6 +18,8 @@ public class UserInformationDto extends PageDto {
     @ApiModelProperty(value = "id")
     private String id;
 
+    private String userId;
+
     @ApiModelProperty(value = "用户名")
     private String userName;
 
