@@ -44,7 +44,7 @@ public class QuestionInformationServiceImpl implements IQuestionInformationServi
         List<QuestionAnswer> answerList = questionAnswerService.findList(questionAnswer);
         for (QuestionInformationDto questionInformationDto : list) {
             uploadAnswer(answerList, questionInformationDto);
-            if (CollUtil.isEmpty(questionInformationDto.getChild())) {
+            if (CollUtil.isNotEmpty(questionInformationDto.getChild())) {
                 for (QuestionInformationDto informationDto : questionInformationDto.getChild()) {
                     uploadAnswer(answerList, informationDto);
                 }

@@ -10,12 +10,13 @@
         <result column="admin_enable" property="adminEnable" jdbcType="INTEGER"/>
         <result column="sex" property="sex" jdbcType="INTEGER"/>
         <result column="date_of_birth" property="dateOfBirth" jdbcType="DATE"/>
-        <result column="height" property="height" jdbcType="DOUBLE"/>
-        <result column="weight" property="weight" jdbcType="DOUBLE"/>
+        <result column="height" property="height" jdbcType="VARCHAR"/>
+        <result column="weight" property="weight" jdbcType="VARCHAR"/>
         <result column="educational_level" property="educationalLevel" jdbcType="INTEGER"/>
         <result column="occupation" property="occupation" jdbcType="INTEGER"/>
         <result column="marital_status" property="maritalStatus" jdbcType="INTEGER"/>
         <result column="household_income" property="householdIncome" jdbcType="INTEGER"/>
+        <result column="bmi" property="BMI" jdbcType="VARCHAR"/>
     </resultMap>
 
     <resultMap id="UserInformationDto" type="com.life.decision.support.dto.UserInformationDto">
@@ -26,8 +27,8 @@
         <result column="admin_enable" property="adminEnable" jdbcType="INTEGER"/>
         <result column="sex" property="sex" jdbcType="INTEGER"/>
         <result column="date_of_birth" property="dateOfBirth" jdbcType="DATE"/>
-        <result column="height" property="height" jdbcType="DOUBLE"/>
-        <result column="weight" property="weight" jdbcType="DOUBLE"/>
+        <result column="height" property="height" jdbcType="VARCHAR"/>
+        <result column="weight" property="weight" jdbcType="VARCHAR"/>
         <result column="educational_level" property="educationalLevel" jdbcType="INTEGER"/>
         <result column="occupation" property="occupation" jdbcType="INTEGER"/>
         <result column="educational_level" property="educationalLevel" jdbcType="INTEGER"/>
@@ -38,6 +39,7 @@
         <result column="sex_dto" property="sexDto" jdbcType="VARCHAR"/>
         <result column="marital_dto" property="maritalDto" jdbcType="VARCHAR"/>
         <result column="household_income_dto" property="householdIncomeDto" jdbcType="VARCHAR"/>
+        <result column="bmi" property="BMI" jdbcType="VARCHAR"/>
     </resultMap>
 
     <sql id="baseList">

@@ -22,8 +22,8 @@ public class WebMvcConfig implements WebMvcConfigurer {
         registry.addInterceptor(interceptor)
                 .addPathPatterns("/**")
                 .excludePathPatterns(    //添加不拦截路径
-                        "/**/login",
-                        "/**/register",
+                        "/**/login**",
+                        "/**/register**",
                         "/sysDict/**",
                         "/**/*.html",
                         "/**/*.js",

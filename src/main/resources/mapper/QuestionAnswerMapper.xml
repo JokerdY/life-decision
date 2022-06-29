@@ -19,13 +19,17 @@
         select
         <include refid="Base_Column_List"/>
         from question_answer
-        where id = #{id,jdbcType=VARCHAR}
+        where question_id = #{questionId,jdbcType=VARCHAR}
+        and submit_id = #{submitId}
     </select>
     <select id="list" resultMap="BaseResultMap">
         select
         <include refid="Base_Column_List"/>
         from question_answer
-        where user_id = #{userId} and questionnaire_id = #{questionnaireId} and submit_id = #{submitId}
+        where questionnaire_id = #{questionnaireId} and submit_id = #{submitId}
+        <if test="userId != null and userId != ''">
+            and user_id = #{userId}
+        </if>
     </select>
     <select id="listBySubmitId" resultType="com.life.decision.support.pojo.QuestionAnswer">
         select
@@ -151,8 +155,7 @@
         update question_answer
         set option_id = #{optionId,jdbcType=VARCHAR},
             comment   = #{comment,jdbcType=VARCHAR}
-        where id = #{id,jdbcType=VARCHAR}
-          and question_id = #{questionId,jdbcType=VARCHAR}
+        where question_id = #{questionId,jdbcType=VARCHAR}
           and submit_id = #{submitId}
     </update>
 </mapper>

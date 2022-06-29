@@ -82,7 +82,7 @@ sd.convert_name as 'big_label'
         <if test="questionnaireId != null and questionnaireId != '' ">
             where a.questionnaire_id = #{questionnaireId}
         </if>
-        order by a.questionnaire_id, a.big_label_id, a.question_sort, b.option_sort
+        order by a.questionnaire_id, cast(a.big_label_id as SIGNED INTEGER), a.question_sort, b.option_sort
     </select>
 
     <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
