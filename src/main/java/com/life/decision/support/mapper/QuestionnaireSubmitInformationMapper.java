@@ -1,5 +1,6 @@
 package com.life.decision.support.mapper;
 
+import cn.hutool.json.JSONObject;
 import com.life.decision.support.dto.SubmitOfTheQuestionnaireGroup;
 import com.life.decision.support.pojo.QuestionnaireSubmitInformation;
 import org.apache.ibatis.annotations.Mapper;
@@ -23,4 +24,15 @@ public interface QuestionnaireSubmitInformationMapper {
 
     List<String> getGroupIdByDate(@Param("startDate") String startDate,
                                   @Param("endDate") String endDate);
+
+    List<JSONObject> listGroupByUserIdAndGroupId();
+
+    List<QuestionnaireSubmitInformation> listLatestSubmittedQuestionnaire(@Param("userId") String userId);
+
+    /**
+     * 查看已完成的数量
+     */
+    Integer getCountByHasFinish(@Param("ids") List<String> ids);
+
+    List<QuestionnaireSubmitInformation> listByGroupId(@Param("groupId") String groupId);
 }

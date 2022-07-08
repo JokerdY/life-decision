@@ -3,6 +3,7 @@ package com.life.decision.support.controller;
 
 import cn.hutool.core.collection.CollUtil;
 import cn.hutool.core.util.IdUtil;
+import cn.hutool.core.util.StrUtil;
 import cn.hutool.json.JSONObject;
 import com.life.decision.support.dto.SubmitOfTheQuestionnaireGroup;
 import com.life.decision.support.pojo.QuestionAnswer;
@@ -70,7 +71,7 @@ public class QuestionAnswerController {
      * 保存场景：
      * 修改已有的问卷保存 -update update submitInfo
      * 新增时保存 -save new submitInfo
-     *
+     * <p>
      * 新增提交
      *
      * @param obj
@@ -86,6 +87,7 @@ public class QuestionAnswerController {
 
     /**
      * 更新保存
+     *
      * @param obj
      * @return
      */
@@ -100,6 +102,7 @@ public class QuestionAnswerController {
 
     /**
      * 更新提交
+     *
      * @param obj
      * @return
      */
@@ -166,10 +169,15 @@ public class QuestionAnswerController {
     @Transactional
     public Object update(@RequestBody JSONObject obj) {
         List<QuestionAnswer> list = obj.getJSONArray("list").toList(QuestionAnswer.class);
+        String submitId = obj.getStr("submitId");
+        String userId = obj.getStr("userId");
+        if (StrUtil.isBlank(submitId) || StrUtil.isBlank(userId)) {
+            return ResultUtils.returnError("submitId或userId为空");
+        }
         if (CollUtil.isNotEmpty(list)) {
-            questionAnswerService.updateBatch(list);
+            QuestionnaireSubmitInformation submit = questionnaireSubmitInformationService.getById(submitId);
+            questionAnswerService.updateBatch(list, submit);
             QuestionnaireSubmitInformation submitInfo = new QuestionnaireSubmitInformation();
-            String submitId = list.get(0).getSubmitId();
             submitInfo.setId(submitId);
             uploadAdminSubmitInfo(obj, submitInfo);
             questionnaireSubmitInformationService.update(submitInfo);

@@ -23,7 +23,7 @@ public interface QuestionAnswerMapper {
 
     int insertSelective(QuestionAnswer record);
 
-    QuestionAnswer selectByPrimaryKey(String id);
+    QuestionAnswer selectByPrimaryKey(QuestionAnswer record);
 
     int updateByPrimaryKeySelective(QuestionAnswer record);
 

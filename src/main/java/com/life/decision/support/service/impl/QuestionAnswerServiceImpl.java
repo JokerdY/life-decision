@@ -3,6 +3,7 @@ package com.life.decision.support.service.impl;
 import cn.hutool.core.util.IdUtil;
 import com.life.decision.support.mapper.QuestionAnswerMapper;
 import com.life.decision.support.pojo.QuestionAnswer;
+import com.life.decision.support.pojo.QuestionnaireSubmitInformation;
 import com.life.decision.support.service.IQuestionAnswerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -37,9 +38,21 @@ public class QuestionAnswerServiceImpl implements IQuestionAnswerService {
     }
 
     @Override
-    public void updateBatch(List<QuestionAnswer> list) {
-        for (QuestionAnswer questionAnswer : list) {
-            answerMapper.updateByPrimaryKey(questionAnswer);
+    public void updateBatch(List<QuestionAnswer> list, QuestionnaireSubmitInformation submit) {
+        LocalDateTime now = LocalDateTime.now();
+        String submitId = submit.getId();
+        for (QuestionAnswer answer : list) {
+            answer.setSubmitId(submitId);
+            if (answerMapper.selectByPrimaryKey(answer) != null) {
+                answerMapper.updateByPrimaryKey(answer);
+            } else {
+                answer.setUserId(submit.getUserId());
+                answer.setCreateDate(now);
+                answer.setId(IdUtil.fastUUID());
+                answer.setSubmitId(submitId);
+                answer.setQuestionnaireId(submit.getQuestionnaireId());
+                answerMapper.insert(answer);
+            }
         }
     }
 

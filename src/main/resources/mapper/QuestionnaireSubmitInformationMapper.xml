@@ -23,6 +23,7 @@
             <result column="telphoneNum" jdbcType="VARCHAR" property="telphoneNum"/>
         </association>
     </resultMap>
+
     <insert id="insert" parameterType="com.life.decision.support.pojo.QuestionnaireSubmitInformation">
         insert into questionnaire_submit_information (id, user_id,
         <if test="questionnaireStatus != null">
@@ -43,6 +44,7 @@
         #{createTime,jdbcType=TIMESTAMP},
         #{updateTime,jdbcType=TIMESTAMP})
     </insert>
+
     <update id="update" parameterType="com.life.decision.support.pojo.QuestionnaireSubmitInformation">
         update questionnaire_submit_information
         set
@@ -91,11 +93,13 @@
             </if>
         </where>
     </select>
+
     <select id="getById" resultMap="baseResultMap">
         select *
         from questionnaire_submit_information
         where id = #{id}
     </select>
+
     <select id="listSubmitMsg" resultType="com.life.decision.support.dto.SubmitOfTheQuestionnaireGroup">
         select t.id as questionnaireId, dict.convert_name as questionnaireName, IFNULL(sub.count, 0) as submitCount
         from questionnaire_information t
@@ -106,6 +110,7 @@
                             where user_id = #{userId}
                             group by questionnaire_id) sub on t.id = sub.questionnaire_id
     </select>
+
     <select id="listIdByGroupIds" resultType="com.life.decision.support.pojo.QuestionnaireSubmitInformation">
         select a.*
         from questionnaire_submit_information a
@@ -115,10 +120,11 @@
         <foreach collection="list" item="it" separator=",">
             #{it,jdbcType=VARCHAR}
         </foreach>
-            )
+        )
         )
         and a.questionnaire_status = 1
     </select>
+
     <select id="getGroupIdByDate" resultType="java.lang.String">
         select distinct group_id
         from questionnaire_group_information
@@ -130,5 +136,43 @@
                 and create_date &lt; #{endDate}
             </if>
         </where>
+    </select>
+
+    <select id="listGroupByUserIdAndGroupId" resultType="cn.hutool.json.JSONObject">
+        select count(*)                       as count,
+               user_id                        as userId,
+               group_id                       as groupId,
+               group_concat(questionnaire_id) as questionnaireId
+        from questionnaire_group_information
+        group by user_id, group_id
+    </select>
+
+    <select id="listLatestSubmittedQuestionnaire"
+            resultType="com.life.decision.support.pojo.QuestionnaireSubmitInformation">
+        select a.*
+        from questionnaire_submit_information a
+                 right join (select max(create_time) as create_time, questionnaire_id
+                             from questionnaire_submit_information
+                             where user_id = #{userId}
+                               and questionnaire_status = '1'
+                             group by questionnaire_id) b
+                            on a.create_time = b.create_time and a.questionnaire_id = b.questionnaire_id
+        where a.user_id = #{userId}
+    </select>
+
+    <select id="getCountByHasFinish" resultType="java.lang.Integer">
+        select count(*)
+        from questionnaire_submit_information
+        where id in (
+        <foreach collection="ids" item="id" separator=",">
+            #{id}
+        </foreach>
+        )
+    </select>
+
+    <select id="listByGroupId" resultType="com.life.decision.support.pojo.QuestionnaireSubmitInformation">
+        select *
+        from questionnaire_submit_information
+        where id in (select submit_id from questionnaire_group_information where group_id = #{groupId})
     </select>
 </mapper>

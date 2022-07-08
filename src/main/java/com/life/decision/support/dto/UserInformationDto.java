@@ -18,6 +18,8 @@ public class UserInformationDto extends PageDto {
     @ApiModelProperty(value = "id")
     private String id;
 
+    private String userId;
+
     @ApiModelProperty(value = "用户名")
     private String userName;
 
@@ -43,10 +45,10 @@ public class UserInformationDto extends PageDto {
     private Date dateOfBirth;
 
     @ApiModelProperty(value = "升高")
-    private Double height;
+    private String height;
 
     @ApiModelProperty(value = "体重")
-    private Double weight;
+    private String weight;
 
     /**
      * 教育程度
