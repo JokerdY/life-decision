@@ -16,7 +16,6 @@
         <result column="occupation" property="occupation" jdbcType="INTEGER"/>
         <result column="marital_status" property="maritalStatus" jdbcType="INTEGER"/>
         <result column="household_income" property="householdIncome" jdbcType="INTEGER"/>
-        <result column="bmi" property="BMI" jdbcType="VARCHAR"/>
     </resultMap>
 
     <resultMap id="UserInformationDto" type="com.life.decision.support.dto.UserInformationDto">

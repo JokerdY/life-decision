@@ -7,9 +7,8 @@ public class UserInHomeVo extends UserInformationDto {
     private String bloodPressure;
     private String fillInTheDate;
     private String bloodPressureStr;
-    private String weightDiff;
-    private String BMI;
+    // diff为null则不展示
     private String BMIDiff;
+    private String weightDiff;
     private String bodyFatPercentage;
-    private String bodyFatPercentageDiff;
 }

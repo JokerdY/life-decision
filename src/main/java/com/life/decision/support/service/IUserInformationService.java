@@ -1,5 +1,6 @@
 package com.life.decision.support.service;
 
+import com.life.decision.support.dto.UserInHomeVo;
 import com.life.decision.support.dto.UserInformationDto;
 import com.life.decision.support.pojo.PassWordChangeDto;
 import com.life.decision.support.pojo.UserInformation;
@@ -27,7 +28,7 @@ public interface IUserInformationService {
 
     boolean resetPassword(UserInformation userInformation, int tailNumberDigits);
 
-    UserInformationDto getUserMsg(UserInformation userInformation);
+    UserInHomeVo getUserMsg(UserInformation userInformation);
 
     UserInformationDto getAdminUser(UserInformation userInformation);
 
