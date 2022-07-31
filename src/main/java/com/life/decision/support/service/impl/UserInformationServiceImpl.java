@@ -98,7 +98,7 @@ public class UserInformationServiceImpl implements IUserInformationService {
                 userInHomeVo.setBloodPressure(bloodPressure);
 
                 String[] highAndLowPressure = bloodPressure.split("/");
-
+                userInHomeVo.setBloodPressureStr(getStandardBloodPressure(highAndLowPressure));
                 String height = questionnaireMsgQueryService.getLatestOptionValue(userId, "172");
                 String weight = questionnaireMsgQueryService.getLatestOptionValue(userId, "173");
                 double bmiDouble = getBmi(height, weight);
@@ -121,6 +121,32 @@ public class UserInformationServiceImpl implements IUserInformationService {
             return userInHomeVo;
         }
         return null;
+    }
+
+    private String getStandardBloodPressure(String[] highAndLowPressure) {
+        String high = highAndLowPressure[0];
+        String low = highAndLowPressure[1];
+        try {
+            int highInt = Integer.parseInt(high);
+            int lowInt = Integer.parseInt(low);
+            if (highInt < 120 && lowInt < 80) {
+                return "正常血压";
+            } else if ((highInt >= 120 && highInt <= 139) && (lowInt >= 80 && lowInt <= 89)) {
+                return "正常高值";
+            } else if ((highInt >= 140 && highInt <= 159) && (lowInt >= 90 && lowInt <= 99)) {
+                return "轻度高血压";
+            } else if ((highInt >= 160 && highInt <= 179) && (lowInt >= 100 && lowInt <= 109)) {
+                return "中度高血压";
+            } else if (highInt >= 140 && lowInt < 90) {
+                return "单纯收缩期高血压";
+            } else if (highInt >= 180 || lowInt >= 110) {
+                return "重度高血压";
+            } else {
+                return "";
+            }
+        } catch (Exception e) {
+            return "";
+        }
     }
 
     private void getDiff(UserInHomeVo userInHomeVo, String weight, double bmiDouble, String secondWeight, double secondBmiDouble) {

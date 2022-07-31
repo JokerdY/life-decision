@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.life.decision.support.mapper.PsychologyResultMapper">
+    <resultMap id="BaseResultMap" type="com.life.decision.support.pojo.PsychologyResult">
+        <id column="id" property="id" jdbcType="VARCHAR"/>
+        <result column="user_id" property="userId" jdbcType="VARCHAR"/>
+        <result column="result" property="result" jdbcType="VARCHAR"/>
+        <result column="advice" property="advice" jdbcType="VARCHAR"/>
+        <result column="health_education" property="healthEducation" jdbcType="VARCHAR"/>
+        <result column="create_date" property="createDate" jdbcType="TIMESTAMP"/>
+        <result column="update_date" property="updateDate" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id, user_id, result, advice, create_date, update_date
+    </sql>
+    <select id="selectByEntity" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from psychology_result
+        where user_id = #{userId}
+        order by create_date desc
+        limit 1;
+    </select>
+    <select id="listByEntity" resultType="com.life.decision.support.pojo.PsychologyResult">
+        select
+        <include refid="Base_Column_List"/>
+        from recipe_result
+        where user_id = #{userId}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+        delete
+        from psychology_result
+        where id = #{id,jdbcType=VARCHAR}
+    </delete>
+    <insert id="insert">
+        insert into psychology_result (id, user_id, advice, result, create_date, update_date, health_education)
+        values (#{id}, #{userId}, #{advice}, #{result}, NOW(), NOW(), #{healthEducation})
+    </insert>
+    <insert id="insertSelective">
+        insert into psychology_result
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="userId != null">
+                user_id,
+            </if>
+            <if test="advice != null">
+                advice,
+            </if>
+            <if test="result != null">
+                result,
+            </if>
+            <if test="healthEducation != null">
+                health_education,
+            </if>
+            <if test="createDate != null">
+                create_date,
+            </if>
+            <if test="updateDate != null">
+                update_date,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=VARCHAR},
+            </if>
+            <if test="userId != null">
+                #{userId},
+            </if>
+            <if test="advice != null">
+                #{advice},
+            </if>
+            <if test="result != null">
+                #{result},
+            </if>
+            <if test="healthEducation != null">
+                #{healthEducation},
+            </if>
+            <if test="createDate != null">
+                NOW(),
+            </if>
+            <if test="updateDate != null">
+                NOW(),
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective">
+        update psychology_result
+        <set>
+            <if test="advice != null">
+                advice = #{advice},
+            </if>
+            <if test="result != null">
+                result = #{result},
+            </if>
+            <if test="healthEducation != null">
+                health_education = #{healthEducation},
+            </if>
+            <if test="updateDate != null">
+                update_date = NOW(),
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+
+</mapper>

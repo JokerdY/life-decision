@@ -6,6 +6,7 @@ import cn.hutool.core.util.IdUtil;
 import cn.hutool.core.util.StrUtil;
 import cn.hutool.json.JSONObject;
 import com.life.decision.support.dto.SubmitOfTheQuestionnaireGroup;
+import com.life.decision.support.http.PyHttp;
 import com.life.decision.support.pojo.QuestionAnswer;
 import com.life.decision.support.pojo.QuestionnaireGroupInformation;
 import com.life.decision.support.pojo.QuestionnaireInformation;
@@ -48,6 +49,8 @@ public class QuestionAnswerController {
     private IQuestionnaireGroupInformationService groupInformationService;
     @Autowired
     private IQuestionnaireInformationService questionnaireInformationService;
+    @Autowired
+    private PyHttp pyHttp;
 
     /**
      * 新增保存
@@ -139,14 +142,17 @@ public class QuestionAnswerController {
         // 保存产品组记录
         String groupId = groupInformationService.save(userId, submitId, questionnaireId, now);
         // 提交修改结束后 都要返回 当前问卷组内 未完成的问卷
-        return ResultUtils.returnSuccess(getQuestionnaireGroup(groupId));
+        return ResultUtils.returnSuccess(getQuestionnaireGroup(groupId, userId));
     }
 
-    private JSONObject getQuestionnaireGroup(String groupId) {
+    @RequestMapping("a")
+    @ResponseBody
+    public JSONObject getQuestionnaireGroup(String groupId, String userId) {
         QuestionnaireGroupInformation entity = new QuestionnaireGroupInformation();
         entity.setGroupId(groupId);
         List<SubmitOfTheQuestionnaireGroup> resultList = new ArrayList<>();
-        List<String> submitList = groupInformationService.findList(entity)
+        List<QuestionnaireGroupInformation> groupInfoList = groupInformationService.findList(entity);
+        List<String> submitList = groupInfoList
                 .stream().map(QuestionnaireGroupInformation::getQuestionnaireId)
                 .collect(Collectors.toList());
         List<QuestionnaireInformation> questionnaireInformationList = questionnaireInformationService.findList(new QuestionnaireInformation());
@@ -159,7 +165,12 @@ public class QuestionAnswerController {
         });
         JSONObject result = new JSONObject();
         result.putOnce("data", resultList);
-        result.putOnce("finished", resultList.stream().filter(SubmitOfTheQuestionnaireGroup::getIsSubmit).count() == resultList.size());
+        boolean isFinished = resultList.stream().filter(SubmitOfTheQuestionnaireGroup::getIsSubmit).count() == resultList.size();
+        if (isFinished) {
+            entity.setUserId(userId);
+            pyHttp.parsePyResult(entity);
+        }
+        result.putOnce("finished", isFinished);
         result.putOnce("groupId", groupId);
         return result;
     }
@@ -183,7 +194,7 @@ public class QuestionAnswerController {
             questionnaireSubmitInformationService.update(submitInfo);
             groupInformationService.updateBySubmit(submitId);
             String groupId = groupInformationService.getBySubmitId(submitId).getGroupId();
-            return ResultUtils.returnSuccess(getQuestionnaireGroup(groupId));
+            return ResultUtils.returnSuccess(getQuestionnaireGroup(groupId, userId));
         }
         return ResultUtils.returnSuccess();
     }
