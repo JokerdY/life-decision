@@ -11,8 +11,8 @@
             <ThresholdFilter level="info" onMatch="ACCEPT" onMismatch="DENY"/>
             <PatternLayout charset="UTF-8" pattern="%d{yyyy-MM-dd 'at' HH:mm:ss.SSS} %-5level [%t] %class{36} %L %M - %msg%xEx%n"/>
         </Console>
-        <RollingFile name="logFile" fileName="/logs/info.log"
-                     filePattern="/logs/info-%d{MM-dd-yyyy}-%i.log.gz">
+        <RollingFile name="logFile" fileName="../logs/info.log"
+                     filePattern="../logs/info-%d{MM-dd-yyyy}-%i.log.gz">
             <PatternLayout charset="UTF-8" pattern="%d{yyyy-MM-dd 'at' HH:mm:ss.SSS} %-5level [%t] %class{36} %L %M - %msg%xEx%n"/>
             <Policies>
                 <TimeBasedTriggeringPolicy/>
@@ -20,8 +20,8 @@
             </Policies>
             <DefaultRolloverStrategy max="7"/>
         </RollingFile>
-        <RollingFile name="errorFile" fileName="/logs/err.log"
-                     filePattern="/logs/err-%d{MM-dd-yyyy}-%i.log.gz">
+        <RollingFile name="errorFile" fileName="../logs/err.log"
+                     filePattern="../logs/err-%d{MM-dd-yyyy}-%i.log.gz">
             <ThresholdFilter level="ERROR" onMatch="ACCEPT" onMismatch="DENY"/>
             <PatternLayout charset="UTF-8" pattern="%d{yyyy-MM-dd 'at' HH:mm:ss.SSS} %-5level [%t] %class{36} %L %M - %msg%xEx%n"/>
             <Policies>

@@ -12,7 +12,7 @@
     </resultMap>
 
     <sql id="Base_Column_List">
-        id, user_id, result, advice, create_date, update_date
+        id, user_id, result, advice, create_date, update_date,health_education
     </sql>
     <select id="selectByEntity" resultMap="BaseResultMap">
         select

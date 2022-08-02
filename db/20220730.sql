@@ -9,7 +9,7 @@ create table recipe_result
     create_date      datetime    null,
     update_date      datetime    null,
     dietary_advice   text        null comment '膳食建议',
-    total_calories   varchar(64) null comment '总热量',
+    total_calories   text        null comment '总热量',
     health_education text        null
 );
 

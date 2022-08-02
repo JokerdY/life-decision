@@ -13,7 +13,7 @@ public class RecipeResult {
     private String userId;
     @JsonFormat(pattern = "yyyy-MM-dd")
     private LocalDate rDate;
-    private String breakFast;
+    private String breakfast;
     private String lunch;
     private String dinner;
     private LocalDateTime createDate;

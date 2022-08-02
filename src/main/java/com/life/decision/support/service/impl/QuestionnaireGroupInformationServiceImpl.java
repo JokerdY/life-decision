@@ -42,6 +42,11 @@ public class QuestionnaireGroupInformationServiceImpl implements IQuestionnaireG
     }
 
     @Override
+    public QuestionnaireGroupInformation getByUserIdHasSuccess(String userId) {
+        return mapper.getByUserIdHasSuccess(userId);
+    }
+
+    @Override
     public List<JSONObject> findGroupList(String userId) {
         return mapper.findGroupList(userId);
     }

@@ -71,6 +71,16 @@
         order by update_date desc
         limit 1
     </select>
+    <select id="getByUserIdHasSuccess"
+            resultType="com.life.decision.support.pojo.QuestionnaireGroupInformation">
+        select group_id, max(update_date) as update_date
+        from questionnaire_group_information
+        where user_id = #{userId}
+        group by group_id
+        having count(*) = (select count(*) from questionnaire_information)
+        order by update_date desc
+        limit 1
+    </select>
 
     <insert id="insert">
         INSERT INTO questionnaire_group_information

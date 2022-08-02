@@ -1,5 +1,6 @@
 package com.life.decision.support.mapper;
 
+import com.life.decision.support.dto.RecipeResultDto;
 import com.life.decision.support.pojo.RecipeResult;
 import org.apache.ibatis.annotations.Mapper;
 
@@ -14,10 +15,11 @@ public interface RecipeResultMapper {
 
     int insertSelective(RecipeResult record);
 
-    RecipeResult selectByEntity(RecipeResult entity);
+    RecipeResult selectByEntity(RecipeResultDto entity);
 
     int updateByPrimaryKeySelective(RecipeResult record);
 
     List<RecipeResult> listByEntity(RecipeResult entity);
 
+    List<String> listByYearAndMouth(String yearAndMouth, String userId);
 }

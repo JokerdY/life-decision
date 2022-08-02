@@ -33,6 +33,12 @@ public class UserInformationServiceImpl implements IUserInformationService {
     QuestionnaireMsgQueryService questionnaireMsgQueryService;
     @Autowired
     private UserInformationMapper userInformationMapper;
+    @Autowired
+    private SportsResultServiceImpl sportsResultService;
+    @Autowired
+    private PsychologyResultServiceImpl psychologyResultService;
+    @Autowired
+    private RecipeResultServiceImpl recipeResultService;
 
     @Override
     public List<UserInformationDto> findList(UserInformationDto userInformationDto) {
@@ -94,19 +100,18 @@ public class UserInformationServiceImpl implements IUserInformationService {
             } else {
                 String fillInTheDate = lastAnswer.getCreateDate().format(DateTimeFormatter.ofPattern("yyyy年MM月dd日"));
                 userInHomeVo.setFillInTheDate(fillInTheDate);
-                String bloodPressure = questionnaireMsgQueryService.getLatestOptionValue(userId, "175");
-                userInHomeVo.setBloodPressure(bloodPressure);
+                userInHomeVo.setBloodPressure(lastAnswer.getComment());
 
-                String[] highAndLowPressure = bloodPressure.split("/");
+                String[] highAndLowPressure = lastAnswer.getComment().split("/");
                 userInHomeVo.setBloodPressureStr(getStandardBloodPressure(highAndLowPressure));
-                String height = questionnaireMsgQueryService.getLatestOptionValue(userId, "172");
-                String weight = questionnaireMsgQueryService.getLatestOptionValue(userId, "173");
+                String height = questionnaireMsgQueryService.getLastAnswer(userId, "172", 1).getComment();
+                String weight = questionnaireMsgQueryService.getLastAnswer(userId, "173", 1).getComment();
                 double bmiDouble = getBmi(height, weight);
                 String BMI = String.format("%.1f", bmiDouble);
                 if (questionnaireMsgQueryService.getSecondLastOption(userId, "175") != null) {
                     // 填写了两次以上
-                    String secondHeight = questionnaireMsgQueryService.getSecondLastOptionValue(userId, "172");
-                    String secondWeight = questionnaireMsgQueryService.getSecondLastOptionValue(userId, "173");
+                    String secondHeight = questionnaireMsgQueryService.getLastAnswer(userId, "172", 2).getComment();
+                    String secondWeight = questionnaireMsgQueryService.getLastAnswer(userId, "173", 2).getComment();
                     double secondBmiDouble = getBmi(secondHeight, secondWeight);
                     getDiff(userInHomeVo, weight, bmiDouble, secondWeight, secondBmiDouble);
                 } else {
@@ -117,6 +122,9 @@ public class UserInformationServiceImpl implements IUserInformationService {
                 userInHomeVo.setBodyFatPercentage(String.format("%.1f", bodyFatPercentage) + "%");
                 userInHomeVo.setWeight(weight);
                 userInHomeVo.setBMI(BMI);
+                userInHomeVo.setPsychology(psychologyResultService.getAdvice(userId));
+                userInHomeVo.setRecipe(recipeResultService.getAdvice(userId));
+                userInHomeVo.setSports(sportsResultService.getAdvice(userId));
             }
             return userInHomeVo;
         }

@@ -35,10 +35,10 @@
         where user_id = #{userId}
     </select>
     <select id="listByYearAndMouth" resultType="java.lang.String">
-        select
-        <include refid="Base_Column_List"/>
+        select date_format(r_date, '%Y-%m-%d')
         from sports_result
-        where user_id = #{userId} and date_format(r_date,'%Y-%m') = #{yearAndMouth}
+        where user_id = #{userId}
+          and date_format(r_date, '%Y-%m') = #{yearAndMouth}
     </select>
     <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
         delete
