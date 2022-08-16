@@ -118,12 +118,35 @@ public class QuestionAnswerController {
     }
 
 
+    @PostMapping("update")
+    @ResponseBody
+    @Transactional
+    public Object update(@RequestBody JSONObject obj) {
+        List<QuestionAnswer> list = obj.getJSONArray("list").toList(QuestionAnswer.class);
+        String submitId = obj.getStr("submitId");
+        String userId = obj.getStr("userId");
+        if (StrUtil.isBlank(submitId) || StrUtil.isBlank(userId)) {
+            return ResultUtils.returnError("submitId或userId为空");
+        }
+        if (CollUtil.isNotEmpty(list)) {
+            QuestionnaireSubmitInformation submit = questionnaireSubmitInformationService.getById(submitId);
+            questionAnswerService.updateBatch(list, submit);
+            QuestionnaireSubmitInformation submitInfo = new QuestionnaireSubmitInformation();
+            submitInfo.setId(submitId);
+            uploadAdminSubmitInfo(obj, submitInfo);
+            questionnaireSubmitInformationService.update(submitInfo);
+            groupInformationService.updateBySubmit(submitId);
+            String groupId = groupInformationService.getBySubmitId(submitId).getGroupId();
+            return ResultUtils.returnSuccess(getQuestionnaireGroup(groupId, userId));
+        }
+        return ResultUtils.returnSuccess();
+    }
+
     @PostMapping("save")
     @ResponseBody
     @Transactional
     public Object saveBatch(@RequestBody JSONObject obj) {
-        List<QuestionAnswer> list = obj.getJSONArray("list")
-                .toList(QuestionAnswer.class);
+        List<QuestionAnswer> list = obj.getJSONArray("list").toList(QuestionAnswer.class);
         String userId = obj.getStr("userId");
         String questionnaireId = obj.getStr("questionnaireId");
         // 插入内容
@@ -174,31 +197,6 @@ public class QuestionAnswerController {
         result.putOnce("groupId", groupId);
         return result;
     }
-
-    @PostMapping("update")
-    @ResponseBody
-    @Transactional
-    public Object update(@RequestBody JSONObject obj) {
-        List<QuestionAnswer> list = obj.getJSONArray("list").toList(QuestionAnswer.class);
-        String submitId = obj.getStr("submitId");
-        String userId = obj.getStr("userId");
-        if (StrUtil.isBlank(submitId) || StrUtil.isBlank(userId)) {
-            return ResultUtils.returnError("submitId或userId为空");
-        }
-        if (CollUtil.isNotEmpty(list)) {
-            QuestionnaireSubmitInformation submit = questionnaireSubmitInformationService.getById(submitId);
-            questionAnswerService.updateBatch(list, submit);
-            QuestionnaireSubmitInformation submitInfo = new QuestionnaireSubmitInformation();
-            submitInfo.setId(submitId);
-            uploadAdminSubmitInfo(obj, submitInfo);
-            questionnaireSubmitInformationService.update(submitInfo);
-            groupInformationService.updateBySubmit(submitId);
-            String groupId = groupInformationService.getBySubmitId(submitId).getGroupId();
-            return ResultUtils.returnSuccess(getQuestionnaireGroup(groupId, userId));
-        }
-        return ResultUtils.returnSuccess();
-    }
-
     private void uploadAdminSubmitInfo(JSONObject obj, QuestionnaireSubmitInformation submitInfo) {
         if (obj.getBool("isAdmin", false)) {
             submitInfo.setIsAdminSubmit(1);

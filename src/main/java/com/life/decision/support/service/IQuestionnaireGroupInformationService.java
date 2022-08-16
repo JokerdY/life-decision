@@ -20,4 +20,5 @@ public interface IQuestionnaireGroupInformationService {
     List<JSONObject> findGroupSubmitList(String userId);
 
     QuestionnaireGroupInformation getByUserIdHasSuccess(String userId);
+
 }

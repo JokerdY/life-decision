@@ -8,7 +8,8 @@ import java.util.List;
 
 @Data
 public class TotalCaloriesEntity {
-    List<ElementEntity> entityList;
+    private List<ElementEntity> entityList;
+    private String totalCalories;
 
     public static class ElementEntity {
         /**

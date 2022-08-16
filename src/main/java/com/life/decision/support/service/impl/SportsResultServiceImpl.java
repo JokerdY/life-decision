@@ -76,7 +76,11 @@ public class SportsResultServiceImpl implements ISportsResultService {
             JSONObject temp = (JSONObject) o;
             JSONObject msg = temp.getJSONObject(msgItem);
             String name = msg.getStr("名称");
-            String time = temp.getStr(timeItem);
+            String timeStr = temp.getStr(timeItem);
+            String time = timeStr;
+            if(timeStr.contains(".")){
+                time = timeStr.split("\\.")[0];
+            }
             String url = msg.getStr("视频");
             list.add(new UrlAdvice(name, time, url));
         }

@@ -47,7 +47,8 @@
         select group_id                       as groupId,
                group_concat(questionnaire_id) as groupQuestionnaireId,
                group_concat(submit_id)        as groupSubmitId,
-               min(create_date)               as createDate
+               min(create_date)               as createDate,
+               max(update_date)               as queryDate
         from questionnaire_group_information
         where user_id = #{userId}
         group by group_id

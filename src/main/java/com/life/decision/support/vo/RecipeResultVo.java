@@ -21,5 +21,7 @@ public class RecipeResultVo {
 
     private TotalCaloriesEntity totalCaloriesEntity;
 
+    private List<String> dietaryAdvice;
 
+    private String nowDay;
 }

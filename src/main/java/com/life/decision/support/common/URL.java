@@ -1,7 +1,7 @@
 package com.life.decision.support.common;
 
 public enum URL {
-    PY_URL("0.0.0.0:8000");
+    PY_URL("127.0.0.1:8000");
 
     private final String url;
 

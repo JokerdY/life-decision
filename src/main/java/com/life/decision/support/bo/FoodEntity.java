@@ -10,10 +10,11 @@ public class FoodEntity {
     private final String weight;
     private final String calories;
     private final Double caloriesDouble;
+    private final String category;
 
-    public FoodEntity(String foodName, String weight, String calories) {
+    public FoodEntity(String foodName, String weight, String calories, String category) {
         this.foodName = foodName;
-        double d,w;
+        double d, w;
         try {
             d = Double.parseDouble(calories);
         } catch (Throwable e) {
@@ -27,6 +28,7 @@ public class FoodEntity {
         this.caloriesDouble = d;
         this.calories = new DecimalFormat("0").format(d);
         this.weight = new DecimalFormat("0").format(w);
+        this.category = category;
     }
 
     public String getFoodName() {

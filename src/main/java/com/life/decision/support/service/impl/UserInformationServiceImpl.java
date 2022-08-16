@@ -93,7 +93,7 @@ public class UserInformationServiceImpl implements IUserInformationService {
             QuestionAnswer lastAnswer = questionnaireMsgQueryService.getLastAnswer(userId, "175", 1);
             // 一次问卷没有填过
             if (lastAnswer == null) {
-                userInHomeVo.setBloodPressure("暂无血压数据");
+                userInHomeVo.setBloodPressure("暂无");
                 userInHomeVo.setFillInTheDate("请填写问卷");
                 userInHomeVo.setBloodPressureStr("---");
                 userInHomeVo.setBodyFatPercentage("0.0%");
@@ -118,7 +118,7 @@ public class UserInformationServiceImpl implements IUserInformationService {
                     // 填写了一次
                     getDiff(userInHomeVo, weight, bmiDouble, userInHomeVo.getWeight(), Double.parseDouble(userInHomeVo.getBMI()));
                 }
-                double bodyFatPercentage = 1.2 * bmiDouble + 0.23 * Integer.parseInt(userInHomeVo.getAge()) - 5.4 - 10.8 * userInHomeVo.getSex() * 100;
+                double bodyFatPercentage = 1.2 * bmiDouble + 0.23 * Integer.parseInt(userInHomeVo.getAge()) - 5.4 - 10.8 * userInHomeVo.getSex();
                 userInHomeVo.setBodyFatPercentage(String.format("%.1f", bodyFatPercentage) + "%");
                 userInHomeVo.setWeight(weight);
                 userInHomeVo.setBMI(BMI);

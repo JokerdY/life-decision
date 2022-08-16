@@ -1,10 +1,11 @@
 package com.life.decision.support.http;
 
-import cn.hutool.core.io.FileUtil;
 import cn.hutool.core.util.IdUtil;
+import cn.hutool.http.HttpUtil;
 import cn.hutool.json.JSONArray;
 import cn.hutool.json.JSONObject;
 import cn.hutool.json.JSONUtil;
+import com.life.decision.support.common.URL;
 import com.life.decision.support.controller.QuestionnaireResultsController;
 import com.life.decision.support.pojo.PsychologyResult;
 import com.life.decision.support.pojo.QuestionnaireGroupInformation;
@@ -17,8 +18,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.io.File;
-import java.nio.charset.Charset;
 import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.List;
@@ -54,13 +53,20 @@ public class PyHttp {
         psychologyResultService.save(psychologyResult);
 
         // 根据最新的日期 更新食谱和运动
-        saveThreeMonths(pyResult, "Sports", PyKey.DIET.getKey(), entity,
+        saveThreeMonths(pyResult, PyKey.SPORTS.getKey(), PyKey.DIET.getKey(), entity,
                 (obj, date) -> {
                     SportsResult sportsResult = new SportsResult();
-                    sportsResult.setWarmUpBeforeExercise(obj.getStr("运动前热身"));
-                    sportsResult.setSpecificSports(obj.getStr("具体的运动"));
-                    sportsResult.setStretchingAfterExercise(obj.getStr("运动后拉伸"));
-                    sportsResult.setHealthEducation(obj.getStr("健康教育"));
+                    if (obj == null || obj.isEmpty()) {
+                        sportsResult.setWarmUpBeforeExercise(null);
+                        sportsResult.setSpecificSports(null);
+                        sportsResult.setStretchingAfterExercise(null);
+                        sportsResult.setHealthEducation(null);
+                    }else {
+                        sportsResult.setWarmUpBeforeExercise(obj.getStr("运动前热身"));
+                        sportsResult.setSpecificSports(obj.getStr("具体的运动"));
+                        sportsResult.setStretchingAfterExercise(obj.getStr("运动后拉伸"));
+                        sportsResult.setHealthEducation(obj.getStr("健康教育"));
+                    }
                     sportsResult.setRDate(date);
                     sportsResult.setUserId(userId);
                     sportsResult.setId(IdUtil.fastSimpleUUID());
@@ -89,7 +95,7 @@ public class PyHttp {
         JSONArray recipes = pyResult.getJSONArray(recipeKey);
         LocalDate now = LocalDate.now();
         int size = 0;
-        for (int i = 0; i < 1; i++) {
+        for (int i = 0; i < 90; i++) {
             if (size >= sports.size() || size >= recipes.size()) {
                 size = 0;
                 JSONObject tempResult = getPyResult(entity);
@@ -107,7 +113,7 @@ public class PyHttp {
         JSONObject questionnaire = resultByGroupId.getJSONObject("questionnaire");
         JSONArray jsonArray = questionnaire.getJSONArray("4");
         jsonArray.removeIf(obj -> removeList.contains(((JSONObject) obj).getStr("id")));
-//      return JSONUtil.parseObj(HttpUtil.post(URL.PY_URL.getUrl(), resultByGroupId.toString()));
-        return JSONUtil.parseObj(FileUtil.readString(new File("C:\\Users\\hspcadmin\\Desktop\\3.test_back_new.json"), Charset.defaultCharset()));
+        return JSONUtil.parseObj(HttpUtil.post(URL.PY_URL.getUrl(), resultByGroupId.toString()));
+//        return JSONUtil.parseObj(FileUtil.readString(new File("C:\\Users\\hspcadmin\\Documents\\WeChat Files\\wxid_1683106826411\\FileStorage\\File\\2022-08\\3.test_back_new(1).json"), Charset.defaultCharset()));
     }
 }

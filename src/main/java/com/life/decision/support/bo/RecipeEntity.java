@@ -10,6 +10,7 @@ import java.util.List;
 public class RecipeEntity {
     private List<FoodEntity> foodEntities;
     private String totalCalories;
+    private Double totalCaloriesDouble;
 
     public static class Builder {
         private RecipeEntity entity;
@@ -35,27 +36,12 @@ public class RecipeEntity {
                 }
             }
             entity.totalCalories = new DecimalFormat("0").format(totalCal);
+            entity.totalCaloriesDouble = totalCal;
             return entity;
         }
     }
 
     private RecipeEntity() {
-    }
-
-    public String getTotalCalories() {
-        return totalCalories;
-    }
-
-    public void setTotalCalories(String totalCalories) {
-        this.totalCalories = totalCalories;
-    }
-
-    public List<FoodEntity> getFoodEntities() {
-        return foodEntities;
-    }
-
-    public void setFoodEntities(List<FoodEntity> foodEntities) {
-        this.foodEntities = foodEntities;
     }
 
 }

@@ -29,12 +29,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.text.DecimalFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @RestController
@@ -89,18 +87,37 @@ public class QuestionnaireResultsController {
             recipeResultService.saveOrUpdate(recipeResult);
 
             RecipeResultVo vo = new RecipeResultVo();
-            loadRecipeVo(recipeResult, vo);
+            loadRecipeVo(dto, recipeResult, vo);
             return ResultUtils.returnSuccess(vo);
         }
         return ResultUtils.returnError("未找到已完成的完整问卷");
     }
 
-    private void loadRecipeVo(RecipeResult recipeResult, RecipeResultVo vo) {
+    private void loadRecipeVo(QueryDto dto, RecipeResult recipeResult, RecipeResultVo vo) {
+        vo.setNowDay(dto.getDate());
         vo.setTotalCaloriesEntity(recipeResultService.getTotalCaloriesEntity(recipeResult));
         vo.setHealthEducation(getHealthEducation(recipeResult.getHealthEducation()));
         vo.setBreakfastRecipe(recipeResultService.getRecipeEntity(recipeResult.getBreakfast()));
         vo.setLunchRecipe(recipeResultService.getRecipeEntity(recipeResult.getLunch()));
         vo.setDinnerRecipe(recipeResultService.getRecipeEntity(recipeResult.getDinner()));
+        if (StrUtil.isNotBlank(recipeResult.getDietaryAdvice())) {
+            vo.setDietaryAdvice(JSONUtil.parseArray(recipeResult.getDietaryAdvice()).toList(String.class));
+        }
+        if (vo.getBreakfastRecipe().getTotalCalories() != null && vo.getDinnerRecipe().getTotalCalories() != null && vo.getLunchRecipe().getTotalCalories() != null) {
+            String total = new DecimalFormat("0").format(vo.getBreakfastRecipe().getTotalCaloriesDouble()
+                    + vo.getDinnerRecipe().getTotalCaloriesDouble()
+                    + vo.getLunchRecipe().getTotalCaloriesDouble());
+            vo.getTotalCaloriesEntity().setTotalCalories(total);
+        }
+    }
+
+    @RequestMapping("recipeDateRecord")
+    public Map<String, Object> recipeDateRecord(@RequestBody QueryDto dto) {
+        String userId = dto.getUserId();
+        if (StrUtil.isBlank(userId)) {
+            return ResultUtils.returnError("用户id缺失");
+        }
+        return ResultUtils.returnSuccess(getRecipeDateRecord(dto));
     }
 
     /**
@@ -112,23 +129,31 @@ public class QuestionnaireResultsController {
         if (StrUtil.isBlank(userId)) {
             return ResultUtils.returnError("用户id缺失");
         }
-        if (StrUtil.isBlank(dto.getDate())) {
-            dto.setDate(LocalDate.now().toString());
-        }
-        String yearAndMouth = LocalDate.parse(dto.getDate()).format(DateTimeFormatter.ofPattern("yyyy-MM"));
-        // 获取当月的所有记录
-        List<String> dateRecord = recipeResultService.listByYearAndMouth(yearAndMouth, userId);
+        RecipeResultVo vo = getResultVo(dto);
+        return ResultUtils.returnSuccess(vo);
+    }
+
+    private RecipeResultVo getResultVo(QueryDto dto) {
         // 获取当天的数据
         RecipeResultDto resultDto = new RecipeResultDto();
         resultDto.setUserId(dto.getUserId());
         resultDto.setQueryDate(dto.getDate());
         RecipeResult byEntity = recipeResultService.findByEntity(resultDto);
         RecipeResultVo vo = new RecipeResultVo();
-        vo.setDateRecord(dateRecord);
+        vo.setDateRecord(getRecipeDateRecord(dto));
         if (byEntity != null) {
-            loadRecipeVo(byEntity, vo);
+            loadRecipeVo(dto, byEntity, vo);
         }
-        return ResultUtils.returnSuccess(vo);
+        return vo;
+    }
+
+    private List<String> getRecipeDateRecord(QueryDto dto) {
+        if (StrUtil.isBlank(dto.getDate())) {
+            dto.setDate(LocalDate.now().toString());
+        }
+        String yearAndMouth = LocalDate.parse(dto.getDate()).format(DateTimeFormatter.ofPattern("yyyy-MM"));
+        // 获取当月的所有记录
+        return recipeResultService.listByYearAndMouth(yearAndMouth, dto.getUserId());
     }
 
     public List<ContentAdvice> getHealthEducation(String byEntity) {
@@ -157,19 +182,13 @@ public class QuestionnaireResultsController {
         if (StrUtil.isBlank(userId)) {
             return ResultUtils.returnError("用户id缺失");
         }
-        if (StrUtil.isBlank(dto.getDate())) {
-            dto.setDate(LocalDate.now().toString());
-        }
-        String yearAndMouth = LocalDate.parse(dto.getDate()).format(DateTimeFormatter.ofPattern("yyyy-MM"));
-        // 获取当月的所有记录
-        List<String> dateRecord = sportsResultService.listByYearAndMouth(yearAndMouth, userId);
         // 获取当天的数据
         SportsResultDto resultDto = new SportsResultDto();
         resultDto.setUserId(dto.getUserId());
         resultDto.setQueryDate(dto.getDate());
         SportsResult byEntity = sportsResultService.findByEntity(resultDto);
         SportResultVo sportResultVo = new SportResultVo();
-        sportResultVo.setDateRecord(dateRecord);
+        sportResultVo.setDateRecord(getSportsDateRecord(dto));
         if (byEntity != null) {
             List<UrlAdvice> beforeList = sportsResultService.getAdviceListTempLate(byEntity.getWarmUpBeforeExercise(), "推荐热身运动信息", "推荐热身运动持续时间");
             sportResultVo.setBeforeSports(beforeList);
@@ -180,6 +199,25 @@ public class QuestionnaireResultsController {
             sportResultVo.setHealthEducation(getHealthEducation(byEntity.getHealthEducation()));
         }
         return ResultUtils.returnSuccess(sportResultVo);
+    }
+
+
+    @RequestMapping("sportsDateRecord")
+    public Map<String, Object> sportsDateRecord(@RequestBody QueryDto dto) {
+        String userId = dto.getUserId();
+        if (StrUtil.isBlank(userId)) {
+            return ResultUtils.returnError("用户id缺失");
+        }
+        return ResultUtils.returnSuccess(getSportsDateRecord(dto));
+    }
+
+    private List<String> getSportsDateRecord(QueryDto dto) {
+        if (StrUtil.isBlank(dto.getDate())) {
+            dto.setDate(LocalDate.now().toString());
+        }
+        String yearAndMouth = LocalDate.parse(dto.getDate()).format(DateTimeFormatter.ofPattern("yyyy-MM"));
+        // 获取当月的所有记录
+        return sportsResultService.listByYearAndMouth(yearAndMouth, dto.getUserId());
     }
 
     @RequestMapping("psychology")

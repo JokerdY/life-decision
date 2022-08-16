@@ -4,18 +4,21 @@ import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.json.JSONArray;
 import cn.hutool.json.JSONObject;
 import cn.hutool.json.JSONUtil;
-import com.life.decision.support.dto.RecipeResultDto;
-import com.life.decision.support.mapper.RecipeResultMapper;
-import com.life.decision.support.pojo.RecipeResult;
-import com.life.decision.support.service.IRecipeResultService;
 import com.life.decision.support.bo.ContentAdvice;
 import com.life.decision.support.bo.FoodEntity;
 import com.life.decision.support.bo.RecipeEntity;
 import com.life.decision.support.bo.TotalCaloriesEntity;
+import com.life.decision.support.dto.RecipeResultDto;
+import com.life.decision.support.mapper.RecipeResultMapper;
+import com.life.decision.support.pojo.RecipeResult;
+import com.life.decision.support.service.IRecipeResultService;
+import com.life.decision.support.vo.RecipeResultVo;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.text.DecimalFormat;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -56,7 +59,24 @@ public class RecipeResultServiceImpl implements IRecipeResultService {
     }
 
     public ContentAdvice getAdvice(String userId) {
-        return null;
+        RecipeResultDto resultDto = new RecipeResultDto();
+        resultDto.setUserId(userId);
+        resultDto.setQueryDate(LocalDate.now().toString());
+        ContentAdvice contentAdvice = new ContentAdvice(null, null);
+        RecipeResult recipeResult = findByEntity(resultDto);
+        if (recipeResult != null) {
+            RecipeResultVo vo = new RecipeResultVo();
+            vo.setBreakfastRecipe(getRecipeEntity(recipeResult.getBreakfast()));
+            vo.setLunchRecipe(getRecipeEntity(recipeResult.getLunch()));
+            vo.setDinnerRecipe(getRecipeEntity(recipeResult.getDinner()));
+            if (vo.getBreakfastRecipe().getTotalCalories() != null && vo.getDinnerRecipe().getTotalCalories() != null && vo.getLunchRecipe().getTotalCalories() != null) {
+                String total = new DecimalFormat("0").format(vo.getBreakfastRecipe().getTotalCaloriesDouble()
+                        + vo.getDinnerRecipe().getTotalCaloriesDouble()
+                        + vo.getLunchRecipe().getTotalCaloriesDouble());
+                contentAdvice = new ContentAdvice(total, total);
+            }
+        }
+        return contentAdvice;
     }
 
     public List<String> listByYearAndMouth(String yearAndMouth, String userId) {
@@ -90,7 +110,7 @@ public class RecipeResultServiceImpl implements IRecipeResultService {
             JSONArray obj = JSONUtil.parseArray(recipeStr);
             for (Object childObj : obj) {
                 JSONObject temp = (JSONObject) childObj;
-                builder.food(new FoodEntity(temp.getStr("名称"), temp.getStr("重量"), temp.getStr("热量")));
+                builder.food(new FoodEntity(temp.getStr("名称"), temp.getStr("重量"), temp.getStr("热量"), temp.getStr("类别")));
             }
         } catch (Throwable e) {
             log.error("getRecipe:", e);
