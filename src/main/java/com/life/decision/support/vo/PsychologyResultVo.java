@@ -8,9 +8,11 @@ import java.util.List;
 
 @Data
 public class PsychologyResultVo {
+    private String id;
     private String evaluationTitle;
     private String evaluationResults;
     private List<ContentAdvice> psychologicalAdvices;
     private List<UrlAdvice> healthAdvices;
     private String healthContent;
+
 }

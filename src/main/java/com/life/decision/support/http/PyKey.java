@@ -3,6 +3,7 @@ package com.life.decision.support.http;
 public enum PyKey {
     DIET("Diet"),
     SPORTS("Sports"),
+    TCM("TCM"),
     RECIPE("食谱"),
     BREAKFAST("早餐"),
     LUNCH("午餐"),

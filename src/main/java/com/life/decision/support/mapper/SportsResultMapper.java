@@ -24,4 +24,6 @@ public interface SportsResultMapper {
 
     List<String> listByYearAndMouth(@Param("yearAndMouth") String yearAndMouth,
                                     @Param("userId") String userId);
+
+    SportsResult selectById(SportsResult sportsResult);
 }

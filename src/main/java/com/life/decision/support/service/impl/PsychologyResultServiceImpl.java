@@ -1,5 +1,6 @@
 package com.life.decision.support.service.impl;
 
+import cn.hutool.core.util.IdUtil;
 import cn.hutool.json.JSONArray;
 import cn.hutool.json.JSONObject;
 import cn.hutool.json.JSONUtil;
@@ -12,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.Set;
@@ -22,12 +24,24 @@ public class PsychologyResultServiceImpl {
     @Autowired
     PsychologyResultMapper mapper;
 
-    public void saveOrUpdate(PsychologyResult entity) {
+    public void saveOrUpdateByUserId(PsychologyResult entity) {
         if (mapper.selectByEntity(entity) != null) {
             mapper.updateByPrimaryKeySelective(entity);
         } else {
             mapper.insert(entity);
         }
+    }
+
+    public void saveOrUpdateById(PsychologyResult entity) {
+        if (mapper.selectById(entity) != null) {
+            mapper.updateByPrimaryKeySelective(entity);
+        } else {
+            mapper.insert(entity);
+        }
+    }
+
+    public void updateByPrimaryKeySelective(PsychologyResult entity) {
+        mapper.updateByPrimaryKeySelective(entity);
     }
 
     public int delete(String id) {
@@ -64,15 +78,25 @@ public class PsychologyResultServiceImpl {
     }
 
     public PsychologyResultVo getVo(PsychologyResult dto) {
-        PsychologyResultVo vo = new PsychologyResultVo();
         PsychologyResult byEntity = findByEntity(dto);
+        return getResultVo(byEntity);
+    }
+
+    public PsychologyResultVo getVoBySubmitId(String submitId) {
+        PsychologyResult byEntity = mapper.selectBySubmitId(submitId);
+        return getResultVo(byEntity);
+    }
+
+    private PsychologyResultVo getResultVo(PsychologyResult byEntity) {
+        PsychologyResultVo vo = new PsychologyResultVo();
         if (byEntity != null) {
             JSONArray adviceArray = JSONUtil.parseArray(byEntity.getAdvice());
+            vo.setId(byEntity.getId());
             vo.setPsychologicalAdvices(getPsychologicalAdvices(adviceArray));
             String result = byEntity.getResult();
             if (result.contains("存在")) {
                 String[] split = result.split("存在", 2);
-                vo.setEvaluationTitle(split[0]);
+                vo.setEvaluationTitle(split[0] + "存在");
                 vo.setEvaluationResults(split[1]);
             } else {
                 vo.setEvaluationResults(result);
@@ -92,6 +116,10 @@ public class PsychologyResultServiceImpl {
                     .filter(Objects::nonNull)
                     .collect(Collectors.toList()));
             vo.setHealthContent(health.getStr("建议"));
+        } else {
+            vo.setId(IdUtil.fastSimpleUUID());
+            vo.setHealthAdvices(new ArrayList<>());
+            vo.setPsychologicalAdvices(new ArrayList<>());
         }
         return vo;
     }
@@ -100,13 +128,11 @@ public class PsychologyResultServiceImpl {
         return adviceArray.stream().map(obj -> {
                     JSONObject json = (JSONObject) obj;
                     Set<String> keySet = json.keySet();
-                    if (keySet.size() == 2) {
-                        for (String k : keySet) {
-                            if (!"参考资料".equals(k)) {
-                                JSONArray objects = JSONUtil.parseArray(json.getStr(k));
-                                if (objects.size() == 1) {
-                                    return new ContentAdvice(k, objects.get(0, String.class));
-                                }
+                    for (String k : keySet) {
+                        if (!"参考资料".equals(k)) {
+                            JSONArray objects = JSONUtil.parseArray(json.getStr(k));
+                            if (objects.size() == 1) {
+                                return new ContentAdvice(k, objects.get(0, String.class));
                             }
                         }
                     }

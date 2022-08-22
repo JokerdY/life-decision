@@ -22,4 +22,6 @@ public interface RecipeResultMapper {
     List<RecipeResult> listByEntity(RecipeResult entity);
 
     List<String> listByYearAndMouth(String yearAndMouth, String userId);
+
+    RecipeResult selectById(RecipeResult recipeResult);
 }

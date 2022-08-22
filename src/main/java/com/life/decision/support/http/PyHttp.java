@@ -1,16 +1,13 @@
 package com.life.decision.support.http;
 
+import cn.hutool.core.io.FileUtil;
 import cn.hutool.core.util.IdUtil;
-import cn.hutool.http.HttpUtil;
 import cn.hutool.json.JSONArray;
 import cn.hutool.json.JSONObject;
 import cn.hutool.json.JSONUtil;
-import com.life.decision.support.common.URL;
 import com.life.decision.support.controller.QuestionnaireResultsController;
-import com.life.decision.support.pojo.PsychologyResult;
-import com.life.decision.support.pojo.QuestionnaireGroupInformation;
-import com.life.decision.support.pojo.RecipeResult;
-import com.life.decision.support.pojo.SportsResult;
+import com.life.decision.support.pojo.*;
+import com.life.decision.support.service.impl.ChineseMedicineServiceImpl;
 import com.life.decision.support.service.impl.PsychologyResultServiceImpl;
 import com.life.decision.support.service.impl.RecipeResultServiceImpl;
 import com.life.decision.support.service.impl.SportsResultServiceImpl;
@@ -18,6 +15,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.io.File;
+import java.nio.charset.Charset;
 import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.List;
@@ -33,6 +32,8 @@ public class PyHttp {
     private PsychologyResultServiceImpl psychologyResultService;
     @Autowired
     private SportsResultServiceImpl sportsResultService;
+    @Autowired
+    private ChineseMedicineServiceImpl chineseMedicineService;
     private static final List<String> removeList = Arrays.asList("215", "216", "217", "218", "219",
             "220", "221", "222", "223", "224");
 
@@ -51,17 +52,19 @@ public class PyHttp {
         psychologyResult.setHealthEducation(mental.getStr("健康教育"));
         psychologyResult.setId(IdUtil.fastSimpleUUID());
         psychologyResultService.save(psychologyResult);
+        JSONObject tcm = pyResult.getJSONObject(PyKey.TCM.getKey());
+        ChineseMedicine chineseMedicine = new ChineseMedicine();
+        chineseMedicine.setAcupressure(tcm.getStr("穴位按摩"));
+        chineseMedicine.setFiveElementsMusic(tcm.getStr("五行音乐"));
+        chineseMedicine.setUserId(userId);
+        chineseMedicine.setId(IdUtil.fastSimpleUUID());
+        chineseMedicineService.save(chineseMedicine);
 
         // 根据最新的日期 更新食谱和运动
         saveThreeMonths(pyResult, PyKey.SPORTS.getKey(), PyKey.DIET.getKey(), entity,
                 (obj, date) -> {
                     SportsResult sportsResult = new SportsResult();
-                    if (obj == null || obj.isEmpty()) {
-                        sportsResult.setWarmUpBeforeExercise(null);
-                        sportsResult.setSpecificSports(null);
-                        sportsResult.setStretchingAfterExercise(null);
-                        sportsResult.setHealthEducation(null);
-                    }else {
+                    if (obj != null && !obj.isEmpty()) {
                         sportsResult.setWarmUpBeforeExercise(obj.getStr("运动前热身"));
                         sportsResult.setSpecificSports(obj.getStr("具体的运动"));
                         sportsResult.setStretchingAfterExercise(obj.getStr("运动后拉伸"));
@@ -111,9 +114,12 @@ public class PyHttp {
     public JSONObject getPyResult(QuestionnaireGroupInformation entity) {
         JSONObject resultByGroupId = resultsController.getResultByGroupId(entity);
         JSONObject questionnaire = resultByGroupId.getJSONObject("questionnaire");
+        // 删除不需要传输的问题
         JSONArray jsonArray = questionnaire.getJSONArray("4");
         jsonArray.removeIf(obj -> removeList.contains(((JSONObject) obj).getStr("id")));
-        return JSONUtil.parseObj(HttpUtil.post(URL.PY_URL.getUrl(), resultByGroupId.toString()));
-//        return JSONUtil.parseObj(FileUtil.readString(new File("C:\\Users\\hspcadmin\\Documents\\WeChat Files\\wxid_1683106826411\\FileStorage\\File\\2022-08\\3.test_back_new(1).json"), Charset.defaultCharset()));
+//        return JSONUtil.parseObj(HttpUtil.post(URL.PY_URL.getUrl(), resultByGroupId.toString()));
+        return JSONUtil.parseObj(FileUtil.readString(
+                new File("C:\\Users\\hspcadmin\\Documents\\WeChat Files\\wxid_1683106826411\\FileStorage\\File\\2022-08\\4.test_back(1).json")
+                , Charset.defaultCharset()));
     }
 }

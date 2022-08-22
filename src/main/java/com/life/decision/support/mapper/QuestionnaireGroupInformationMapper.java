@@ -29,7 +29,7 @@ public interface QuestionnaireGroupInformationMapper {
     QuestionnaireGroupInformation getByUserId(@Param("userId") String userId);
 
     /**
-     * 找到未完成的问卷组
+     * 找到已完成的问卷组
      *
      * @param userId
      * @return

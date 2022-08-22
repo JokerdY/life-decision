@@ -20,4 +20,8 @@ public class UserInHomeVo extends UserInformationDto {
 
     private ContentAdvice psychology;
 
+    /**
+     * 中医保健
+     */
+    private ContentAdvice traditionalChineseMedicine;
 }

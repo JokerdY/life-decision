@@ -6,11 +6,14 @@ import java.text.DecimalFormat;
 
 @Data
 public class FoodEntity {
-    private final String foodName;
-    private final String weight;
-    private final String calories;
-    private final Double caloriesDouble;
-    private final String category;
+    private String foodName;
+    private String weight;
+    private String calories;
+    private Double caloriesDouble;
+    private String category;
+
+    public FoodEntity() {
+    }
 
     public FoodEntity(String foodName, String weight, String calories, String category) {
         this.foodName = foodName;
@@ -31,19 +34,4 @@ public class FoodEntity {
         this.category = category;
     }
 
-    public String getFoodName() {
-        return foodName;
-    }
-
-    public String getWeight() {
-        return weight;
-    }
-
-    public String getCalories() {
-        return calories;
-    }
-
-    public Double getCaloriesDouble() {
-        return caloriesDouble;
-    }
 }

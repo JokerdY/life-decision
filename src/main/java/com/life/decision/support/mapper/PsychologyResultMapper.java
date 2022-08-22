@@ -2,6 +2,7 @@ package com.life.decision.support.mapper;
 
 import com.life.decision.support.pojo.PsychologyResult;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -16,7 +17,11 @@ public interface PsychologyResultMapper {
 
     PsychologyResult selectByEntity(PsychologyResult entity);
 
+    PsychologyResult selectById(PsychologyResult entity);
+
     int updateByPrimaryKeySelective(PsychologyResult record);
 
     List<PsychologyResult> listByEntity(PsychologyResult entity);
+
+    PsychologyResult selectBySubmitId(@Param("submitId") String submitId);
 }

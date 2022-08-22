@@ -9,6 +9,12 @@ import java.util.List;
 
 @Data
 public class RecipeResultVo {
+    private String id;
+
+    private String nowDay;
+
+    private String userId;
+
     private List<ContentAdvice> healthEducation;
 
     private List<String> dateRecord;
@@ -22,6 +28,4 @@ public class RecipeResultVo {
     private TotalCaloriesEntity totalCaloriesEntity;
 
     private List<String> dietaryAdvice;
-
-    private String nowDay;
 }

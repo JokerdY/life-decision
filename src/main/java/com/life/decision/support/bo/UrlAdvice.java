@@ -11,6 +11,9 @@ public class UrlAdvice {
      */
     private String url;
 
+    public UrlAdvice() {
+    }
+
     public UrlAdvice(String name, String time, String url) {
         this.name = name;
         this.time = time;

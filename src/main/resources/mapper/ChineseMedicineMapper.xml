@@ -1,63 +1,59 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.life.decision.support.mapper.PsychologyResultMapper">
-    <resultMap id="BaseResultMap" type="com.life.decision.support.pojo.PsychologyResult">
+<mapper namespace="com.life.decision.support.mapper.ChineseMedicineMapper">
+    <resultMap id="BaseResultMap" type="com.life.decision.support.pojo.ChineseMedicine">
         <id column="id" property="id" jdbcType="VARCHAR"/>
         <result column="user_id" property="userId" jdbcType="VARCHAR"/>
-        <result column="result" property="result" jdbcType="VARCHAR"/>
-        <result column="advice" property="advice" jdbcType="VARCHAR"/>
-        <result column="health_education" property="healthEducation" jdbcType="VARCHAR"/>
-        <result column="group_id" property="groupId" jdbcType="VARCHAR"/>
+        <result column="acupressure" property="acupressure" jdbcType="VARCHAR"/>
+        <result column="five_elements_music" property="fiveElementsMusic" jdbcType="VARCHAR"/>
         <result column="create_date" property="createDate" jdbcType="TIMESTAMP"/>
         <result column="update_date" property="updateDate" jdbcType="TIMESTAMP"/>
+        <result column="group_id" property="groupId" jdbcType="VARCHAR"/>
     </resultMap>
 
     <sql id="Base_Column_List">
-        id, user_id, result, advice, create_date, update_date,health_education,group_id
+        id, user_id, acupressure, five_elements_music, create_date, update_date,group_id
     </sql>
     <select id="selectByEntity" resultMap="BaseResultMap">
         select
         <include refid="Base_Column_List"/>
-        from psychology_result
+        from chinese_medicine
         where user_id = #{userId}
         order by create_date desc
         limit 1;
     </select>
-
-    <select id="selectById" resultType="com.life.decision.support.pojo.PsychologyResult">
+    <select id="listByEntity" resultType="com.life.decision.support.pojo.ChineseMedicine">
         select
         <include refid="Base_Column_List"/>
-        from psychology_result
-        where id = #{id}
-    </select>
-
-    <select id="listByEntity" resultType="com.life.decision.support.pojo.PsychologyResult">
-        select
-        <include refid="Base_Column_List"/>
-        from recipe_result
+        from chinese_medicine
         where user_id = #{userId}
     </select>
-
-    <select id="selectBySubmitId" resultType="com.life.decision.support.pojo.PsychologyResult">
+    <select id="selectBySubmitId" resultType="com.life.decision.support.pojo.ChineseMedicine">
         select a.*
-        from psychology_result a
+        from chinese_medicine a
                  left join questionnaire_group_information qr on qr.group_id = a.group_id
         where qr.submit_id = #{submitId}
         limit 1;
     </select>
 
+    <select id="selectById" resultType="com.life.decision.support.pojo.ChineseMedicine">
+        select
+        <include refid="Base_Column_List"/>
+        from chinese_medicine
+        where id = #{id}
+    </select>
+
     <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
         delete
-        from psychology_result
+        from chinese_medicine
         where id = #{id,jdbcType=VARCHAR}
     </delete>
     <insert id="insert">
-        insert into psychology_result (id, group_id, user_id, advice, result, create_date, update_date,
-                                       health_education)
-        values (#{id}, #{groupId}, #{userId}, #{advice}, #{result}, NOW(), NOW(), #{healthEducation})
+        insert into chinese_medicine (id, group_id, user_id, acupressure, five_elements_music, create_date, update_date)
+        values (#{id}, #{group_id}, #{userId}, #{acupressure}, #{fiveElementsMusic}, NOW(), NOW())
     </insert>
     <insert id="insertSelective">
-        insert into psychology_result
+        insert into chinese_medicine
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="id != null">
                 id,
@@ -65,14 +61,11 @@
             <if test="userId != null">
                 user_id,
             </if>
-            <if test="advice != null">
-                advice,
+            <if test="acupressure != null">
+                acupressure,
             </if>
-            <if test="result != null">
-                result,
-            </if>
-            <if test="healthEducation != null">
-                health_education,
+            <if test="fiveElementsMusic != null">
+                five_elements_music,
             </if>
             <if test="createDate != null">
                 create_date,
@@ -91,14 +84,11 @@
             <if test="userId != null">
                 #{userId},
             </if>
-            <if test="advice != null">
-                #{advice},
+            <if test="acupressure != null">
+                #{acupressure},
             </if>
-            <if test="result != null">
-                #{result},
-            </if>
-            <if test="healthEducation != null">
-                #{healthEducation},
+            <if test="fiveElementsMusic != null">
+                #{fiveElementsMusic},
             </if>
             <if test="createDate != null">
                 NOW(),
@@ -112,11 +102,10 @@
         </trim>
     </insert>
     <update id="updateByPrimaryKeySelective">
-        update psychology_result
-        set advice           = #{advice},
-            result           = #{result},
-#             health_education = #{healthEducation},
-            update_date      = NOW()
+        update chinese_medicine
+        set acupressure         = #{acupressure},
+            five_elements_music = #{fiveElementsMusic},
+            update_date         = NOW()
         where id = #{id}
     </update>
 

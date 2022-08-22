@@ -43,6 +43,12 @@
         where user_id = #{userId}
           and date_format(r_date, '%Y-%m') = #{yearAndMouth}
     </select>
+    <select id="selectById" resultType="com.life.decision.support.pojo.RecipeResult">
+        select
+        <include refid="Base_Column_List"/>
+        from recipe_result
+        where id = #{id}
+    </select>
     <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
         delete
         from recipe_result

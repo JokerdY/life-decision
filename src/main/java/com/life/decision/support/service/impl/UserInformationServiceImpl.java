@@ -39,6 +39,8 @@ public class UserInformationServiceImpl implements IUserInformationService {
     private PsychologyResultServiceImpl psychologyResultService;
     @Autowired
     private RecipeResultServiceImpl recipeResultService;
+    @Autowired
+    private ChineseMedicineServiceImpl chineseMedicineService;
 
     @Override
     public List<UserInformationDto> findList(UserInformationDto userInformationDto) {
@@ -125,6 +127,7 @@ public class UserInformationServiceImpl implements IUserInformationService {
                 userInHomeVo.setPsychology(psychologyResultService.getAdvice(userId));
                 userInHomeVo.setRecipe(recipeResultService.getAdvice(userId));
                 userInHomeVo.setSports(sportsResultService.getAdvice(userId));
+                userInHomeVo.setTraditionalChineseMedicine(chineseMedicineService.getAdvice(userId));
             }
             return userInHomeVo;
         }

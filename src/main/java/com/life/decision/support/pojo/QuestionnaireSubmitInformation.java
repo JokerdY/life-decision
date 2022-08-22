@@ -28,7 +28,7 @@ public class QuestionnaireSubmitInformation extends PageDto {
 
     private Integer isAdminSubmit;
     /**
-     * 默认1 已提交 ，0 保存
+     * 默认1 已提交 ，0 保存  2：可查看
      */
     private Integer questionnaireStatus;
 
@@ -37,4 +37,7 @@ public class QuestionnaireSubmitInformation extends PageDto {
     private String queryStartDate;
 
     private String queryEndDate;
+
+    private String groupId;
+
 }

@@ -1,9 +1,6 @@
 package com.life.decision.support.config;
 
-import cn.hutool.core.util.StrUtil;
 import cn.hutool.json.JSONObject;
-import com.life.decision.support.dto.UserInformationDto;
-import com.life.decision.support.pojo.UserInformation;
 import com.life.decision.support.service.IUserInformationService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.BeanFactory;
@@ -28,21 +25,21 @@ public class RequestInterceptor implements HandlerInterceptor {
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-        if (userInformationService == null) {
-            userInformationService = getBean(IUserInformationService.class, request);
-        }
-        String author = request.getHeader("author");
-        if (StrUtil.isBlank(author)) {
-            setReturn(response, 408, "权限认证失败");
-            return false;
-        }
-        UserInformation userInformation = new UserInformation();
-        userInformation.setId(author);
-        UserInformationDto userMsg = userInformationService.getUserMsg(userInformation);
-        if (userMsg == null) {
-            setReturn(response, 408, "用户未登录");
-            return false;
-        }
+//        if (userInformationService == null) {
+//            userInformationService = getBean(IUserInformationService.class, request);
+//        }
+//        String author = request.getHeader("author");
+//        if (StrUtil.isBlank(author)) {
+//            setReturn(response, 408, "权限认证失败");
+//            return false;
+//        }
+//        UserInformation userInformation = new UserInformation();
+//        userInformation.setId(author);
+//        UserInformationDto userMsg = userInformationService.getUserMsg(userInformation);
+//        if (userMsg == null) {
+//            setReturn(response, 408, "用户未登录");
+//            return false;
+//        }
         return true;
     }
 

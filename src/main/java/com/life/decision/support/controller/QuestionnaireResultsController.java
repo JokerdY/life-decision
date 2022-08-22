@@ -5,10 +5,10 @@ import cn.hutool.core.collection.CollUtil;
 import cn.hutool.core.util.StrUtil;
 import cn.hutool.json.JSONArray;
 import cn.hutool.json.JSONObject;
-import cn.hutool.json.JSONUtil;
-import com.life.decision.support.bo.ContentAdvice;
-import com.life.decision.support.bo.UrlAdvice;
-import com.life.decision.support.dto.*;
+import com.life.decision.support.dto.QueryDto;
+import com.life.decision.support.dto.QuestionInformationDto;
+import com.life.decision.support.dto.RecipeResultDto;
+import com.life.decision.support.dto.UserInformationDto;
 import com.life.decision.support.http.PyHttp;
 import com.life.decision.support.http.PyKey;
 import com.life.decision.support.mapper.QuestionInformationMapper;
@@ -17,10 +17,12 @@ import com.life.decision.support.result.QuestionInformationResultDto;
 import com.life.decision.support.service.IQuestionAnswerService;
 import com.life.decision.support.service.IQuestionnaireGroupInformationService;
 import com.life.decision.support.service.IQuestionnaireSubmitInformationService;
+import com.life.decision.support.service.impl.ChineseMedicineServiceImpl;
 import com.life.decision.support.service.impl.PsychologyResultServiceImpl;
 import com.life.decision.support.service.impl.RecipeResultServiceImpl;
 import com.life.decision.support.service.impl.SportsResultServiceImpl;
 import com.life.decision.support.utils.ResultUtils;
+import com.life.decision.support.vo.ChineseMedicineVo;
 import com.life.decision.support.vo.PsychologyResultVo;
 import com.life.decision.support.vo.RecipeResultVo;
 import com.life.decision.support.vo.SportResultVo;
@@ -29,15 +31,15 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.text.DecimalFormat;
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.util.*;
-import java.util.stream.Collectors;
+import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/result")
 public class QuestionnaireResultsController {
+    @Autowired
+    private PyHttp pyHttp;
     @Autowired
     IQuestionnaireGroupInformationService groupInformationService;
     @Autowired
@@ -53,7 +55,8 @@ public class QuestionnaireResultsController {
     @Autowired
     private RecipeResultServiceImpl recipeResultService;
     @Autowired
-    private PyHttp pyHttp;
+    private ChineseMedicineServiceImpl chineseMedicineService;
+
 
     @RequestMapping("changeRecipe")
     public Map<String, Object> changeRecipe(@RequestBody QueryDto dto) {
@@ -87,29 +90,12 @@ public class QuestionnaireResultsController {
             recipeResultService.saveOrUpdate(recipeResult);
 
             RecipeResultVo vo = new RecipeResultVo();
-            loadRecipeVo(dto, recipeResult, vo);
+            recipeResultService.loadRecipeVo(dto, recipeResult, vo);
             return ResultUtils.returnSuccess(vo);
         }
         return ResultUtils.returnError("未找到已完成的完整问卷");
     }
 
-    private void loadRecipeVo(QueryDto dto, RecipeResult recipeResult, RecipeResultVo vo) {
-        vo.setNowDay(dto.getDate());
-        vo.setTotalCaloriesEntity(recipeResultService.getTotalCaloriesEntity(recipeResult));
-        vo.setHealthEducation(getHealthEducation(recipeResult.getHealthEducation()));
-        vo.setBreakfastRecipe(recipeResultService.getRecipeEntity(recipeResult.getBreakfast()));
-        vo.setLunchRecipe(recipeResultService.getRecipeEntity(recipeResult.getLunch()));
-        vo.setDinnerRecipe(recipeResultService.getRecipeEntity(recipeResult.getDinner()));
-        if (StrUtil.isNotBlank(recipeResult.getDietaryAdvice())) {
-            vo.setDietaryAdvice(JSONUtil.parseArray(recipeResult.getDietaryAdvice()).toList(String.class));
-        }
-        if (vo.getBreakfastRecipe().getTotalCalories() != null && vo.getDinnerRecipe().getTotalCalories() != null && vo.getLunchRecipe().getTotalCalories() != null) {
-            String total = new DecimalFormat("0").format(vo.getBreakfastRecipe().getTotalCaloriesDouble()
-                    + vo.getDinnerRecipe().getTotalCaloriesDouble()
-                    + vo.getLunchRecipe().getTotalCaloriesDouble());
-            vo.getTotalCaloriesEntity().setTotalCalories(total);
-        }
-    }
 
     @RequestMapping("recipeDateRecord")
     public Map<String, Object> recipeDateRecord(@RequestBody QueryDto dto) {
@@ -117,7 +103,7 @@ public class QuestionnaireResultsController {
         if (StrUtil.isBlank(userId)) {
             return ResultUtils.returnError("用户id缺失");
         }
-        return ResultUtils.returnSuccess(getRecipeDateRecord(dto));
+        return ResultUtils.returnSuccess(recipeResultService.getRecipeDateRecord(dto));
     }
 
     /**
@@ -129,44 +115,8 @@ public class QuestionnaireResultsController {
         if (StrUtil.isBlank(userId)) {
             return ResultUtils.returnError("用户id缺失");
         }
-        RecipeResultVo vo = getResultVo(dto);
+        RecipeResultVo vo = recipeResultService.getResultVo(dto);
         return ResultUtils.returnSuccess(vo);
-    }
-
-    private RecipeResultVo getResultVo(QueryDto dto) {
-        // 获取当天的数据
-        RecipeResultDto resultDto = new RecipeResultDto();
-        resultDto.setUserId(dto.getUserId());
-        resultDto.setQueryDate(dto.getDate());
-        RecipeResult byEntity = recipeResultService.findByEntity(resultDto);
-        RecipeResultVo vo = new RecipeResultVo();
-        vo.setDateRecord(getRecipeDateRecord(dto));
-        if (byEntity != null) {
-            loadRecipeVo(dto, byEntity, vo);
-        }
-        return vo;
-    }
-
-    private List<String> getRecipeDateRecord(QueryDto dto) {
-        if (StrUtil.isBlank(dto.getDate())) {
-            dto.setDate(LocalDate.now().toString());
-        }
-        String yearAndMouth = LocalDate.parse(dto.getDate()).format(DateTimeFormatter.ofPattern("yyyy-MM"));
-        // 获取当月的所有记录
-        return recipeResultService.listByYearAndMouth(yearAndMouth, dto.getUserId());
-    }
-
-    public List<ContentAdvice> getHealthEducation(String byEntity) {
-        return JSONUtil.parseArray(byEntity).stream()
-                .map((obj) -> {
-                    JSONObject temp = (JSONObject) obj;
-                    Set<String> keySet = temp.keySet();
-                    if (keySet.size() > 0) {
-                        String[] key = keySet.toArray(new String[2]);
-                        return new ContentAdvice(key[0], temp.getStr(key[0]));
-                    }
-                    return null;
-                }).filter(Objects::nonNull).collect(Collectors.toList());
     }
 
 
@@ -183,21 +133,7 @@ public class QuestionnaireResultsController {
             return ResultUtils.returnError("用户id缺失");
         }
         // 获取当天的数据
-        SportsResultDto resultDto = new SportsResultDto();
-        resultDto.setUserId(dto.getUserId());
-        resultDto.setQueryDate(dto.getDate());
-        SportsResult byEntity = sportsResultService.findByEntity(resultDto);
-        SportResultVo sportResultVo = new SportResultVo();
-        sportResultVo.setDateRecord(getSportsDateRecord(dto));
-        if (byEntity != null) {
-            List<UrlAdvice> beforeList = sportsResultService.getAdviceListTempLate(byEntity.getWarmUpBeforeExercise(), "推荐热身运动信息", "推荐热身运动持续时间");
-            sportResultVo.setBeforeSports(beforeList);
-            List<UrlAdvice> specialList = sportsResultService.getAdviceListTempLate(byEntity.getSpecificSports(), "推荐具体运动信息", "推荐具体运动持续时间");
-            sportResultVo.setSpecialSports(specialList);
-            List<UrlAdvice> afterList = sportsResultService.getAdviceListTempLate(byEntity.getStretchingAfterExercise(), "运动后拉伸信息", "运动后拉伸持续时间");
-            sportResultVo.setAfterSports(afterList);
-            sportResultVo.setHealthEducation(getHealthEducation(byEntity.getHealthEducation()));
-        }
+        SportResultVo sportResultVo = sportsResultService.getVo(dto);
         return ResultUtils.returnSuccess(sportResultVo);
     }
 
@@ -208,18 +144,16 @@ public class QuestionnaireResultsController {
         if (StrUtil.isBlank(userId)) {
             return ResultUtils.returnError("用户id缺失");
         }
-        return ResultUtils.returnSuccess(getSportsDateRecord(dto));
+        return ResultUtils.returnSuccess(sportsResultService.getSportsDateRecord(dto));
     }
 
-    private List<String> getSportsDateRecord(QueryDto dto) {
-        if (StrUtil.isBlank(dto.getDate())) {
-            dto.setDate(LocalDate.now().toString());
-        }
-        String yearAndMouth = LocalDate.parse(dto.getDate()).format(DateTimeFormatter.ofPattern("yyyy-MM"));
-        // 获取当月的所有记录
-        return sportsResultService.listByYearAndMouth(yearAndMouth, dto.getUserId());
-    }
 
+    /**
+     * 心理
+     *
+     * @param dto
+     * @return
+     */
     @RequestMapping("psychology")
     public Map<String, Object> psychology(@RequestBody PsychologyResult dto) {
         String userId = dto.getUserId();
@@ -227,6 +161,19 @@ public class QuestionnaireResultsController {
             return ResultUtils.returnError("用户id缺失");
         }
         PsychologyResultVo vo = psychologyResultService.getVo(dto);
+        return ResultUtils.returnSuccess(vo);
+    }
+
+    /**
+     * 中医
+     */
+        @RequestMapping("medicine")
+    public Map<String, Object> medicine(@RequestBody ChineseMedicine dto) {
+        String userId = dto.getUserId();
+        if (StrUtil.isBlank(userId)) {
+            return ResultUtils.returnError("用户id缺失");
+        }
+        ChineseMedicineVo vo = chineseMedicineService.getVo(dto);
         return ResultUtils.returnSuccess(vo);
     }
 

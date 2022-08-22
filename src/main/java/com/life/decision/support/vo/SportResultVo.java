@@ -7,7 +7,12 @@ import lombok.Data;
 import java.util.List;
 
 @Data
-public class SportResultVo{
+public class SportResultVo {
+    private String id;
+
+    private String nowDay;
+
+    private String userId;
     private List<UrlAdvice> beforeSports;
 
     private List<UrlAdvice> specialSports;
@@ -17,5 +22,4 @@ public class SportResultVo{
     private List<ContentAdvice> healthEducation;
 
     private List<String> dateRecord;
-
 }

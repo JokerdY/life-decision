@@ -40,6 +40,14 @@
         where user_id = #{userId}
           and date_format(r_date, '%Y-%m') = #{yearAndMouth}
     </select>
+
+    <select id="selectById" resultType="com.life.decision.support.pojo.SportsResult">
+        select
+        <include refid="Base_Column_List"/>
+        from sports_result
+        where id = #{id}
+    </select>
+
     <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
         delete
         from sports_result
@@ -115,24 +123,12 @@
     </insert>
     <update id="updateByPrimaryKeySelective">
         update sports_result
-        <set>
-            <if test="warmUpBeforeExercise != null">
-                warm_up_before_exercise = #{warmUpBeforeExercise},
-            </if>
-            <if test="specificSports != null">
-                specific_sports = #{specificSports},
-            </if>
-            <if test="stretchingAfterExercise != null">
-                stretching_after_exercise = #{stretchingAfterExercise},
-            </if>
-            <if test="updateDate != null">
-                update_date = NOW(),
-            </if>
-            <if test="healthEducation != null">
-                health_education = #{healthEducation},
-            </if>
-        </set>
-        where user_id = #{userId} and r_date = #{rDate}
+        set warm_up_before_exercise   = #{warmUpBeforeExercise},
+            specific_sports           = #{specificSports},
+            stretching_after_exercise = #{stretchingAfterExercise},
+            update_date               = NOW(),
+            health_education          = #{healthEducation}
+        where id = #{id}
     </update>
 
 </mapper>
