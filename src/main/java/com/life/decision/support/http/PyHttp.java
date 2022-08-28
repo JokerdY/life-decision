@@ -1,12 +1,14 @@
 package com.life.decision.support.http;
 
-import cn.hutool.core.io.FileUtil;
 import cn.hutool.core.util.IdUtil;
+import cn.hutool.http.HttpUtil;
 import cn.hutool.json.JSONArray;
 import cn.hutool.json.JSONObject;
 import cn.hutool.json.JSONUtil;
+import com.life.decision.support.common.URL;
 import com.life.decision.support.controller.QuestionnaireResultsController;
 import com.life.decision.support.pojo.*;
+import com.life.decision.support.service.PsychologicalOutcomeService;
 import com.life.decision.support.service.impl.ChineseMedicineServiceImpl;
 import com.life.decision.support.service.impl.PsychologyResultServiceImpl;
 import com.life.decision.support.service.impl.RecipeResultServiceImpl;
@@ -15,8 +17,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.io.File;
-import java.nio.charset.Charset;
 import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.List;
@@ -34,6 +34,9 @@ public class PyHttp {
     private SportsResultServiceImpl sportsResultService;
     @Autowired
     private ChineseMedicineServiceImpl chineseMedicineService;
+    @Autowired
+    private PsychologicalOutcomeService psychologicalOutcomeService;
+
     private static final List<String> removeList = Arrays.asList("215", "216", "217", "218", "219",
             "220", "221", "222", "223", "224");
 
@@ -46,6 +49,14 @@ public class PyHttp {
         // 存储结果
         JSONObject mental = pyResult.getJSONObject("Mental");
         PsychologyResult psychologyResult = new PsychologyResult();
+        JSONObject score = mental.getJSONObject("得分");
+        PsychologicalOutcome psychologicalOutcome = new PsychologicalOutcome();
+        psychologicalOutcome.setAnxiety(score.getStr("A"));
+        psychologicalOutcome.setDepression(score.getStr("D"));
+        psychologicalOutcome.setPressure(score.getStr("P"));
+        psychologicalOutcome.setUserId(entity.getUserId());
+        psychologicalOutcomeService.save(psychologicalOutcome);
+
         psychologyResult.setResult(mental.getStr("判断结果"));
         psychologyResult.setAdvice(mental.getStr("建议"));
         psychologyResult.setUserId(userId);
@@ -117,9 +128,9 @@ public class PyHttp {
         // 删除不需要传输的问题
         JSONArray jsonArray = questionnaire.getJSONArray("4");
         jsonArray.removeIf(obj -> removeList.contains(((JSONObject) obj).getStr("id")));
-//        return JSONUtil.parseObj(HttpUtil.post(URL.PY_URL.getUrl(), resultByGroupId.toString()));
-        return JSONUtil.parseObj(FileUtil.readString(
-                new File("C:\\Users\\hspcadmin\\Documents\\WeChat Files\\wxid_1683106826411\\FileStorage\\File\\2022-08\\4.test_back(1).json")
-                , Charset.defaultCharset()));
+        return JSONUtil.parseObj(HttpUtil.post(URL.PY_URL.getUrl(), resultByGroupId.toString()));
+//        return JSONUtil.parseObj(FileUtil.readString(
+//                new File("C:\\Users\\hspcadmin\\Documents\\WeChat Files\\wxid_1683106826411\\FileStorage\\File\\2022-08\\4.test_back(1).json")
+//                , Charset.defaultCharset()));
     }
 }

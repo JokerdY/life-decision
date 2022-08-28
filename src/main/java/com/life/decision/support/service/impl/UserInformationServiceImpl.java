@@ -165,8 +165,8 @@ public class UserInformationServiceImpl implements IUserInformationService {
         userInHomeVo.setBMIDiff(String.format("%.1f", bmiDouble - secondBmiDouble));
     }
 
-    private double getBmi(String secondHeight, String secondWeight) {
-        return Double.parseDouble(secondWeight) / (Math.pow(Double.parseDouble(secondHeight) / 100, 2));
+    public double getBmi(String height, String weight) {
+        return Double.parseDouble(weight) / (Math.pow(Double.parseDouble(height) / 100, 2));
     }
 
     @Override

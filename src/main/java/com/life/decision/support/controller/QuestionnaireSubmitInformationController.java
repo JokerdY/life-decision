@@ -2,6 +2,7 @@ package com.life.decision.support.controller;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import com.life.decision.support.pojo.QuestionnaireGroupInformation;
 import com.life.decision.support.pojo.QuestionnaireSubmitInformation;
 import com.life.decision.support.service.IQuestionnaireGroupInformationService;
 import com.life.decision.support.service.IQuestionnaireSubmitInformationService;
@@ -57,10 +58,12 @@ public class QuestionnaireSubmitInformationController {
         PageInfo<QuestionnaireSubmitInformation> data = new PageInfo<>(list);
         for (QuestionnaireSubmitInformation information : data.getList()) {
             if (information.getQuestionnaireStatus() == 1) {
-                String latestSuccessGroupId = groupInformationService.getByUserIdHasSuccess(information.getUserId())
-                        .getGroupId();
-                if (latestSuccessGroupId.equals(information.getGroupId())) {
-                    information.setQuestionnaireStatus(2);
+                QuestionnaireGroupInformation latest = groupInformationService.getByUserIdHasSuccess(information.getUserId());
+                if (latest != null) {
+                    String latestSuccessGroupId = latest.getGroupId();
+                    if (latestSuccessGroupId.equals(information.getGroupId())) {
+                        information.setQuestionnaireStatus(2);
+                    }
                 }
             }
         }

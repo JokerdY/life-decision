@@ -1,117 +1,123 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.life.decision.support.mapper.OptionInformationMapper" >
-  <resultMap id="BaseResultMap" type="com.life.decision.support.pojo.OptionInformation" >
-    <id column="id" property="id" jdbcType="VARCHAR" />
-    <result column="questionnaire_id" property="questionnaireId" jdbcType="VARCHAR" />
-    <result column="question_id" property="questionId" jdbcType="VARCHAR" />
-    <result column="option_value" property="optionValue" jdbcType="VARCHAR" />
-    <result column="fill_enabled" property="fillEnabled" jdbcType="INTEGER" />
-    <result column="option_sort" property="optionSort" jdbcType="INTEGER" />
-    <result column="associated_jump_id" property="associatedJumpId" jdbcType="VARCHAR" />
-  </resultMap>
-  <sql id="Base_Column_List" >
-    id, questionnaire_id, question_id, option_value, fill_enabled, option_sort, associated_jump_id
-  </sql>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
-    select 
-    <include refid="Base_Column_List" />
-    from option_information
-    where id = #{id,jdbcType=VARCHAR}
-  </select>
-    <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
-    delete from option_information
-    where id = #{id,jdbcType=VARCHAR}
-  </delete>
-  <insert id="insert" parameterType="com.life.decision.support.pojo.OptionInformation" >
-    insert into option_information (id, questionnaire_id, question_id, 
-      option_value, fill_enabled, option_sort, 
-      associated_jump_id)
-    values (#{id,jdbcType=VARCHAR}, #{questionnaireId,jdbcType=VARCHAR}, #{questionId,jdbcType=VARCHAR}, 
-      #{optionValue,jdbcType=VARCHAR}, #{fillEnabled,jdbcType=INTEGER}, #{optionSort,jdbcType=INTEGER}, 
-      #{associatedJumpId,jdbcType=VARCHAR})
-  </insert>
-  <insert id="insertSelective" parameterType="com.life.decision.support.pojo.OptionInformation" >
-    insert into option_information
-    <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
-        id,
-      </if>
-      <if test="questionnaireId != null" >
-        questionnaire_id,
-      </if>
-      <if test="questionId != null" >
-        question_id,
-      </if>
-      <if test="optionValue != null" >
-        option_value,
-      </if>
-      <if test="fillEnabled != null" >
-        fill_enabled,
-      </if>
-      <if test="optionSort != null" >
-        option_sort,
-      </if>
-      <if test="associatedJumpId != null" >
-        associated_jump_id,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
-        #{id,jdbcType=VARCHAR},
-      </if>
-      <if test="questionnaireId != null" >
-        #{questionnaireId,jdbcType=VARCHAR},
-      </if>
-      <if test="questionId != null" >
-        #{questionId,jdbcType=VARCHAR},
-      </if>
-      <if test="optionValue != null" >
-        #{optionValue,jdbcType=VARCHAR},
-      </if>
-      <if test="fillEnabled != null" >
-        #{fillEnabled,jdbcType=INTEGER},
-      </if>
-      <if test="optionSort != null" >
-        #{optionSort,jdbcType=INTEGER},
-      </if>
-      <if test="associatedJumpId != null" >
-        #{associatedJumpId,jdbcType=VARCHAR},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.life.decision.support.pojo.OptionInformation" >
-    update option_information
-    <set >
-      <if test="questionnaireId != null" >
-        questionnaire_id = #{questionnaireId,jdbcType=VARCHAR},
-      </if>
-      <if test="questionId != null" >
-        question_id = #{questionId,jdbcType=VARCHAR},
-      </if>
-      <if test="optionValue != null" >
-        option_value = #{optionValue,jdbcType=VARCHAR},
-      </if>
-      <if test="fillEnabled != null" >
-        fill_enabled = #{fillEnabled,jdbcType=INTEGER},
-      </if>
-      <if test="optionSort != null" >
-        option_sort = #{optionSort,jdbcType=INTEGER},
-      </if>
-      <if test="associatedJumpId != null" >
-        associated_jump_id = #{associatedJumpId,jdbcType=VARCHAR},
-      </if>
-    </set>
-    where id = #{id,jdbcType=VARCHAR}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.life.decision.support.pojo.OptionInformation" >
-    update option_information
-    set questionnaire_id = #{questionnaireId,jdbcType=VARCHAR},
-      question_id = #{questionId,jdbcType=VARCHAR},
-      option_value = #{optionValue,jdbcType=VARCHAR},
-      fill_enabled = #{fillEnabled,jdbcType=INTEGER},
-      option_sort = #{optionSort,jdbcType=INTEGER},
-      associated_jump_id = #{associatedJumpId,jdbcType=VARCHAR}
-    where id = #{id,jdbcType=VARCHAR}
-  </update>
+<mapper namespace="com.life.decision.support.mapper.OptionInformationMapper">
+    <resultMap id="BaseResultMap" type="com.life.decision.support.pojo.OptionInformation">
+        <id column="id" property="id" jdbcType="VARCHAR"/>
+        <result column="questionnaire_id" property="questionnaireId" jdbcType="VARCHAR"/>
+        <result column="question_id" property="questionId" jdbcType="VARCHAR"/>
+        <result column="option_value" property="optionValue" jdbcType="VARCHAR"/>
+        <result column="fill_enabled" property="fillEnabled" jdbcType="INTEGER"/>
+        <result column="option_sort" property="optionSort" jdbcType="INTEGER"/>
+        <result column="associated_jump_id" property="associatedJumpId" jdbcType="VARCHAR"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        id, questionnaire_id, question_id, option_value, fill_enabled, option_sort, associated_jump_id
+    </sql>
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String">
+        select
+        <include refid="Base_Column_List"/>
+        from option_information
+        where id = #{id,jdbcType=VARCHAR}
+    </select>
+    <select id="findList" resultType="com.life.decision.support.pojo.OptionInformation">
+        select *
+        from option_information
+        where id = #{id}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+        delete
+        from option_information
+        where id = #{id,jdbcType=VARCHAR}
+    </delete>
+    <insert id="insert" parameterType="com.life.decision.support.pojo.OptionInformation">
+        insert into option_information (id, questionnaire_id, question_id,
+                                        option_value, fill_enabled, option_sort,
+                                        associated_jump_id)
+        values (#{id,jdbcType=VARCHAR}, #{questionnaireId,jdbcType=VARCHAR}, #{questionId,jdbcType=VARCHAR},
+                #{optionValue,jdbcType=VARCHAR}, #{fillEnabled,jdbcType=INTEGER}, #{optionSort,jdbcType=INTEGER},
+                #{associatedJumpId,jdbcType=VARCHAR})
+    </insert>
+    <insert id="insertSelective" parameterType="com.life.decision.support.pojo.OptionInformation">
+        insert into option_information
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="questionnaireId != null">
+                questionnaire_id,
+            </if>
+            <if test="questionId != null">
+                question_id,
+            </if>
+            <if test="optionValue != null">
+                option_value,
+            </if>
+            <if test="fillEnabled != null">
+                fill_enabled,
+            </if>
+            <if test="optionSort != null">
+                option_sort,
+            </if>
+            <if test="associatedJumpId != null">
+                associated_jump_id,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=VARCHAR},
+            </if>
+            <if test="questionnaireId != null">
+                #{questionnaireId,jdbcType=VARCHAR},
+            </if>
+            <if test="questionId != null">
+                #{questionId,jdbcType=VARCHAR},
+            </if>
+            <if test="optionValue != null">
+                #{optionValue,jdbcType=VARCHAR},
+            </if>
+            <if test="fillEnabled != null">
+                #{fillEnabled,jdbcType=INTEGER},
+            </if>
+            <if test="optionSort != null">
+                #{optionSort,jdbcType=INTEGER},
+            </if>
+            <if test="associatedJumpId != null">
+                #{associatedJumpId,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.life.decision.support.pojo.OptionInformation">
+        update option_information
+        <set>
+            <if test="questionnaireId != null">
+                questionnaire_id = #{questionnaireId,jdbcType=VARCHAR},
+            </if>
+            <if test="questionId != null">
+                question_id = #{questionId,jdbcType=VARCHAR},
+            </if>
+            <if test="optionValue != null">
+                option_value = #{optionValue,jdbcType=VARCHAR},
+            </if>
+            <if test="fillEnabled != null">
+                fill_enabled = #{fillEnabled,jdbcType=INTEGER},
+            </if>
+            <if test="optionSort != null">
+                option_sort = #{optionSort,jdbcType=INTEGER},
+            </if>
+            <if test="associatedJumpId != null">
+                associated_jump_id = #{associatedJumpId,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where id = #{id,jdbcType=VARCHAR}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.life.decision.support.pojo.OptionInformation">
+        update option_information
+        set questionnaire_id   = #{questionnaireId,jdbcType=VARCHAR},
+            question_id        = #{questionId,jdbcType=VARCHAR},
+            option_value       = #{optionValue,jdbcType=VARCHAR},
+            fill_enabled       = #{fillEnabled,jdbcType=INTEGER},
+            option_sort        = #{optionSort,jdbcType=INTEGER},
+            associated_jump_id = #{associatedJumpId,jdbcType=VARCHAR}
+        where id = #{id,jdbcType=VARCHAR}
+    </update>
 </mapper>

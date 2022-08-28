@@ -312,16 +312,6 @@ public class ModifyResultController {
                 advice.add(temp);
             }
             psychologyResult.setAdvice(advice.toString());
-//            JSONObject health = new JSONObject();
-//            health.putOpt("建议", vo.getHealthContent());
-//            JSONArray healthAdvice = new JSONArray();
-//            for (UrlAdvice url : vo.getHealthAdvices()) {
-//                JSONObject temp = new JSONObject();
-//                temp.putOpt(url.getName(), url.getUrl());
-//                healthAdvice.put(temp);
-//            }
-//            health.putOpt("练习", healthAdvice.toString());
-//            psychologyResult.setHealthEducation(health.toString());
             psychologyResultService.saveOrUpdateById(psychologyResult);
         } catch (Exception e) {
             log.error("",e);

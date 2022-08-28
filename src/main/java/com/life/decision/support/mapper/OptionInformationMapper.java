@@ -3,6 +3,8 @@ package com.life.decision.support.mapper;
 import com.life.decision.support.pojo.OptionInformation;
 import org.apache.ibatis.annotations.Mapper;
 
+import java.util.List;
+
 /**
  * <p>
  *  Mapper 接口
@@ -25,4 +27,6 @@ public interface OptionInformationMapper {
     int updateByPrimaryKeySelective(OptionInformation record);
 
     int updateByPrimaryKey(OptionInformation record);
+
+    List<OptionInformation> findList(OptionInformation record);
 }

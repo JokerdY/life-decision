@@ -1,13 +1,19 @@
 package com.life.decision.support.service;
 
+import com.life.decision.support.dto.DataAnalysisDto;
 import com.life.decision.support.mapper.OptionInformationMapper;
 import com.life.decision.support.mapper.QuestionAnswerMapper;
 import com.life.decision.support.pojo.OptionInformation;
 import com.life.decision.support.pojo.QuestionAnswer;
+import com.life.decision.support.service.impl.QuestionAnswerServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 @Service
 public class QuestionnaireMsgQueryService {
@@ -16,6 +22,10 @@ public class QuestionnaireMsgQueryService {
     QuestionAnswerMapper answerMapper;
     @Autowired
     OptionInformationMapper optionInformationMapper;
+    @Autowired
+    QuestionAnswerServiceImpl answerService;
+
+    public static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 
     // 查询用户最新一次的某个问题Id对应的数据
     public OptionInformation getLatestOption(String userId, String questionId) {
@@ -64,4 +74,23 @@ public class QuestionnaireMsgQueryService {
         }
         return null;
     }
+
+    public List<QuestionAnswer> getAnswerListByDate(DataAnalysisDto dto, String questionId) {
+        Predicate<LocalDate> dateFilter = getDateFilter(dto);
+        QuestionAnswer temp = new QuestionAnswer();
+        temp.setQuestionId(questionId);
+        temp.setUserId(dto.getUserId());
+        return answerService.findList(temp)
+                .stream()
+                .filter(s -> dateFilter.test(s.getCreateDate().toLocalDate()))
+                .collect(Collectors.toList());
+    }
+
+    private Predicate<LocalDate> getDateFilter(DataAnalysisDto dto) {
+        LocalDate startDate = LocalDate.parse(dto.getStartDate(), FORMATTER);
+        LocalDate endDate = LocalDate.parse(dto.getEndDate(), FORMATTER);
+        Predicate<LocalDate> dateFilter = date -> date.compareTo(startDate) > 0 && date.compareTo(endDate) < 0;
+        return dateFilter;
+    }
+
 }
