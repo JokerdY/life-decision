@@ -5,10 +5,7 @@ import cn.hutool.core.collection.CollUtil;
 import cn.hutool.core.util.StrUtil;
 import cn.hutool.json.JSONArray;
 import cn.hutool.json.JSONObject;
-import com.life.decision.support.dto.QueryDto;
-import com.life.decision.support.dto.QuestionInformationDto;
-import com.life.decision.support.dto.RecipeResultDto;
-import com.life.decision.support.dto.UserInformationDto;
+import com.life.decision.support.dto.*;
 import com.life.decision.support.http.PyHttp;
 import com.life.decision.support.http.PyKey;
 import com.life.decision.support.mapper.QuestionInformationMapper;
@@ -34,6 +31,8 @@ import org.springframework.web.bind.annotation.RestController;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/result")
@@ -120,6 +119,45 @@ public class QuestionnaireResultsController {
     }
 
 
+    @RequestMapping("changeSports")
+    public Map<String, Object> changeSports(@RequestBody QueryDto dto) {
+        String userId = dto.getUserId();
+        if (StrUtil.isBlank(userId)) {
+            return ResultUtils.returnError("用户id缺失");
+        }
+        if (StrUtil.isBlank(dto.getDate())) {
+            dto.setDate(LocalDate.now().toString());
+        }
+        QuestionnaireGroupInformation groupEntity = groupInformationService.getByUserIdHasSuccess(userId);
+        if (groupEntity != null) {
+            groupEntity.setUserId(userId);
+            JSONObject pyResult = pyHttp.getPyResult(groupEntity);
+            JSONArray jsonArray = pyResult.getJSONArray(PyKey.SPORTS.getKey());
+            int dayOfYear = LocalDate.now().getDayOfYear();
+            List<Object> filterArray = jsonArray.stream()
+                    .filter(obj -> ((JSONObject) obj).getJSONArray("具体的运动").size() > 0)
+                    .collect(Collectors.toList());
+            JSONObject sportObj = (JSONObject) filterArray.get(dayOfYear % filterArray.size());
+            // 更新这三个数据
+            SportsResultDto resultDto = new SportsResultDto();
+            resultDto.setUserId(dto.getUserId());
+            resultDto.setQueryDate(dto.getDate());
+            SportsResult byEntity = sportsResultService.findByEntity(resultDto);
+            if (byEntity == null) {
+                return ResultUtils.returnError("更新运动结果失败，未找到当天运动");
+            }
+            byEntity.setWarmUpBeforeExercise(sportObj.getStr("运动前热身"));
+            byEntity.setSpecificSports(sportObj.getStr("具体的运动"));
+            byEntity.setSpecificSports(sportObj.getStr("运动后拉伸"));
+            byEntity.setHealthEducation(sportObj.getStr("健康教育"));
+            sportsResultService.saveOrUpdate(byEntity);
+
+            SportResultVo vo = sportsResultService.getVo(dto);
+            return ResultUtils.returnSuccess(vo);
+        }
+        return ResultUtils.returnError("未找到已完成的完整问卷");
+    }
+
     /**
      * 元气运动
      *
@@ -167,7 +205,7 @@ public class QuestionnaireResultsController {
     /**
      * 中医
      */
-        @RequestMapping("medicine")
+    @RequestMapping("medicine")
     public Map<String, Object> medicine(@RequestBody ChineseMedicine dto) {
         String userId = dto.getUserId();
         if (StrUtil.isBlank(userId)) {
@@ -221,14 +259,13 @@ public class QuestionnaireResultsController {
     @RequestMapping("getResultByGroupId")
     public JSONObject getResultByGroupId(@RequestBody QuestionnaireGroupInformation groupInformation) {
         List<QuestionnaireSubmitInformation> submitList = submitInformationService.listByGroupId(groupInformation.getGroupId());
-        JSONObject result = getQuestionnaireGroupAnswer(groupInformation.getUserId(), submitList);
-        return result;
+        return getQuestionnaireGroupAnswer(groupInformation.getUserId(), submitList);
     }
 
     private void uploadAnswer(List<QuestionAnswer> answerList, QuestionInformationDto dto) {
-        answerList.stream()
+        Optional<QuestionAnswer> any = answerList.stream()
                 .filter(s -> s.getQuestionId().equals(dto.getId()))
-                .findAny()
-                .ifPresent(dto::setQuestionAnswer);
+                .findAny();
+        dto.setQuestionAnswer(any.orElse(new QuestionAnswer()));
     }
 }

@@ -50,7 +50,7 @@
     </delete>
     <insert id="insert">
         insert into chinese_medicine (id, group_id, user_id, acupressure, five_elements_music, create_date, update_date)
-        values (#{id}, #{group_id}, #{userId}, #{acupressure}, #{fiveElementsMusic}, NOW(), NOW())
+        values (#{id}, #{groupId}, #{userId}, #{acupressure}, #{fiveElementsMusic}, NOW(), NOW())
     </insert>
     <insert id="insertSelective">
         insert into chinese_medicine

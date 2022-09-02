@@ -13,6 +13,7 @@ import com.life.decision.support.service.impl.ChineseMedicineServiceImpl;
 import com.life.decision.support.service.impl.PsychologyResultServiceImpl;
 import com.life.decision.support.service.impl.RecipeResultServiceImpl;
 import com.life.decision.support.service.impl.SportsResultServiceImpl;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
@@ -23,6 +24,7 @@ import java.util.List;
 import java.util.function.BiConsumer;
 
 @Component
+@Slf4j
 public class PyHttp {
     @Autowired
     private QuestionnaireResultsController resultsController;
@@ -128,9 +130,9 @@ public class PyHttp {
         // 删除不需要传输的问题
         JSONArray jsonArray = questionnaire.getJSONArray("4");
         jsonArray.removeIf(obj -> removeList.contains(((JSONObject) obj).getStr("id")));
-        return JSONUtil.parseObj(HttpUtil.post(URL.PY_URL.getUrl(), resultByGroupId.toString()));
-//        return JSONUtil.parseObj(FileUtil.readString(
-//                new File("C:\\Users\\hspcadmin\\Documents\\WeChat Files\\wxid_1683106826411\\FileStorage\\File\\2022-08\\4.test_back(1).json")
-//                , Charset.defaultCharset()));
+        String result = HttpUtil.post(URL.PY_URL.getUrl(), resultByGroupId.toString());
+        log.info("pyResult:{}", result);
+        log.info("resultByGroupId:{}", resultByGroupId.toString());
+        return JSONUtil.parseObj(result);
     }
 }
