@@ -7,12 +7,10 @@ import cn.hutool.json.JSONObject;
 import cn.hutool.json.JSONUtil;
 import com.life.decision.support.common.URL;
 import com.life.decision.support.controller.QuestionnaireResultsController;
+import com.life.decision.support.dto.UserInHomeVo;
 import com.life.decision.support.pojo.*;
 import com.life.decision.support.service.PsychologicalOutcomeService;
-import com.life.decision.support.service.impl.ChineseMedicineServiceImpl;
-import com.life.decision.support.service.impl.PsychologyResultServiceImpl;
-import com.life.decision.support.service.impl.RecipeResultServiceImpl;
-import com.life.decision.support.service.impl.SportsResultServiceImpl;
+import com.life.decision.support.service.impl.*;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -38,6 +36,8 @@ public class PyHttp {
     private ChineseMedicineServiceImpl chineseMedicineService;
     @Autowired
     private PsychologicalOutcomeService psychologicalOutcomeService;
+    @Autowired
+    private UserInformationServiceImpl userInformationService;
 
     private static final List<String> removeList = Arrays.asList("215", "216", "217", "218", "219",
             "220", "221", "222", "223", "224");
@@ -127,6 +127,13 @@ public class PyHttp {
     public JSONObject getPyResult(QuestionnaireGroupInformation entity) {
         JSONObject resultByGroupId = resultsController.getResultByGroupId(entity);
         JSONObject questionnaire = resultByGroupId.getJSONObject("questionnaire");
+        UserInformation user = new UserInformation();
+        user.setId(entity.getUserId());
+        UserInHomeVo userMsg = userInformationService.getUserMsg(user);
+        JSONObject userObj = new JSONObject();
+        userObj.putOpt("性别", userMsg.getSexDto());
+        userObj.putOpt("年龄", userMsg.getAge());
+        questionnaire.putOpt("user", userObj);
         // 删除不需要传输的问题
         JSONArray jsonArray = questionnaire.getJSONArray("4");
         jsonArray.removeIf(obj -> removeList.contains(((JSONObject) obj).getStr("id")));

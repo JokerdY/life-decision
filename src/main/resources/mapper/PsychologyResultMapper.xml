@@ -115,7 +115,6 @@
         update psychology_result
         set advice           = #{advice},
             result           = #{result},
-#             health_education = #{healthEducation},
             update_date      = NOW()
         where id = #{id}
     </update>

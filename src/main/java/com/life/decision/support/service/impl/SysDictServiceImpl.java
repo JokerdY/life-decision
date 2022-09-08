@@ -35,4 +35,15 @@ public class SysDictServiceImpl implements ISysDictService {
     public List<SysDictDto> dictList(String columnName) {
         return dictList(columnName, null);
     }
+
+    @Override
+    public SysDictDto getDict(String columnName, String columnValue) {
+        List<SysDictDto> sysDictDtos = dictList(columnName);
+        for (SysDictDto s : sysDictDtos) {
+            if (s.getValue().equals(columnValue)) {
+                return s;
+            }
+        }
+        return new SysDictDto();
+    }
 }

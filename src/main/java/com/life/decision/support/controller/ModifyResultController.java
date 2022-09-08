@@ -73,14 +73,23 @@ public class ModifyResultController {
         BeanUtil.copyProperties(vo, result);
 
         List<ManagerFood> list = new ArrayList<>();
-        for (FoodEntity foodEntity : vo.getBreakfastRecipe().getFoodEntities()) {
-            loadFood(foodEntity, "早餐", list);
+        RecipeEntity breakfastRecipe = vo.getBreakfastRecipe();
+        if (breakfastRecipe != null) {
+            for (FoodEntity foodEntity : breakfastRecipe.getFoodEntities()) {
+                loadFood(foodEntity, "早餐", list);
+            }
         }
-        for (FoodEntity foodEntity : vo.getLunchRecipe().getFoodEntities()) {
-            loadFood(foodEntity, "午餐", list);
+        RecipeEntity lunchRecipe = vo.getLunchRecipe();
+        if (lunchRecipe != null) {
+            for (FoodEntity foodEntity : lunchRecipe.getFoodEntities()) {
+                loadFood(foodEntity, "午餐", list);
+            }
         }
-        for (FoodEntity foodEntity : vo.getDinnerRecipe().getFoodEntities()) {
-            loadFood(foodEntity, "晚餐", list);
+        RecipeEntity dinnerRecipe = vo.getDinnerRecipe();
+        if (dinnerRecipe != null) {
+            for (FoodEntity foodEntity : dinnerRecipe.getFoodEntities()) {
+                loadFood(foodEntity, "晚餐", list);
+            }
         }
         result.setManagerFoods(list);
         ManagerElement managerElement = new ManagerElement();
@@ -160,7 +169,7 @@ public class ModifyResultController {
             recipeResult.setDietaryAdvice(new JSONArray(vo.getDietaryAdvice()).toString());
             recipeResultService.saveOrUpdateById(recipeResult);
         } catch (Exception e) {
-            log.error("",e);
+            log.error("", e);
             return ResultUtils.returnError(e.getMessage() + "->funcName:updateRecipe");
         }
         return ResultUtils.returnSuccess("提交成功");
@@ -271,7 +280,7 @@ public class ModifyResultController {
             sportsResult.setStretchingAfterExercise(after.toString());
             sportsResultService.saveOrUpdateById(sportsResult);
         } catch (Exception e) {
-            log.error("",e);
+            log.error("", e);
             return ResultUtils.returnError(e.getMessage() + "->funcName:updateSports");
         }
         return ResultUtils.returnSuccess("提交成功");
@@ -314,7 +323,7 @@ public class ModifyResultController {
             psychologyResult.setAdvice(advice.toString());
             psychologyResultService.saveOrUpdateById(psychologyResult);
         } catch (Exception e) {
-            log.error("",e);
+            log.error("", e);
             return ResultUtils.returnError(e.getMessage() + "->funcName:updatePsychology");
         }
         return ResultUtils.returnSuccess("提交成功");
@@ -402,7 +411,7 @@ public class ModifyResultController {
             medicine.setFiveElementsMusic(music.toString());
             chineseMedicineService.saveOrUpdateById(medicine);
         } catch (Exception e) {
-            log.error("",e);
+            log.error("", e);
             return ResultUtils.returnError(e.getMessage() + "->funcName:updateMedicine");
         }
         return ResultUtils.returnSuccess("提交成功");
