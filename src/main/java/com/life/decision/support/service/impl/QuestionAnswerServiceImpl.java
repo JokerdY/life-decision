@@ -1,6 +1,7 @@
 package com.life.decision.support.service.impl;
 
 import cn.hutool.core.util.IdUtil;
+import com.life.decision.support.dto.AnswerDto;
 import com.life.decision.support.mapper.QuestionAnswerMapper;
 import com.life.decision.support.pojo.QuestionAnswer;
 import com.life.decision.support.pojo.QuestionnaireSubmitInformation;
@@ -35,6 +36,11 @@ public class QuestionAnswerServiceImpl implements IQuestionAnswerService {
             answer.setSubmitId(submitId);
         });
         return answerMapper.insertBatch(list);
+    }
+
+    @Override
+    public List<AnswerDto> selectAnswerByUser(String questionId) {
+        return answerMapper.selectAnswerByUser(questionId);
     }
 
     @Override

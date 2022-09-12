@@ -18,6 +18,10 @@ public class PsychologicalOutcomeService {
         return mapper.listByEntity(psychologicalOutcome);
     }
 
+    public List<PsychologicalOutcome> selectLatestByEntity(PsychologicalOutcome outcome) {
+        return mapper.selectLatestByEntity(outcome);
+    }
+
     public int save(PsychologicalOutcome psychologicalOutcome) {
         if (StrUtil.isBlank(psychologicalOutcome.getId())) {
             psychologicalOutcome.setId(IdUtil.fastSimpleUUID());

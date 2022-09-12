@@ -9,5 +9,7 @@ import java.util.List;
 public interface PsychologicalOutcomeMapper {
     List<PsychologicalOutcome> listByEntity(PsychologicalOutcome psychologicalOutcome);
 
+    List<PsychologicalOutcome> selectLatestByEntity(PsychologicalOutcome psychologicalOutcome);
+
     int insert(PsychologicalOutcome psychologicalOutcome);
 }

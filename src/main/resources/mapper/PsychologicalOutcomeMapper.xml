@@ -22,9 +22,17 @@
         where user_id = #{userId}
     </select>
 
+    <select id="selectLatestByEntity" resultType="com.life.decision.support.pojo.PsychologicalOutcome">
+        select a.*
+        from psychological_outcome a
+                 join (select user_id, max(update_date) as date
+                       from psychological_outcome
+                       group by user_id) b on a.user_id = b.user_id and a.update_date = b.date
+    </select>
+
     <insert id="insert">
         insert into psychological_outcome (id, user_id, anxiety, depression, pressure, create_date, update_date)
-        values (#{id},  #{userId}, #{anxiety}, #{depression}, #{pressure}, NOW(), NOW())
+        values (#{id}, #{userId}, #{anxiety}, #{depression}, #{pressure}, NOW(), NOW())
     </insert>
 
 </mapper>

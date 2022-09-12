@@ -15,6 +15,18 @@
         id
         , user_id, questionnaire_id, question_id, create_date, option_id, comment,submit_id
     </sql>
+    <select id="selectAnswerByUser" resultType="com.life.decision.support.dto.AnswerDto"
+            parameterType="java.lang.String">
+        select a.*, fill_enabled as fillEnabled, oi.option_value as optionValue
+        from question_answer a
+                 join (select max(create_date) as date, user_id
+                       from question_answer
+                       where question_id = #{questionId}
+                       group by user_id) b on a.user_id = b.user_id
+            and a.create_date = b.date
+                 join option_information oi on a.question_id = oi.question_id and a.option_id = oi.id
+        where a.question_id = #{questionId}
+    </select>
     <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String">
         select
         <include refid="Base_Column_List"/>

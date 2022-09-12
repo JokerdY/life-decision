@@ -1,5 +1,6 @@
 package com.life.decision.support.service;
 
+import com.life.decision.support.dto.AnswerDto;
 import com.life.decision.support.pojo.QuestionAnswer;
 import com.life.decision.support.pojo.QuestionnaireSubmitInformation;
 
@@ -18,7 +19,9 @@ public interface IQuestionAnswerService {
 
     Integer saveBatch(List<QuestionAnswer> list, String userId, String questionnaireId, LocalDateTime now, String submitId);
 
-    void updateBatch(List<QuestionAnswer> list,  QuestionnaireSubmitInformation submit);
+    List<AnswerDto> selectAnswerByUser(String questionId);
+
+    void updateBatch(List<QuestionAnswer> list, QuestionnaireSubmitInformation submit);
 
     List<QuestionAnswer> findList(QuestionAnswer questionAnswer);
 
