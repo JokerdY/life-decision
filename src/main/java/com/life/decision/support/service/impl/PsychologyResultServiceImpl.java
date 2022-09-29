@@ -1,6 +1,7 @@
 package com.life.decision.support.service.impl;
 
 import cn.hutool.core.util.IdUtil;
+import cn.hutool.core.util.StrUtil;
 import cn.hutool.json.JSONArray;
 import cn.hutool.json.JSONObject;
 import cn.hutool.json.JSONUtil;
@@ -9,6 +10,7 @@ import com.life.decision.support.pojo.PsychologyResult;
 import com.life.decision.support.bo.ContentAdvice;
 import com.life.decision.support.vo.PsychologyResultVo;
 import com.life.decision.support.bo.UrlAdvice;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,6 +21,7 @@ import java.util.Objects;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+@Slf4j
 @Service
 public class PsychologyResultServiceImpl {
     @Autowired
@@ -69,9 +72,14 @@ public class PsychologyResultServiceImpl {
         dto.setUserId(userId);
         PsychologyResult byEntity = findByEntity(dto);
         if (byEntity != null) {
-            List<ContentAdvice> psychologicalAdvices = getPsychologicalAdvices(JSONUtil.parseArray(byEntity.getAdvice()));
-            if (psychologicalAdvices.size() > 0) {
-                return psychologicalAdvices.get(LocalDate.now().getDayOfYear() % psychologicalAdvices.size());
+            String advice = byEntity.getAdvice();
+            log.info("advice:{}", advice);
+            if (StrUtil.isNotBlank(advice)) {
+                List<ContentAdvice> psychologicalAdvices = getPsychologicalAdvices(JSONUtil.parseArray(advice));
+                log.info("psychologicalAdvices:{}", psychologicalAdvices);
+                if (psychologicalAdvices.size() > 0) {
+                    return psychologicalAdvices.get(LocalDate.now().getDayOfYear() % psychologicalAdvices.size());
+                }
             }
         }
         return new ContentAdvice(null, null);
@@ -102,19 +110,22 @@ public class PsychologyResultServiceImpl {
                 vo.setEvaluationResults(result);
             }
             JSONObject health = JSONUtil.parseObj(byEntity.getHealthEducation());
-            vo.setHealthAdvices(health.getJSONArray("练习").stream()
-                    .map(obj -> {
-                        JSONObject json = (JSONObject) obj;
-                        Set<String> keySet = json.keySet();
-                        if (keySet.size() == 1) {
-                            for (String k : keySet) {
-                                return new UrlAdvice(k, null, json.getStr(k));
+            if (!health.isNull("练习")) {
+                JSONArray exe = health.getJSONArray("练习");
+                vo.setHealthAdvices(exe.stream()
+                        .map(obj -> {
+                            JSONObject json = (JSONObject) obj;
+                            Set<String> keySet = json.keySet();
+                            if (keySet.size() == 1) {
+                                for (String k : keySet) {
+                                    return new UrlAdvice(k, null, json.getStr(k));
+                                }
                             }
-                        }
-                        return null;
-                    })
-                    .filter(Objects::nonNull)
-                    .collect(Collectors.toList()));
+                            return null;
+                        })
+                        .filter(Objects::nonNull)
+                        .collect(Collectors.toList()));
+            }
             vo.setHealthContent(health.getStr("建议"));
         } else {
             vo.setId(IdUtil.fastSimpleUUID());
@@ -130,9 +141,18 @@ public class PsychologyResultServiceImpl {
                     Set<String> keySet = json.keySet();
                     for (String k : keySet) {
                         if (!"参考资料".equals(k)) {
-                            JSONArray objects = JSONUtil.parseArray(json.getStr(k));
-                            if (objects.size() == 1) {
-                                return new ContentAdvice(k, objects.get(0, String.class));
+                            String str = json.getStr(k);
+                            try {
+                                JSONArray objects = JSONUtil.parseArray(str);
+                                if (objects.size() > 0) {
+                                    if (objects.size() == 1) {
+                                        return new ContentAdvice(k, objects.get(0, String.class));
+                                    } else {
+                                        return new ContentAdvice(k, (String) objects.stream().reduce((s1, s2) -> (s1 + "\n" + s2)).get());
+                                    }
+                                }
+                            } catch (Exception e) {
+                                return null;
                             }
                         }
                     }

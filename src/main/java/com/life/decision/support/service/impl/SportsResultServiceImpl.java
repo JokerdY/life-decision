@@ -81,6 +81,8 @@ public class SportsResultServiceImpl implements ISportsResultService {
             List<UrlAdvice> specialList = getAdviceListTempLate(byEntity.getSpecificSports(), "推荐具体运动信息", "推荐具体运动持续时间");
             if (specialList.size() > 0) {
                 return specialList.get(LocalDate.now().getDayOfYear() % specialList.size());
+            }else {
+                return new UrlAdvice("无相关建议","","");
             }
         }
         return new UrlAdvice(null, null, null);
@@ -93,6 +95,9 @@ public class SportsResultServiceImpl implements ISportsResultService {
             for (Object o : array) {
                 JSONObject temp = (JSONObject) o;
                 JSONObject msg = temp.getJSONObject(msgItem);
+                if (msg == null) {
+                    continue;
+                }
                 String name = msg.getStr("名称");
                 String timeStr = temp.getStr(timeItem);
                 String time = timeStr;

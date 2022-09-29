@@ -135,7 +135,13 @@ public class QuestionnaireResultsController {
             JSONArray jsonArray = pyResult.getJSONArray(PyKey.SPORTS.getKey());
             int dayOfYear = LocalDate.now().getDayOfYear();
             List<Object> filterArray = jsonArray.stream()
-                    .filter(obj -> ((JSONObject) obj).getJSONArray("具体的运动").size() > 0)
+                    .filter(obj -> {
+                        JSONArray sport = ((JSONObject) obj).getJSONArray("具体的运动");
+                        if (sport != null) {
+                            return sport.size() > 0;
+                        }
+                        return false;
+                    })
                     .collect(Collectors.toList());
             JSONObject sportObj = (JSONObject) filterArray.get(dayOfYear % filterArray.size());
             // 更新这三个数据
@@ -148,7 +154,7 @@ public class QuestionnaireResultsController {
             }
             byEntity.setWarmUpBeforeExercise(sportObj.getStr("运动前热身"));
             byEntity.setSpecificSports(sportObj.getStr("具体的运动"));
-            byEntity.setSpecificSports(sportObj.getStr("运动后拉伸"));
+            byEntity.setStretchingAfterExercise(sportObj.getStr("运动后拉伸"));
             byEntity.setHealthEducation(sportObj.getStr("健康教育"));
             sportsResultService.saveOrUpdate(byEntity);
 

@@ -27,6 +27,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 /**
@@ -149,6 +150,18 @@ public class QuestionAnswerController {
         List<QuestionAnswer> list = obj.getJSONArray("list").toList(QuestionAnswer.class);
         String userId = obj.getStr("userId");
         String questionnaireId = obj.getStr("questionnaireId");
+        // 校验格式
+        if ("5".equals(questionnaireId)) {
+            Optional<QuestionAnswer> any = list.stream()
+                    .filter(s -> "175".equals(s.getQuestionId()))
+                    .findAny();
+            if (any.isPresent()) {
+                QuestionAnswer answer = any.get();
+                if (!answer.getComment().contains("/")) {
+                    return ResultUtils.returnError("血压选项请用/分割！");
+                }
+            }
+        }
         // 插入内容
         LocalDateTime now = LocalDateTime.now();
         String submitId = IdUtil.fastUUID();
@@ -197,6 +210,7 @@ public class QuestionAnswerController {
         result.putOnce("groupId", groupId);
         return result;
     }
+
     private void uploadAdminSubmitInfo(JSONObject obj, QuestionnaireSubmitInformation submitInfo) {
         if (obj.getBool("isAdmin", false)) {
             submitInfo.setIsAdminSubmit(1);

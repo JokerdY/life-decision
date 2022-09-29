@@ -64,6 +64,7 @@ public class PyHttp {
         psychologyResult.setUserId(userId);
         psychologyResult.setHealthEducation(mental.getStr("健康教育"));
         psychologyResult.setId(IdUtil.fastSimpleUUID());
+        psychologyResult.setGroupId(entity.getGroupId());
         psychologyResultService.save(psychologyResult);
         JSONObject tcm = pyResult.getJSONObject(PyKey.TCM.getKey());
         ChineseMedicine chineseMedicine = new ChineseMedicine();
@@ -71,6 +72,7 @@ public class PyHttp {
         chineseMedicine.setFiveElementsMusic(tcm.getStr("五行音乐"));
         chineseMedicine.setUserId(userId);
         chineseMedicine.setId(IdUtil.fastSimpleUUID());
+        chineseMedicine.setGroupId(entity.getGroupId());
         chineseMedicineService.save(chineseMedicine);
 
         // 根据最新的日期 更新食谱和运动

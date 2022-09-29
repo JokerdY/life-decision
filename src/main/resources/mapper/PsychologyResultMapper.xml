@@ -20,7 +20,7 @@
         <include refid="Base_Column_List"/>
         from psychology_result
         where user_id = #{userId}
-        order by create_date desc
+        order by update_date desc
         limit 1;
     </select>
 
@@ -43,6 +43,7 @@
         from psychology_result a
                  left join questionnaire_group_information qr on qr.group_id = a.group_id
         where qr.submit_id = #{submitId}
+        order by a.update_date desc
         limit 1;
     </select>
 
