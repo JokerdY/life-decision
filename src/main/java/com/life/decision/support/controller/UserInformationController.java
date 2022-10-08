@@ -2,10 +2,13 @@ package com.life.decision.support.controller;
 
 import cn.hutool.core.util.StrUtil;
 import com.github.pagehelper.PageInfo;
+import com.life.decision.support.vo.UserInHomeVo;
 import com.life.decision.support.dto.UserInformationDto;
+import com.life.decision.support.enums.ModuleType;
 import com.life.decision.support.pojo.PassWordChangeDto;
 import com.life.decision.support.pojo.UserInformation;
 import com.life.decision.support.service.IUserInformationService;
+import com.life.decision.support.service.impl.ModuleAccessDetailsService;
 import com.life.decision.support.utils.ResultUtils;
 import io.swagger.annotations.Api;
 import lombok.extern.slf4j.Slf4j;
@@ -37,6 +40,8 @@ public class UserInformationController {
 
     @Autowired
     private IUserInformationService userInformationService;
+    @Autowired
+    private ModuleAccessDetailsService moduleAccessDetailsService;
 
     @PostMapping("page")
     @ResponseBody
@@ -54,6 +59,10 @@ public class UserInformationController {
         if (StrUtil.isBlank(userInformation.getId())) {
             return ResultUtils.returnError("查询失败，用户账号信息为空");
         }
+        moduleAccessDetailsService.saveApi(ModuleType.RECIPE,"user/getMsg",userInformation.getId());
+        moduleAccessDetailsService.saveApi(ModuleType.SPORTS,"user/getMsg",userInformation.getId());
+        moduleAccessDetailsService.saveApi(ModuleType.MEDICINE,"user/getMsg",userInformation.getId());
+        moduleAccessDetailsService.saveApi(ModuleType.PSYCHOLOGY,"user/getMsg",userInformation.getId());
         return ResultUtils.returnSuccess(userInformationService.getUserMsg(userInformation));
     }
 
@@ -63,7 +72,12 @@ public class UserInformationController {
         if (StrUtil.isBlank(userInformation.getTelphoneNum())) {
             return ResultUtils.returnError("查询失败，用户账号信息为空");
         }
-        return ResultUtils.returnSuccess(userInformationService.getUserMsg(userInformation));
+        UserInHomeVo userMsg = userInformationService.getUserMsg(userInformation);
+        moduleAccessDetailsService.saveApi(ModuleType.RECIPE,"user/getMsgByTel",userMsg.getId());
+        moduleAccessDetailsService.saveApi(ModuleType.SPORTS,"user/getMsgByTel",userMsg.getId());
+        moduleAccessDetailsService.saveApi(ModuleType.MEDICINE,"user/getMsgByTel",userMsg.getId());
+        moduleAccessDetailsService.saveApi(ModuleType.PSYCHOLOGY,"user/getMsgByTel",userMsg.getId());
+        return ResultUtils.returnSuccess(userMsg);
     }
 
     @PostMapping("changePassword")

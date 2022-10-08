@@ -124,12 +124,26 @@
         where telphone_num = #{telphoneNum}
           and password = #{password}
     </select>
+    <select id="findUserRegisterVo" resultType="com.life.decision.support.vo.DataCountByMouthVo">
+        select count(*) as count,
+               date_format(create_date, '%Y-%m') as date
+        from user_information
+        <where>
+            <if test="startDate != null and startDate != ''">
+                and date_format(create_date,'%Y-%m') &gt;= #{startDate}
+            </if>
+            <if test="endDate != null and endDate != ''">
+                and date_format(create_date,'%Y-%m') &lt;= #{endDate}
+            </if>
+        </where>
+        group by date
+    </select>
 
     <insert id="insert">
         INSERT INTO user_information(id, user_name, telphone_num, password, admin_enable, sex, date_of_birth, height,
                                      weight, educational_level, occupation, marital_status, household_income)
             value (#{id}, #{userName}, #{telphoneNum}, #{password}, #{adminEnable}, #{sex}, #{dateOfBirth}, #{height},
-            #{weight}, #{educationalLevel}, #{occupation},#{maritalStatus},#{householdIncome})
+                   #{weight}, #{educationalLevel}, #{occupation}, #{maritalStatus}, #{householdIncome})
     </insert>
 
     <update id="update">

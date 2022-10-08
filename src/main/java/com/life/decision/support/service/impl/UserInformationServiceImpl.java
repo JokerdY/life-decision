@@ -4,7 +4,7 @@ import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.core.util.IdUtil;
 import cn.hutool.core.util.StrUtil;
 import com.github.pagehelper.PageHelper;
-import com.life.decision.support.dto.UserInHomeVo;
+import com.life.decision.support.vo.UserInHomeVo;
 import com.life.decision.support.dto.UserInformationDto;
 import com.life.decision.support.mapper.UserInformationMapper;
 import com.life.decision.support.pojo.PassWordChangeDto;
@@ -12,6 +12,7 @@ import com.life.decision.support.pojo.QuestionAnswer;
 import com.life.decision.support.pojo.UserInformation;
 import com.life.decision.support.service.IUserInformationService;
 import com.life.decision.support.service.QuestionnaireMsgQueryService;
+import com.life.decision.support.vo.DataCountByMouthVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -185,5 +186,9 @@ public class UserInformationServiceImpl implements IUserInformationService {
         BeanUtil.copyProperties(userInformation, temp);
         temp.setPassword(null);
         return userInformationMapper.update(temp) == 1;
+    }
+
+    public List<DataCountByMouthVo> findUserRegisterVo(String startDate, String endDate) {
+        return userInformationMapper.findUserRegisterVo(startDate, endDate);
     }
 }

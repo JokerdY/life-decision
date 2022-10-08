@@ -1,17 +1,20 @@
 package com.life.decision.support.controller;
 
 import cn.hutool.core.bean.BeanUtil;
+import cn.hutool.core.date.DateUtil;
+import cn.hutool.core.util.IdUtil;
 import cn.hutool.json.JSONArray;
 import cn.hutool.json.JSONObject;
-import com.life.decision.support.dto.AnswerDto;
-import com.life.decision.support.dto.DataAnalysisDto;
-import com.life.decision.support.dto.UserInformationDto;
+import com.life.decision.support.bo.SeriesVo;
+import com.life.decision.support.dto.*;
+import com.life.decision.support.enums.ModuleType;
 import com.life.decision.support.pojo.PsychologicalOutcome;
 import com.life.decision.support.service.PsychologicalOutcomeService;
-import com.life.decision.support.service.impl.QuestionAnswerServiceImpl;
-import com.life.decision.support.service.impl.UserInformationServiceImpl;
+import com.life.decision.support.service.impl.*;
 import com.life.decision.support.utils.ResultUtils;
+import com.life.decision.support.vo.DataAnalysisVo;
 import com.life.decision.support.vo.PsychologicalOutcomeVo;
+import com.life.decision.support.vo.DataCountByMouthVo;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -34,6 +37,12 @@ public class DataAnalysisController {
     QuestionAnswerServiceImpl answerService;
     @Autowired
     PsychologicalOutcomeService psychologicalOutcomeService;
+    @Autowired
+    ModuleAccessDetailsService moduleAccessDetailsService;
+    @Autowired
+    UrlAccessDetailsService urlAccessDetailsService;
+    @Autowired
+    QuestionnaireGroupInformationServiceImpl groupInformationService;
 
     @ResponseBody
     @RequestMapping("basic")
@@ -238,6 +247,93 @@ public class DataAnalysisController {
             data.add(obj);
         }
         result.putOpt("data", data);
+        return result;
+    }
+
+    @RequestMapping("module")
+    @ResponseBody
+    public Map<String, Object> module(@RequestBody ModuleAccessDetailsDto dto) {
+        return ResultUtils.returnPage(moduleAccessDetailsService.pageVo(dto));
+    }
+
+    @RequestMapping("module/name/list")
+    @ResponseBody
+    public List<JSONObject> moduleNameList() {
+        return Arrays.stream(ModuleType.values()).map(s -> {
+            JSONObject temp = new JSONObject();
+            temp.putOpt("id", s.getType());
+            temp.putOpt("name", s.getName());
+            return temp;
+        }).collect(Collectors.toList());
+    }
+
+    public static void main(String[] args) {
+        //(1食谱 2运动 3心理 4中医)
+        StringBuilder s = new StringBuilder("insert into module_access_details (id, type, user_id, create_date, api) values ");
+        for (int i = 0; i < 943; i++) {
+            s.append("('").append(IdUtil.fastSimpleUUID()).append("','3','123','2022-09-29','/history'),\n");
+        }
+        for (int i = 0; i < 142; i++) {
+            s.append("('").append(IdUtil.fastSimpleUUID()).append("','2','123','2022-09-29','/history'),\n");
+        }
+        for (int i = 0; i < 132; i++) {
+            s.append("('").append(IdUtil.fastSimpleUUID()).append("','4','123','2022-09-29','/history'),\n");
+        }
+        for (int i = 0; i < 253; i++) {
+            s.append("('").append(IdUtil.fastSimpleUUID()).append("','1','123','2022-09-29','/history'),\n");
+        }
+        System.out.println(s);
+    }
+
+    @RequestMapping("url/access")
+    @ResponseBody
+    public Map<String, Object> urlAccess(@RequestBody UrlAccessDetailsDto dto) {
+        return ResultUtils.returnPage(urlAccessDetailsService.pageCountVo(dto));
+    }
+
+    @RequestMapping("url/access/name/list")
+    @ResponseBody
+    public List<String> urlAccessNameList() {
+        return urlAccessDetailsService.distinctNameList();
+    }
+
+    @RequestMapping("total/access/num")
+    @ResponseBody
+    public Map<String, Object> totalAccessNum(@RequestBody DataAnalysisDto dto) {
+        List<DataCountByMouthVo> list = moduleAccessDetailsService.findTotalAccessVo(dto.getStartDate(), dto.getEndDate());
+        DataAnalysisVo result = getSingleMouthDataVo(list);
+        return ResultUtils.returnSuccess(result);
+    }
+
+    @RequestMapping("visitor/num")
+    @ResponseBody
+    public Map<String, Object> visitorNum(@RequestBody DataAnalysisDto dto) {
+        List<DataCountByMouthVo> list = userInformationService.findUserRegisterVo(dto.getStartDate(), dto.getEndDate());
+        DataAnalysisVo result = getSingleMouthDataVo(list);
+        return ResultUtils.returnSuccess(result);
+    }
+
+    @RequestMapping("submit/num")
+    @ResponseBody
+    public Map<String, Object> submitNum(@RequestBody DataAnalysisDto dto) {
+        List<DataCountByMouthVo> list = groupInformationService.findUserRegisterVo(dto.getStartDate(), dto.getEndDate());
+        DataAnalysisVo result = getSingleMouthDataVo(list);
+        return ResultUtils.returnSuccess(result);
+    }
+
+    private DataAnalysisVo getSingleMouthDataVo(List<DataCountByMouthVo> list) {
+        DataAnalysisVo result = new DataAnalysisVo();
+        List<String> x = new ArrayList<>();
+        List<SeriesVo> vos = new ArrayList<>();
+        list.sort(Comparator.comparing(s -> DateUtil.parse(s.getDate(), "yyyy-MM")));
+        List<String> data = new ArrayList<>();
+        for (DataCountByMouthVo vo : list) {
+            data.add(vo.getCount() + "");
+            x.add(vo.getDate());
+        }
+        vos.add(new SeriesVo("line", data));
+        result.setXAxis(x);
+        result.setDataList(vos);
         return result;
     }
 

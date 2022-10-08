@@ -7,7 +7,7 @@ import cn.hutool.json.JSONObject;
 import cn.hutool.json.JSONUtil;
 import com.life.decision.support.common.URL;
 import com.life.decision.support.controller.QuestionnaireResultsController;
-import com.life.decision.support.dto.UserInHomeVo;
+import com.life.decision.support.vo.UserInHomeVo;
 import com.life.decision.support.pojo.*;
 import com.life.decision.support.service.PsychologicalOutcomeService;
 import com.life.decision.support.service.impl.*;
@@ -17,8 +17,6 @@ import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
-import java.util.Arrays;
-import java.util.List;
 import java.util.function.BiConsumer;
 
 @Component
@@ -39,8 +37,8 @@ public class PyHttp {
     @Autowired
     private UserInformationServiceImpl userInformationService;
 
-    private static final List<String> removeList = Arrays.asList("215", "216", "217", "218", "219",
-            "220", "221", "222", "223", "224");
+//    private static final List<String> removeList = Arrays.asList("215", "216", "217", "218", "219",
+//            "220", "221", "222", "223", "224");
 
 
     @Transactional
@@ -136,9 +134,6 @@ public class PyHttp {
         userObj.putOpt("性别", userMsg.getSexDto());
         userObj.putOpt("年龄", userMsg.getAge());
         questionnaire.putOpt("user", userObj);
-        // 删除不需要传输的问题
-        JSONArray jsonArray = questionnaire.getJSONArray("4");
-        jsonArray.removeIf(obj -> removeList.contains(((JSONObject) obj).getStr("id")));
         String result = HttpUtil.post(URL.PY_URL.getUrl(), resultByGroupId.toString());
         log.info("pyResult:{}", result);
         log.info("resultByGroupId:{}", resultByGroupId.toString());

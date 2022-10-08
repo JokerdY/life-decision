@@ -3,7 +3,9 @@ package com.life.decision.support.mapper;
 import com.life.decision.support.dto.UserInformationDto;
 import com.life.decision.support.pojo.PassWordChangeDto;
 import com.life.decision.support.pojo.UserInformation;
+import com.life.decision.support.vo.DataCountByMouthVo;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -33,4 +35,6 @@ public interface UserInformationMapper {
 
     int changePassword(PassWordChangeDto dto);
 
+    List<DataCountByMouthVo> findUserRegisterVo(@Param("startDate") String startDate,
+                                                @Param("endDate") String endDate);
 }

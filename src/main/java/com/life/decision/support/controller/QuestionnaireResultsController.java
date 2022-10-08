@@ -6,6 +6,7 @@ import cn.hutool.core.util.StrUtil;
 import cn.hutool.json.JSONArray;
 import cn.hutool.json.JSONObject;
 import com.life.decision.support.dto.*;
+import com.life.decision.support.enums.ModuleType;
 import com.life.decision.support.http.PyHttp;
 import com.life.decision.support.http.PyKey;
 import com.life.decision.support.mapper.QuestionInformationMapper;
@@ -14,10 +15,7 @@ import com.life.decision.support.result.QuestionInformationResultDto;
 import com.life.decision.support.service.IQuestionAnswerService;
 import com.life.decision.support.service.IQuestionnaireGroupInformationService;
 import com.life.decision.support.service.IQuestionnaireSubmitInformationService;
-import com.life.decision.support.service.impl.ChineseMedicineServiceImpl;
-import com.life.decision.support.service.impl.PsychologyResultServiceImpl;
-import com.life.decision.support.service.impl.RecipeResultServiceImpl;
-import com.life.decision.support.service.impl.SportsResultServiceImpl;
+import com.life.decision.support.service.impl.*;
 import com.life.decision.support.utils.ResultUtils;
 import com.life.decision.support.vo.ChineseMedicineVo;
 import com.life.decision.support.vo.PsychologyResultVo;
@@ -55,6 +53,8 @@ public class QuestionnaireResultsController {
     private RecipeResultServiceImpl recipeResultService;
     @Autowired
     private ChineseMedicineServiceImpl chineseMedicineService;
+    @Autowired
+    private ModuleAccessDetailsService moduleAccessDetailsService;
 
 
     @RequestMapping("changeRecipe")
@@ -115,6 +115,7 @@ public class QuestionnaireResultsController {
             return ResultUtils.returnError("用户id缺失");
         }
         RecipeResultVo vo = recipeResultService.getResultVo(dto);
+        moduleAccessDetailsService.saveApi(ModuleType.RECIPE,"result/recipe",userId);
         return ResultUtils.returnSuccess(vo);
     }
 
@@ -178,6 +179,7 @@ public class QuestionnaireResultsController {
         }
         // 获取当天的数据
         SportResultVo sportResultVo = sportsResultService.getVo(dto);
+        moduleAccessDetailsService.saveApi(ModuleType.SPORTS,"result/sports",userId);
         return ResultUtils.returnSuccess(sportResultVo);
     }
 
@@ -205,6 +207,7 @@ public class QuestionnaireResultsController {
             return ResultUtils.returnError("用户id缺失");
         }
         PsychologyResultVo vo = psychologyResultService.getVo(dto);
+        moduleAccessDetailsService.saveApi(ModuleType.PSYCHOLOGY,"result/psychology",userId);
         return ResultUtils.returnSuccess(vo);
     }
 
@@ -218,6 +221,7 @@ public class QuestionnaireResultsController {
             return ResultUtils.returnError("用户id缺失");
         }
         ChineseMedicineVo vo = chineseMedicineService.getVo(dto);
+        moduleAccessDetailsService.saveApi(ModuleType.MEDICINE,"result/medicine",userId);
         return ResultUtils.returnSuccess(vo);
     }
 

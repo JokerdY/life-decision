@@ -1,7 +1,8 @@
-package com.life.decision.support.dto;
+package com.life.decision.support.vo;
 
 import com.life.decision.support.bo.ContentAdvice;
 import com.life.decision.support.bo.UrlAdvice;
+import com.life.decision.support.dto.UserInformationDto;
 import lombok.Data;
 
 @Data

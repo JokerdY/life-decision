@@ -82,6 +82,24 @@
         order by update_date desc
         limit 1
     </select>
+    <select id="findUserRegisterVo" resultType="com.life.decision.support.vo.DataCountByMouthVo">
+        select count(*) as count, date_format(a.create_date, '%Y-%m') as date
+        from (select group_id,
+        count(*) as count,
+        min(create_date) as create_date
+        from questionnaire_group_information
+        <where>
+            <if test="startDate != null and startDate != ''">
+                and date_format(create_date,'%Y-%m') &gt;= #{startDate}
+            </if>
+            <if test="endDate != null and endDate != ''">
+                and date_format(update_date,'%Y-%m') &lt;= #{endDate}
+            </if>
+        </where>
+        group by group_id
+        having count = (select count(*) from questionnaire_information)) a
+        group by date
+    </select>
 
     <insert id="insert">
         INSERT INTO questionnaire_group_information

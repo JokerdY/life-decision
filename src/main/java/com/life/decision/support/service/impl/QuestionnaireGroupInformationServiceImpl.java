@@ -6,6 +6,7 @@ import com.life.decision.support.mapper.QuestionnaireGroupInformationMapper;
 import com.life.decision.support.mapper.QuestionnaireSubmitInformationMapper;
 import com.life.decision.support.pojo.QuestionnaireGroupInformation;
 import com.life.decision.support.service.IQuestionnaireGroupInformationService;
+import com.life.decision.support.vo.DataCountByMouthVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -77,4 +78,7 @@ public class QuestionnaireGroupInformationServiceImpl implements IQuestionnaireG
         return mapper.getBySubmitId(submitId);
     }
 
+    public List<DataCountByMouthVo> findUserRegisterVo(String startDate, String endDate) {
+        return mapper.findUserRegisterVo(startDate, endDate);
+    }
 }
