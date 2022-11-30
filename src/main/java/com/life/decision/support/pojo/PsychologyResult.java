@@ -15,4 +15,7 @@ public class PsychologyResult {
     private String advice;
     private String healthEducation;
     private String groupId;
+    private String physical;
+    private String queryStartCreateDate;
+    private String queryEndCreateDate;
 }

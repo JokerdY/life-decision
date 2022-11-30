@@ -27,7 +27,8 @@ public class WebMvcConfig implements WebMvcConfigurer {
                         "/sysDict/**",
                         "/**/*.html",
                         "/**/*.js",
-                        "/**/*.css"
+                        "/**/*.css",
+                        "/script/**"
                 );
     }
     @Override

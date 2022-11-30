@@ -191,4 +191,8 @@ public class UserInformationServiceImpl implements IUserInformationService {
     public List<DataCountByMouthVo> findUserRegisterVo(String startDate, String endDate) {
         return userInformationMapper.findUserRegisterVo(startDate, endDate);
     }
+
+    public Double getKcal(Double emt, Double minute, Double weight) {
+        return emt * minute * weight;
+    }
 }

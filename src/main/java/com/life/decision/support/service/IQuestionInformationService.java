@@ -18,4 +18,6 @@ public interface IQuestionInformationService  {
     List<QuestionInformationDto> listById(String questionnaireId);
 
     List<QuestionInformationDto> findEditList(QuestionAnswer questionAnswer);
+
+    QuestionInformationDto findDto(String questionId);
 }

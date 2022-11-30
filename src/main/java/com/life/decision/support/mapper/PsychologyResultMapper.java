@@ -24,4 +24,6 @@ public interface PsychologyResultMapper {
     List<PsychologyResult> listByEntity(PsychologyResult entity);
 
     PsychologyResult selectBySubmitId(@Param("submitId") String submitId);
+
+    List<PsychologyResult> listDistinctUserByEntity(PsychologyResult result);
 }

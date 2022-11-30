@@ -22,7 +22,12 @@
     <select id="findList" resultType="com.life.decision.support.pojo.OptionInformation">
         select *
         from option_information
-        where id = #{id}
+        <where>
+            <if test="questionId != null and questionId != null">
+                question_id = #{questionId}
+            </if>
+        </where>
+        order by option_sort
     </select>
     <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
         delete

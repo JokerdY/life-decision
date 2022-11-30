@@ -21,7 +21,15 @@
         from question_answer a
                  join (select max(create_date) as date, user_id
                        from question_answer
-                       where question_id = #{questionId}
+                       <where>
+                           and question_id = #{questionId}
+                           <if test="dto != null and dto.startDate != null and dto.startDate != ''">
+                                and create_date &gt;= #{dto.startDate}
+                           </if>
+                           <if test="dto != null and dto.endDate != null and dto.endDate != ''">
+                                and create_date &lt;= #{dto.endDate}
+                           </if>
+                       </where>
                        group by user_id) b on a.user_id = b.user_id
             and a.create_date = b.date
                  join option_information oi on a.question_id = oi.question_id and a.option_id = oi.id

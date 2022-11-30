@@ -70,6 +70,10 @@ public class UserInformationDto extends PageDto {
 
     private String age;
 
+    private String queryStartDateStart;
+
+    private String queryStartDateEnd;
+
     public String getAge() {
         LocalDate localDate = dateOfBirth.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
         LocalDate now = LocalDate.now();

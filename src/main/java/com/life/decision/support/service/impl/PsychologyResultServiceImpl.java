@@ -5,9 +5,11 @@ import cn.hutool.core.util.StrUtil;
 import cn.hutool.json.JSONArray;
 import cn.hutool.json.JSONObject;
 import cn.hutool.json.JSONUtil;
+import com.life.decision.support.http.PyHttp;
 import com.life.decision.support.mapper.PsychologyResultMapper;
 import com.life.decision.support.pojo.PsychologyResult;
 import com.life.decision.support.bo.ContentAdvice;
+import com.life.decision.support.pojo.QuestionnaireGroupInformation;
 import com.life.decision.support.vo.PsychologyResultVo;
 import com.life.decision.support.bo.UrlAdvice;
 import lombok.extern.slf4j.Slf4j;
@@ -26,6 +28,32 @@ import java.util.stream.Collectors;
 public class PsychologyResultServiceImpl {
     @Autowired
     PsychologyResultMapper mapper;
+    @Autowired
+    PyHttp pyHttp;
+
+    public int uploadScript() {
+        int count = 0;
+        List<PsychologyResult> psychologyResults = mapper.listByEntity(new PsychologyResult());
+        for (PsychologyResult psychologyResult : psychologyResults) {
+            if (StrUtil.isBlank(psychologyResult.getPhysical())) {
+                String groupId = psychologyResult.getGroupId();
+                try {
+                    if (StrUtil.isNotBlank(groupId)) {
+                        QuestionnaireGroupInformation entity = new QuestionnaireGroupInformation();
+                        entity.setGroupId(groupId);
+                        entity.setUserId(psychologyResult.getUserId());
+                        JSONObject pyResult = pyHttp.getPyResult(entity);
+                        psychologyResult.setPhysical(pyResult.getStr("Physical"));
+                        count += mapper.updateByPrimaryKeySelective(psychologyResult);
+                    }
+                } catch (Exception e) {
+                    log.error("历史数据导入异常", e);
+                }
+            }
+        }
+        return count;
+    }
+
 
     public void saveOrUpdateByUserId(PsychologyResult entity) {
         if (mapper.selectByEntity(entity) != null) {
@@ -65,6 +93,9 @@ public class PsychologyResultServiceImpl {
 
     public List<PsychologyResult> listByEntity(PsychologyResult result) {
         return mapper.listByEntity(result);
+    }
+    public List<PsychologyResult> listDistinctUserByEntity(PsychologyResult result) {
+        return mapper.listDistinctUserByEntity(result);
     }
 
     public ContentAdvice getAdvice(String userId) {

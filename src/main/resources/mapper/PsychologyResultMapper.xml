@@ -8,12 +8,13 @@
         <result column="advice" property="advice" jdbcType="VARCHAR"/>
         <result column="health_education" property="healthEducation" jdbcType="VARCHAR"/>
         <result column="group_id" property="groupId" jdbcType="VARCHAR"/>
+        <result column="physical" property="physical" jdbcType="VARCHAR"/>
         <result column="create_date" property="createDate" jdbcType="TIMESTAMP"/>
         <result column="update_date" property="updateDate" jdbcType="TIMESTAMP"/>
     </resultMap>
 
     <sql id="Base_Column_List">
-        id, user_id, result, advice, create_date, update_date,health_education,group_id
+        id, user_id, result, advice, create_date, update_date,health_education,group_id,physical
     </sql>
     <select id="selectByEntity" resultMap="BaseResultMap">
         select
@@ -34,8 +35,18 @@
     <select id="listByEntity" resultType="com.life.decision.support.pojo.PsychologyResult">
         select
         <include refid="Base_Column_List"/>
-        from recipe_result
-        where user_id = #{userId}
+        from psychology_result
+        <where>
+            <if test="userId != null and userId != ''">
+                and user_id = #{userId}
+            </if>
+            <if test="queryStartCreateDate != null">
+                and a.create_date &lt;= #{queryStartCreateDate}
+            </if>
+            <if test="queryEndCreateDate != null">
+                and a.create_date &gt;= #{queryEndCreateDate}
+            </if>
+        </where>
     </select>
 
     <select id="selectBySubmitId" resultType="com.life.decision.support.pojo.PsychologyResult">
@@ -46,6 +57,22 @@
         order by a.update_date desc
         limit 1;
     </select>
+    <select id="listDistinctUserByEntity" resultType="com.life.decision.support.pojo.PsychologyResult">
+        select a.* from psychology_result a
+        join (select max(create_date) as createDate ,user_id
+        from psychology_result
+        <where>
+            <if test="queryStartCreateDate != null">
+                and create_date &gt;= #{queryStartCreateDate}
+            </if>
+            <if test="queryEndCreateDate != null">
+                and create_date &lt;= #{queryEndCreateDate}
+            </if>
+        </where>
+        group by user_id
+        ) b
+        on b.createDate = a.create_date and b.user_id = a.user_id ;
+    </select>
 
     <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
         delete
@@ -54,8 +81,8 @@
     </delete>
     <insert id="insert">
         insert into psychology_result (id, group_id, user_id, advice, result, create_date, update_date,
-                                       health_education)
-        values (#{id}, #{groupId}, #{userId}, #{advice}, #{result}, NOW(), NOW(), #{healthEducation})
+                                       health_education, physical)
+        values (#{id}, #{groupId}, #{userId}, #{advice}, #{result}, NOW(), NOW(), #{healthEducation}, #{physical})
     </insert>
     <insert id="insertSelective">
         insert into psychology_result
@@ -84,6 +111,9 @@
             <if test="groupId != null">
                 group_id,
             </if>
+            <if test="physical != null">
+                physical,
+            </if>
         </trim>
         <trim prefix="values (" suffix=")" suffixOverrides=",">
             <if test="id != null">
@@ -110,13 +140,17 @@
             <if test="groupId != null">
                 #{groupId},
             </if>
+            <if test="physical != null">
+                #{physical},
+            </if>
         </trim>
     </insert>
     <update id="updateByPrimaryKeySelective">
         update psychology_result
-        set advice           = #{advice},
-            result           = #{result},
-            update_date      = NOW()
+        set advice      = #{advice},
+            result      = #{result},
+            physical    = #{physical},
+            update_date = NOW()
         where id = #{id}
     </update>
 

@@ -63,6 +63,7 @@ public class PyHttp {
         psychologyResult.setHealthEducation(mental.getStr("健康教育"));
         psychologyResult.setId(IdUtil.fastSimpleUUID());
         psychologyResult.setGroupId(entity.getGroupId());
+        psychologyResult.setPhysical(pyResult.getStr("Physical"));
         psychologyResultService.save(psychologyResult);
         JSONObject tcm = pyResult.getJSONObject(PyKey.TCM.getKey());
         ChineseMedicine chineseMedicine = new ChineseMedicine();

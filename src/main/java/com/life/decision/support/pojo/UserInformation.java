@@ -72,4 +72,8 @@ public class UserInformation {
      * 家庭收入
      */
     private Integer householdIncome;
+
+    private String queryStartDateStart;
+
+    private String queryStartDateEnd;
 }

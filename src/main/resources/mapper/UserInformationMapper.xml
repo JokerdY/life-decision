@@ -116,6 +116,12 @@
             <if test="householdIncome != null and householdIncome != ''">
                 AND a.household_income = #{householdIncome}
             </if>
+            <if test="queryStartDateStart != null and queryStartDateStart != ''">
+                AND a.create_date &gt;= #{queryStartDateStart}
+            </if>
+            <if test="queryStartDateEnd != null and queryStartDateEnd != ''">
+                AND a.create_date &lt;= #{queryStartDateEnd}
+            </if>
         </where>
     </select>
     <select id="verifyIdentified" resultType="java.lang.Integer">

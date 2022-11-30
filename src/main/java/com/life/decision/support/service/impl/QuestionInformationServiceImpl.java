@@ -53,6 +53,11 @@ public class QuestionInformationServiceImpl implements IQuestionInformationServi
         return list;
     }
 
+    @Override
+    public QuestionInformationDto findDto(String questionId) {
+        return informationMapper.getDto(questionId);
+    }
+
     private void uploadAnswer(List<QuestionAnswer> answerList, QuestionInformationDto dto) {
         answerList.stream()
                 .filter(s -> s.getQuestionId().equals(dto.getId()))
