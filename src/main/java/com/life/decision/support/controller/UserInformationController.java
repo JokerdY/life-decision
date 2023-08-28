@@ -2,7 +2,6 @@ package com.life.decision.support.controller;
 
 import cn.hutool.core.util.StrUtil;
 import com.github.pagehelper.PageInfo;
-import com.life.decision.support.vo.UserInHomeVo;
 import com.life.decision.support.dto.UserInformationDto;
 import com.life.decision.support.enums.ModuleType;
 import com.life.decision.support.pojo.PassWordChangeDto;
@@ -10,7 +9,7 @@ import com.life.decision.support.pojo.UserInformation;
 import com.life.decision.support.service.IUserInformationService;
 import com.life.decision.support.service.impl.ModuleAccessDetailsService;
 import com.life.decision.support.utils.ResultUtils;
-import io.swagger.annotations.Api;
+import com.life.decision.support.vo.UserInHomeVo;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -32,7 +31,6 @@ import java.util.function.Predicate;
  * @author Joker
  * @since 2022-03-06
  */
-@Api(tags = "用户信息接口")
 @Slf4j
 @Controller
 @RequestMapping("/userInformation")
