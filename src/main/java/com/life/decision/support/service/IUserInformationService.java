@@ -1,6 +1,6 @@
 package com.life.decision.support.service;
 
-import com.life.decision.support.dto.UserInHomeVo;
+import com.life.decision.support.vo.UserInHomeVo;
 import com.life.decision.support.dto.UserInformationDto;
 import com.life.decision.support.pojo.PassWordChangeDto;
 import com.life.decision.support.pojo.UserInformation;

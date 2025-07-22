@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.life.decision.support.mapper.SportsResultMapper">
+    <resultMap id="BaseResultMap" type="com.life.decision.support.pojo.SportsResult">
+        <id column="id" property="id" jdbcType="VARCHAR"/>
+        <result column="user_id" property="userId" jdbcType="VARCHAR"/>
+        <result column="r_date" property="rDate" jdbcType="TIMESTAMP"/>
+        <result column="warm_up_before_exercise" property="warmUpBeforeExercise" jdbcType="VARCHAR"/>
+        <result column="specific_sports" property="specificSports" jdbcType="VARCHAR"/>
+        <result column="stretching_after_exercise" property="stretchingAfterExercise" jdbcType="VARCHAR"/>
+        <result column="create_date" property="createDate" jdbcType="TIMESTAMP"/>
+        <result column="update_date" property="updateDate" jdbcType="TIMESTAMP"/>
+        <result column="health_education" property="healthEducation" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id, warm_up_before_exercise, specific_sports, stretching_after_exercise, health_education, r_date, user_id, create_date, update_date
+    </sql>
+    <select id="selectByEntity" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from sports_result
+        where user_id = #{userId}
+        <if test="rDate != null">
+            and r_date = #{rDate}
+        </if>
+        <if test="queryDate != null">
+            and r_date = #{queryDate}
+        </if>
+    </select>
+    <select id="listByEntity" resultType="com.life.decision.support.pojo.SportsResult">
+        select
+        <include refid="Base_Column_List"/>
+        from sports_result
+        where user_id = #{userId}
+    </select>
+    <select id="listByYearAndMouth" resultType="java.lang.String">
+        select date_format(r_date, '%Y-%m-%d')
+        from sports_result
+        where user_id = #{userId}
+          and date_format(r_date, '%Y-%m') = #{yearAndMouth}
+    </select>
+
+    <select id="selectById" resultType="com.life.decision.support.pojo.SportsResult">
+        select
+        <include refid="Base_Column_List"/>
+        from sports_result
+        where id = #{id}
+    </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+        delete
+        from sports_result
+        where id = #{id,jdbcType=VARCHAR}
+    </delete>
+    <insert id="insert">
+        insert into sports_result (id, user_id, r_date, warm_up_before_exercise, specific_sports,
+                                   stretching_after_exercise, create_date, update_date,
+                                   health_education)
+        values (#{id}, #{userId}, #{rDate}, #{warmUpBeforeExercise}, #{specificSports}, #{stretchingAfterExercise},
+                NOW(), NOW(), #{healthEducation})
+    </insert>
+    <insert id="insertSelective">
+        insert into sports_result
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="userId != null">
+                user_id,
+            </if>
+            <if test="rDate != null">
+                r_date,
+            </if>
+            <if test="warmUpBeforeExercise != null">
+                warm_up_before_exercise,
+            </if>
+            <if test="specificSports != null">
+                specific_sports,
+            </if>
+            <if test="stretchingAfterExercise != null">
+                stretching_after_exercise,
+            </if>
+            <if test="createDate != null">
+                create_date,
+            </if>
+            <if test="updateDate != null">
+                update_date,
+            </if>
+            <if test="healthEducation != null">
+                health_education,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=VARCHAR},
+            </if>
+            <if test="userId != null">
+                #{userId},
+            </if>
+            <if test="rDate != null">
+                #{rDate},
+            </if>
+            <if test="warmUpBeforeExercise != null">
+                #{warmUpBeforeExercise},
+            </if>
+            <if test="specificSports != null">
+                #{specificSports},
+            </if>
+            <if test="stretchingAfterExercise != null">
+                #{stretchingAfterExercise},
+            </if>
+            <if test="createDate != null">
+                NOW(),
+            </if>
+            <if test="updateDate != null">
+                NOW(),
+            </if>
+            <if test="healthEducation != null">
+                #{healthEducation},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective">
+        update sports_result
+        set warm_up_before_exercise   = #{warmUpBeforeExercise},
+            specific_sports           = #{specificSports},
+            stretching_after_exercise = #{stretchingAfterExercise},
+            update_date               = NOW(),
+            health_education          = #{healthEducation}
+        where id = #{id}
+    </update>
+
+</mapper>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.life.decision.support.mapper.UrlAccessDetailsMapper">
+    <resultMap id="BaseResultMap" type="com.life.decision.support.pojo.UrlAccessDetails">
+        <id column="id" property="id" jdbcType="VARCHAR"/>
+        <result column="user_id" property="userId" jdbcType="VARCHAR"/>
+        <result column="url_name" property="urlName" jdbcType="VARCHAR"/>
+        <result column="url" property="url" jdbcType="VARCHAR"/>
+        <result column="type" property="type" jdbcType="VARCHAR"/>
+        <result column="create_date" property="createDate" jdbcType="TIMESTAMP"/>
+    </resultMap>
+    <resultMap id="VoResultMap" type="com.life.decision.support.vo.UrlAccessCountVo">
+        <id column="id" property="id" jdbcType="VARCHAR"/>
+        <result column="url_name" property="urlName" jdbcType="VARCHAR"/>
+        <result column="url" property="url" jdbcType="VARCHAR"/>
+        <result column="type" property="type" jdbcType="VARCHAR"/>
+        <result column="count" property="count" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <select id="selectVoList" resultMap="VoResultMap">
+        select a.id, a.url_name, a.url, a.type, count(*) as count
+        from url_access_details a
+        <where>
+            <if test="queryStartDate != null">
+                and a.create_date &lt;= #{queryStartDate}
+            </if>
+            <if test="queryEndDate != null">
+                and a.create_date &gt;= #{queryEndDate}
+            </if>
+            <if test="urlName != null">
+                and a.url_name like concat('%',#{urlName},'%')
+            </if>
+        </where>
+        group by url_name
+    </select>
+    <select id="selectDistinctName" resultType="java.lang.String">
+        select distinct url_name from url_access_details
+    </select>
+
+    <insert id="insert">
+        insert into url_access_details (id, url, user_id, url_name, type)
+        values (#{id},
+                #{url},
+                #{userId},
+                #{urlName},
+                #{type})
+    </insert>
+
+</mapper>

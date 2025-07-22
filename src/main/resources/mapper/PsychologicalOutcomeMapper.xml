@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.life.decision.support.mapper.PsychologicalOutcomeMapper">
+    <resultMap id="BaseResultMap" type="com.life.decision.support.pojo.PsychologicalOutcome">
+        <id column="id" property="id" jdbcType="VARCHAR"/>
+        <result column="user_id" property="userId" jdbcType="VARCHAR"/>
+        <result column="anxiety" property="anxiety" jdbcType="VARCHAR"/>
+        <result column="depression" property="depression" jdbcType="VARCHAR"/>
+        <result column="pressure" property="pressure" jdbcType="VARCHAR"/>
+        <result column="create_date" property="createDate" jdbcType="TIMESTAMP"/>
+        <result column="update_date" property="updateDate" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id, user_id, anxiety, depression, pressure, create_date, update_date
+    </sql>
+
+    <select id="listByEntity" resultType="com.life.decision.support.pojo.PsychologicalOutcome">
+        select
+        <include refid="Base_Column_List"/>
+        from psychological_outcome
+        where user_id = #{userId}
+    </select>
+
+    <select id="selectLatestByEntity" resultType="com.life.decision.support.pojo.PsychologicalOutcome">
+        select a.*
+        from psychological_outcome a
+                 join (select user_id, max(update_date) as date
+                       from psychological_outcome
+                       group by user_id) b on a.user_id = b.user_id and a.update_date = b.date
+    </select>
+
+    <insert id="insert">
+        insert into psychological_outcome (id, user_id, anxiety, depression, pressure, create_date, update_date)
+        values (#{id}, #{userId}, #{anxiety}, #{depression}, #{pressure}, NOW(), NOW())
+    </insert>
+
+</mapper>

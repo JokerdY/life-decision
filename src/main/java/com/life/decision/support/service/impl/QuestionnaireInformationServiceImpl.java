@@ -60,6 +60,8 @@ public class QuestionnaireInformationServiceImpl implements IQuestionnaireInform
             groupList = questionnaireGroupInformationMapper.findList(groupInfo);
         }
         // 查询是否存在最大的groupId 且问卷数量
+
+        // 判断问卷填写时间是否小于三个月 三个月内则禁止填写
         for (QuestionnaireInformationUserDto questionnaire : listInUser) {
             Optional<QuestionnaireGroupInformation> groupInformation = groupList.stream().filter(group -> questionnaire.getId().equals(group.getQuestionnaireId())).findAny();
             if (groupInformation.isPresent()) {

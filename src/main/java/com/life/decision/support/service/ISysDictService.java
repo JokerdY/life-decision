@@ -18,4 +18,6 @@ public interface ISysDictService {
 
     List<SysDictDto> dictList(String columnName);
 
+    SysDictDto getDict(String columnName, String columnValue);
+
 }

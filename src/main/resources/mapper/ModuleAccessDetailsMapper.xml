@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.life.decision.support.mapper.ModuleAccessDetailsMapper">
+
+    <resultMap id="VoCountResultMap" type="com.life.decision.support.vo.ModuleAccessCountVo">
+        <id column="id" property="id" jdbcType="VARCHAR"/>
+        <result column="type" property="type" jdbcType="VARCHAR"/>
+        <result column="api" property="api" jdbcType="VARCHAR"/>
+        <result column="count" property="count" jdbcType="INTEGER"/>
+        <association property="user" javaType="com.life.decision.support.pojo.UserInformation"
+                     columnPrefix="u_">
+            <id column="user_id" property="id" jdbcType="VARCHAR"/>
+            <result column="user_name" property="userName" jdbcType="VARCHAR"/>
+            <result column="telphone_num" property="telphoneNum" jdbcType="VARCHAR"/>
+        </association>
+    </resultMap>
+
+    <resultMap id="VoResultMap" type="com.life.decision.support.vo.ModuleAccessDetailsVo">
+        <id column="id" property="id" jdbcType="VARCHAR"/>
+        <result column="type" property="type" jdbcType="VARCHAR"/>
+        <result column="create_date" property="date" jdbcType="TIMESTAMP"/>
+        <association property="user" javaType="com.life.decision.support.pojo.UserInformation"
+                     columnPrefix="u_">
+            <id column="user_id" property="id" jdbcType="VARCHAR"/>
+            <result column="user_name" property="userName" jdbcType="VARCHAR"/>
+            <result column="telphone_num" property="telphoneNum" jdbcType="VARCHAR"/>
+        </association>
+    </resultMap>
+
+    <select id="selectVoListWithOutAccess" resultMap="VoResultMap">
+        select a.*,
+        u.id as u_user_id,
+        u.user_name as u_user_name,
+        u.telphone_num as u_telphone_num
+        from module_access_details a
+        left join user_information u on a.user_id = u.id
+        <where>
+            <if test="queryStartDate != null">
+                and date_format(a.create_date,'%Y-%m-%d') &gt;= date_format(#{queryStartDate},'%Y-%m-%d')
+            </if>
+            <if test="queryEndDate != null">
+                and date_format(a.create_date,'%Y-%m-%d') &lt;= date_format(#{queryEndDate},'%Y-%m-%d')
+            </if>
+            <if test="userName != null and userName != ''">
+                and u.user_name like concat('%', #{userName},'%')
+            </if>
+            <if test="type != null and type != ''">
+                and a.type = #{type}
+            </if>
+            and a.type != '-1'
+        </where>
+        order by a.create_date desc
+    </select>
+
+    <select id="selectCountVoList" resultMap="VoCountResultMap">
+        select a.*,
+        u.id as u_user_id,
+        u.user_name as u_user_name,
+        u.telphone_num as u_telphone_num
+        from (select a.id, a.user_id, a.type, count(*) as count,a.api
+        from module_access_details a
+        <where>
+            <if test="queryStartDate != null">
+                and a.create_date &lt;= #{queryStartDate}
+            </if>
+            <if test="queryEndDate != null">
+                and a.create_date &gt;= #{queryEndDate}
+            </if>
+            <if test="userName != null and userName != ''">
+                and a.user_name like concat('%', #{userName},'%')
+            </if>
+        </where>
+        group by user_id) a
+        left join user_information u on a.user_id = u.id
+    </select>
+    <select id="findUserRegisterVo" resultType="com.life.decision.support.vo.DataCountByMouthVo">
+        select count(*) as count,
+        date_format(create_date, '%Y-%m') as date
+        from module_access_details
+        <where>
+            and type = '-1'
+            <if test="startDate != null and startDate != ''">
+                and date_format(create_date,'%Y-%m') &gt;= #{startDate}
+            </if>
+            <if test="endDate != null and endDate != ''">
+                and date_format(create_date,'%Y-%m') &lt;= #{endDate}
+            </if>
+        </where>
+        group by date
+    </select>
+    <insert id="insert">
+        insert into module_access_details (id, type, user_id, api)
+        values (#{id},
+                #{type},
+                #{userId},
+                #{api})
+    </insert>
+
+</mapper>

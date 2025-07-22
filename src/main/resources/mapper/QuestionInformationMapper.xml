@@ -85,6 +85,16 @@ sd.convert_name as 'big_label'
         order by a.questionnaire_id, cast(a.big_label_id as SIGNED INTEGER), a.question_sort, b.option_sort
     </select>
 
+    <select id="getDto" resultMap="BaseResultMap" parameterType="java.lang.String">
+        SELECT
+        <include refid="baseColumnList"/>
+        FROM (SELECT * FROM question_information WHERE parent_id IS NULL) a
+        <include refid="leftJoin"/>
+        <if test="questionId != null and questionId != '' ">
+            where a.id = #{questionId}
+        </if>
+    </select>
+
     <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
         delete
         from question_information

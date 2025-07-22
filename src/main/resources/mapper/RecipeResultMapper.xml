@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.life.decision.support.mapper.RecipeResultMapper">
+    <resultMap id="BaseResultMap" type="com.life.decision.support.pojo.RecipeResult">
+        <id column="id" property="id" jdbcType="VARCHAR"/>
+        <result column="user_id" property="userId" jdbcType="VARCHAR"/>
+        <result column="r_date" property="rDate" jdbcType="TIMESTAMP"/>
+        <result column="breakfast" property="breakfast" jdbcType="VARCHAR"/>
+        <result column="lunch" property="lunch" jdbcType="VARCHAR"/>
+        <result column="dinner" property="dinner" jdbcType="VARCHAR"/>
+        <result column="create_date" property="createDate" jdbcType="TIMESTAMP"/>
+        <result column="update_date" property="updateDate" jdbcType="TIMESTAMP"/>
+        <result column="dietary_advice" property="dietaryAdvice" jdbcType="VARCHAR"/>
+        <result column="total_calories" property="totalCalories" jdbcType="VARCHAR"/>
+        <result column="health_education" property="healthEducation" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id, user_id, r_date, breakfast, lunch, dinner,
+            create_date, update_date, dietary_advice, total_calories, health_education
+    </sql>
+    <select id="selectByEntity" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from recipe_result
+        where user_id = #{userId}
+        <if test="rDate != null">
+            and r_date = #{rDate}
+        </if>
+        <if test="queryDate != null">
+            and r_date = #{queryDate}
+        </if>
+    </select>
+    <select id="listByEntity" resultType="com.life.decision.support.pojo.RecipeResult">
+        select
+        <include refid="Base_Column_List"/>
+        from recipe_result
+        where user_id = #{userId}
+    </select>
+    <select id="listByYearAndMouth" resultType="java.lang.String">
+        select date_format(r_date, '%Y-%m-%d')
+        from recipe_result
+        where user_id = #{userId}
+          and date_format(r_date, '%Y-%m') = #{yearAndMouth}
+    </select>
+    <select id="selectById" resultType="com.life.decision.support.pojo.RecipeResult">
+        select
+        <include refid="Base_Column_List"/>
+        from recipe_result
+        where id = #{id}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+        delete
+        from recipe_result
+        where id = #{id,jdbcType=VARCHAR}
+    </delete>
+    <insert id="insert" parameterType="com.life.decision.support.pojo.RecipeResult">
+        insert into recipe_result (id, user_id, r_date, breakfast, lunch, dinner, create_date, update_date,
+                                   dietary_advice, total_calories, health_education)
+        values (#{id}, #{userId}, #{rDate}, #{breakfast}, #{lunch}, #{dinner},
+                NOW(), NOW(),
+                #{dietaryAdvice}, #{totalCalories}, #{healthEducation})
+    </insert>
+    <insert id="insertSelective" parameterType="com.life.decision.support.pojo.RecipeResult">
+        insert into recipe_result
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="userId != null">
+                user_id,
+            </if>
+            <if test="rDate != null">
+                r_date,
+            </if>
+            <if test="breakfast != null">
+                breakfast,
+            </if>
+            <if test="lunch != null">
+                lunch,
+            </if>
+            <if test="dinner != null">
+                dinner,
+            </if>
+            <if test="createDate != null">
+                create_date,
+            </if>
+            <if test="updateDate != null">
+                update_date,
+            </if>
+            <if test="dietaryAdvice != null">
+                dietary_advice,
+            </if>
+            <if test="totalCalories != null">
+                total_calories,
+            </if>
+            <if test="healthEducation != null">
+                health_education,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=VARCHAR},
+            </if>
+            <if test="userId != null">
+                #{userId},
+            </if>
+            <if test="rDate != null">
+                #{rDate},
+            </if>
+            <if test="breakfast != null">
+                #{breakfast},
+            </if>
+            <if test="lunch != null">
+                #{lunch},
+            </if>
+            <if test="dinner != null">
+                #{dinner},
+            </if>
+            <if test="createDate != null">
+                NOW(),
+            </if>
+            <if test="updateDate != null">
+                NOW(),
+            </if>
+            <if test="dietaryAdvice != null">
+                #{dietaryAdvice},
+            </if>
+            <if test="totalCalories != null">
+                #{totalCalories},
+            </if>
+            <if test="healthEducation != null">
+                #{healthEducation},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.life.decision.support.pojo.RecipeResult">
+        update recipe_result
+        <set>
+            <if test="breakfast != null">
+                breakfast = #{breakfast},
+            </if>
+            <if test="lunch != null">
+                lunch = #{lunch},
+            </if>
+            <if test="dinner != null">
+                dinner = #{dinner},
+            </if>
+            update_date = NOW(),
+            <if test="dietaryAdvice != null">
+                dietary_advice = #{dietaryAdvice},
+            </if>
+            <if test="totalCalories != null">
+                total_calories = #{totalCalories},
+            </if>
+            <if test="healthEducation != null">
+                health_education = #{healthEducation},
+            </if>
+        </set>
+        where user_id = #{userId} and r_date = #{rDate}
+    </update>
+
+</mapper>

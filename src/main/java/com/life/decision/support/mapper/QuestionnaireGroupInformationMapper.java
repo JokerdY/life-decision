@@ -2,6 +2,7 @@ package com.life.decision.support.mapper;
 
 import cn.hutool.json.JSONObject;
 import com.life.decision.support.pojo.QuestionnaireGroupInformation;
+import com.life.decision.support.vo.DataCountByMouthVo;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
@@ -28,4 +29,14 @@ public interface QuestionnaireGroupInformationMapper {
      */
     QuestionnaireGroupInformation getByUserId(@Param("userId") String userId);
 
+    /**
+     * 找到已完成的问卷组
+     *
+     * @param userId
+     * @return
+     */
+    QuestionnaireGroupInformation getByUserIdHasSuccess(@Param("userId") String userId);
+
+    List<DataCountByMouthVo> findUserRegisterVo(@Param("startDate") String startDate,
+                                                @Param("endDate") String endDate);
 }

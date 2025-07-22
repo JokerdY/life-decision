@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.life.decision.support.mapper.ChineseMedicineMapper">
+    <resultMap id="BaseResultMap" type="com.life.decision.support.pojo.ChineseMedicine">
+        <id column="id" property="id" jdbcType="VARCHAR"/>
+        <result column="user_id" property="userId" jdbcType="VARCHAR"/>
+        <result column="acupressure" property="acupressure" jdbcType="VARCHAR"/>
+        <result column="five_elements_music" property="fiveElementsMusic" jdbcType="VARCHAR"/>
+        <result column="create_date" property="createDate" jdbcType="TIMESTAMP"/>
+        <result column="update_date" property="updateDate" jdbcType="TIMESTAMP"/>
+        <result column="group_id" property="groupId" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id, user_id, acupressure, five_elements_music, create_date, update_date,group_id
+    </sql>
+    <select id="selectByEntity" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from chinese_medicine
+        where user_id = #{userId}
+        order by update_date desc
+        limit 1;
+    </select>
+    <select id="listByEntity" resultType="com.life.decision.support.pojo.ChineseMedicine">
+        select
+        <include refid="Base_Column_List"/>
+        from chinese_medicine
+        where user_id = #{userId}
+    </select>
+    <select id="selectBySubmitId" resultType="com.life.decision.support.pojo.ChineseMedicine">
+        select a.*
+        from chinese_medicine a
+                 left join questionnaire_group_information qr on qr.group_id = a.group_id
+        where qr.submit_id = #{submitId}
+        order by a.update_date desc
+        limit 1;
+    </select>
+
+    <select id="selectById" resultType="com.life.decision.support.pojo.ChineseMedicine">
+        select
+        <include refid="Base_Column_List"/>
+        from chinese_medicine
+        where id = #{id}
+    </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+        delete
+        from chinese_medicine
+        where id = #{id,jdbcType=VARCHAR}
+    </delete>
+    <insert id="insert">
+        insert into chinese_medicine (id, group_id, user_id, acupressure, five_elements_music, create_date, update_date)
+        values (#{id}, #{groupId}, #{userId}, #{acupressure}, #{fiveElementsMusic}, NOW(), NOW())
+    </insert>
+    <insert id="insertSelective">
+        insert into chinese_medicine
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="userId != null">
+                user_id,
+            </if>
+            <if test="acupressure != null">
+                acupressure,
+            </if>
+            <if test="fiveElementsMusic != null">
+                five_elements_music,
+            </if>
+            <if test="createDate != null">
+                create_date,
+            </if>
+            <if test="updateDate != null">
+                update_date,
+            </if>
+            <if test="groupId != null">
+                group_id,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=VARCHAR},
+            </if>
+            <if test="userId != null">
+                #{userId},
+            </if>
+            <if test="acupressure != null">
+                #{acupressure},
+            </if>
+            <if test="fiveElementsMusic != null">
+                #{fiveElementsMusic},
+            </if>
+            <if test="createDate != null">
+                NOW(),
+            </if>
+            <if test="updateDate != null">
+                NOW(),
+            </if>
+            <if test="groupId != null">
+                #{groupId},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective">
+        update chinese_medicine
+        set acupressure         = #{acupressure},
+            five_elements_music = #{fiveElementsMusic},
+            update_date         = NOW()
+        where id = #{id}
+    </update>
+
+</mapper>

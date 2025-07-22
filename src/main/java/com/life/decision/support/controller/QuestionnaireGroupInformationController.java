@@ -19,6 +19,11 @@ public class QuestionnaireGroupInformationController {
     @Autowired
     IQuestionnaireGroupInformationService groupInformationService;
 
+    /**
+     * 查看问卷组
+     * @param jsonObject
+     * @return
+     */
     @PostMapping("findGroupSubmitList")
     public Object findGroupSubmitList(@RequestBody JSONObject jsonObject) {
         String userId = jsonObject.getStr("userId");

@@ -1,5 +1,7 @@
 package com.life.decision.support.mapper;
 
+import com.life.decision.support.dto.AnswerDto;
+import com.life.decision.support.dto.DataAnalysisDto;
 import com.life.decision.support.pojo.QuestionAnswer;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
@@ -24,6 +26,9 @@ public interface QuestionAnswerMapper {
     int insertSelective(QuestionAnswer record);
 
     QuestionAnswer selectByPrimaryKey(QuestionAnswer record);
+
+    List<AnswerDto> selectAnswerByUser(@Param("questionId") String questionId,
+                                       @Param("dto") DataAnalysisDto dto);
 
     int updateByPrimaryKeySelective(QuestionAnswer record);
 

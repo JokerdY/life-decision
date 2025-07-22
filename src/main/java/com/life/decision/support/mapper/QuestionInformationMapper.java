@@ -9,7 +9,7 @@ import java.util.List;
 
 /**
  * <p>
- *  Mapper 接口
+ * Mapper 接口
  * </p>
  *
  * @author Joker
@@ -17,6 +17,8 @@ import java.util.List;
  */
 @Mapper
 public interface QuestionInformationMapper {
+
+    QuestionInformationDto getDto(@Param("questionId") String questionId);
 
     int insert(QuestionInformation record);
 

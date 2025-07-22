@@ -6,6 +6,7 @@ import cn.hutool.core.util.IdUtil;
 import cn.hutool.core.util.StrUtil;
 import cn.hutool.json.JSONObject;
 import com.life.decision.support.dto.SubmitOfTheQuestionnaireGroup;
+import com.life.decision.support.http.PyHttp;
 import com.life.decision.support.pojo.QuestionAnswer;
 import com.life.decision.support.pojo.QuestionnaireGroupInformation;
 import com.life.decision.support.pojo.QuestionnaireInformation;
@@ -26,6 +27,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 /**
@@ -48,6 +50,8 @@ public class QuestionAnswerController {
     private IQuestionnaireGroupInformationService groupInformationService;
     @Autowired
     private IQuestionnaireInformationService questionnaireInformationService;
+    @Autowired
+    private PyHttp pyHttp;
 
     /**
      * 新增保存
@@ -115,55 +119,6 @@ public class QuestionAnswerController {
     }
 
 
-    @PostMapping("save")
-    @ResponseBody
-    @Transactional
-    public Object saveBatch(@RequestBody JSONObject obj) {
-        List<QuestionAnswer> list = obj.getJSONArray("list")
-                .toList(QuestionAnswer.class);
-        String userId = obj.getStr("userId");
-        String questionnaireId = obj.getStr("questionnaireId");
-        // 插入内容
-        LocalDateTime now = LocalDateTime.now();
-        String submitId = IdUtil.fastUUID();
-        questionAnswerService.saveBatch(list, userId, questionnaireId, now, submitId);
-        QuestionnaireSubmitInformation submitInfo = new QuestionnaireSubmitInformation();
-        uploadAdminSubmitInfo(obj, submitInfo);
-        submitInfo.setQuestionnaireId(questionnaireId);
-        submitInfo.setUserId(userId);
-        submitInfo.setCreateTime(now);
-        submitInfo.setUpdateTime(now);
-        submitInfo.setId(submitId);
-        // 保存提交记录
-        questionnaireSubmitInformationService.save(submitInfo);
-        // 保存产品组记录
-        String groupId = groupInformationService.save(userId, submitId, questionnaireId, now);
-        // 提交修改结束后 都要返回 当前问卷组内 未完成的问卷
-        return ResultUtils.returnSuccess(getQuestionnaireGroup(groupId));
-    }
-
-    private JSONObject getQuestionnaireGroup(String groupId) {
-        QuestionnaireGroupInformation entity = new QuestionnaireGroupInformation();
-        entity.setGroupId(groupId);
-        List<SubmitOfTheQuestionnaireGroup> resultList = new ArrayList<>();
-        List<String> submitList = groupInformationService.findList(entity)
-                .stream().map(QuestionnaireGroupInformation::getQuestionnaireId)
-                .collect(Collectors.toList());
-        List<QuestionnaireInformation> questionnaireInformationList = questionnaireInformationService.findList(new QuestionnaireInformation());
-        questionnaireInformationList.forEach(naire -> {
-            SubmitOfTheQuestionnaireGroup temp = new SubmitOfTheQuestionnaireGroup();
-            temp.setQuestionnaireId(naire.getId());
-            temp.setQuestionnaireName(naire.getQuestionnaireTypeLabel());
-            temp.setIsSubmit(submitList.contains(naire.getId()));
-            resultList.add(temp);
-        });
-        JSONObject result = new JSONObject();
-        result.putOnce("data", resultList);
-        result.putOnce("finished", resultList.stream().filter(SubmitOfTheQuestionnaireGroup::getIsSubmit).count() == resultList.size());
-        result.putOnce("groupId", groupId);
-        return result;
-    }
-
     @PostMapping("update")
     @ResponseBody
     @Transactional
@@ -183,9 +138,77 @@ public class QuestionAnswerController {
             questionnaireSubmitInformationService.update(submitInfo);
             groupInformationService.updateBySubmit(submitId);
             String groupId = groupInformationService.getBySubmitId(submitId).getGroupId();
-            return ResultUtils.returnSuccess(getQuestionnaireGroup(groupId));
+            return ResultUtils.returnSuccess(getQuestionnaireGroup(groupId, userId));
         }
         return ResultUtils.returnSuccess();
+    }
+
+    @PostMapping("save")
+    @ResponseBody
+    @Transactional
+    public Object saveBatch(@RequestBody JSONObject obj) {
+        List<QuestionAnswer> list = obj.getJSONArray("list").toList(QuestionAnswer.class);
+        String userId = obj.getStr("userId");
+        String questionnaireId = obj.getStr("questionnaireId");
+        // 校验格式
+        if ("5".equals(questionnaireId)) {
+            Optional<QuestionAnswer> any = list.stream()
+                    .filter(s -> "175".equals(s.getQuestionId()))
+                    .findAny();
+            if (any.isPresent()) {
+                QuestionAnswer answer = any.get();
+                if (!answer.getComment().contains("/")) {
+                    return ResultUtils.returnError("血压选项请用/分割！");
+                }
+            }
+        }
+        // 插入内容
+        LocalDateTime now = LocalDateTime.now();
+        String submitId = IdUtil.fastUUID();
+        questionAnswerService.saveBatch(list, userId, questionnaireId, now, submitId);
+        QuestionnaireSubmitInformation submitInfo = new QuestionnaireSubmitInformation();
+        uploadAdminSubmitInfo(obj, submitInfo);
+        submitInfo.setQuestionnaireId(questionnaireId);
+        submitInfo.setUserId(userId);
+        submitInfo.setCreateTime(now);
+        submitInfo.setUpdateTime(now);
+        submitInfo.setId(submitId);
+        // 保存提交记录
+        questionnaireSubmitInformationService.save(submitInfo);
+        // 保存产品组记录
+        String groupId = groupInformationService.save(userId, submitId, questionnaireId, now);
+        // 提交修改结束后 都要返回 当前问卷组内 未完成的问卷
+        return ResultUtils.returnSuccess(getQuestionnaireGroup(groupId, userId));
+    }
+
+    @RequestMapping("a")
+    @ResponseBody
+    public JSONObject getQuestionnaireGroup(String groupId, String userId) {
+        QuestionnaireGroupInformation entity = new QuestionnaireGroupInformation();
+        entity.setGroupId(groupId);
+        List<SubmitOfTheQuestionnaireGroup> resultList = new ArrayList<>();
+        List<QuestionnaireGroupInformation> groupInfoList = groupInformationService.findList(entity);
+        List<String> submitList = groupInfoList
+                .stream().map(QuestionnaireGroupInformation::getQuestionnaireId)
+                .collect(Collectors.toList());
+        List<QuestionnaireInformation> questionnaireInformationList = questionnaireInformationService.findList(new QuestionnaireInformation());
+        questionnaireInformationList.forEach(naire -> {
+            SubmitOfTheQuestionnaireGroup temp = new SubmitOfTheQuestionnaireGroup();
+            temp.setQuestionnaireId(naire.getId());
+            temp.setQuestionnaireName(naire.getQuestionnaireTypeLabel());
+            temp.setIsSubmit(submitList.contains(naire.getId()));
+            resultList.add(temp);
+        });
+        JSONObject result = new JSONObject();
+        result.putOnce("data", resultList);
+        boolean isFinished = resultList.stream().filter(SubmitOfTheQuestionnaireGroup::getIsSubmit).count() == resultList.size();
+        if (isFinished) {
+            entity.setUserId(userId);
+            pyHttp.parsePyResult(entity);
+        }
+        result.putOnce("finished", isFinished);
+        result.putOnce("groupId", groupId);
+        return result;
     }
 
     private void uploadAdminSubmitInfo(JSONObject obj, QuestionnaireSubmitInformation submitInfo) {
