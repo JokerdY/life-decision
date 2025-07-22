@@ -18,7 +18,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <fastjson.version>1.2.83</fastjson.version>
-        <easyexcel.version>2.2.1</easyexcel.version>
+        <easyexcel.version>3.1.0</easyexcel.version>
         <junit.version>4.12</junit.version>
         <spring.test.version>4.3.2.RELEASE</spring.test.version>
     </properties>
